@@ -119,7 +119,7 @@ export function theme(darkMode: boolean): DefaultTheme {
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
     //const darkMode = useIsDarkMode()
-    const darkMode = true
+    const darkMode = false
 
     const themeObject = useMemo(() => theme(darkMode), [darkMode])
 
@@ -171,8 +171,8 @@ export const TYPE = {
 
 export const ThemedGlobalStyle = createGlobalStyle`
 html {
-  color: #BFBFBF;
-  background-color: #0D0415;
+  color: #2b2b2b;
+  background-color: #ffffff;
 }
 
 input, textarea {
