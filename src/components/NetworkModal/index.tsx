@@ -174,10 +174,10 @@ export default function NetworkModal(): JSX.Element | null {
                                 const params = PARAMS[key]
                                 library?.send('wallet_addEthereumChain', [params, account])
                             }}
-                            className="flex items-center bg-dark-800 hover:bg-dark-700 w-full rounded p-3 cursor-pointer"
+                            className="flex items-center border border-gray-300 text-gray-800 hover:bg-light-green hover:text-white w-full rounded p-3 cursor-pointer"
                         >
                             <img src={NETWORK_ICON[key]} alt="Switch Network" className="rounded-md mr-2 w-8 h-8" />
-                            <div className="text-primary font-bold">{NETWORK_LABEL[key]}</div>
+                            <div className="font-bold">{NETWORK_LABEL[key]}</div>
                         </button>
                     )
                 })}

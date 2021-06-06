@@ -282,13 +282,13 @@ export default function CurrencyInputPanel({
                                 <Button
                                     onClick={onMax}
                                     size="small"
-                                    className="bg-transparent hover:bg-primary border border-low-emphesis rounded-full text-secondary text-xs font-medium whitespace-nowrap"
+                                    className="bg-transparent hover:bg-primary border border-high-emphesis rounded-full text-secondary text-xs font-medium whitespace-nowrap"
                                 >
                                     {i18n._(t`Max`)}
                                 </Button>
                             )}
                             <NumericalInput
-                                className="token-amount-input"
+                                className="token-amount-input text-white"
                                 value={value}
                                 onUserInput={val => {
                                     onUserInput(val)

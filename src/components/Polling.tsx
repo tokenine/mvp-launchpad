@@ -85,7 +85,7 @@ export default function Polling() {
     return (
         <ExternalLink href={chainId && blockNumber ? getExplorerLink(chainId, blockNumber.toString(), 'block') : ''}>
             <StyledPolling>
-                <TYPE.small style={{ opacity: isMounted ? '0.2' : '0.6' }}>{blockNumber}</TYPE.small>
+                <TYPE.small style={{ opacity: isMounted ? '0.3' : '0.6' }}>{blockNumber}</TYPE.small>
                 <StyledPollingDot>{!isMounted && <Spinner />}</StyledPollingDot>
             </StyledPolling>
         </ExternalLink>
