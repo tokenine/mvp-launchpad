@@ -46,3 +46,19 @@ The interface will not work on other networks.
 
 **Please open all pull requests against the `master` branch.**
 CI checks will run against all PRs.
+
+
+# Extension (LOGO & Banner)
+
+### Logo
+logo file in public/images. There are 4 files
+  - apple-touch-icon.png (512x512)
+  - favicon-16x16.png
+  - favicon-32x32.png
+  - logo-192x192.png
+  - logo-512x512.png
+### Main logo
+- main logo. It's in `assets/images/logo.png (size perfer is 512x512)`
+- in code file. It's in `src/components/AppBar.tsx (line 49)`
+- SAKE banner is in `src/pages/Swap/index.tsx (lines 613-673)`
+
