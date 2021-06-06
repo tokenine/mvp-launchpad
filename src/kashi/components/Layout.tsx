@@ -44,7 +44,7 @@ export default function Layout({
                                         'flex items-center font-medium ' +
                                         (location.pathname.startsWith('/bento/kashi/lend')
                                             ? 'text-high-emphesis'
-                                            : 'text-secondary hover:text-primary')
+                                            : 'text-primary hover:text-high-emphesis')
                                     }
                                 >
                                     <div className="whitespace-nowrap text-base">Lend</div>
@@ -56,7 +56,7 @@ export default function Layout({
                                         'flex items-center font-medium ' +
                                         (location.pathname.startsWith('/bento/kashi/borrow')
                                             ? 'text-high-emphesis'
-                                            : 'text-secondary hover:text-primary')
+                                            : 'text-primary hover:text-high-emphesis')
                                     }
                                 >
                                     <div className="whitespace-nowrap text-base">Borrow</div>
@@ -69,7 +69,7 @@ export default function Layout({
                                         'flex items-center font-medium ' +
                                         (location.pathname.startsWith('/bento/kashi/create')
                                             ? 'text-high-emphesis'
-                                            : 'text-secondary hover:text-primary')
+                                            : 'text-primary hover:text-high-emphesis')
                                     }
                                 >
                                     <div className="whitespace-nowrap text-base">Create</div>
@@ -82,7 +82,7 @@ export default function Layout({
                                 className={`border-transparent px-2 sm:px-4 border-b-2 flex justify-end items-center font-medium ${
                                     location.pathname === '/bento/balances'
                                         ? 'text-high-emphesis'
-                                        : 'text-secondary hover:text-primary'
+                                        : 'text-primary hover:text-high-emphesis'
                                 }`}
                             >
                                 <BentoBoxLogo className="fill-current h-auto w-6 mr-2" />

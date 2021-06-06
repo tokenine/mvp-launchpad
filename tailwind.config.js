@@ -59,6 +59,9 @@ module.exports = {
             'dark-600': '#1C2D49',
             'dark-500': '#223D5E',
 
+            'green-x1': '#158467',
+            'green-x2': '#065446',
+
             // TODO: bad... these are causing issues with text colors
             // 'high-emphesis': '#E3E3E3',
             primary: '#BFBFBF',

@@ -21,7 +21,7 @@ function MarketHeader({ type = 'Borrow', lists }: any) {
         <Header>
             <div className="flex flex-col md:flex-row items-center justify-between w-full">
                 <div className="flex items-center">
-                    <div className="text-3xl text-high-emphesis mr-4">{type}</div>
+                    <div className="text-3xl text-white mr-4">{type}</div>
                 </div>
 
                 <div className="flex justify-end w-full py-4 md:py-0">
@@ -31,12 +31,15 @@ function MarketHeader({ type = 'Borrow', lists }: any) {
                                 type === 'Borrow' ? 'focus:ring-pink' : 'focus:ring-blue'
                             }`}
                             onChange={e => onSearch(e.target.value)}
-                            style={{ background: '#161522' }}
+                            style={{ 
+                                background: '#1f441e',
+                                color: '#fff'
+                            }}
                             value={lists[0].term}
                             placeholder="Search by symbol"
                         />
                         <div className="absolute inset-y-0 right-0 pr-6 flex items-center pointer-events-none">
-                            <Search size={16} />
+                            <Search color="white" size={16} />
                         </div>
                     </div>
                 </div>
