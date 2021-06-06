@@ -248,7 +248,7 @@ export default function CurrencyInputPanel({
                                                       currency.symbol.length
                                                   )
                                                 : currency?.getSymbol(chainId)) || (
-                                                <div className="bg-transparent hover:bg-primary border border-low-emphesis rounded-full px-2 py-1 text-secondary text-xs font-medium mt-1 whitespace-nowrap ">
+                                                <div className="bg-transparent hover:bg-primary border border-high-emphesis rounded-full px-2 py-1 text-secondary text-xs font-medium mt-1 whitespace-nowrap ">
                                                     {i18n._(t`Select a token`)}
                                                 </div>
                                             )}

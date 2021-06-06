@@ -116,7 +116,7 @@ function AppBar(): JSX.Element {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-row items-center justify-center w-full lg:w-auto p-4 fixed left-0 bottom-0 bg-dark-1000 lg:relative lg:p-0 lg:bg-transparent">
+                                <div className="flex flex-row items-center justify-center w-full lg:w-auto p-4 fixed left-0 bottom-0 lg:relative lg:p-0 lg:bg-transparent">
                                     <div className="flex items-center justify-between sm:justify-end space-x-2 w-full">
                                         {chainId &&
                                             [ChainId.MAINNET].includes(chainId) &&
@@ -127,7 +127,7 @@ function AppBar(): JSX.Element {
                                                         text={i18n._(t`Add xSushi to your Metamask wallet`)}
                                                     >
                                                         <div
-                                                            className="hidden sm:inline-block rounded-md bg-dark-900 hover:bg-dark-800 cursor-pointer"
+                                                            className="hidden sm:inline-block rounded-md bg-light-green hover:bg-super-light-green cursor-pointer"
                                                             onClick={() => {
                                                                 const params: any = {
                                                                     type: 'ERC20',
@@ -256,13 +256,13 @@ function AppBar(): JSX.Element {
                                         {chainId && chainId === ChainId.MATIC && (
                                             <div className="hidden sm:inline-block">
                                                 <a
-                                                    className="flex items-center rounded bg-dark-900 hover:bg-dark-800 p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto"
+                                                    className="flex items-center rounded bg-light-green hover:bg-super-light-green p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto"
                                                     href="https://wallet.matic.network/bridge/"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                 >
-                                                    <div className="grid grid-flow-col auto-cols-max items-center rounded-lg bg-dark-1000 text-sm text-secondary py-2 px-3 pointer-events-auto">
-                                                        <div className="text-primary">{i18n._(t`Bridge Assets`)}</div>
+                                                    <div className="grid grid-flow-col auto-cols-max items-center rounded-lg text-sm text-secondary py-2 px-3 pointer-events-auto">
+                                                        <div className="text-white">{i18n._(t`Bridge Assets`)}</div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -273,10 +273,10 @@ function AppBar(): JSX.Element {
                                             </div>
                                         )}
 
-                                        <div className="w-auto flex items-center rounded bg-dark-900 hover:bg-dark-800 p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto">
+                                        <div className="w-auto flex items-center rounded bg-light-green hover:bg-super-light-green p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto">
                                             {account && chainId && userEthBalance && (
                                                 <>
-                                                    <div className="py-2 px-3 text-primary text-bold">
+                                                    <div className="py-2 px-3 text-white text-bold">
                                                         {userEthBalance?.toSignificant(4)}{' '}
                                                         {Currency.getNativeCurrencySymbol(chainId)}
                                                     </div>
