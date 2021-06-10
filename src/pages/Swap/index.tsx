@@ -318,7 +318,7 @@ export default function Swap() {
                 onConfirm={handleConfirmTokenWarning}
             />
             <SwapPoolTabs active={'swap'} />
-            <div className="bg-dark-900 shadow-swap-blue-glow w-full max-w-2xl rounded">
+            <div className="navbar-bg-green-thick-to-thin shadow-swap-blue-glow w-full max-w-2xl rounded">
                 <SwapHeader input={currencies[Field.INPUT]} output={currencies[Field.OUTPUT]} />
                 <Wrapper id="swap-page">
                     <ConfirmSwapModal
@@ -383,14 +383,14 @@ export default function Swap() {
                                 style={{ padding: '0 1rem' }}
                             >
                                 <button
-                                    className="bg-dark-900 rounded-full p-3px -mt-6 -mb-6 z-10"
+                                    className="bg-white rounded-full p-3px -mt-6 -mb-6 z-10"
                                     onClick={() => {
                                         setApprovalSubmitted(false) // reset 2 step UI for approvals
                                         onSwitchTokens()
                                     }}
                                 >
                                     <div
-                                        className="bg-dark-800 hover:bg-dark-700 rounded-full p-3"
+                                        className="border border-dark-800 hover:bg-dark-800 rounded-full p-3"
                                         onMouseEnter={() => setAnimateSwapArrows(true)}
                                         onMouseLeave={() => setAnimateSwapArrows(false)}
                                     >
@@ -399,8 +399,7 @@ export default function Swap() {
                                             autoplay={animateSwapArrows}
                                             loop={false}
                                             style={{ width: 32, height: 32 }}
-
-                                            // className="text-secondary fill-current"
+                                            // className="text-red fill-current"
                                         />
                                     </div>
                                 </button>

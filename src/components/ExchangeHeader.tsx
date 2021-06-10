@@ -68,7 +68,7 @@ export default function SwapHeader({ input = undefined, output = undefined }: an
                             <Gas />
                         </div>
                     </div> */}
-                    <div className="bg-dark-800 hover:bg-dark-700 rounded-sm h-full w-full p-1 md:px-2">
+                    <div className="border border-dark-800 hover:bg-dark-700 rounded-sm h-full w-full p-1 md:px-2">
                         <Settings />
                     </div>
                     {/* <button
