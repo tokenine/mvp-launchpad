@@ -50,8 +50,8 @@ export default function Menu() {
                         <MenuIcon
                             title="More"
                             className={classNames(
-                                open ? 'text-gray-600' : 'text-gray-400',
-                                'inline-flex items-center ml-2 h-5 w-5 group-hover:text-secondary hover:text-high-emphesis'
+                                open ? 'text-white' : 'text-primary',
+                                'inline-flex items-center ml-2 h-5 w-5 group-hover:text-secondary hover:text-super-light-green'
                             )}
                             aria-hidden="true"
                         />

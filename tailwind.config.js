@@ -50,6 +50,9 @@ module.exports = {
             'cyan-blue': '#0993EC',
             pink: '#F338C3',
 
+            'green-thick': '#0A4',
+            'green-thin': '#6B4',
+
             'dark-pink': '#221825',
             'dark-blue': '#0F182A',
             'dark-1000': '#0D0415',
@@ -173,9 +176,10 @@ module.exports = {
             textColor: {
                 ...defaultTheme.textColor,
                 'low-emphesis': '#6cb877',
-                primary: '#BFBFBF',
+                primary: '#dedede',
                 secondary: '#ffffff',
-                'high-emphesis': '#39b54a'
+                'high-emphesis': '#39b54a',
+                'active-white': '#ffffff'
             },
             backgroundColor: {
                 ...defaultTheme.backgroundColor,
@@ -245,6 +249,9 @@ module.exports = {
                     background:
                         'linear-gradient(to right, rgba(39, 176, 230, 0.2) 0%, rgba(250, 82, 160, 0.2) 100%) left bottom no-repeat',
                     backgroundSize: '100% 1px'
+                },
+                '.navbar-bg-green-thick-to-thin': {
+                    background: 'linear-gradient(45deg, #0A4, #6B4)'
                 }
             })
         }),
