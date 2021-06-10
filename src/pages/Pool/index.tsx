@@ -175,7 +175,7 @@ export default function Pool() {
                         <div className="text-sm font-bold">
                             <Trans>
                                 <span className="text-gray-300" >Don&apos;t see a pool you joined?{' '}</span>
-                                <Link id="import-pool-link" to="/find" className="text-blue">
+                                <Link id="import-pool-link" to="/find" className="text-blue-500">
                                     Import it.
                                 </Link>
                             </Trans>
@@ -220,16 +220,16 @@ export default function Pool() {
                             </>
                         ) : (
                             <EmptyProposals>
-                                <TYPE.body color={theme.text3} textAlign="center">
+                                <TYPE.body color={theme.white} textAlign="center">
                                     {i18n._(t`No liquidity found`)}
                                 </TYPE.body>
                             </EmptyProposals>
                         )}
 
                         {chainId && [ChainId.MAINNET, ChainId.BSC, ChainId.MATIC].includes(chainId) && (
-                            <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+                            <Text textAlign="center" className="text-gray-300" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
                                 {i18n._(t`Have Liquidity on ${(chainId && migrateFrom[chainId]) ?? ''}?`)}{' '}
-                                <StyledInternalLink id="migrate-pool-link" to={'/migrate'}>
+                                <StyledInternalLink className="text-blue-500" id="migrate-pool-link" to={'/migrate'}>
                                     {i18n._(t`Migrate Now`)}
                                 </StyledInternalLink>
                             </Text>
