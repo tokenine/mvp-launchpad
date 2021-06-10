@@ -85,23 +85,23 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-purple rounded p-4 bg-opacity-20 w-full mt-4 whitespace-nowrap">
                     <div className="flex justify-between">
                         <div className="text-high-emphesis">{i18n._(t`Your Pool Tokens`)}</div>
-                        <div className="text-primary font-bold">
+                        <div className="text-gray-400 font-bold">
                             {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
                         </div>
                     </div>
                     <div className="flex justify-between">
                         <div className="text-high-emphesis">{i18n._(t`Pooled ${currency0.getSymbol(chainId)}`)}</div>
-                        <div className="text-primary font-bold">{token0Deposited?.toSignificant(6)}</div>
+                        <div className="text-gray-400 font-bold">{token0Deposited?.toSignificant(6)}</div>
                     </div>
                     <div className="flex justify-between">
                         <div className="text-high-emphesis">{i18n._(t`Your Pool Share`)}</div>
-                        <div className="text-primary font-bold">
+                        <div className="text-gray-400 font-bold">
                             {poolTokenPercentage ? poolTokenPercentage.toFixed(6) + '%' : '-'}
                         </div>
                     </div>
                     <div className="flex justify-between">
                         <div className="text-high-emphesis">{i18n._(t`Pooled ${currency1.getSymbol(chainId)}`)}</div>
-                        <div className="text-primary font-bold">{token1Deposited?.toSignificant(6)}</div>
+                        <div className="text-gray-400 font-bold">{token1Deposited?.toSignificant(6)}</div>
                     </div>
                 </div>
             ) : (

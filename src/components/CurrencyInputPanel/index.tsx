@@ -161,7 +161,7 @@ export default function CurrencyInputPanel({
     const valueUSDC = formattedNum(Number(value) * Number(currencyUSDC))
 
     return (
-        <div id={id} className="rounded bg-dark-800 p-5">
+        <div id={id} className="rounded border border-dark-800 p-5">
             <div
                 className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row justify-between"
                 // hideInput={hideInput}
@@ -276,20 +276,20 @@ export default function CurrencyInputPanel({
                         </>
                     )} */}
                 </div>
-                <div className="flex items-center rounded bg-dark-900 space-x-3 p-3 w-full sm:w-3/5">
+                <div className="flex items-center rounded bg-white space-x-3 p-3 w-full sm:w-3/5">
                     {!hideInput && (
                         <>
                             {account && currency && showMaxButton && label !== 'To' && (
                                 <Button
                                     onClick={onMax}
                                     size="small"
-                                    className="bg-transparent hover:bg-primary border border-high-emphesis rounded-full text-secondary text-xs font-medium whitespace-nowrap"
+                                    className="bg-transparent hover:bg-primary hover:text-white border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
                                 >
                                     {i18n._(t`Max`)}
                                 </Button>
                             )}
                             <NumericalInput
-                                className="token-amount-input text-white"
+                                className="token-amount-input"
                                 value={value}
                                 onUserInput={val => {
                                     onUserInput(val)

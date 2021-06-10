@@ -6,7 +6,7 @@ export default function LiquidityHeader({ input = undefined, output = undefined 
         <div className="grid grid-cols-2 rounded-md p-3px bg-dark-800">
             <NavLink
                 className="flex items-center justify-center px-4 py-3 md:px-10 rounded-md text-center text-secondary hover:text-high-emphesis text-base font-medium"
-                activeClassName="font-bold text-high-emphesis bg-dark-900"
+                activeClassName="font-bold text-high-emphesis bg-white"
                 to={`/add/${input && input.address ? input.address : 'ETH'}${
                     output && output.address ? `/${output.address}` : ''
                 }`}
@@ -18,7 +18,7 @@ export default function LiquidityHeader({ input = undefined, output = undefined 
                     if (!output) event.preventDefault()
                 }}
                 className="flex items-center justify-center px-4 py-3 md:px-10 rounded-md text-center text-secondary hover:text-high-emphesis text-base font-medium"
-                activeClassName="text-high-emphesis font-bold bg-dark-900"
+                activeClassName="text-high-emphesis font-bold bg-white"
                 to={`/remove/${input && input.address ? input.address : 'ETH'}${
                     output && output.address ? `/${output.address}` : `${input.address ? '/ETH' : ''}`
                 }`}
