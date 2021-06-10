@@ -154,14 +154,14 @@ export default function NetworkModal(): JSX.Element | null {
                 ].map((key: ChainId, i: number) => {
                     if (chainId === key) {
                         return (
-                            <button key={i} className="bg-gradient-to-r from-blue to-pink w-full rounded p-px">
-                                <div className="flex items-center h-full w-full bg-dark-1000 rounded p-3">
+                            <button key={i} className="bg-gradient-to-r from-blue to-green w-full rounded p-px">
+                                <div className="flex items-center h-full w-full bg-gray-400  rounded p-3">
                                     <img
                                         src={NETWORK_ICON[key]}
                                         alt="Switch Network"
                                         className="rounded-md mr-3 w-8 h-8"
                                     />
-                                    <div className="text-primary font-bold">{NETWORK_LABEL[key]}</div>
+                                    <div className="text-black font-bold">{NETWORK_LABEL[key]}</div>
                                 </div>
                             </button>
                         )
