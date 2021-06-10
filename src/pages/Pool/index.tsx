@@ -174,7 +174,7 @@ export default function Pool() {
                         </div>
                         <div className="text-sm font-bold">
                             <Trans>
-                                Don&apos;t see a pool you joined?{' '}
+                                <span className="text-gray-400" >Don&apos;t see a pool you joined?{' '}</span>
                                 <Link id="import-pool-link" to="/find" className="text-blue">
                                     Import it.
                                 </Link>
@@ -240,8 +240,8 @@ export default function Pool() {
                             </Button>
                             <Button
                                 id="create-pool-button"
-                                color="default"
-                                className="bg-dark-800"
+                                // color="default"
+                                className="bg-dark-800 text-white"
                                 onClick={() => history.push('/create/ETH')}
                             >
                                 {i18n._(t`Create a pair`)}

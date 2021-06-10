@@ -445,7 +445,7 @@ export default function Swap() {
                             <>
                                 <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>
                                     <ArrowWrapper clickable={false}>
-                                        <ArrowDown size="16" color={theme.text2} />
+                                        <ArrowDown size="16" color={theme.white} />
                                     </ArrowWrapper>
                                     <LinkStyledButton
                                         id="remove-recipient-button"
@@ -463,7 +463,7 @@ export default function Swap() {
                                 <AutoColumn gap="8px" style={{ padding: '0 16px' }}>
                                     {Boolean(trade) && (
                                         <RowBetween align="center">
-                                            <Text fontWeight={500} fontSize={14} color={theme.text2}>
+                                            <Text fontWeight={500} fontSize={14} color={theme.white}>
                                                 {i18n._(t`Price`)}
                                             </Text>
                                             <TradePrice
@@ -478,7 +478,7 @@ export default function Swap() {
                                             <ClickableText
                                                 fontWeight={500}
                                                 fontSize={14}
-                                                color={theme.text2}
+                                                color={theme.white}
                                                 onClick={toggleSettings}
                                             >
                                                 {i18n._(t`Slippage Tolerance`)}
@@ -486,7 +486,7 @@ export default function Swap() {
                                             <ClickableText
                                                 fontWeight={500}
                                                 fontSize={14}
-                                                color={theme.text2}
+                                                color={theme.white}
                                                 onClick={toggleSettings}
                                             >
                                                 {allowedSlippage / 100}%

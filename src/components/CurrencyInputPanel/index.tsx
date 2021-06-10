@@ -69,7 +69,8 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
     height: 35%;
 
     path {
-        stroke: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
+        /* stroke: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)}; */
+        stroke: white;
         stroke-width: 1.5px;
     }
 `
@@ -230,7 +231,7 @@ export default function CurrencyInputPanel({
                             ) : (
                                 <div className="flex flex-1 flex-col items-start justify-center w-full text-left mx-3.5 overflow-x-hidden">
                                     {label && (
-                                        <div className="text-xs text-secondary font-medium whitespace-nowrap">
+                                        <div className="text-xs text-gray-300 font-medium whitespace-nowrap">
                                             {label}
                                         </div>
                                     )}
@@ -239,7 +240,7 @@ export default function CurrencyInputPanel({
                                             className="token-symbol-container"
                                             active={Boolean(currency && currency.symbol)}
                                         > */}
-                                        <div className="text-lg md:text-2xl font-bold whitespace-nowrap">
+                                        <div className="text-lg md:text-2xl font-bold whitespace-nowrap text-white">
                                             {(currency && currency.symbol && currency.symbol.length > 20
                                                 ? currency.symbol.slice(0, 4) +
                                                   '...' +

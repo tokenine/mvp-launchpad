@@ -69,7 +69,7 @@ module.exports = {
             // TODO: bad... these are causing issues with text colors
             // 'high-emphesis': '#E3E3E3',
             primary: '#BFBFBF',
-            secondary: '#7F7F7F',
+            secondary: '#707070',
             'low-emphesis': '#575757',
             'light-green': '#39b54a',
             'super-light-green': '#31d648'

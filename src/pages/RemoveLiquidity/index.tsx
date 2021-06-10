@@ -379,7 +379,7 @@ export default function RemoveLiquidity({
                     </RowFixed>
                 </RowBetween>
                 <RowFixed>
-                    <Plus size="16" color={theme.text2} />
+                    <Plus size="16" color={theme.white} />
                 </RowFixed>
                 <RowBetween align="flex-end">
                     <Text fontSize={24} fontWeight={500}>
@@ -569,7 +569,7 @@ export default function RemoveLiquidity({
                             <AutoRow justify={'flex-start'} style={{ padding: '0 1rem' }}>
                                 <button className="bg-dark-900 rounded-full p-3px -mt-6 -mb-6 z-10">
                                     <div className="bg-dark-800 hover:bg-dark-700 rounded-full p-3">
-                                        <ArrowDown size="32" color={theme.text2} />
+                                        <ArrowDown size="32" color={theme.white} />
                                     </div>
                                 </button>
                             </AutoRow>
