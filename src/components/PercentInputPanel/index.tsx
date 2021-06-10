@@ -16,14 +16,14 @@ export default function PercentInputPanel({ value, onUserInput, id }: PercentInp
                 </div>
                 <div className="flex items-center rounded bg-dark-900 font-bold text-xl space-x-3 p-3 w-full sm:w-3/5">
                     <PercentInput
-                        className="token-amount-input"
+                        className="token-amount-input text-white"
                         value={value}
                         onUserInput={val => {
                             onUserInput(val)
                         }}
                         align="right"
                     />
-                    <div className="font-bold text-xl pl-2">%</div>
+                    <div className="font-bold text-xl pl-2 text-white">%</div>
                 </div>
             </div>
         </div>
