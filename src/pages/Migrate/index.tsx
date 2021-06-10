@@ -317,7 +317,7 @@ const MigrateV2 = () => {
 
             <div className="text-2xl text-center mb-8">{i18n._(t`Migrate ${exchange} Liquidity`)}</div>
 
-            <div className="bg-dark-900 shadow-swap-blue-glow w-full max-w-lg rounded p-5 space-y-4">
+            <div className="navbar-bg-green-thick-to-thin shadow-swap-blue-glow w-full max-w-lg rounded p-5 space-y-4">
                 {/* <div className="flex justify-between items-center p-3">
                     <BackArrow to="/pool" />
                     <div>Select your wallet</div>
