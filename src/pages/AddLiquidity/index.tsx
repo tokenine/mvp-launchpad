@@ -332,7 +332,7 @@ export default function AddLiquidity({
             </Helmet>
             <div className="w-full max-w-2xl mb-5 px-4">
                 <NavLink
-                    className="text-center text-secondary hover:text-high-emphesis text-base font-medium"
+                    className="text-center text-green-thick hover:text-green-thin text-base font-medium"
                     to={'/pool'}
                 >
                     {i18n._(t`View Your Liquidity Positions`)} &gt;
