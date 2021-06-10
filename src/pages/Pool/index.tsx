@@ -169,12 +169,12 @@ export default function Pool() {
                         type="information"
                     />
                     <div className="flex justify-between items-center my-4">
-                        <div className="text-xl text-high-emphesis font-medium">
+                        <div className="text-xl text-white font-medium">
                             {i18n._(t`Your Liquidity Positions`)}
                         </div>
                         <div className="text-sm font-bold">
                             <Trans>
-                                <span className="text-gray-400" >Don&apos;t see a pool you joined?{' '}</span>
+                                <span className="text-gray-300" >Don&apos;t see a pool you joined?{' '}</span>
                                 <Link id="import-pool-link" to="/find" className="text-blue">
                                     Import it.
                                 </Link>
@@ -241,7 +241,7 @@ export default function Pool() {
                             <Button
                                 id="create-pool-button"
                                 // color="default"
-                                className="bg-dark-800 text-white"
+                                className="bg-dark-700 text-white"
                                 onClick={() => history.push('/create/ETH')}
                             >
                                 {i18n._(t`Create a pair`)}

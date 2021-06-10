@@ -18,7 +18,7 @@ export default function LiquidityPrice({
             <AutoRow
                 justify={'space-between'}
                 style={{ padding: '0 1rem' }}
-                className="rounded-b-md md:bg-dark-900 text-secondary py-1"
+                className="rounded-b-md md:bg-white text-green-thick py-1"
             >
                 <div>Current Rate</div>
                 <div>
