@@ -190,7 +190,7 @@ export default function Pool() {
                             </Card>
                         ) : v2IsLoading ? (
                             <EmptyProposals>
-                                <TYPE.body color={theme.text3} textAlign="center">
+                                <TYPE.body color={theme.white} textAlign="center">
                                     <Dots>{i18n._(t`Loading`)}</Dots>
                                 </TYPE.body>
                             </EmptyProposals>

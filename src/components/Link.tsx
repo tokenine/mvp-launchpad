@@ -68,7 +68,7 @@ export function ExternalLink({
             rel={rel}
             href={href}
             onClick={handleClick}
-            className={`text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis p-2 md:p-3 ${className}`}
+            className={`text-baseline text-primary hover:text-white focus:text-white p-2 md:p-3 ${className}`}
             {...rest}
         >
             {children}
