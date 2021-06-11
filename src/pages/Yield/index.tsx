@@ -21,8 +21,8 @@ import useMasterChefV2Farms from './hooks/masterchefv2/useFarms'
 import useMiniChefFarms from './hooks/minichef/useFarms'
 import useStakedPending from './hooks/portfolio/useStakedPending'
 
-import FarmV1 from '../../assets/farms/sushi_farm_v1.json'
-import FarmV2 from '../../assets/farms/sushi_farm_v2.json'
+// import FarmV1 from '../../assets/farms/sushi_farm_v1.json'
+// import FarmV2 from '../../assets/farms/sushi_farm_v2.json'
 
 export const FixedHeightRow = styled(RowBetween)`
     height: 24px;
@@ -34,11 +34,11 @@ export default function Yield(): JSX.Element {
     const { account, chainId } = useActiveWeb3React()
 
     // Get Farms
-    // const masterchefv1 = useMasterChefFarms()
-    // const masterchefv2 = useMasterChefV2Farms()
+    const masterchefv1 = useMasterChefFarms()
+    const masterchefv2 = useMasterChefV2Farms()
 
-    const masterchefv1 = FarmV1
-    const masterchefv2 = FarmV2
+    // const masterchefv1 = FarmV1
+    // const masterchefv2 = FarmV2
     const minichef = useMiniChefFarms()
     const allFarms = _.concat(
         masterchefv2 ? masterchefv2 : [],

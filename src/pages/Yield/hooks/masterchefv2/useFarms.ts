@@ -15,6 +15,7 @@ import orderBy from 'lodash/orderBy'
 import sushiData from '@sushiswap/sushi-data'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useBoringHelperContract } from 'hooks/useContract'
+import FarmV2 from '../../../../assets/farms/sushi_farm_v2.json'
 
 //import Fraction from '../../../entities/Fraction'
 //import { resetIdCounter } from 'react-tabs'
@@ -154,7 +155,8 @@ const useFarms = () => {
 
     useEffect(() => {
         if (chainId === ChainId.MAINNET) {
-            fetchAllFarms()
+            // fetchAllFarms()
+            setFarms(FarmV2)
         } else {
             setFarms([])
         }
