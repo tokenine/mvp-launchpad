@@ -48,12 +48,12 @@ export default function BentoBalances(): JSX.Element {
                 }
             >
                 <Card
-                    className="h-full bg-dark-900"
+                    className="h-full navbar-bg-green-thick-to-thin"
                     header={
-                        <CardHeader className="flex justify-between items-center bg-dark-800">
+                        <CardHeader className="flex justify-between items-center navbar-bg-green-thick-to-thin border-b-4 border-green">
                             <div className="flex flex-col md:flex-row items-center justify-between w-full">
                                 <div className="flex items-baseline">
-                                    <div className="text-3xl text-high-emphesis mr-4">{i18n._(t`BentoBox`)}</div>
+                                    <div className="text-3xl text-white mr-4">{i18n._(t`BentoBox`)}</div>
                                 </div>
                                 <div className="flex justify-end w-full py-4 md:py-0">
                                     <Search search={search} term={term} />
@@ -84,7 +84,7 @@ const TokenBalance = ({ balance }: { balance: BentoBalance }) => {
     const [expand, setExpand] = useState<boolean>(false)
     const { chainId } = useActiveWeb3React()
     return (
-        <Paper className="bg-dark-800 ">
+        <Paper className="bg-dark-800">
             <div
                 className="grid grid-cols-3 py-4 px-4 cursor-pointer select-none rounded text-sm "
                 onClick={() => setExpand(!expand)}
@@ -100,13 +100,13 @@ const TokenBalance = ({ balance }: { balance: BentoBalance }) => {
                 <div className="flex justify-end items-center">
                     <div>
                         <div className="text-right">{formattedNum(balance.wallet.string)} </div>
-                        <div className="text-secondary text-right">{formattedNum(balance.wallet.usd, true)}</div>
+                        <div className="text-gray-300 text-right">{formattedNum(balance.wallet.usd, true)}</div>
                     </div>
                 </div>
                 <div className="flex justify-end items-center">
                     <div>
                         <div className="text-right">{formattedNum(balance.bento.string)} </div>
-                        <div className="text-secondary text-right">{formattedNum(balance.bento.usd, true)}</div>
+                        <div className="text-gray-300 text-right">{formattedNum(balance.bento.usd, true)}</div>
                     </div>
                 </div>
             </div>

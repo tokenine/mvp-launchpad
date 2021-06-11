@@ -14,6 +14,7 @@ import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useKashiPairs } from '../../context'
 import useSearchAndSort from 'hooks/useSearchAndSort'
 import { useLingui } from '@lingui/react'
+import Helmet from 'react-helmet'
 
 export default function LendingMarkets(): JSX.Element | null {
     const { i18n } = useLingui()
@@ -47,7 +48,10 @@ export default function LendingMarkets(): JSX.Element | null {
                 />
             }
         >
-            <Card className="bg-dark-900" header={<MarketHeader type="Lending" lists={[pairs, positions]} />}>
+            <Helmet>
+                <title>{i18n._(t`Lending`)} | dfy.asia</title>
+            </Helmet>
+            <Card className="h-full navbar-bg-green-thick-to-thin" header={<MarketHeader type="Lending" lists={[pairs, positions]} />}>
                 {positions.items && positions.items.length > 0 && (
                     <div className="pb-4">
                         <div>
@@ -101,7 +105,7 @@ export default function LendingMarkets(): JSX.Element | null {
                                         <div key={pair.address}>
                                             <Link
                                                 to={'/bento/kashi/lend/' + pair.address}
-                                                className="block text-high-emphesis"
+                                                className="block text-white"
                                             >
                                                 <div className="grid gap-4 grid-flow-col grid-cols-4 md:grid-cols-6 lg:grid-cols-7 py-4 px-4 items-center align-center text-sm rounded bg-dark-800 hover:bg-dark-blue">
                                                     <div className="flex flex-col sm:flex-row items-start sm:items-center">
@@ -137,13 +141,13 @@ export default function LendingMarkets(): JSX.Element | null {
                                                             {formattedNum(pair.currentUserAssetAmount.string, false)}{' '}
                                                             {pair.asset.symbol}
                                                         </div>
-                                                        <div className="text-secondary text-sm">
+                                                        <div className="text-gray-300 text-sm">
                                                             {formattedNum(pair.currentUserAssetAmount.usd, true)}
                                                         </div>
                                                     </div>
                                                     <div className="text-right">
                                                         <div>{formattedPercent(pair.utilization.string)}</div>
-                                                        <div className="text-secondary">
+                                                        <div className="text-gray-300">
                                                             {formattedNum(pair.currentUserLentAmount.usd, true)}
                                                         </div>
                                                     </div>
@@ -208,9 +212,9 @@ export default function LendingMarkets(): JSX.Element | null {
                                     <div key={pair.address}>
                                         <Link
                                             to={'/bento/kashi/lend/' + String(pair.address).toLowerCase()}
-                                            className="block text-high-emphesis"
+                                            className="block text-white"
                                         >
-                                            <div className="grid gap-4 grid-flow-col grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 py-4 px-4 items-center align-center text-sm rounded bg-dark-800 hover:bg-dark-blue">
+                                            <div className="grid gap-4 grid-flow-col grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 py-4 px-4 items-center align-center text-sm rounded bg-dark-800 hover:bg-light-green">
                                                 <div className="flex flex-col sm:flex-row items-start sm:items-center">
                                                     <div className="hidden space-x-2 md:flex">
                                                         <AsyncTokenIcon
@@ -251,7 +255,7 @@ export default function LendingMarkets(): JSX.Element | null {
                                                     <div>
                                                         {formattedNum(pair.currentAllAssets.string)} {pair.asset.symbol}
                                                     </div>
-                                                    <div className="text-secondary">
+                                                    <div className="text-gray-300">
                                                         {formattedNum(pair.currentAllAssets.usd, true)}
                                                     </div>
                                                 </div>
@@ -263,7 +267,7 @@ export default function LendingMarkets(): JSX.Element | null {
                     </div>
                 </div>
                 <div className="w-full py-6 text-center">
-                    <Link to="/bento/kashi/create" className="text-lg">
+                    <Link to="/bento/kashi/create" className="text-lg text-white">
                         {i18n._(t`+ Create a new market`)}
                     </Link>
                 </div>

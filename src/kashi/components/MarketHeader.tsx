@@ -32,14 +32,14 @@ function MarketHeader({ type = 'Borrow', lists }: any) {
                             }`}
                             onChange={e => onSearch(e.target.value)}
                             style={{ 
-                                background: '#1f441e',
-                                color: '#fff'
+                                background: '#fff',
+                                color: '#000'
                             }}
                             value={lists[0].term}
                             placeholder="Search by symbol"
                         />
                         <div className="absolute inset-y-0 right-0 pr-6 flex items-center pointer-events-none">
-                            <Search color="white" size={16} />
+                            <Search color="#9499a3" size={16} />
                         </div>
                     </div>
                 </div>

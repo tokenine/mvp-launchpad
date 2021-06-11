@@ -129,18 +129,18 @@ const CreatePair = () => {
             }
         >
             <Helmet>
-                <title>Create Market | Sushi</title>
+                <title>Create Market | dfy.asia</title>
             </Helmet>
             <Card
-                className="h-full bg-dark-900"
+                className="h-full navbar-bg-green-thick-to-thin"
                 header={
-                    <CardHeader className="bg-dark-800">
-                        <div className="text-3xl text-high-emphesis leading-48px">Create a Market</div>
+                    <CardHeader className="navbar-bg-green-thick-to-thin border-b-4 border-purple">
+                        <div className="text-3xl text-white leading-48px">Create a Market</div>
                     </CardHeader>
                 }
             >
                 <div className="space-y-6">
-                    <p>
+                    <p className="text-white">
                         Currently only Chainlink oracles are available. Support for more oracles, such as SushiSwap
                         on-chain time weighted average pricing (TWAP) oracles will be added later.
                     </p>
@@ -163,8 +163,8 @@ const CreatePair = () => {
                     />
 
                     <Button
-                        color="gradient"
-                        className="w-full rounded text-base text-high-emphesis px-4 py-3"
+                        color="gradient2"
+                        className="w-full rounded text-base text-white px-4 py-3"
                         onClick={() => handleCreate()}
                         disabled={
                             selectedCollateral === empty ||
