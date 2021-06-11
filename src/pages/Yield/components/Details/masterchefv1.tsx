@@ -73,13 +73,13 @@ export default function InputGroup({
                     {type === 'LP' && (
                         <>
                             <Button
-                                color="default"
+                                color="yieldColor"
                                 onClick={() => history.push(`/add/${isWETH(token0Address)}/${isWETH(token1Address)}`)}
                             >
                                 {i18n._(t`Add Liquidity`)}
                             </Button>
                             <Button
-                                color="default"
+                                color="yieldColor"
                                 onClick={() =>
                                     history.push(`/remove/${isWETH(token0Address)}/${isWETH(token1Address)}`)
                                 }
@@ -91,13 +91,13 @@ export default function InputGroup({
                     {type === 'KMP' && assetSymbol && (
                         <>
                             <Button
-                                color="default"
+                                color="yieldColor"
                                 onClick={() => history.push(`/bento/kashi/lend/${isWETH(pairAddress)}`)}
                             >
                                 {i18n._(t`Lend ${assetSymbol}`)}
                             </Button>
                             <Button
-                                color="default"
+                                color="yieldColor"
                                 onClick={() => history.push(`/bento/kashi/lend/${isWETH(pairAddress)}`)}
                             >
                                 {i18n._(t`Withdraw ${assetSymbol}`)}
@@ -209,7 +209,7 @@ export default function InputGroup({
                 {pending && Number(pending) > 0 && (
                     <div className=" px-4">
                         <Button
-                            color="default"
+                            color="yieldColor"
                             onClick={async () => {
                                 setPendingTx(true)
                                 await harvest(pid, pairSymbol)

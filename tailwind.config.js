@@ -60,7 +60,7 @@ module.exports = {
             'dark-pink': '#221825',
             'dark-blue': '#0F182A',
             'dark-1000': '#0D0415',
-            'dark-950': '#0d0d1f',
+            'dark-950': '#2d7a26', // new
             'dark-900': '#2b580c', // new
             'dark-850': '#1d1e2c',
             'dark-800': '#467642', // new
@@ -81,7 +81,7 @@ module.exports = {
             'light-green': '#39b54a',
             'super-light-green': '#31d648',
 
-            'green-header-yield': '#54e346'
+            'green-header-yield': '#5dd152'
         },
         screens: {
             sm: '480px',
@@ -269,6 +269,14 @@ module.exports = {
                         borderRadius: '0.375rem',
                         backgroundImage:
                             'linear-gradient(#fff, #fff), linear-gradient(to right, #28df99, #99f3bd)',
+                        backgroundOrigin: 'border-box',
+                        backgroundClip: 'padding-box, border-box'
+                    },
+                    '.border-gradient-menu': {
+                        border: 'double 1px transparent',
+                        borderRadius: '0.375rem',
+                        backgroundImage:
+                            'linear-gradient(45deg, #0A4, #6B4), linear-gradient(to right, #00d5ff, #ff005d)',
                         backgroundOrigin: 'border-box',
                         backgroundClip: 'padding-box, border-box'
                     }
