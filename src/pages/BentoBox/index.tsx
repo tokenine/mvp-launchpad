@@ -23,7 +23,7 @@ function BentoBox(): JSX.Element {
                 <title>BentoBox | dfy.asia</title>
             </Helmet>
             <div>
-                <div
+                {/* <div
                     className="absolute top-0 right-0 left-0"
                     style={{
                         height: '700px',
@@ -35,7 +35,7 @@ function BentoBox(): JSX.Element {
                         src={BentoBoxHero}
                         alt=""
                     />
-                </div>
+                </div> */}
 
                 <div className="relative flex flex-col items-center">
                     <img alt="" src={BentoBoxLogo} className="object-scale-down w-40 md:w-60 h-auto" />
@@ -54,7 +54,7 @@ function BentoBox(): JSX.Element {
 
                 <div className="container mx-auto sm:px-6 max-w-5xl">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-4">
-                        <Card className="col-span-2 md:col-span-1 w-full bg-dark-800 hover:bg-dark-900 cursor-pointer rounded shadow-pink-glow hover:shadow-pink-glow-hovered">
+                        <Card className="col-span-2 md:col-span-1 w-full bg-gradient-to-r from-green-thick to-green-thin hover:from-dark-800 hover:to-dark-800 cursor-pointer rounded shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
                                 <img alt="" src={KashiNeonSign} className="block m-auto w-full h-auto mb-4" />
                                 {account ? (
@@ -71,13 +71,13 @@ function BentoBox(): JSX.Element {
                                 )}
                             </div>
                         </Card>
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1  bg-dark-800 hover:bg-dark-900 cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-gradient-to-r from-green-thick to-green-thin hover:from-dark-800 hover:to-dark-800 cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-dark-800 hover:bg-dark-900 cursor-pointer shadow-pink-glow hover:shadow-pink-glow-hovered transition-colors">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-gradient-to-r from-green-thick to-green-thin hover:from-dark-800 hover:to-dark-800 cursor-pointer shadow-pink-glow hover:shadow-pink-glow-hovered transition-colors">
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-dark-800 hover:bg-dark-900 cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-gradient-to-r from-green-thick to-green-thin hover:from-dark-800 hover:to-dark-800 cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
                     </div>
