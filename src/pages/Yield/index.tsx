@@ -134,7 +134,7 @@ export default function Yield(): JSX.Element {
     return (
         <>
             <Helmet>
-                <title>{i18n._(t`Yield`)} | Sushi</title>
+                <title>{i18n._(t`Yield`)} | dfy.asia</title>
                 <meta name="description" content="Farm SUSHI by staking LP (Liquidity Provider) tokens" />
             </Helmet>
             <div className="container grid grid-cols-4 gap-4 mx-auto">
@@ -143,12 +143,12 @@ export default function Yield(): JSX.Element {
                 </div>
                 <div className="col-span-4 lg:col-span-3">
                     <Card
-                        className="h-full bg-dark-900"
+                        className="h-full navbar-bg-green-thick-to-thin"
                         header={
-                            <CardHeader className="flex flex-col items-center bg-dark-800">
+                            <CardHeader className="flex flex-col items-center navbar-bg-green-thick-to-thin">
                                 <div className="flex justify-between w-full">
                                     <div className="items-center hidden md:flex">
-                                        <div className="mr-2 text-lg whitespace-nowrap">{i18n._(t`Yield Farms`)}</div>
+                                        <div className="mr-2 text-lg whitespace-nowrap text-white">{i18n._(t`Yield Farms`)}</div>
                                     </div>
                                     <Search search={search} term={term} />
                                 </div>
@@ -183,9 +183,9 @@ export default function Yield(): JSX.Element {
                                             ) : (
                                                 <>
                                                     {term ? (
-                                                        <div className="w-full py-6 text-center">No Results.</div>
+                                                        <div className="w-full py-6 text-center text-white">No Results.</div>
                                                     ) : (
-                                                        <div className="w-full py-6 text-center">
+                                                        <div className="w-full py-6 text-center text-white">
                                                             <Dots>Fetching Portfolio</Dots>
                                                         </div>
                                                     )}

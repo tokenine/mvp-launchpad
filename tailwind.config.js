@@ -79,7 +79,9 @@ module.exports = {
             secondary: '#707070',
             'low-emphesis': '#575757',
             'light-green': '#39b54a',
-            'super-light-green': '#31d648'
+            'super-light-green': '#31d648',
+
+            'green-header-yield': '#54e346'
         },
         screens: {
             sm: '480px',

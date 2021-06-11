@@ -62,3 +62,6 @@ logo file in public/images. There are 4 files
 - in code file. It's in `src/components/AppBar.tsx (line 49)`
 - SAKE banner is in `src/pages/Swap/index.tsx (lines 613-673)`
 
+### Text config farm path
+- `src/assets/farms` both v1 and v2 are this.
+

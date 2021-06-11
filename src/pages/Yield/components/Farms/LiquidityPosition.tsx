@@ -15,17 +15,17 @@ const LiquidityPosition = ({ farm }: any) => {
             {farm.type === 'SLP' && (
                 <Paper className="bg-dark-800">
                     <div
-                        className="bg-dark-850 grid grid-cols-3 md:grid-cols-4 px-4 py-2  cursor-pointer select-none rounded rounded-b-none"
+                        className="bg-green-header-yield grid grid-cols-3 md:grid-cols-4 px-4 py-2  cursor-pointer select-none rounded rounded-b-none"
                         onClick={() => setExpand(!expand)}
                     >
-                        <div className="text-sm sm:text-base font-semibold">
+                        <div className="text-sm text-white sm:text-base font-semibold">
                             {farm && farm.liquidityPair.token0.symbol + '-' + farm.liquidityPair.token1.symbol}
                         </div>
-                        <div className="hidden md:block text-sm sm:text-base ml-4 text-gray-500 text-right">
+                        <div className="hidden md:block text-sm sm:text-base ml-4 text-gray-200 text-right">
                             {/* TODO: remove hard coding */}
                             {farm && farm.contract === 'masterchefv2' ? 'SUSHI & ALCX' : 'SUSHI'}
                         </div>
-                        <div className="text-gray-500 text-sm sm:text-base text-right">
+                        <div className="text-gray-200 text-sm sm:text-base text-right">
                             {formattedNum(farm.tvl, true)}
                         </div>
                         <div className="font-semibold text-sm sm:text-base text-right">
@@ -72,30 +72,30 @@ const LiquidityPosition = ({ farm }: any) => {
                                 {/* TODO: remove hard coding */}
                                 {farm && farm.contract === 'minichef' && (
                                     <>
-                                        <div className="text-gray-500 text-right font-semibold text-xs">
+                                        <div className="text-gray-200 text-right font-semibold text-xs">
                                             {formattedNum(farm.sushiRewardPerDay)} SUSHI per day
                                         </div>
-                                        <div className="text-gray-500 text-right font-semibold text-xs">
+                                        <div className="text-gray-200 text-right font-semibold text-xs">
                                             {formattedNum(farm.secondaryRewardPerDay)} WMATIC per day
                                         </div>
                                     </>
                                 )}
                                 {farm && farm.contract === 'masterchefv2' && (
                                     <>
-                                        <div className="text-gray-500 text-right font-semibold text-xs">
+                                        <div className="text-gray-200 text-right font-semibold text-xs">
                                             {formattedNum(farm.sushiRewardPerDay)} SUSHI per day
                                         </div>
-                                        <div className="text-gray-500 text-right font-semibold text-xs">
+                                        <div className="text-gray-200 text-right font-semibold text-xs">
                                             {formattedNum(farm.secondaryRewardPerDay)} ALCX per day
                                         </div>
                                     </>
                                 )}
                                 {farm && farm.contract === 'masterchefv1' && (
                                     <>
-                                        <div className="text-gray-500 text-right font-semibold text-sm sm:text-sm">
+                                        <div className="text-gray-200 text-right font-semibold text-sm sm:text-sm">
                                             {formattedNum(farm.sushiRewardPerDay)} SUSHI
                                         </div>
-                                        <div className="text-gray-500 text-right text-xs">per day</div>
+                                        <div className="text-gray-200 text-right text-xs">per day</div>
                                     </>
                                 )}
                             </div>
@@ -103,19 +103,19 @@ const LiquidityPosition = ({ farm }: any) => {
                         <div className="md:col-span-1 flex justify-end items-center">
                             <div>
                                 {/* <div className="text-right">{formattedNum(farm.tvl, true)} </div> */}
-                                <div className="text-gray-500 text-right font-semibold text-sm sm:text-sm">
+                                <div className="text-gray-200 text-right font-semibold text-sm sm:text-sm">
                                     {formattedNum(farm.slpBalance / 1e18, false)} SLP
                                 </div>
-                                <div className="text-gray-500 text-right text-xs">Market Staked</div>
+                                <div className="text-gray-200 text-right text-xs">Market Staked</div>
                             </div>
                         </div>
                         <div className="md:col-span-1 flex justify-end items-center">
                             <div>
-                                <div className="text-gray-500 text-right font-semibold text-base sm:text-lg">
+                                <div className="text-gray-200 text-right font-semibold text-base sm:text-lg">
                                     {farm.roiPerYear > 100 ? '10000%+' : formattedPercent(farm.roiPerYear * 100)}
                                     {/* {formattedPercent(farm.roiPerMonth * 100)}{' '} */}
                                 </div>
-                                <div className="text-gray-500 text-right text-xs">annualized</div>
+                                <div className="text-gray-200 text-right text-xs">annualized</div>
                                 {/* <div className="text-gray-500 text-right text-xs">per month</div> */}
                             </div>
                         </div>

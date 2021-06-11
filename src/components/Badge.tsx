@@ -1,6 +1,6 @@
 import React from 'react'
 
-export type BadgeColor = 'default' | 'blue' | 'pink'
+export type BadgeColor = 'default' | 'blue' | 'pink' | 'red'
 
 export interface BadgeProps {
     color?: BadgeColor
@@ -9,7 +9,8 @@ export interface BadgeProps {
 export const COLOR = {
     default: '',
     blue: 'bg-blue bg-opacity-20 outline-blue rounded text-xs text-blue px-2 py-1',
-    pink: 'bg-pink bg-opacity-20 outline-pink rounded text-xs text-pink px-2 py-1'
+    pink: 'bg-pink bg-opacity-20 outline-pink rounded text-xs text-pink px-2 py-1',
+    red: 'bg-red bg-opacity-25 outline-blue rounded text-xs text-red px-2 py-1'
 }
 
 function Badge({
