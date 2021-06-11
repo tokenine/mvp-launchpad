@@ -49,7 +49,7 @@ export default function SmartNumberInput({
             <div className="flex items-center justify-between my-4">
                 <div className="flex items-center text-base text-secondary">
                     <span>
-                        {useBentoTitleDirection == 'down' ? (
+                        {useBentoTitleDirection === 'down' ? (
                             <ArrowDownRight size="1rem" style={{ display: 'inline' }} />
                         ) : (
                             <ArrowUpRight size="1rem" style={{ display: 'inline' }} />
@@ -79,7 +79,7 @@ export default function SmartNumberInput({
             <div className="flex items-center relative w-full mb-4">
                 <NumericalInput
                     className={
-                        'w-full p-3 bg-input rounded disabled:cursor-not-allowed disabled:bg-dark-1000 disabled:ring disabled:ring-dark-800 focus:ring focus:ring-' +
+                        'w-full p-3 bg-white rounded disabled:cursor-not-allowed disabled:bg-dark-1000 disabled:ring disabled:ring-dark-800 focus:ring focus:ring-' +
                         color
                     }
                     value={value}
