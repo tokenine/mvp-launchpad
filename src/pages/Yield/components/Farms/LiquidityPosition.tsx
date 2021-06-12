@@ -13,7 +13,7 @@ const LiquidityPosition = ({ farm }: any) => {
     return (
         <>
             {farm.type === 'SLP' && (
-                <Paper className="bg-dark-950">
+                <Paper className="bg-green-bg-yield">
                     <div
                         className="bg-green-header-yield grid grid-cols-3 md:grid-cols-4 px-4 py-2  cursor-pointer select-none rounded rounded-b-none"
                         onClick={() => setExpand(!expand)}

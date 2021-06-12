@@ -81,7 +81,8 @@ module.exports = {
             'light-green': '#39b54a',
             'super-light-green': '#31d648',
 
-            'green-header-yield': '#5dd152'
+            'green-header-yield': '#5dd152',
+            'green-bg-yield': '#2c8039'
         },
         screens: {
             sm: '480px',

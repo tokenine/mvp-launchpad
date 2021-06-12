@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 // bg-dark-950
 const FILLED = {
     default: 'bg-dark-800 border-2 border-solid border-gray-700 w-full rounded text-base text-white px-4 py-3',
-    yieldColor: 'bg-dark-950 border-2 border-solid border-dark-700 w-full rounded text-base text-white px-4 py-3',
+    yieldColor: 'bg-green-bg-yield border-2 border-solid border-dark-700 w-full rounded text-base text-white px-4 py-3',
     blue: 'bg-blue w-full rounded text-base text-white px-4 py-3',
     pink: 'bg-pink w-full rounded text-base text-white px-4 py-3',
     gradient: 'bg-gradient-to-r from-blue to-pink'
@@ -13,7 +13,7 @@ const FILLED = {
 
 const OUTLINED = {
     default: 'bg-dark-800 bg-opacity-20 outline-blue rounded text-xs text-blue px-2 py-1',
-    yieldColor: 'bg-dark-950 bg-opacity-20 outline-blue rounded text-xs text-white px-4 py-3',
+    yieldColor: 'bg-green-bg-yield bg-opacity-20 outline-blue rounded text-xs text-white px-4 py-3',
     blue: 'bg-blue bg-opacity-20 outline-blue rounded text-xs text-blue px-2 py-1',
     pink: 'bg-pink bg-opacity-20 outline-pink rounded text-xs text-pink px-2 py-1',
     gradient: 'bg-gradient-to-r from-blue to-pink'
@@ -44,7 +44,7 @@ function Button({
 }: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element {
     return (
         <button
-            className={`${VARIANT[variant][color]} focus:outline-none focus:ring disabled:opacity-50 ${className} border-0`}
+            className={`${VARIANT[variant][color]} focus:outline-none focus:ring disabled:opacity-50 disabled:cursor-not-allowed ${className} border-0`}
             {...rest}
         >
             {children}
