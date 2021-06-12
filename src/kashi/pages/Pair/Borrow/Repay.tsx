@@ -290,7 +290,7 @@ export default function Repay({ pair }: RepayProps) {
 
     return (
         <>
-            <div className="text-3xl text-high-emphesis mt-6 mb-4">Repay {pair.asset.symbol}</div>
+            <div className="text-3xl text-white mt-6 mb-4">Repay {pair.asset.symbol}</div>
 
             <SmartNumberInput
                 color="pink"

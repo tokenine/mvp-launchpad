@@ -54,55 +54,55 @@ export default function BorrowPair({
                 />
             }
             right={
-                <Card className="h-full bg-dark-900">
+                <Card className="h-full navbar-bg-green-thick-to-thin">
                     <div className="flex-col space-y-2">
                         <div className="flex justify-between">
-                            <div className="text-xl text-high-emphesis">{i18n._(t`Market Info`)}</div>
+                            <div className="text-xl text-white">{i18n._(t`Market Info`)}</div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="text-lg text-secondary">{i18n._(t`Available`)}</div>
+                            <div className="text-lg text-gray-300">{i18n._(t`Available`)}</div>
                             <div className="flex items-center">
-                                <div className="text-lg text-high-emphesis">
+                                <div className="text-lg text-white">
                                     {formattedNum(pair.totalAssetAmount.string)} {pair.asset.symbol}
                                 </div>
                             </div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="text-lg text-secondary">{i18n._(t`Borrowed`)}</div>
+                            <div className="text-lg text-gray-300">{i18n._(t`Borrowed`)}</div>
                             <div className="flex items-center">
-                                <div className="text-lg text-high-emphesis">
+                                <div className="text-lg text-white">
                                     {formattedPercent(pair.utilization.string)}
                                 </div>
                             </div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="text-lg text-secondary">{i18n._(t`Supply APR`)}</div>
+                            <div className="text-lg text-gray-300">{i18n._(t`Supply APR`)}</div>
                             <div className="flex items-center">
-                                <div className="text-lg text-high-emphesis">
+                                <div className="text-lg text-white">
                                     {formattedPercent(pair.currentSupplyAPR.string)}
                                 </div>
                             </div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="text-lg text-secondary">{i18n._(t`Borrow APR`)}</div>
+                            <div className="text-lg text-gray-300">{i18n._(t`Borrow APR`)}</div>
                             <div className="flex items-center">
-                                <div className="text-lg text-high-emphesis">
+                                <div className="text-lg text-white">
                                     {formattedPercent(pair.currentInterestPerYear.string)}
                                 </div>
                             </div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="text-lg text-secondary">{i18n._(t`Loan to Value`)}</div>
-                            <div className="text-lg text-high-emphesis">75%</div>
+                            <div className="text-lg text-gray-300">{i18n._(t`Loan to Value`)}</div>
+                            <div className="text-lg text-white">75%</div>
                         </div>
                         <div className="flex justify-between pt-3">
-                            <div className="text-xl text-high-emphesis">{i18n._(t`BentoBox`)}</div>
+                            <div className="text-xl text-white">{i18n._(t`BentoBox`)}</div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="text-lg text-secondary">
+                            <div className="text-lg text-gray-300">
                                 {i18n._(t`${pair.collateral.symbol} Strategy`)}
                             </div>
-                            <div className="text-lg text-high-emphesis">
+                            <div className="text-lg text-white">
                                 {i18n._(t`None`)}
                                 <QuestionHelper
                                     text={i18n._(
@@ -116,10 +116,10 @@ export default function BorrowPair({
             }
         >
             <Helmet>
-                <title>{i18n._(t`Borrow ${pair?.asset?.symbol}-${pair?.collateral?.symbol}`)}| Sushi</title>
+                <title>{i18n._(t`Borrow ${pair?.asset?.symbol}-${pair?.collateral?.symbol}`)}| dfy.asia</title>
             </Helmet>
             <Card
-                className="h-full bg-dark-900"
+                className="h-full navbar-bg-green-thick-to-thin"
                 header={
                     <BorrowCardHeader>
                         <div className="flex items-center">
@@ -142,14 +142,14 @@ export default function BorrowPair({
                             </div>
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <div className="text-3xl text-high-emphesis">
+                                    <div className="text-3xl text-white">
                                         {i18n._(t`Borrow ${pair.asset.symbol}`)}
                                     </div>
                                     <div className="flex items-center">
                                         <div className="text-sm text-secondary mr-1">{i18n._(t`Collateral`)}:</div>
-                                        <div className="text-sm text-high-emphesis mr-2">{pair.collateral.symbol}</div>
+                                        <div className="text-sm text-gray-300 mr-2">{pair.collateral.symbol}</div>
                                         <div className="text-sm text-secondary mr-1">{i18n._(t`Oracle`)}:</div>
-                                        <div className="text-sm text-high-emphesis">{pair.oracle.name}</div>
+                                        <div className="text-sm text-gray-300">{pair.oracle.name}</div>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@ export default function BorrowPair({
                         <div className="text-blue text-2xl">
                             {formattedNum(pair.userCollateralAmount.string)} {pair.collateral.symbol}
                         </div>
-                        <div className="text-high-emphesis text-lg">
+                        <div className="text-gray-300 text-lg">
                             {formattedNum(pair.userCollateralAmount.usd, true)}
                         </div>
                     </div>
@@ -172,7 +172,7 @@ export default function BorrowPair({
                         <div className="text-pink text-2xl">
                             {formattedNum(pair.currentUserBorrowAmount.string)} {pair.asset.symbol}
                         </div>
-                        <div className="text-high-emphesis text-lg flex items-center">
+                        <div className="text-gray-300 text-lg flex items-center">
                             {formattedPercent(pair.health.string)}
                             <GradientDot percent={pair.health.string}></GradientDot>
                         </div>
@@ -180,7 +180,7 @@ export default function BorrowPair({
                     <div className="text-right">
                         <div>
                             <div className="text-secondary text-lg">{i18n._(t`APR`)}</div>
-                            <div className="text-high-emphesis text-2xl">
+                            <div className="text-gray-300 text-2xl">
                                 {formattedPercent(pair.interestPerYear.string)}
                             </div>
                         </div>
@@ -190,13 +190,13 @@ export default function BorrowPair({
                     <TabList className="flex rounded bg-dark-800 p-1">
                         <Tab
                             className="flex flex-1 justify-center items-center rounded text-lg text-secondary hover:text-primary cursor-pointer focus:outline-none select-none px-3 py-4"
-                            selectedClassName="bg-dark-900 text-high-emphesis"
+                            selectedClassName="navbar-bg-green-thick-to-thin text-white"
                         >
                             {i18n._(t`Borrow`)}
                         </Tab>
                         <Tab
                             className="flex flex-1 justify-center items-center rounded text-lg text-secondary hover:text-primary cursor-pointer focus:outline-none select-none px-3 py-4"
-                            selectedClassName="bg-dark-900 text-high-emphesis"
+                            selectedClassName="navbar-bg-green-thick-to-thin text-white"
                         >
                             {i18n._(t`Repay`)}
                         </Tab>
