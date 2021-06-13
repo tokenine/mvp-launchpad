@@ -43,6 +43,17 @@ const PARAMS: {
         rpcUrls: ['https://rpcapi.fantom.network'],
         blockExplorerUrls: ['https://ftmscan.com']
     },
+    [ChainId.BKC]: {
+        chainId: '0x60',
+        chainName: 'Bitkub Chain',
+        nativeCurrency: {
+            name: 'KUB Coin',
+            symbol: 'KUB',
+            decimals: 18
+        },
+        rpcUrls: ['https://rpc.bitkubchain.io'],
+        blockExplorerUrls: ['https://bkcscan.com']
+    },
     [ChainId.BSC]: {
         chainId: '0x38',
         chainName: 'Binance Smart Chain',
@@ -136,32 +147,33 @@ export default function NetworkModal(): JSX.Element | null {
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
             <ModalHeader onClose={toggleNetworkModal} title="Select a Network" />
             <div className="text-lg text-primary mb-6">
-                You are currently browsing <span className="font-bold text-pink">SUSHI</span>
+                You are currently browsing <span className="font-bold text-pink">DFY</span>
                 <br /> on the <span className="font-bold text-blue">{NETWORK_LABEL[chainId]}</span> network
             </div>
 
             <div className="flex flex-col space-y-5 overflow-y-auto">
                 {[
-                    ChainId.MAINNET,
-                    ChainId.FANTOM,
+                    // ChainId.MAINNET,
+                    // ChainId.FANTOM,
+                    ChainId.BKC,
                     ChainId.BSC,
                     ChainId.MATIC,
-                    ChainId.HECO,
-                    ChainId.XDAI,
-                    ChainId.HARMONY,
-                    ChainId.AVALANCHE,
-                    ChainId.OKEX
+                    // ChainId.HECO,
+                    // ChainId.XDAI,
+                    // ChainId.HARMONY,
+                    // ChainId.AVALANCHE,
+                    // ChainId.OKEX
                 ].map((key: ChainId, i: number) => {
                     if (chainId === key) {
                         return (
-                            <button key={i} className="bg-gradient-to-r from-blue to-green w-full rounded p-px">
-                                <div className="flex items-center h-full w-full bg-gray-400  rounded p-3">
+                            <button key={i} className="bg-gradient-to-r from-blue to-pink w-full rounded p-px">
+                                <div className="flex items-center h-full w-full bg-dark-1000 rounded p-3">
                                     <img
                                         src={NETWORK_ICON[key]}
                                         alt="Switch Network"
                                         className="rounded-md mr-3 w-8 h-8"
                                     />
-                                    <div className="text-black font-bold">{NETWORK_LABEL[key]}</div>
+                                    <div className="text-primary font-bold">{NETWORK_LABEL[key]}</div>
                                 </div>
                             </button>
                         )
@@ -174,10 +186,10 @@ export default function NetworkModal(): JSX.Element | null {
                                 const params = PARAMS[key]
                                 library?.send('wallet_addEthereumChain', [params, account])
                             }}
-                            className="flex items-center border border-gray-300 text-gray-800 hover:bg-light-green hover:text-white w-full rounded p-3 cursor-pointer"
+                            className="flex items-center bg-dark-800 hover:bg-dark-700 w-full rounded p-3 cursor-pointer"
                         >
                             <img src={NETWORK_ICON[key]} alt="Switch Network" className="rounded-md mr-2 w-8 h-8" />
-                            <div className="font-bold">{NETWORK_LABEL[key]}</div>
+                            <div className="text-primary font-bold">{NETWORK_LABEL[key]}</div>
                         </button>
                     )
                 })}

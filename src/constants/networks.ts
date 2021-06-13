@@ -1,5 +1,6 @@
 import Arbitrum from '../assets/networks/arbitrum-network.jpg'
 import Avalanche from '../assets/networks/avalanche-network.jpg'
+import Bkc from '../assets/networks/bkc-network.jpg'
 import Bsc from '../assets/networks/bsc-network.jpg'
 import { ChainId } from '@sushiswap/sdk'
 import Fantom from '../assets/networks/fantom-network.jpg'
@@ -24,6 +25,7 @@ export const NETWORK_ICON = {
     [ChainId.KOVAN]: Kovan,
     [ChainId.FANTOM]: Fantom,
     [ChainId.FANTOM_TESTNET]: Fantom,
+    [ChainId.BKC]: Bkc,
     [ChainId.BSC]: Bsc,
     [ChainId.BSC_TESTNET]: Bsc,
     [ChainId.MATIC]: Polygon,
@@ -52,6 +54,7 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
     [ChainId.MATIC]: 'Polygon (Matic)',
     [ChainId.MATIC_TESTNET]: 'Matic Testnet',
     [ChainId.XDAI]: 'xDai',
+    [ChainId.BKC]: 'BKC',
     [ChainId.BSC]: 'BSC',
     [ChainId.BSC_TESTNET]: 'BSC Testnet',
     [ChainId.MOONBASE]: 'Moonbase',
@@ -62,5 +65,5 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
     [ChainId.HARMONY]: 'Harmony',
     [ChainId.HARMONY_TESTNET]: 'Harmony Testnet',
     [ChainId.OKEX]: 'OKExChain',
-    [ChainId.OKEX_TESTNET]: 'OKExChain'
+    [ChainId.OKEX_TESTNET]: 'OKExChain',
 }

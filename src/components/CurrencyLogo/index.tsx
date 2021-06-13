@@ -11,6 +11,7 @@ import Logo from '../Logo'
 import MaticLogo from '../../assets/images/matic-logo.png'
 import MoonbeamLogo from '../../assets/images/moonbeam-logo.png'
 import OKExLogo from '../../assets/images/okex-logo.png'
+import BKCLogo from '../../assets/images/bkc-logo.png'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import { getMaticTokenLogoURL } from '../../constants/maticTokenMapping'
 import styled from 'styled-components'
@@ -55,6 +56,7 @@ const logo: { readonly [chainId in ChainId]?: string } = {
     [ChainId.MATIC]: MaticLogo,
     [ChainId.MATIC_TESTNET]: MaticLogo,
     [ChainId.XDAI]: xDaiLogo,
+    [ChainId.BKC]: BKCLogo,
     [ChainId.BSC]: BinanceCoinLogo,
     [ChainId.BSC_TESTNET]: BinanceCoinLogo,
     [ChainId.MOONBASE]: MoonbeamLogo,

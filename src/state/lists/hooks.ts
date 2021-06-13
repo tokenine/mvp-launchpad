@@ -48,6 +48,7 @@ const EMPTY_LIST: TokenAddressMap = {
     [ChainId.MATIC]: {},
     [ChainId.MATIC_TESTNET]: {},
     [ChainId.XDAI]: {},
+    [ChainId.BKC]: {},
     [ChainId.BSC]: {},
     [ChainId.BSC_TESTNET]: {},
     [ChainId.ARBITRUM]: {},
@@ -120,6 +121,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
         137: { ...map1[137], ...map2[137] }, // matic
         80001: { ...map1[80001], ...map2[80001] }, // matic testnet
         100: { ...map1[100], ...map2[100] }, // xdai
+        96: { ...map1[96], ...map2[96] }, // bkc
         56: { ...map1[56], ...map2[56] }, // bsc
         97: { ...map1[97], ...map2[97] }, // bsc testnet
         79377087078960: { ...map1[79377087078960], ...map2[79377087078960] }, // arbitrum

@@ -69,7 +69,9 @@ export const MERKLE_ROOT =
     //'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-05/merkle-10959148-11185970.json'
     //'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-06/merkle-10959148-11231587.json'
     //'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-07/merkle-10959148-11277295.json'
-    'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-08/merkle-10959148-11322822.json'
+    //'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-08/merkle-10959148-11322822.json'
+    //'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-09/merkle-10959148-11368459.json'
+    'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-10/merkle-10959148-11413917.json'
 
 // TODO: SDK should have two maps, WETH map and WNATIVE map.
 const WRAPPED_NATIVE_ONLY: ChainTokenList = {
@@ -83,6 +85,7 @@ const WRAPPED_NATIVE_ONLY: ChainTokenList = {
     [ChainId.MATIC]: [WETH[ChainId.MATIC]],
     [ChainId.MATIC_TESTNET]: [WETH[ChainId.MATIC_TESTNET]],
     [ChainId.XDAI]: [WETH[ChainId.XDAI]],
+    [ChainId.BKC]: [WETH[ChainId.BKC]],
     [ChainId.BSC]: [WETH[ChainId.BSC]],
     [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]],
     [ChainId.ARBITRUM]: [WETH[ChainId.ARBITRUM]],
@@ -94,7 +97,10 @@ const WRAPPED_NATIVE_ONLY: ChainTokenList = {
     [ChainId.HARMONY]: [WETH[ChainId.HARMONY]],
     [ChainId.HARMONY_TESTNET]: [WETH[ChainId.HARMONY_TESTNET]],
     [ChainId.OKEX]: [WETH[ChainId.OKEX]],
-    [ChainId.OKEX_TESTNET]: [WETH[ChainId.OKEX_TESTNET]]
+    [ChainId.OKEX_TESTNET]: [WETH[ChainId.OKEX_TESTNET]],
+
+    // add bkc
+    [ChainId.BKC]: [WETH[ChainId.BKC]]
 }
 
 // Default Ethereum chain tokens
@@ -224,6 +230,8 @@ export const LFBTC = new Token(
     'LFBTC',
     'LiftKitchen BTC'
 )
+export const CVXCRV = new Token(ChainId.MAINNET, '0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7', 18, 'cvxCRV', 'cvxCRV')
+export const CRV = new Token(ChainId.MAINNET, '0xD533a949740bb3306d119CC777fa900bA034cd52', 18, 'CRV', 'Curve')
 
 /**
  * Some tokens can only be swapped via certain pairs, so we override the list of bases that are considered for these
@@ -241,7 +249,8 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
         [UMA_CALL.address]: [UMA, WETH[ChainId.MAINNET]],
         [PLAY.address]: [DOUGH, WETH[ChainId.MAINNET]],
         [XSUSHI_CALL.address]: [XSUSHI, WETH[ChainId.MAINNET]],
-        [LIFT.address]: [LFBTC, WETH[ChainId.MAINNET]]
+        [LIFT.address]: [LFBTC, WETH[ChainId.MAINNET]],
+        [CVXCRV.address]: [CRV, WETH[ChainId.MAINNET]]
     },
     [ChainId.MATIC]: {
         [MATIC.TEL.address]: [MATIC.SUSHI, MATIC.AAVE],

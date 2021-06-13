@@ -256,6 +256,18 @@ const builders = {
         }
     },
 
+    bkc: (chainName: string, data: string, type: 'transaction' | 'token' | 'address' | 'block') => {
+        const prefix = `https://bkcscan.com`
+        switch (type) {
+            case 'transaction':
+                return `${prefix}/tx/${data}`
+            case 'token':
+                return `${prefix}/tokens/${data}`
+            default:
+                return `${prefix}/${type}/${data}`
+        }
+    },
+
     bscscan: (chainName: string, data: string, type: 'transaction' | 'token' | 'address' | 'block') => {
         const prefix = `https://${chainName ? `${chainName}.` : ''}bscscan.com`
         switch (type) {
@@ -413,6 +425,10 @@ const chains: ChainObject = {
         chainName: 'xdai',
         builder: builders.xdai
     },
+    [ChainId.BKC]: {
+        chainName: '',
+        builder: builders.bkc
+    },    
     [ChainId.BSC]: {
         chainName: '',
         builder: builders.bscscan

@@ -22,6 +22,7 @@ const RPC = {
     //'https://matic-mainnet.chainstacklabs.com/',
     [ChainId.MATIC_TESTNET]: 'https://rpc-mumbai.matic.today',
     [ChainId.XDAI]: 'https://rpc.xdaichain.com',
+    [ChainId.BKC]: 'https://rpc.bitkubchain.io',
     [ChainId.BSC]: 'https://bsc-dataseed.binance.org/',
     [ChainId.BSC_TESTNET]: 'https://data-seed-prebsc-2-s3.binance.org:8545',
     [ChainId.MOONBASE]: 'https://rpc.testnet.moonbeam.network',
@@ -57,6 +58,7 @@ export const injected = new InjectedConnector({
         137, // matic
         80001, // matic testnet
         100, // xdai
+        96, // bkc
         56, // binance smart chain
         97, // binance smart chain testnet
         1287, // moonbase
