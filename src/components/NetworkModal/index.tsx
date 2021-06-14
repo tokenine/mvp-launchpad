@@ -146,7 +146,7 @@ export default function NetworkModal(): JSX.Element | null {
     return (
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
             <ModalHeader onClose={toggleNetworkModal} title="Select a Network" />
-            <div className="text-lg text-primary mb-6">
+            <div className="text-lg text-gray-500 mb-6">
                 You are currently browsing <span className="font-bold text-pink">DFY</span>
                 <br /> on the <span className="font-bold text-blue">{NETWORK_LABEL[chainId]}</span> network
             </div>
@@ -166,8 +166,8 @@ export default function NetworkModal(): JSX.Element | null {
                 ].map((key: ChainId, i: number) => {
                     if (chainId === key) {
                         return (
-                            <button key={i} className="bg-gradient-to-r from-blue to-pink w-full rounded p-px">
-                                <div className="flex items-center h-full w-full bg-dark-1000 rounded p-3">
+                            <button key={i} className="bg-gradient-to-r from-blue to-green w-full rounded p-px">
+                                <div className="flex items-center h-full w-full bg-light-green rounded p-3">
                                     <img
                                         src={NETWORK_ICON[key]}
                                         alt="Switch Network"
@@ -186,7 +186,7 @@ export default function NetworkModal(): JSX.Element | null {
                                 const params = PARAMS[key]
                                 library?.send('wallet_addEthereumChain', [params, account])
                             }}
-                            className="flex items-center bg-dark-800 hover:bg-dark-700 w-full rounded p-3 cursor-pointer"
+                            className="flex items-center bg-dark-700 hover:bg-dark-700 w-full rounded p-3 cursor-pointer"
                         >
                             <img src={NETWORK_ICON[key]} alt="Switch Network" className="rounded-md mr-2 w-8 h-8" />
                             <div className="text-primary font-bold">{NETWORK_LABEL[key]}</div>
