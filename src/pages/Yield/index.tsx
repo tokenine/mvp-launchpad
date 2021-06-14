@@ -186,7 +186,8 @@ export default function Yield(): JSX.Element {
                                                         <div className="w-full py-6 text-center text-white">No Results.</div>
                                                     ) : (
                                                         <div className="w-full py-6 text-center text-white">
-                                                            <Dots>Fetching Portfolio</Dots>
+                                                            {/* <Dots>Fetching Portfolio</Dots> */}
+                                                            <span>Comming soon...</span>
                                                         </div>
                                                     )}
                                                 </>
