@@ -64,4 +64,10 @@ logo file in public/images. There are 4 files
 
 ### Text config farm path
 - `src/assets/farms` both v1 and v2 are this.
+- `src/assets/farms/bkc`
+- `src/assets/farms/bsc`
+- `src/assets/farms/matic`
+In code they is in `src/pages/Yield/hooks/`
+- `src/pages/Yield/hooks/masterchefv1/useFarms.ts` for v1
+- `src/pages/Yield/hooks/masterchefv2/useFarms.ts` for v2
 
