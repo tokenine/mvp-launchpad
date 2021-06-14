@@ -71,39 +71,40 @@ function AppBar(): JSX.Element {
                                                     {i18n._(t`Yield`)}
                                                 </NavLink>
                                             )}
-                                            {chainId === ChainId.MAINNET && (
+                                            {/* {chainId === ChainId.MAINNET && (
                                                 <NavLink id={`sushibar-nav-link`} to={'/sushibar'}>
                                                     {i18n._(t`SushiBar`)}
                                                 </NavLink>
-                                            )}
-                                            {chainId &&
-                                                [ChainId.MAINNET, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC].includes(
+                                            )} */}
+                                            {/* {chainId &&
+                                                [ChainId.BKC, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC].includes(
                                                     chainId
                                                 ) && (
                                                     <NavLink id={`kashi-nav-link`} to={'/bento/kashi/lend'}>
                                                         {i18n._(t`Lend`)}
                                                     </NavLink>
-                                                )}
-                                            {chainId &&
-                                                [ChainId.MAINNET, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC].includes(
+                                                )} */}
+                                            {/* {chainId &&
+                                                [ChainId.BKC, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC].includes(
                                                     chainId
                                                 ) && (
                                                     <NavLink id={`bento-nav-link`} to={'/bento'}>
                                                         {i18n._(t`BentoBox`)}
                                                     </NavLink>
-                                                )}
-                                            {chainId === ChainId.MAINNET && (
+                                                )} */}
+                                            {/* {chainId === ChainId.MAINNET && (
                                                 <NavLink id={`vesting-nav-link`} to={'/vesting'}>
                                                     {i18n._(t`Vesting`)}
                                                 </NavLink>
-                                            )}
+                                            )} */}
                                             {chainId &&
                                                 [
-                                                    ChainId.MAINNET,
+                                                    ChainId.BKC,
                                                     ChainId.BSC,
                                                     ChainId.XDAI,
                                                     ChainId.FANTOM,
-                                                    ChainId.MATIC
+                                                    ChainId.MATIC,
+                                                    ChainId.MAINNET
                                                 ].includes(chainId) && (
                                                     <ExternalLink
                                                         id={`analytics-nav-link`}
@@ -118,7 +119,7 @@ function AppBar(): JSX.Element {
 
                                 <div className="flex flex-row items-center justify-center w-full lg:w-auto p-4 fixed left-0 bottom-0 lg:relative lg:p-0 lg:bg-transparent">
                                     <div className="flex items-center justify-between sm:justify-end space-x-2 w-full">
-                                        {chainId &&
+                                        {/* {chainId &&
                                             [ChainId.MAINNET].includes(chainId) &&
                                             library &&
                                             library.provider.isMetaMask && (
@@ -178,10 +179,10 @@ function AppBar(): JSX.Element {
                                                         </div>
                                                     </QuestionHelper>
                                                 </>
-                                            )}
+                                            )} */}
 
                                         {chainId &&
-                                            [ChainId.MAINNET, ChainId.BSC, ChainId.MATIC].includes(chainId) &&
+                                            [ChainId.BKC, ChainId.BSC, ChainId.MATIC].includes(chainId) &&
                                             library &&
                                             library.provider.isMetaMask && (
                                                 <>
@@ -358,7 +359,7 @@ function AppBar(): JSX.Element {
                                             {i18n._(t`BentoBox`)}
                                         </NavLink>
                                     )}
-                                {chainId === ChainId.MAINNET && (
+                                {/* {chainId === ChainId.MAINNET && (
                                     <NavLink id={`stake-nav-link`} to={'/sushibar'}>
                                         {i18n._(t`SushiBar`)}
                                     </NavLink>
@@ -367,10 +368,11 @@ function AppBar(): JSX.Element {
                                     <NavLink id={`vesting-nav-link`} to={'/vesting'}>
                                         {i18n._(t`Vesting`)}
                                     </NavLink>
-                                )}
+                                )} */}
                                 {chainId &&
                                     [
                                         ChainId.MAINNET,
+                                        ChainId.BKC,
                                         ChainId.BSC,
                                         ChainId.XDAI,
                                         ChainId.FANTOM,
