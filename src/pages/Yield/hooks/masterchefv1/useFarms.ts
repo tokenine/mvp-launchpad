@@ -11,7 +11,10 @@ import sushiData from '@sushiswap/sushi-data'
 
 import { useActiveWeb3React } from '../../../../hooks/useActiveWeb3React'
 import { ChainId } from '@sushiswap/sdk'
-import FarmV1 from '../../../../assets/farms/sushi_farm_v1.json'
+
+import FarmBKCV1 from '../../../../assets/farms/bkc/farm_v1.json'
+import FarmBSCV1 from '../../../../assets/farms/bsc/farm_v1.json'
+import FarmMaticV1 from '../../../../assets/farms/matic/farm_v1.json'
 
 // Todo: Rewrite in terms of web3 as opposed to subgraph
 const useFarms = () => {
@@ -164,12 +167,16 @@ const useFarms = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (chainId === ChainId.MAINNET || !account) {
+            if (chainId === ChainId.BKC) {
                 // const results = await Promise.all([fetchSLPFarms(), fetchKMPFarms()])
                 // const combined = _.concat(results[0], results[1])
                 // const sorted = orderBy(combined, ['pid'], ['desc'])
                 // setFarms(sorted)
-                setFarms(FarmV1)
+                setFarms(FarmBKCV1)
+            } else if (chainId === ChainId.BSC) {
+                setFarms(FarmBSCV1)
+            } else if (chainId === ChainId.MATIC) {
+                setFarms(FarmMaticV1)
             } else {
                 setFarms([])
             }

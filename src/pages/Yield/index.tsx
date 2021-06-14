@@ -217,7 +217,7 @@ export default function Yield(): JSX.Element {
                                             {term ? (
                                                 <div className="w-full py-6 text-center">No Results.</div>
                                             ) : (
-                                                <div className="w-full py-6 text-center">
+                                                <div className="w-full py-6 text-center text-white">
                                                     <Dots>Fetching Farms</Dots>
                                                 </div>
                                             )}
@@ -243,7 +243,7 @@ export default function Yield(): JSX.Element {
                                             {term ? (
                                                 <div className="w-full py-6 text-center">No Results.</div>
                                             ) : (
-                                                <div className="w-full py-6 text-center">
+                                                <div className="w-full py-6 text-center text-white">
                                                     <Dots>Fetching Farms</Dots>
                                                 </div>
                                             )}
