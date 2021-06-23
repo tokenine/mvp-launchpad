@@ -166,7 +166,7 @@ export default function NetworkModal(): JSX.Element | null {
                 ].map((key: ChainId, i: number) => {
                     if (chainId === key) {
                         return (
-                            <button key={i} className="bg-gradient-to-r from-blue to-green w-full rounded p-px">
+                            <button key={i} className="bg-gradient-to-r from-purple to-blue w-full rounded p-px">
                                 <div className="flex items-center h-full w-full bg-light-green rounded p-3">
                                     <img
                                         src={NETWORK_ICON[key]}

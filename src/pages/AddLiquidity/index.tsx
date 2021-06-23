@@ -419,7 +419,7 @@ export default function AddLiquidity({
                             >
                                 <button className="border border-dark-800 bg-white rounded-full p-3px -mt-6 -mb-6 z-10">
                                     <div className="border border-dark-800 hover:bg-dark-700 rounded-full p-3">
-                                        <Plus size="32" color="#467642" />
+                                        <Plus size="32" color="#CE1212" />
                                     </div>
                                 </button>
                             </AutoRow>

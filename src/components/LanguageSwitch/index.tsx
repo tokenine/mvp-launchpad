@@ -16,13 +16,13 @@ import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { useLanguageData } from '../../language/hooks'
 
 const ExtendedStyledMenuButton = styled(StyledMenuButton)`
-    border: 2px solid #39b54a;
+    border: 2px solid #e01b1b;
     border-radius: 10px;
     font-size: 1.25rem;
     height: 40px;
 
     &:hover {
-        border-color: #31d648
+        border-color: #ff0000
     }
 `
 

@@ -21,14 +21,16 @@ module.exports = {
                 'blue-pink': ['#27B0E6', '#FA52A0'],
                 'pink-red-light-brown': ['#FE5A75', '#FEC464'],
                 'blue-green': ['#27B0E6', '#7CFF6B'],
-                'dark-900': '#2b580c',
-                'dark-800': '#467642'
+                'purple-blue': ['#A755DD', '#27B0E6'],
+                'red-red': ['#9c1010', '#e01b1b'],
+                'dark-900': '#6e0000',
+                'dark-800': '#810000'
             },
             background: {
                 'white': '#ffffff',
                 'dark-1000': '#0D0415',
-                'dark-900': '#2b580c',
-                'dark-800': '#467642',
+                'dark-900': '#6e0000',
+                'dark-800': '#810000',
                 'dark-pink-red': '#4e3034'
             },
             border: {
@@ -54,17 +56,17 @@ module.exports = {
             'cyan-blue': '#0993EC',
             pink: '#F338C3',
 
-            'green-thick': '#0A4',
-            'green-thin': '#6B4',
+            'green-thick': '#810000',
+            'green-thin': '#CE1212',
 
             'dark-pink': '#221825',
             'dark-blue': '#0F182A',
             'dark-1000': '#0D0415',
-            'dark-950': '#2d7a26', // new
-            'dark-900': '#2b580c', // new
+            'dark-950': '#540000', // new
+            'dark-900': '#6e0000', // new
             'dark-850': '#1d1e2c',
-            'dark-800': '#467642', // new
-            'dark-700': '#6fa66a',
+            'dark-800': '#810000', // new
+            'dark-700': '#b02525',
             'dark-600': '#1C2D49',
             'dark-500': '#223D5E',
 
@@ -78,11 +80,14 @@ module.exports = {
             primary: '#BFBFBF',
             secondary: '#707070',
             'low-emphesis': '#575757',
-            'light-green': '#39b54a',
-            'super-light-green': '#31d648',
+            'light-green': '#e01b1b',
+            'super-light-green': '#ff0000',
 
-            'green-header-yield': '#5dd152',
-            'green-bg-yield': '#2c8039'
+            'green-header-yield': '#cf1515',
+            'green-bg-yield': '#9c1010',
+
+            'modal-color-start': '#e01b1b',
+            'modal-color-end': '#9c1010'
         },
         screens: {
             sm: '480px',
@@ -182,10 +187,10 @@ module.exports = {
             },
             textColor: {
                 ...defaultTheme.textColor,
-                'low-emphesis': '#6cb877',
+                'low-emphesis': '#810000',
                 primary: '#dedede',
                 secondary: '#ffffff',
-                'high-emphesis': '#39b54a',
+                'high-emphesis': '#CE1212',
                 'active-white': '#ffffff'
             },
             backgroundColor: {
@@ -258,7 +263,7 @@ module.exports = {
                     backgroundSize: '100% 1px'
                 },
                 '.navbar-bg-green-thick-to-thin': {
-                    background: 'linear-gradient(45deg, #0A4, #6B4)'
+                    background: 'linear-gradient(45deg, #810000, #CE1212)'
                 }
             })
         }),
@@ -269,15 +274,16 @@ module.exports = {
                         border: 'double 1px transparent',
                         borderRadius: '0.375rem',
                         backgroundImage:
-                            'linear-gradient(#fff, #fff), linear-gradient(to right, #28df99, #99f3bd)',
+                            'linear-gradient(#fff, #fff), linear-gradient(to right, #CE1212, #810000)',
                         backgroundOrigin: 'border-box',
                         backgroundClip: 'padding-box, border-box'
                     },
                     '.border-gradient-menu': {
                         border: 'double 1px transparent',
                         borderRadius: '0.375rem',
+                        color: 'white',
                         backgroundImage:
-                            'linear-gradient(45deg, #0A4, #6B4), linear-gradient(to right, #00d5ff, #ff005d)',
+                            'linear-gradient(45deg, #CE1212, #810000), linear-gradient(to right, #A755DD, #27B0E6)',
                         backgroundOrigin: 'border-box',
                         backgroundClip: 'padding-box, border-box'
                     }

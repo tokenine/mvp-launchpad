@@ -49,7 +49,7 @@ const Menu = ({ section, setSection }: any) => {
                     }}
                 >
                     Double Yield Farms
-                    <Badge color="red">New</Badge>
+                    <Badge color="blue">New</Badge>
                 </div>
                 {/* <Card
                 className="h-full bg-dark-900"
