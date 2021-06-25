@@ -1,5 +1,7 @@
 import BentoBoxHero from '../../assets/kashi/bentobox-hero.jpg'
 import BentoBoxLogo from '../../assets/kashi/bentobox-logo.svg'
+import BUSD from '../../assets/images/launchpad-token/busd_logo_black_flushleft-300x138.png'
+import { useState } from 'react'
 import { Card } from 'kashi/components'
 import ComingSoon from '../../assets/kashi/coming-soon.png'
 import { Helmet } from 'react-helmet'
@@ -10,17 +12,24 @@ import Web3Status from 'components/Web3Status'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
+import { useCurrencyBalance } from '../../state/wallet/hooks'
+import { Input as NumericalInput } from 'components/NumericalInput'
 
 function BentoBox(): JSX.Element {
     const { i18n } = useLingui()
 
     const { account } = useActiveWeb3React()
 
+    const currency = undefined
+    const currencyAmount = useCurrencyBalance(account ?? undefined, currency ?? undefined)
+
+    const [value, setValue] = useState('0')
+
     return (
         <>
             {' '}
             <Helmet>
-                <title>BentoBox | dfy.asia</title>
+                <title>Launchpad | dfy.asia</title>
             </Helmet>
             <div>
                 {/* <div
@@ -42,7 +51,7 @@ function BentoBox(): JSX.Element {
 
                     <div className="container mx-auto max-w-3xl">
                         <div className="font-bold text-center text-3xl md:text-5xl text-high-emphesis">
-                            {i18n._(t`BentoBox Apps`)}
+                            {i18n._(t`Launchpad`)}
                         </div>
                         <div className="font-medium text-base md:text-lg lg:text-xl text-center text-high-emphesis mt-0 md:mt-4 mb-8 p-4">
                             {i18n._(
@@ -53,19 +62,38 @@ function BentoBox(): JSX.Element {
                 </div>
 
                 <div className="container mx-auto sm:px-6 max-w-5xl">
-                    <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-4">
-                        <Card className="col-span-2 md:col-span-1 w-full bg-green-thick hover:bg-green-thin cursor-pointer rounded shadow-pink-glow hover:shadow-pink-glow-hovered">
+                    <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-3">
+                        <Card className="col-span-2 md:col-span-1 w-full bg-green-thick hover:bg-green-thin rounded shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
-                                <img alt="" src={KashiNeonSign} className="block m-auto w-full h-auto mb-4" />
+                                {/* <img alt="" src={KashiNeonSign} className="block m-auto w-full h-auto mb-4" /> */}
+                                <img alt="token" src={BUSD} className="mb-5" />
+                                <div className="mb-10 text-center text-white">
+                                    <p className="text-h1 font-bold">BUSD</p>
+                                    <p>BUSD stable coin</p>
+                                </div>
                                 {account ? (
-                                    <Link to={'/bento/kashi/borrow'}>
-                                        <div
-                                            className="w-full border-gradient py-2 text-center"
-                                            // className="w-full rounded text-lg text-high-emphesis px-4 py-2"
-                                        >
-                                            {i18n._(t`Enter`)}
+                                    <div>
+                                        <div className="text-white text-right text-caption2">
+                                            Balance: 0 BUSD
                                         </div>
-                                    </Link>
+                                        <div className="flex items-center rounded bg-white space-x-3 p-3 mb-3 w-full">
+                                            <NumericalInput
+                                                className="token-amount-input text-right"
+                                                value={value}
+                                                onUserInput={val => {
+                                                    setValue(val)
+                                                }}
+                                            /> 
+                                        </div>
+                                        <Link to={'/bento/kashi/borrow'}>
+                                            <div
+                                                className="w-full border-gradient py-2 font-bold text-center text-high-emphesis"
+                                                // className="w-full rounded text-lg text-high-emphesis px-4 py-2"
+                                            >
+                                                {i18n._(t`BUY`)}
+                                            </div>
+                                        </Link>
+                                    </div>
                                 ) : (
                                     <Web3Status />
                                 )}
@@ -75,9 +103,6 @@ function BentoBox(): JSX.Element {
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
                         <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-green-thin cursor-pointer shadow-pink-glow hover:shadow-pink-glow-hovered transition-colors">
-                            <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
-                        </Card>
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-green-thin cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
                     </div>
