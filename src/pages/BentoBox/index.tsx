@@ -14,16 +14,25 @@ import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
 import { Input as NumericalInput } from 'components/NumericalInput'
+import { ChainId, Currency } from '@sushiswap/sdk'
+import { useAllTokens } from '../../hooks/Tokens'
+// import {  } from '../../constants'
 
 function BentoBox(): JSX.Element {
     const { i18n } = useLingui()
 
-    const { account } = useActiveWeb3React()
+    const defaultTokens = useAllTokens()
+    const { account, chainId } = useActiveWeb3React()
+    // console.log('defaultTokens:', defaultTokens)
 
-    const currency = undefined
-    const currencyAmount = useCurrencyBalance(account ?? undefined, currency ?? undefined)
+    const token = Object.values(defaultTokens).find(token =>
+        token.symbol === 'BUSD'
+    )
+    // console.log('token:', token)
+    const currencyAmount = useCurrencyBalance(account ?? undefined, token)
+    // console.log('currencyAmount:', currencyAmount)
 
-    const [value, setValue] = useState('0')
+    const [busdBalance, setBusdBalance] = useState('0')
 
     return (
         <>
@@ -74,14 +83,14 @@ function BentoBox(): JSX.Element {
                                 {account ? (
                                     <div>
                                         <div className="text-white text-right text-caption2">
-                                            Balance: 0 BUSD
+                                            Balance: {currencyAmount ? currencyAmount?.toSignificant(6) : 0} BUSD
                                         </div>
                                         <div className="flex items-center rounded bg-white space-x-3 p-3 mb-3 w-full">
                                             <NumericalInput
                                                 className="token-amount-input text-right"
-                                                value={value}
+                                                value={busdBalance}
                                                 onUserInput={val => {
-                                                    setValue(val)
+                                                    setBusdBalance(val)
                                                 }}
                                             /> 
                                         </div>

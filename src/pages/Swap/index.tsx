@@ -303,6 +303,8 @@ export default function Swap() {
 
     const [animateSwapArrows, setAnimateSwapArrows] = useState<boolean>(false)
 
+    console.log('What', currencies)
+
     return (
         <>
             <Helmet>
