@@ -75,7 +75,7 @@ function BentoBox(): JSX.Element {
 
                 <div className="container mx-auto sm:px-6 max-w-5xl">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-3">
-                        <Card className="col-span-2 md:col-span-1 w-full bg-green-thick hover:bg-green-thin rounded shadow-pink-glow hover:shadow-pink-glow-hovered">
+                        <Card className="col-span-2 md:col-span-1 w-full bg-green-thick hover:bg-super-light-green rounded shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
                                 {/* <img alt="" src={KashiNeonSign} className="block m-auto w-full h-auto mb-4" /> */}
                                 <img alt="token" src={BUSD} className="mb-5" />
@@ -118,10 +118,10 @@ function BentoBox(): JSX.Element {
                                 )}
                             </div>
                         </Card>
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-green-thin cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-super-light-green cursor-pointer shadow-blue-glow hover:shadow-blue-glow-hovered transition-colors">
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-green-thin cursor-pointer shadow-pink-glow hover:shadow-pink-glow-hovered transition-colors">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-super-light-green cursor-pointer shadow-pink-glow hover:shadow-pink-glow-hovered transition-colors">
                             <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
                         </Card>
                     </div>
