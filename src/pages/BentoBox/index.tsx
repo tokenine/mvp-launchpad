@@ -14,9 +14,8 @@ import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
 import { Input as NumericalInput } from 'components/NumericalInput'
-import { ChainId, Currency } from '@sushiswap/sdk'
 import { useAllTokens } from '../../hooks/Tokens'
-// import {  } from '../../constants'
+import Button from 'components/Button'
 
 function BentoBox(): JSX.Element {
     const { i18n } = useLingui()
@@ -32,7 +31,11 @@ function BentoBox(): JSX.Element {
     const currencyAmount = useCurrencyBalance(account ?? undefined, token)
     // console.log('currencyAmount:', currencyAmount)
 
-    const [busdBalance, setBusdBalance] = useState('0')
+    const [busdBalance, setBusdBalance] = useState('')
+
+    const onMax = () => {
+        setBusdBalance(currencyAmount ? currencyAmount.toExact() : '')
+    }
 
     return (
         <>
@@ -59,14 +62,14 @@ function BentoBox(): JSX.Element {
                     <img alt="" src={BentoBoxLogo} className="object-scale-down w-40 md:w-60 h-auto" />
 
                     <div className="container mx-auto max-w-3xl">
-                        <div className="font-bold text-center text-3xl md:text-5xl text-high-emphesis">
+                        <div className="font-bold text-center text-3xl md:text-5xl text-high-emphesis mb-20">
                             {i18n._(t`Launchpad`)}
                         </div>
-                        <div className="font-medium text-base md:text-lg lg:text-xl text-center text-high-emphesis mt-0 md:mt-4 mb-8 p-4">
+                        {/* <div className="font-medium text-base md:text-lg lg:text-xl text-center text-high-emphesis mt-0 md:mt-4 mb-8 p-4">
                             {i18n._(
                                 t`BentoBox is an innovative way to use dapps gas-efficiently and gain extra yield.`
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -86,6 +89,13 @@ function BentoBox(): JSX.Element {
                                             Balance: {currencyAmount ? currencyAmount?.toSignificant(6) : 0} BUSD
                                         </div>
                                         <div className="flex items-center rounded bg-white space-x-3 p-3 mb-3 w-full">
+                                            <Button
+                                                onClick={onMax}
+                                                size="small"
+                                                className="bg-transparent hover:bg-primary hover:text-white border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
+                                            >
+                                                {i18n._(t`Max`)}
+                                            </Button>
                                             <NumericalInput
                                                 className="token-amount-input text-right"
                                                 value={busdBalance}
@@ -94,7 +104,7 @@ function BentoBox(): JSX.Element {
                                                 }}
                                             /> 
                                         </div>
-                                        <Link to={'/bento/kashi/borrow'}>
+                                        <Link to={''}>
                                             <div
                                                 className="w-full border-gradient py-2 font-bold text-center text-high-emphesis"
                                                 // className="w-full rounded text-lg text-high-emphesis px-4 py-2"
