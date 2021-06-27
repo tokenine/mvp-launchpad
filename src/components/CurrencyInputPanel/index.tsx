@@ -150,6 +150,7 @@ export default function CurrencyInputPanel({
     const { i18n } = useLingui()
     const [modalOpen, setModalOpen] = useState(false)
     const { account, chainId } = useActiveWeb3React()
+    console.log('CCCCC', currency)
     const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
     const theme = useTheme()
 

@@ -48,8 +48,9 @@ function Routes(): JSX.Element {
         <Switch>
             <PublicRoute exact path="/connect" component={Connect} />
             {/* BentoApps */}
-            {/* <Route exact strict path="/bento" component={Bento} />
-            <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
+            <Route exact strict path="/launchpad" component={Bento} />
+            {/* <Route exact strict path="/bento" component={Bento} /> */}
+            {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
 
             {/* Kashi */}
             {/* <Route

@@ -111,18 +111,21 @@ async function GetPairs(bentoBoxContract: any, chainId: ChainId) {
         success = true
     }
     if (!success) {
-        logs = ((await bentobox.clones({
+        const result = (await bentobox.clones({
             masterAddress,
             chainId
-        })) as any).map((clone: any) => {
-            return {
-                args: {
-                    masterContract: masterAddress,
-                    cloneAddress: clone.address,
-                    data: clone.data
+        })) as any
+        if (result) {
+            logs = result.map((clone: any) => {
+                return {
+                    args: {
+                        masterContract: masterAddress,
+                        cloneAddress: clone.address,
+                        data: clone.data
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     return logs.map((log: any) => {
