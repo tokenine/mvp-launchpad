@@ -155,7 +155,7 @@ export default function Pool() {
     return (
         <>
             <Helmet>
-                <title>{i18n._(t`Pool`)} | dfy.asia</title>
+                <title>{i18n._(t`Pool`)} | DFY</title>
             </Helmet>
             <div className="navbar-bg-green-thick-to-thin w-full max-w-2xl rounded shadow-liquidity-purple-glow">
                 <ExchangeHeader />

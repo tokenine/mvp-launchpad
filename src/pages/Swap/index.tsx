@@ -308,10 +308,10 @@ export default function Swap() {
     return (
         <>
             <Helmet>
-                <title>{i18n._(t`Swap`)} | dfy.asia</title>
+                <title>{i18n._(t`Swap`)} | DFY</title>
                 <meta
                     name="description"
-                    content="dfy.asia allows for swapping of ERC20 compatible tokens across multiple networks"
+                    content="DFY allows for swapping of ERC20 compatible tokens across multiple networks"
                 />
             </Helmet>
             <TokenWarningModal
