@@ -18,6 +18,7 @@ import { useBoringHelperContract } from 'hooks/useContract'
 
 import FarmBKCV2 from '../../../../assets/farms/bkc/farm_v2.json'
 import FarmBSCV2 from '../../../../assets/farms/bsc/farm_v2.json'
+import FarmBSCTestnetV2 from '../../../../assets/farms/bsc/test_farm_v2.json'
 import FarmMaticV2 from '../../../../assets/farms/matic/farm_v2.json'
 
 //import Fraction from '../../../entities/Fraction'
@@ -164,6 +165,8 @@ const useFarms = () => {
             setFarms(FarmBSCV2)
         } else if (chainId === ChainId.MATIC) {
             setFarms(FarmMaticV2)
+        } else if (chainId === ChainId.BSC_TESTNET) {
+            setFarms(FarmBSCTestnetV2)
         } else {
             setFarms([])
         }

@@ -1,0 +1,65 @@
+[
+  {
+    "__typename": "Pool",
+    "id": "1",
+    "pair": "0x887930a46834d13b96856f271f10d3b309589f1c",
+    "allocPoint": "100",
+    "lastRewardBlock": "12611753",
+    "accSushiPerShare": "5230452553891015809065",
+    "balance": "2454457164650586932632",
+    "userCount": "26",
+    "owner": {
+        "__typename": "MasterChef",
+        "id": "0xe759F268862a5D6E8EfF26bD58B8Fc4921b89A04",
+        "sushiPerBlock": "100000000000000000000",
+        "totalAllocPoint": "133628"
+    },
+    "contract": "masterchefv1",
+    "type": "SLP",
+    "symbol": "USDC-ETH UNI-V2 LP",
+    "name": "USDC-ETH UNI-V2 LP",
+    "pid": 1,
+    "pairAddress": "0x887930a46834d13b96856f271f10d3b309589f1c",
+    "slpBalance": "1000000000000000000000",
+    "sushiRewardPerDay": 1000,
+    "liquidityPair": {
+        "__typename": "Pair",
+        "id": "0x887930a46834d13b96856f271f10d3b309589f1c",
+        "reserveUSD": "2392879.892173989219139395690608722",
+        "reserveETH": "974.1442491335698776960000000000001",
+        "volumeUSD": "14728783.29146850911841505134700273",
+        "untrackedVolumeUSD": "14732969.25013015718298403214567028",
+        "trackedReserveETH": "974.1442491335698776960000000000002",
+        "token0": {
+            "__typename": "Token",
+            "id": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "totalSupply": "17992",
+            "derivedETH": "1"
+        },
+        "token1": {
+            "__typename": "Token",
+            "id": "0x9780881bf45b83ee028c4c1de7e0c168df8e9eef",
+            "name": "Token USDC",
+            "symbol": "USDC",
+            "totalSupply": "18016",
+            "derivedETH": "0.03824665850991858863493872431698673"
+        },
+        "reserve0": "487.072124566784938848",
+        "reserve1": "12735.024275139525504089",
+        "token0Price": "0.03824665850991858863493872431698673",
+        "token1Price": "26.1460749503297873237580454394285",
+        "totalSupply": "2461.376801415440482904",
+        "txCount": "2313",
+        "timestamp": "1620904712"
+    },
+    "roiPerBlock": 2.927370880601174e-7,
+    "roiPerHour": 0.00007949411759948876,
+    "roiPerDay": 0.0019078588223877303,
+    "roiPerMonth": 0.05723576467163191,
+    "roiPerYear": 1,
+    "rewardPerThousand": 0.20439617458044276,
+    "tvl": 1000000
+  }
+]

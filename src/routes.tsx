@@ -68,7 +68,7 @@ function Routes(): JSX.Element {
             {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
                 <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
             )}
-            {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && <Route exact strict path="/yield" component={Yield} />}
+            {(chainId === ChainId.BSC_TESTNET || chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && <Route exact strict path="/yield" component={Yield} />}
             {/* {chainId === ChainId.MAINNET && (
                 <Route exact strict path="/yield/debug/:address" component={MasterChefV1Debug} />
             )} */}
