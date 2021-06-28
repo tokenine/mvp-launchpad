@@ -72,10 +72,10 @@ function Routes(): JSX.Element {
             {/* {chainId === ChainId.MAINNET && (
                 <Route exact strict path="/yield/debug/:address" component={MasterChefV1Debug} />
             )} */}
-            {chainId === ChainId.MAINNET && <Route exact strict path="/vesting" component={Vesting} />}
+            {/* {chainId === ChainId.MAINNET && <Route exact strict path="/vesting" component={Vesting} />} */}
 
             {/* Migrate */}
-            {(chainId === ChainId.MAINNET || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
+            {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
                 <Route exact strict path="/migrate" component={Migrate} />
             )}
 

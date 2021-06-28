@@ -9,10 +9,10 @@ export default function TradeLayout() {
     return (
         <>
             <Helmet>
-                <title>{i18n._(t`Trade`)} | Sushi</title>
+                <title>{i18n._(t`Trade`)} | DFY</title>
                 <meta
                     name="description"
-                    content={i18n._(t`Sushi allows for swapping of ERC20 compatible tokens across multiple networks`)}
+                    content={i18n._(t`DFY allows for swapping of ERC20 compatible tokens across multiple networks`)}
                 />
             </Helmet>
             <div className="w-full">

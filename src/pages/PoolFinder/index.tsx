@@ -84,7 +84,7 @@ export default function PoolFinder() {
     return (
         <>
             <Helmet>
-                <title>{i18n._(t`Find Pool`)} | Sushi</title>
+                <title>{i18n._(t`Find Pool`)} | DFY</title>
             </Helmet>
             <div className="relative w-full max-w-lg rounded navbar-bg-green-thick-to-thin shadow-liquidity-purple-glow">
                 <FindPoolTabs />
