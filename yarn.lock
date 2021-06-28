@@ -2995,7 +2995,7 @@
 
 "@sushiswap/sdk@https://github.com/dfy-asia/dfyswap-sdk":
   version "5.0.0-canary.7"
-  resolved "https://github.com/dfy-asia/dfyswap-sdk#0598de0c7989ab0301b42ebe1e405d7987cee786"
+  resolved "https://github.com/dfy-asia/dfyswap-sdk#77acb56551a16d2c0c323574127ef36fb7a58e9b"
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
