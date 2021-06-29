@@ -23,6 +23,7 @@ const useFarms = () => {
     const fetchConfigFrams = async () => {
         if (!chainId) return []
         const framsRAW = FARMS[chainId]
+        if (!framsRAW) return [] 
         const frams = Object.values(framsRAW).map((item: any) => {
             item.tvl = 1000000
             item.roiPerYear = 1

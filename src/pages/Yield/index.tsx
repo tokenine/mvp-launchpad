@@ -73,7 +73,7 @@ export default function Yield(): JSX.Element {
             })
             masterchefv1Portfolio = masterchefv1PositionsWithDetails
         }
-        
+        setPortfolio(masterchefv1Portfolio)
     }, [masterchefv1])
 
     // MasterChef v2
@@ -127,19 +127,12 @@ export default function Yield(): JSX.Element {
                                         <div className="flex-col space-y-2">
                                             {portfolio && portfolio.length > 0 ? (
                                                 portfolio.map((farm: any, i: number) => {
-                                                    console.log('portfolio farm:', farm, portfolio)
-                                                    if (farm.type === 'KMP') {
-                                                        return <KashiLending key={farm.address + '_' + i} farm={farm} />
-                                                    } else if (farm.type === 'SLP') {
-                                                        return (
-                                                            <LiquidityPositionDFY
-                                                                key={farm.address + '_' + i}
-                                                                farm={farm}
-                                                            />
-                                                        )
-                                                    } else {
-                                                        return null
-                                                    }
+                                                    return (
+                                                        <LiquidityPositionDFY
+                                                            key={farm.address + '_' + i}
+                                                            farm={farm}
+                                                        />
+                                                    )
                                                 })
                                             ) : (
                                                 <>
