@@ -74,7 +74,7 @@ export default function Yield(): JSX.Element {
             masterchefv1Portfolio = masterchefv1PositionsWithDetails
         }
         setPortfolio(masterchefv1Portfolio)
-    }, [masterchefv1])
+    }, [masterchefv1, masterchefv1Positions])
 
     // MasterChef v2
     const farms = allFarms
