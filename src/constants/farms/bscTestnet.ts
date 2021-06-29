@@ -4,7 +4,7 @@ const farms: { [key: string]: any } = {
     pid: 1,
     masterchefAddress: '',
     pairAddress: '0x887930a46834d13b96856f271f10d3b309589f1c', // lp address
-    symbol: '',
+    symbol: 'USDC-ETH',
     token0: {
       address: '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
       name: 'Wrapped Ether',

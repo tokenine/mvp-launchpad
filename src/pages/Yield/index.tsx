@@ -136,13 +136,14 @@ export default function Yield(): JSX.Element {
                                                 })
                                             ) : (
                                                 <>
-                                                    {term ? (
-                                                        <div className="w-full py-6 text-center text-white">No Results.</div>
+                                                    {/* {term ? (
+                                                      <div className="w-full py-6 text-center text-white">No Results.</div>  
                                                     ) : (
                                                         <div className="w-full py-6 text-center text-white">
                                                             <Dots>Fetching Portfolio</Dots>
                                                         </div>
-                                                    )}
+                                                    )} */}
+                                                    <div className="w-full py-6 text-center text-white">No Results.</div>
                                                 </>
                                             )}
                                         </div>
@@ -162,13 +163,14 @@ export default function Yield(): JSX.Element {
                                         })
                                     ) : (
                                         <>
-                                            {term ? (
+                                            {/* {term ? (
                                                 <div className="w-full py-6 text-center">No Results.</div>
                                             ) : (
                                                 <div className="w-full py-6 text-center text-white">
                                                     <Dots>Fetching Farms</Dots>
                                                 </div>
-                                            )}
+                                            )} */}
+                                            <div className="w-full py-6 text-center text-white">No Results.</div>
                                         </>
                                     )}
                                 </div>
