@@ -23,7 +23,7 @@ const Menu = ({ section, setSection }: any) => {
                 >
                     All Yield Farms
                 </div>
-                <div
+                {/* <div
                     className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex items-center px-4 py-6 border border-transparent ${section ===
                         'kmp' && 'border-gradient-menu'}`}
                     onClick={() => {
@@ -31,8 +31,8 @@ const Menu = ({ section, setSection }: any) => {
                     }}
                 >
                     Lending Yield Farms
-                </div>
-                <div
+                </div> */}
+                {/* <div
                     className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex items-center px-4 py-6 border border-transparent ${section ===
                         'slp' && 'border-gradient-menu'}`}
                     onClick={() => {
@@ -40,8 +40,8 @@ const Menu = ({ section, setSection }: any) => {
                     }}
                 >
                     Liquidity Yield Farms
-                </div>
-                <div
+                </div> */}
+                {/* <div
                     className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex justify-between items-center px-4 py-6 border border-transparent ${section ===
                         'mcv2' && 'border-gradient-menu'}`}
                     onClick={() => {
@@ -50,7 +50,7 @@ const Menu = ({ section, setSection }: any) => {
                 >
                     Double Yield Farms
                     <Badge color="red">New</Badge>
-                </div>
+                </div> */}
                 {/* <Card
                 className="h-full bg-dark-900"
                 backgroundImage={DepositGraphic}
