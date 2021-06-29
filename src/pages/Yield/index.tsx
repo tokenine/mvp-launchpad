@@ -1,6 +1,6 @@
 import { Card, CardHeader, Search } from './components'
 import { ChevronDown, ChevronUp } from 'react-feather'
-import { Header, KashiLending, LiquidityPosition } from './components/Farms'
+import { Header, KashiLending, LiquidityPositionDFY } from './components/Farms'
 import React, { useEffect, useState } from 'react'
 import { formattedNum, formattedPercent } from '../../utils'
 import { useFuse, useSortableData } from 'hooks'
@@ -16,13 +16,10 @@ import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
-import useMasterChefFarms from './hooks/masterchefv1/useFarms'
-import useMasterChefV2Farms from './hooks/masterchefv2/useFarms'
+import useMasterChefFarms from './hooks/masterchefv1/useFarmsDFY'
+// import useMasterChefV2Farms from './hooks/masterchefv2/useFarms'
 import useMiniChefFarms from './hooks/minichef/useFarms'
 import useStakedPending from './hooks/portfolio/useStakedPending'
-
-// import FarmV1 from '../../assets/farms/sushi_farm_v1.json'
-// import FarmV2 from '../../assets/farms/sushi_farm_v2.json'
 
 export const FixedHeightRow = styled(RowBetween)`
     height: 24px;
@@ -35,30 +32,23 @@ export default function Yield(): JSX.Element {
 
     // Get Farms
     const masterchefv1 = useMasterChefFarms()
-    const masterchefv2 = useMasterChefV2Farms()
+    // const masterchefv2 = useMasterChefV2Farms()
 
     // const masterchefv1 = FarmV1
     // const masterchefv2 = FarmV2
-    const minichef = useMiniChefFarms()
+    // const minichef = useMiniChefFarms()
     const allFarms = _.concat(
-        masterchefv2 ? masterchefv2 : [],
-        minichef ? minichef : [],
+        // masterchefv2 ? masterchefv2 : [],
+        // minichef ? minichef : [],
         masterchefv1 ? masterchefv1 : []
     )
 
-    // console.log('masterchefv1:')
-    // console.log(masterchefv1)
-    // console.log('masterchefv2:')
-    // console.log(masterchefv2)
-
     // Get Contracts
     const masterchefContract = useMasterChefContract()
-    const minichefContract = useMiniChefV2Contract()
 
     // Get Portfolios
     const [portfolio, setPortfolio] = useState<any[]>()
     const masterchefv1Positions = useStakedPending(masterchefContract)
-    const minichefPositions = useStakedPending(minichefContract)
     useEffect(() => {
         // determine masterchefv1 positions
         let masterchefv1Portfolio
@@ -83,37 +73,8 @@ export default function Yield(): JSX.Element {
             })
             masterchefv1Portfolio = masterchefv1PositionsWithDetails
         }
-
-        let minichefPortfolio
-        if (minichef) {
-            // determine minichef positions
-            const minichefWithPids = minichefPositions?.[0].map((position, index) => {
-                return {
-                    pid: index,
-                    pending: position?.result?.[0],
-                    staked: minichefPositions?.[1][index].result?.amount
-                }
-            })
-            const minichefFiltered = minichefWithPids.filter((position: any) => {
-                return position?.pending?.gt(0) || position?.staked?.gt(0)
-            })
-            // fetch any relevant details through pid
-            const minichefPositionsWithDetails = minichefFiltered.map(position => {
-                const pair = minichef?.find((pair: any) => pair.pid === position.pid)
-                return {
-                    ...pair,
-                    ...position
-                }
-            })
-            minichefPortfolio = minichefPositionsWithDetails
-        }
-
-        setPortfolio(
-            _.concat(minichefPortfolio, masterchefv1Portfolio)[0]
-                ? _.concat(minichefPortfolio, masterchefv1Portfolio)
-                : []
-        )
-    }, [masterchefv1, masterchefv1Positions, minichef, minichefPositions])
+        
+    }, [masterchefv1])
 
     // MasterChef v2
     const farms = allFarms
@@ -171,7 +132,7 @@ export default function Yield(): JSX.Element {
                                                         return <KashiLending key={farm.address + '_' + i} farm={farm} />
                                                     } else if (farm.type === 'SLP') {
                                                         return (
-                                                            <LiquidityPosition
+                                                            <LiquidityPositionDFY
                                                                 key={farm.address + '_' + i}
                                                                 farm={farm}
                                                             />
@@ -204,13 +165,7 @@ export default function Yield(): JSX.Element {
                                 <div className="flex-col space-y-2">
                                     {items && items.length > 0 ? (
                                         items.map((farm: any, i: number) => {
-                                            if (farm.type === 'KMP') {
-                                                return <KashiLending key={farm.address + '_' + i} farm={farm} />
-                                            } else if (farm.type === 'SLP') {
-                                                return <LiquidityPosition key={farm.address + '_' + i} farm={farm} />
-                                            } else {
-                                                return null
-                                            }
+                                            return <LiquidityPositionDFY key={farm.address + '_' + i} farm={farm} />
                                         })
                                     ) : (
                                         <>
@@ -226,7 +181,7 @@ export default function Yield(): JSX.Element {
                                 </div>
                             </>
                         )}
-                        {section && section === 'slp' && (
+                        {/* {section && section === 'slp' && (
                             <>
                                 <Header sortConfig={sortConfig} requestSort={requestSort} />
                                 <div className="flex-col space-y-2">
@@ -303,7 +258,7 @@ export default function Yield(): JSX.Element {
                                     )}
                                 </div>
                             </>
-                        )}
+                        )} */}
                     </Card>
                 </div>
             </div>
