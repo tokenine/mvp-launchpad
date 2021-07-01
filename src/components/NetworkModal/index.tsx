@@ -133,6 +133,17 @@ const PARAMS: {
         },
         rpcUrls: ['https://exchainrpc.okex.org'],
         blockExplorerUrls: ['https://www.oklink.com/okexchain']
+    },
+    [ChainId.XCHAIN]: {
+        chainId: '0x23', 
+        chainName: 'X-Chain', 
+        nativeCurrency: { 
+            name: 'XTH Coin', 
+            symbol: 'XTH', 
+            decimals: 18 
+        }, 
+        rpcUrls: ['https://rpc.xchain.asia'], 
+        blockExplorerUrls: ['https://www.exp.xchain.asia']
     }
 }
 
@@ -147,7 +158,7 @@ export default function NetworkModal(): JSX.Element | null {
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
             <ModalHeader onClose={toggleNetworkModal} title="Select a Network" />
             <div className="text-lg text-gray-500 mb-6">
-                You are currently browsing <span className="font-bold text-pink">DFY</span>
+                You are currently browsing <span className="font-bold text-pink">BOLO</span>
                 <br /> on the <span className="font-bold text-blue">{NETWORK_LABEL[chainId]}</span> network
             </div>
 
@@ -155,9 +166,9 @@ export default function NetworkModal(): JSX.Element | null {
                 {[
                     // ChainId.MAINNET,
                     // ChainId.FANTOM,
-                    ChainId.BKC,
+                    // ChainId.BKC,
                     ChainId.BSC,
-                    ChainId.MATIC,
+                    //ChainId.MATIC,
                     // ChainId.HECO,
                     // ChainId.XDAI,
                     // ChainId.HARMONY,
@@ -166,7 +177,7 @@ export default function NetworkModal(): JSX.Element | null {
                 ].map((key: ChainId, i: number) => {
                     if (chainId === key) {
                         return (
-                            <button key={i} className="bg-gradient-to-r from-blue to-green w-full rounded p-px">
+                            <button key={i} className="bg-gradient-to-r from-purple to-blue w-full rounded p-px">
                                 <div className="flex items-center h-full w-full bg-light-green rounded p-3">
                                     <img
                                         src={NETWORK_ICON[key]}

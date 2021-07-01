@@ -116,7 +116,7 @@ export default function BorrowPair({
             }
         >
             <Helmet>
-                <title>{i18n._(t`Borrow ${pair?.asset?.symbol}-${pair?.collateral?.symbol}`)}| dfy.asia</title>
+                <title>{i18n._(t`Borrow ${pair?.asset?.symbol}-${pair?.collateral?.symbol}`)}| bolo.fund</title>
             </Helmet>
             <Card
                 className="h-full navbar-bg-green-thick-to-thin"

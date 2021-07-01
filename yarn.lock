@@ -2993,21 +2993,6 @@
   resolved "https://registry.yarnpkg.com/@sushiswap/default-token-list/-/default-token-list-6.28.0.tgz#a6e75c1d73da82bf334e084cb659884ccfb6fd8f"
   integrity sha512-O2mFnwamdSCnhVyrg49lxSphvunmN87mBvBhtGKI/wyofl9w7sGCN89a8cNE4GT4FKH/Knni7VD3nLdNvYLnjA==
 
-<<<<<<< HEAD
-=======
-"@sushiswap/sdk@https://github.com/dfy-asia/dfyswap-sdk":
-  version "5.0.0-canary.7"
-  resolved "https://github.com/dfy-asia/dfyswap-sdk#77acb56551a16d2c0c323574127ef36fb7a58e9b"
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
->>>>>>> ca2abab03183b0719b9f64add5537da6bd47ee34
 "@sushiswap/sushi-data@1.0.26":
   version "1.0.26"
   resolved "https://registry.yarnpkg.com/@sushiswap/sushi-data/-/sushi-data-1.0.26.tgz#6f9d68f0193d7bb3839262fe47dcd095478ee3e1"

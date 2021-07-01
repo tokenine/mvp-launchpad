@@ -49,7 +49,7 @@ export default function LendingMarkets(): JSX.Element | null {
             }
         >
             <Helmet>
-                <title>{i18n._(t`Lending`)} | dfy.asia</title>
+                <title>{i18n._(t`Lending`)} | bolo.fund</title>
             </Helmet>
             <Card className="h-full navbar-bg-green-thick-to-thin" header={<MarketHeader type="Lending" lists={[pairs, positions]} />}>
                 {positions.items && positions.items.length > 0 && (

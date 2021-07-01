@@ -123,7 +123,7 @@ export default function LendingPair({
         >
             <Helmet>
                 <title>
-                    Lend {pair?.asset?.symbol}-{pair?.collateral?.symbol} | dfy.asia
+                    Lend {pair?.asset?.symbol}-{pair?.collateral?.symbol} | bolo.fund
                 </title>
             </Helmet>
             <Card

@@ -50,6 +50,7 @@ const EMPTY_LIST: TokenAddressMap = {
     [ChainId.XDAI]: {},
     [ChainId.BKC]: {},
     [ChainId.BSC]: {},
+    [ChainId.XCHAIN]: {},
     [ChainId.BSC_TESTNET]: {},
     [ChainId.ARBITRUM]: {},
     [ChainId.MOONBASE]: {},
@@ -115,6 +116,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
         3: { ...map1[3], ...map2[3] }, // ropsten
         4: { ...map1[4], ...map2[4] }, // rinkeby
         5: { ...map1[5], ...map2[5] }, // goerli
+        35: { ...map1[35], ...map2[35] }, // xchain
         42: { ...map1[42], ...map2[42] }, // kovan
         250: { ...map1[250], ...map2[250] }, // fantom
         4002: { ...map1[4002], ...map2[4002] }, // fantom testnet
