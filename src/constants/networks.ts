@@ -16,6 +16,7 @@ import Polygon from '../assets/networks/polygon-network.jpg'
 import Rinkeby from '../assets/networks/rinkeby-network.jpg'
 import Ropsten from '../assets/networks/ropsten-network.jpg'
 import xDai from '../assets/networks/xdai-network.jpg'
+import XChain from '../assets/networks/xchain-280.png'
 
 export const NETWORK_ICON = {
     [ChainId.MAINNET]: Mainnet,
@@ -27,7 +28,6 @@ export const NETWORK_ICON = {
     [ChainId.FANTOM_TESTNET]: Fantom,
     [ChainId.BKC]: Bkc,
     [ChainId.BSC]: Bsc,
-    [ChainId.XCHAIN]: Bsc,
     [ChainId.BSC_TESTNET]: Bsc,
     [ChainId.MATIC]: Polygon,
     [ChainId.MATIC_TESTNET]: Matic,
@@ -41,7 +41,8 @@ export const NETWORK_ICON = {
     [ChainId.HARMONY]: Harmony,
     [ChainId.HARMONY_TESTNET]: Harmony,
     [ChainId.OKEX]: OKEx,
-    [ChainId.OKEX_TESTNET]: OKEx
+    [ChainId.OKEX_TESTNET]: OKEx,
+    [ChainId.XCHAIN]: XChain
 }
 
 export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
@@ -67,4 +68,5 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
     [ChainId.HARMONY_TESTNET]: 'Harmony Testnet',
     [ChainId.OKEX]: 'OKExChain',
     [ChainId.OKEX_TESTNET]: 'OKExChain',
+    [ChainId.XCHAIN]: 'X-Chain'
 }

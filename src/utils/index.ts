@@ -374,7 +374,18 @@ const builders = {
             default:
                 return `${prefix}/${type}/${data}`
         }
-    }
+    },
+    xchain: (chainName: string, data: string, type: 'transaction' | 'token' | 'address' | 'block') => {
+        const prefix = `https://exp.xchain.asia`
+        switch (type) {
+            case 'transaction':
+                return `${prefix}/tx/${data}`
+            case 'token':
+                return `${prefix}/tokens/${data}`
+            default:
+                return `${prefix}/${type}/${data}`
+        }
+    },
 }
 
 interface ChainObject {
@@ -476,7 +487,11 @@ const chains: ChainObject = {
     [ChainId.OKEX_TESTNET]: {
         chainName: '',
         builder: builders.okexTestnet
-    }
+    },
+    [ChainId.XCHAIN]: {
+        chainName: '',
+        builder: builders.xchain
+    },    
 }
 
 export function getExplorerLink(
