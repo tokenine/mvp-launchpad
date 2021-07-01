@@ -2993,18 +2993,6 @@
   resolved "https://registry.yarnpkg.com/@sushiswap/default-token-list/-/default-token-list-6.28.0.tgz#a6e75c1d73da82bf334e084cb659884ccfb6fd8f"
   integrity sha512-O2mFnwamdSCnhVyrg49lxSphvunmN87mBvBhtGKI/wyofl9w7sGCN89a8cNE4GT4FKH/Knni7VD3nLdNvYLnjA==
 
-"@sushiswap/sdk@https://github.com/dfy-asia/dfyswap-sdk":
-  version "5.0.0-canary.7"
-  resolved "https://github.com/dfy-asia/dfyswap-sdk#0598de0c7989ab0301b42ebe1e405d7987cee786"
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 "@sushiswap/sushi-data@1.0.26":
   version "1.0.26"
   resolved "https://registry.yarnpkg.com/@sushiswap/sushi-data/-/sushi-data-1.0.26.tgz#6f9d68f0193d7bb3839262fe47dcd095478ee3e1"
@@ -7978,6 +7966,19 @@ detective@^5.2.0:
     acorn-node "^1.6.1"
     defined "^1.0.0"
     minimist "^1.1.1"
+
+dfy-sdk@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dfy-sdk/-/dfy-sdk-1.0.0.tgz#80541e93822ef52f77616c7132d05e3d29ad2c06"
+  integrity sha512-IRxBVTMkq0KszaA/YJ3aFFHIzYPfhR/mLOQ4qQwfUtvqQVMTuGy2bHvEfzeUJ58qmh6BtiKvJZd9pENDyTwFZw==
+  dependencies:
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
 
 didyoumean@^1.2.1:
   version "1.2.1"
