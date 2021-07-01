@@ -41,7 +41,7 @@ function BentoBox(): JSX.Element {
         <>
             {' '}
             <Helmet>
-                <title>Launchpad | dfy.asia</title>
+                <title>Launchpad | DFY</title>
             </Helmet>
             <div>
                 {/* <div

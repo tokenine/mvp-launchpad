@@ -168,10 +168,6 @@ const useFarms = () => {
     useEffect(() => {
         const fetchData = async () => {
             if (chainId === ChainId.BKC) {
-                // const results = await Promise.all([fetchSLPFarms(), fetchKMPFarms()])
-                // const combined = _.concat(results[0], results[1])
-                // const sorted = orderBy(combined, ['pid'], ['desc'])
-                // setFarms(sorted)
                 setFarms(FarmBKCV1)
             } else if (chainId === ChainId.BSC) {
                 setFarms(FarmBSCV1)

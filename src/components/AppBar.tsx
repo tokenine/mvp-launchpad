@@ -66,7 +66,7 @@ function AppBar(): JSX.Element {
                                             >
                                                 {i18n._(t`Pool`)}
                                             </NavLink>
-                                            {chainId && [ChainId.BSC, ChainId.MATIC, ChainId.BKC].includes(chainId) && (
+                                            {chainId && [ChainId.BSC, ChainId.MATIC, ChainId.BKC, ChainId.BSC_TESTNET].includes(chainId) && (
                                                 <NavLink id={`yield-nav-link`} to={'/yield'}>
                                                     {i18n._(t`Yield`)}
                                                 </NavLink>
@@ -342,7 +342,7 @@ function AppBar(): JSX.Element {
                                     {i18n._(t`Pool`)}
                                 </NavLink>
 
-                                {chainId && [ChainId.BSC, ChainId.MATIC, ChainId.BKC].includes(chainId) && (
+                                {chainId && [ChainId.BSC, ChainId.MATIC, ChainId.BKC, ChainId.BSC_TESTNET].includes(chainId) && (
                                     <NavLink id={`yield-nav-link`} to={'/yield'}>
                                         {i18n._(t`Yield`)}
                                     </NavLink>
