@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from 'dfy-sdk'
 import BSC_TESTNET_FARM from './bscTestnet'
 
 const farms: { [key: string]: any } = {

@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from 'dfy-sdk'
 
 export type ChainlinkMappingList = {
     readonly [address: string]: {
