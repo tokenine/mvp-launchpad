@@ -85,7 +85,7 @@ function AppBar(): JSX.Element {
                                                     </NavLink>
                                                 )} */}
                                             {chainId &&
-                                                [ChainId.BKC, ChainId.BSC, ChainId.MATIC].includes(
+                                                [ChainId.BKC, ChainId.BSC, ChainId.MATIC, ChainId.BSC_TESTNET].includes(
                                                     chainId
                                                 ) && (
                                                     <NavLink id={`bento-nav-link`} to={'/launchpad'}>
