@@ -158,7 +158,7 @@ export default function NetworkModal(): JSX.Element | null {
         <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal}>
             <ModalHeader onClose={toggleNetworkModal} title="Select a Network" />
             <div className="text-lg text-gray-500 mb-6">
-                You are currently browsing <span className="font-bold text-pink">BOLO</span>
+                You are currently browsing <span className="font-bold text-pink">DFY</span>
                 <br /> on the <span className="font-bold text-blue">{NETWORK_LABEL[chainId]}</span> network
             </div>
 
@@ -166,9 +166,10 @@ export default function NetworkModal(): JSX.Element | null {
                 {[
                     // ChainId.MAINNET,
                     // ChainId.FANTOM,
-                    // ChainId.BKC,
+                    ChainId.XCHAIN,
+                    ChainId.BKC,
                     ChainId.BSC,
-                    //ChainId.MATIC,
+                    ChainId.MATIC,
                     // ChainId.HECO,
                     // ChainId.XDAI,
                     // ChainId.HARMONY,
