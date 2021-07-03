@@ -147,7 +147,7 @@ function BentoBox(): JSX.Element {
                                         ) }
                                         { ApprovalState.APPROVED === approvalState && (
                                             <Button
-                                                disabled={isCommiting || warningMsg !== ''}
+                                                disabled={isCommiting || warningMsg !== '' || busdBalance === ''}
                                                 onClick={async () => {
                                                     try {
                                                         setIsCommiting(true)
