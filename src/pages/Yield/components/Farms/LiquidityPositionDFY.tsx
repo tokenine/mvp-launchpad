@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { formattedNum, formattedPercent } from '../../../../utils'
 import { DoubleLogo, Paper } from '../../components'
-import { MasterChefV1DetailsDFY, MasterChefV2Details, MiniChefDetails } from '../Details'
+import { MasterChefV1DetailsDFY, MiniChefv2DFY, MasterChefv2DFY } from '../Details'
 import { useActiveWeb3React } from '../../../../hooks/useActiveWeb3React'
 import { ChainId } from 'dfy-sdk'
 import AsyncTokenIcon from '../../../../kashi/components/AsyncTokenIcon'
@@ -121,6 +121,26 @@ const LiquidityPositionDFY = ({ farm }: any) => {
 
                     {expand && farm.type === 'masterchefv1' && (
                         <MasterChefV1DetailsDFY
+                            pid={farm.pid}
+                            pairAddress={farm.pairAddress}
+                            pairSymbol={farm.symbol}
+                            token0Address={farm.token0.address}
+                            token1Address={farm.token1.address}
+                            type={'LP'}
+                        />
+                    )}
+                    {expand && farm.type === 'masterchefv2' && (
+                        <MasterChefv2DFY
+                            pid={farm.pid}
+                            pairAddress={farm.pairAddress}
+                            pairSymbol={farm.symbol}
+                            token0Address={farm.token0.address}
+                            token1Address={farm.token1.address}
+                            type={'LP'}
+                        />
+                    )}
+                    {expand && farm.type === 'minichefv2' && (
+                        <MiniChefv2DFY
                             pid={farm.pid}
                             pairAddress={farm.pairAddress}
                             pairSymbol={farm.symbol}

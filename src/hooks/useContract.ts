@@ -64,6 +64,8 @@ import { useActiveWeb3React } from './useActiveWeb3React'
 import { useMemo } from 'react'
 import TOKENINE_SWAP_JSON from '../constants/abis/tokenine-swap.json'
 
+import { MINI_CHEF_V2_ADDRESS, MASTER_CHEF_V2_ADDRESS } from 'constants/farms'
+
 // returns null on errors
 export function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
     const { library, account } = useActiveWeb3React()
@@ -179,9 +181,9 @@ export function useSushiContract(withSignerIfPossible = true): Contract | null {
 // here for masterchef address
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
     const { chainId } = useActiveWeb3React()
-    console.log('chain id:', chainId)
-    console.log('MASTERCHEF_ADDRESS:', MASTERCHEF_ADDRESS)
-    console.log('ok:', chainId && MASTERCHEF_ADDRESS[chainId])
+    // console.log('chain id:', chainId)
+    // console.log('MASTERCHEF_ADDRESS:', MASTERCHEF_ADDRESS)
+    // console.log('ok:', chainId && MASTERCHEF_ADDRESS[chainId])
     return useContract(chainId && MASTERCHEF_ADDRESS[chainId], MASTERCHEF_ABI, withSignerIfPossible)
 }
 
@@ -195,6 +197,7 @@ export function useMasterChefV2Contract(withSignerIfPossible?: boolean): Contrac
                 break
         }
     }
+    address = MASTER_CHEF_V2_ADDRESS
     return useContract(address, MASTERCHEFV2_ABI, withSignerIfPossible)
 }
 
@@ -208,6 +211,7 @@ export function useMiniChefV2Contract(withSignerIfPossible?: boolean): Contract 
                 break
         }
     }
+    address = MINI_CHEF_V2_ADDRESS
     return useContract(address, MINICHEFV2_ABI, withSignerIfPossible)
 }
 
