@@ -64,7 +64,7 @@ import { useActiveWeb3React } from './useActiveWeb3React'
 import { useMemo } from 'react'
 import TOKENINE_SWAP_JSON from '../constants/abis/tokenine-swap.json'
 
-import { MINI_CHEF_V2_ADDRESS, MASTER_CHEF_V2_ADDRESS } from 'constants/farms'
+import { MINI_CHEF_V2_ADDRESS, MASTER_CHEF_V2_ADDRESS, MASTER_CHEF_V1_ADDRESS } from 'constants/farms'
 
 // returns null on errors
 export function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
@@ -181,10 +181,13 @@ export function useSushiContract(withSignerIfPossible = true): Contract | null {
 // here for masterchef address
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
     const { chainId } = useActiveWeb3React()
-    // console.log('chain id:', chainId)
-    // console.log('MASTERCHEF_ADDRESS:', MASTERCHEF_ADDRESS)
-    // console.log('ok:', chainId && MASTERCHEF_ADDRESS[chainId])
-    return useContract(chainId && MASTERCHEF_ADDRESS[chainId], MASTERCHEF_ABI, withSignerIfPossible)
+    let address: string | undefined
+    if (chainId && chainId === ChainId.BSC_TESTNET) {
+        address = MASTER_CHEF_V1_ADDRESS
+    } else if (chainId) {
+        address = MASTERCHEF_ADDRESS[chainId]
+    }
+    return useContract(address, MASTERCHEF_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefV2Contract(withSignerIfPossible?: boolean): Contract | null {

@@ -1,6 +1,6 @@
 const farms: { [key: string]: any } = {
-  '0xEFBd7858cd7a6932592573616F51dEdC487B55DD': {
-    type: 'minichefv2',
+  '0xBD672477D36Acc99d5fc25bE2333d8F89162502E': {
+    type: 'masterchefv1',
     pid: 0,
     masterchefAddress: '',
     pairAddress: '0xEFBd7858cd7a6932592573616F51dEdC487B55DD', // lp address

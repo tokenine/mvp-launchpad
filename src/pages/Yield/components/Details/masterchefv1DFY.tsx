@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { MASTERCHEF_ADDRESS, Token } from 'dfy-sdk'
+import { Token } from 'dfy-sdk'
 import { Input as NumericalInput } from '../../../../components/NumericalInput'
 import { Fraction } from '../../../../entities'
 import { useActiveWeb3React } from '../../../../hooks/useActiveWeb3React'
@@ -17,6 +17,8 @@ import { t } from '@lingui/macro'
 
 import { tryParseAmount } from '../../../../state/swap/hooks'
 import { useLingui } from '@lingui/react'
+
+import { MASTER_CHEF_V1_ADDRESS } from '../../../../constants/farms'
 
 const fixedFormatting = (value: BigNumber, decimals?: number) => {
     return Fraction.from(value, BigNumber.from(10).pow(BigNumber.from(decimals))).toString(decimals)
@@ -57,7 +59,7 @@ export default function InputGroup({
 
     const [approvalState, approve] = useApproveCallback(
         tryParseAmount(depositValue, new Token(chainId || 1, pairAddressChecksum, balance.decimals, pairSymbol, '')),
-        MASTERCHEF_ADDRESS[1]
+        MASTER_CHEF_V1_ADDRESS
     )
 
     const { deposit, withdraw, harvest } = useMasterChef()
