@@ -7967,10 +7967,10 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
-dfy-sdk@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/dfy-sdk/-/dfy-sdk-1.0.1.tgz#4e2087e889c70d519899828bfa4e31f56fae8bb5"
-  integrity sha512-YXc/aybqbMkh5HqXibuIT9IBW798hk5TgRzkfruWrj2td8SFlXaQNxFA5iFAYTdZaRfhjibFA5ARq2aJHm+rgA==
+dfy-sdk@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/dfy-sdk/-/dfy-sdk-1.0.2.tgz#2ca89e3c847cd5efcc5faa5b6b0ae9072c71ae43"
+  integrity sha512-hfID6wEi4lOc4ybSL9l1OdQi0WAP7trRzknxEdsxoBUh5249lI8JzgCPyXO+XQcAKL7ObH1DtirJIr8tccUYAg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
