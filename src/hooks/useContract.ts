@@ -81,9 +81,8 @@ export function useContract(address: string | undefined, ABI: any, withSignerIfP
     }, [address, ABI, library, withSignerIfPossible, account])
 }
 
-export function useTokenineSwapContract(): Contract | null {
-    const ADDRESS = '0xbCC466227d5AADD66853339C8e51D1cB7B0E88E9'
-    return useContract(ADDRESS, TOKENINE_SWAP_JSON, true)
+export function useTokenineSwapContract(address: string): Contract | null {
+    return useContract(address, TOKENINE_SWAP_JSON, true)
 }
 
 export function useV1FactoryContract(): Contract | null {
