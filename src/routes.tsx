@@ -49,8 +49,13 @@ function Routes(): JSX.Element {
         <Switch>
             <PublicRoute exact path="/connect" component={Connect} />
             {/* BentoApps */}
-            <Route exact strict path="/launchpad" component={LaunchPad} />
-            <Route strict path="/launchpad/:address" component={LaunchPadPage} />
+
+            {(chainId === ChainId.BSC_TESTNET) && (
+                <Route exact strict path="/launchpad" component={LaunchPad} />
+            )}
+            {(chainId === ChainId.BSC_TESTNET) && (
+                <Route strict path="/launchpad/:address" component={LaunchPadPage} />
+            )}
             {/* <Route exact strict path="/bento" component={Bento} /> */}
             {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
 

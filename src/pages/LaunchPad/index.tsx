@@ -6,7 +6,8 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { launchTokenList } from '../../constants/launch-token-list'
+import { launchTokenListByChainId, LaunchTokenList } from '../../constants/launch-token-list'
+import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -25,9 +26,7 @@ const ArrowCenter = styled.div`
 function LaunchPad(): JSX.Element {
     const { i18n } = useLingui()
 
-    // const history = useHistory()
-
-    // '0xbCC466227d5AADD66853339C8e51D1cB7B0E88E9'
+    const { chainId } = useActiveWeb3React()
 
     return (
         <>
@@ -47,7 +46,7 @@ function LaunchPad(): JSX.Element {
 
                 <div className="container mx-auto sm:px-6 max-w-5xl">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-3">
-                        {Object.values(launchTokenList).map(item => (
+                        {chainId && launchTokenListByChainId[chainId] && Object.values(launchTokenListByChainId[chainId] as LaunchTokenList).map(item => (
                             <Link
                                 className={`${item.available ? 'cursor-pointer' : 'cursor-default'}`}
                                 key={item.contractAddress}

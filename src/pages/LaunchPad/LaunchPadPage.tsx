@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card } from 'kashi/components'
 import { Helmet } from 'react-helmet'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import Web3Status from 'components/Web3Status'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
@@ -20,7 +20,7 @@ import { shortenAddress } from '../../utils'
 import useCopyClipboard from '../../hooks/useCopyClipboard'
 import { Token } from 'dfy-sdk'
 import { RouteComponentProps, useHistory } from 'react-router-dom'
-import { launchTokenList, LaunchTokenList } from '../../constants/launch-token-list'
+import { launchTokenListByChainId, LaunchTokenList } from '../../constants/launch-token-list'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -80,7 +80,8 @@ function LaunchPadPage({
     const decimals = forBuyingTokenDecimals ? forBuyingTokenDecimals : 18
 
     useEffect(() => {
-        const checkLaunchDetail = launchTokenList[address]
+        if (!chainId) return
+        const checkLaunchDetail = launchTokenListByChainId[chainId][address]
         if (!address || (address && address === '')
             || !checkLaunchDetail
             || (checkLaunchDetail && !checkLaunchDetail.available))
@@ -108,7 +109,7 @@ function LaunchPadPage({
             }
         }
         getSwapDetial()
-    }, [tokenineSwap, tokenBalance, decimals, address, history])
+    }, [tokenineSwap, tokenBalance, decimals, address, history, chainId])
 
     return (
         <>

@@ -85,7 +85,7 @@ function AppBar(): JSX.Element {
                                                     </NavLink>
                                                 )} */}
                                             {chainId &&
-                                                [ChainId.BKC, ChainId.BSC, ChainId.MATIC, ChainId.BSC_TESTNET].includes(
+                                                [ChainId.BSC_TESTNET].includes(
                                                     chainId
                                                 ) && (
                                                     <NavLink id={`bento-nav-link`} to={'/launchpad'}>
@@ -354,9 +354,9 @@ function AppBar(): JSX.Element {
                                         </NavLink>
                                     )}
                                 {chainId &&
-                                    [ChainId.MAINNET, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC].includes(chainId) && (
-                                        <NavLink id={`bento-nav-link`} to={'/bento'}>
-                                            {i18n._(t`BentoBox`)}
+                                    [ChainId.BSC_TESTNET].includes(chainId) && (
+                                        <NavLink id={`bento-nav-link`} to={'/launchpad'}>
+                                            {i18n._(t`Launchpad`)}
                                         </NavLink>
                                     )}
                                 {/* {chainId === ChainId.MAINNET && (

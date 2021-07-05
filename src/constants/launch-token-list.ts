@@ -1,3 +1,5 @@
+import { ChainId } from 'dfy-sdk'
+
 export interface LaunchTokenList {
   contractAddress: string
   title: string
@@ -6,7 +8,7 @@ export interface LaunchTokenList {
   available: boolean
 }
 
-export const launchTokenList: { [key: string]: LaunchTokenList } = {
+const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: LaunchTokenList } = {
   '0xbCC466227d5AADD66853339C8e51D1cB7B0E88E9': {
     contractAddress: '0xbCC466227d5AADD66853339C8e51D1cB7B0E88E9',
     title: 'Token AAA',
@@ -28,4 +30,9 @@ export const launchTokenList: { [key: string]: LaunchTokenList } = {
     proposalContent: '',
     available: false
   }
+}
+
+// use for list token each chain ID
+export const launchTokenListByChainId: { [key: string]: any } = {
+  [ChainId.BSC_TESTNET]: BSC_TESTNET_LAUNCH_TOKEN_LIST
 }
