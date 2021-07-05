@@ -20,6 +20,7 @@ import { useLaunchToken } from './useLaunchToken'
 import { AiOutlineArrowDown, AiOutlineCopy } from 'react-icons/ai'
 import { shortenAddress } from '../../utils'
 import useCopyClipboard from '../../hooks/useCopyClipboard'
+import { Token } from 'dfy-sdk'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -39,7 +40,7 @@ function BentoBox(): JSX.Element {
     const { i18n } = useLingui()
 
     const defaultTokens = useAllTokens()
-    const { account } = useActiveWeb3React()
+    const { account, chainId } = useActiveWeb3React()
 
     const token = Object.values(defaultTokens).find(token =>
         token.symbol === 'BUSD'
@@ -71,7 +72,8 @@ function BentoBox(): JSX.Element {
     const [launchPadRemain, setLaunchPadRemain] = useState('')
 
     const [launchpadTokenAddress, setLauchpadToken] = useState('')
-    const { luachPadTokenName, luachPadTokenSymbol, luachPadTokenOwnerBalance } = useLaunchToken(launchpadTokenAddress, account)
+    const { luachPadTokenName, luachPadTokenSymbol, luachPadDecimals } = useLaunchToken(launchpadTokenAddress, account)
+    const launchCurrencyAmount = useCurrencyBalance(account ?? undefined, launchpadTokenAddress !== '' ? new Token(chainId ?? 0, launchpadTokenAddress, luachPadDecimals, luachPadTokenSymbol, luachPadTokenName) : undefined)
 
     const addTransaction = useTransactionAdder()
 
@@ -190,7 +192,7 @@ function BentoBox(): JSX.Element {
                                             </ArrowCenter>
                                         </div>
                                         <div className="text-white text-right text-caption2 mt-8">
-                                            Balance: {luachPadTokenOwnerBalance.toFixed(decimals)} {luachPadTokenSymbol}
+                                            Balance: {launchCurrencyAmount ? launchCurrencyAmount.toSignificant(6) : 0} {luachPadTokenSymbol}
                                         </div>
                                         <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-10">
                                             <NumericalInput
@@ -206,7 +208,6 @@ function BentoBox(): JSX.Element {
                                             />
                                             <span className="ml-2">{luachPadTokenSymbol}</span>
                                         </div>
-                                        {/* <p className="text-white mb-8 mt-8 text-center text-h1">{tokenBalance.toFixed(decimals)} Tokens</p> */}
                                         { (ApprovalState.NOT_APPROVED === approvalState || ApprovalState.PENDING === approvalState) && (
                                             <Button
                                                 disabled={ApprovalState.PENDING === approvalState}
@@ -219,7 +220,7 @@ function BentoBox(): JSX.Element {
                                         { ApprovalState.APPROVED === approvalState && (
                                             <Button
                                                 color="gradient3"
-                                                disabled={isCommiting || warningMsg !== '' || busdBalance === '' || luachPadTokenOwnerBalance.eq(0)}
+                                                disabled={isCommiting || warningMsg !== '' || busdBalance === ''}
                                                 onClick={async () => {
                                                     try {
                                                         setIsCommiting(true)
@@ -228,6 +229,7 @@ function BentoBox(): JSX.Element {
                                                             summary: 'Launch commited!'
                                                         })
                                                         setBusdBalance('')
+                                                        setTokenBalanec(BigNumber.from(0))
                                                         setIsCommiting(false)
                                                     } catch (err) {
                                                         console.error(err)
