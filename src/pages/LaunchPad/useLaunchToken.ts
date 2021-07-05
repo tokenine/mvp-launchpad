@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTokenContract } from '../../hooks/useContract'
-import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
-import { BigNumber } from 'ethers'
 
-export const useLaunchToken = (address: string | undefined, account: string | undefined | null): { luachPadTokenName: string, luachPadTokenSymbol: string, luachPadDecimals: number } => {
+export const useLaunchToken = (address: string | undefined, account: string | undefined | null): [string, string, number] => {
 
   const [luachPadTokenName, setLuachPadTokenName] = useState('')
   const [luachPadTokenSymbol, setLuachPadTokenSymbol] = useState('')
@@ -26,9 +24,9 @@ export const useLaunchToken = (address: string | undefined, account: string | un
     fetchDetail()
   }, [account, address, token])
 
-  return {
+  return [
     luachPadTokenName,
     luachPadTokenSymbol,
     luachPadDecimals
-  }
+  ]
 }

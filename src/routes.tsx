@@ -14,8 +14,9 @@ import {
     RedirectOldAddLiquidityPathStructure,
     RedirectToAddLiquidity
 } from './pages/AddLiquidity/redirects'
-import Bento from './pages/BentoBox'
-import BentoBalances from './pages/BentoBox/Balances'
+import LaunchPad from './pages/LaunchPad'
+import LaunchPadPage from './pages/LaunchPad/LaunchPadPage'
+import BentoBalances from './pages/LaunchPad/Balances'
 import Migrate from './pages/Migrate'
 import Pool from './pages/Pool'
 import PoolFinder from './pages/PoolFinder'
@@ -48,7 +49,8 @@ function Routes(): JSX.Element {
         <Switch>
             <PublicRoute exact path="/connect" component={Connect} />
             {/* BentoApps */}
-            <Route exact strict path="/launchpad" component={Bento} />
+            <Route exact strict path="/launchpad" component={LaunchPad} />
+            <Route strict path="/launchpad/:address" component={LaunchPadPage} />
             {/* <Route exact strict path="/bento" component={Bento} /> */}
             {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
 
