@@ -58,9 +58,9 @@ const farms: { [key: string]: any } = {
       symbol: 'TKA'
     },
     token0: {
-      address: '0xecafc0f1e5448868a08d89fa99e1d2a0694aee23',
-      name: 'TokenA',
-      symbol: 'TKA',
+      address: '0x83c4cb8bea9e049a0d8df5f5ffc02563801e9e46',
+      name: 'TokenB',
+      symbol: 'TKB',
       imageUrl: '/images/tokens/busd-square.jpg'
     },
     token1: null
