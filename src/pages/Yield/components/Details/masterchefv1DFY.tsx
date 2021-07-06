@@ -32,13 +32,15 @@ export default function InputGroup({
     token1Address,
     type,
     assetSymbol,
-    assetDecimals = 18
+    assetDecimals = 18,
+    tokenRewardSymbol = 'DFY',
 }: {
     pairAddress: string
     pid: number
     pairSymbol: string
     token0Address: string
-    token1Address: string
+    token1Address?: string
+    tokenRewardSymbol?: string
     type?: string
     assetSymbol?: string
     assetDecimals?: number
@@ -74,7 +76,9 @@ export default function InputGroup({
                         <>
                             <Button
                                 color="yieldColor"
-                                onClick={() => history.push(`/add/${isWETH(token0Address)}/${isWETH(token1Address)}`)}
+                                onClick={() => 
+                                    history.push(`/add/${isWETH(token0Address)}/${isWETH(token1Address)}`)
+                                }
                             >
                                 {i18n._(t`Add Liquidity`)}
                             </Button>
@@ -88,22 +92,6 @@ export default function InputGroup({
                             </Button>
                         </>
                     )}
-                    {type === 'KMP' && assetSymbol && (
-                        <>
-                            <Button
-                                color="yieldColor"
-                                onClick={() => history.push(`/bento/kashi/lend/${isWETH(pairAddress)}`)}
-                            >
-                                {i18n._(t`Lend ${assetSymbol}`)}
-                            </Button>
-                            <Button
-                                color="yieldColor"
-                                onClick={() => history.push(`/bento/kashi/lend/${isWETH(pairAddress)}`)}
-                            >
-                                {i18n._(t`Withdraw ${assetSymbol}`)}
-                            </Button>
-                        </>
-                    )}
                 </div>
 
                 <div className="grid gap-4 grid-cols-2 px-4">
@@ -112,7 +100,8 @@ export default function InputGroup({
                         {account && (
                             <div className="text-sm text-secondary cursor-pointer text-right mb-2 pr-4">
                                 {i18n._(t`Wallet Balance`)}:{' '}
-                                {formattedNum(fixedFormatting(balance.value, balance.decimals))} {type}
+                                {formattedNum(fixedFormatting(balance.value, balance.decimals))}{' '}
+                                {type === 'LP' ? type : assetSymbol}
                             </div>
                         )}
                         <div className="flex items-center relative w-full mb-4">
@@ -164,7 +153,7 @@ export default function InputGroup({
                         {account && (
                             <div className="text-sm text-secondary cursor-pointer text-right mb-2 pr-4">
                                 {i18n._(t`Deposited`)}: {formattedNum(fixedFormatting(staked.value, staked.decimals))}{' '}
-                                {type}
+                                {type === 'LP' ? type : assetSymbol}
                             </div>
                         )}
                         <div className="flex items-center relative w-full mb-4">
@@ -216,7 +205,7 @@ export default function InputGroup({
                                 setPendingTx(false)
                             }}
                         >
-                            {i18n._(t`Harvest ${formattedNum(pending)} DFY`)}
+                            {i18n._(t`Harvest ${formattedNum(pending)}`)} {tokenRewardSymbol}
                         </Button>
                     </div>
                 )}

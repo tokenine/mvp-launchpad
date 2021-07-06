@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import TokenLogo from './TokenLogo'
+import TokenLogoDFY from './TokenLogoDFY'
 
 const TokenWrapper = styled.div<{ sizeraw: number; margin?: boolean }>`
     position: relative;
@@ -9,13 +9,13 @@ const TokenWrapper = styled.div<{ sizeraw: number; margin?: boolean }>`
     margin-right: ${({ sizeraw, margin }) => margin && (sizeraw / 3 + 8).toString() + 'px'};
 `
 
-const HigherLogo = styled(TokenLogo)<{ higherRadius?: string }>`
+const HigherLogo = styled(TokenLogoDFY)<{ higherRadius?: string }>`
     z-index: 2;
     /* background-color: white; */
     border-radius: ${({ higherRadius }) => (higherRadius ? higherRadius : '50%')};
 `
 
-const CoveredLogo = styled(TokenLogo)`
+const CoveredLogo = styled(TokenLogoDFY)`
     position: absolute;
     left: ${({ sizeraw }) => (sizeraw / 1.2).toString() + 'px'};
     /* background-color: white; */
@@ -23,11 +23,11 @@ const CoveredLogo = styled(TokenLogo)`
 `
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function DoubleTokenLogo({ a0, a1, size = 24, margin = false, higherRadius }: any) {
+export default function DoubleTokenLogo({ srcToken0, srcToken1, size = 24, margin = false, higherRadius }: any) {
     return (
         <TokenWrapper sizeraw={size} margin={margin}>
-            <HigherLogo address={a0} size={size.toString() + 'px'} sizeraw={size} higherRadius={higherRadius} />
-            <CoveredLogo address={a1} size={size.toString() + 'px'} sizeraw={size} />
+            <HigherLogo src={srcToken0} size={size.toString() + 'px'} sizeraw={size} higherRadius={higherRadius} />
+            <CoveredLogo src={srcToken1} size={size.toString() + 'px'} sizeraw={size} />
         </TokenWrapper>
     )
 }

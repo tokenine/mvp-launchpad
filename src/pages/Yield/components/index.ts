@@ -5,3 +5,6 @@ export { default as Paper } from './Paper'
 export { default as Search } from './Search'
 export { default as DoubleLogo } from './DoubleLogo'
 export { default as TokenLogo } from './TokenLogo'
+
+export { default as DoubleLogoDFY } from './DoubleLogoDFY'
+export { default as TokenLogoDFY } from './TokenLogoDFY'

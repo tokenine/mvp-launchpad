@@ -3,11 +3,11 @@ import React from 'react'
 import { Redirect, Route, RouteComponentProps, useLocation, Switch } from 'react-router-dom'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import Connect from './kashi/pages/Connect'
-import BorrowMarkets from './kashi/pages/Markets/Borrow'
-import CreateMarkets from './kashi/pages/Markets/Create'
-import LendMarkets from './kashi/pages/Markets/Lending'
-import BorrowPair from './kashi/pages/Pair/Borrow'
-import LendPair from './kashi/pages/Pair/Lend'
+// import BorrowMarkets from './kashi/pages/Markets/Borrow'
+// import CreateMarkets from './kashi/pages/Markets/Create'
+// import LendMarkets from './kashi/pages/Markets/Lending'
+// import BorrowPair from './kashi/pages/Pair/Borrow'
+// import LendPair from './kashi/pages/Pair/Lend'
 import AddLiquidity from './pages/AddLiquidity'
 import {
     RedirectDuplicateTokenIds,
@@ -16,31 +16,31 @@ import {
 } from './pages/AddLiquidity/redirects'
 import LaunchPad from './pages/LaunchPad'
 import LaunchPadPage from './pages/LaunchPad/LaunchPadPage'
-import BentoBalances from './pages/LaunchPad/Balances'
+// import BentoBalances from './pages/LaunchPad/Balances'
 import Migrate from './pages/Migrate'
 import Pool from './pages/Pool'
 import PoolFinder from './pages/PoolFinder'
 import RemoveLiquidity from './pages/RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from './pages/RemoveLiquidity/redirects'
-import Saave from './pages/Saave'
-import SushiBar from './pages/SushiBar'
-import SushiBarTransactions from './pages/SushiBar/SushiBarTransactions'
-import SushiBarTips from './pages/SushiBar/Tips'
+// import Saave from './pages/Saave'
+// import SushiBar from './pages/SushiBar'
+// import SushiBarTransactions from './pages/SushiBar/SushiBarTransactions'
+// import SushiBarTips from './pages/SushiBar/Tips'
 import Trade from './pages/Trade'
 import Swap from './pages/Swap'
 import {
     RedirectHashRoutes,
-    OpenClaimAddressModalAndRedirectToSwap,
+    // OpenClaimAddressModalAndRedirectToSwap,
     RedirectPathToSwapOnly,
     RedirectToSwap
 } from './pages/Swap/redirects'
-import Tools from './pages/Tools'
-import Vesting from './pages/Vesting'
+// import Tools from './pages/Tools'
+// import Vesting from './pages/Vesting'
 import Yield from './pages/Yield'
 //import MasterChefV1 from './pages/Yield/masterchefv1'
 //import MasterChefV1Debug from './pages/Yield/masterchefv1/debug'
 //import MiniChefV2 from './pages/Yield/minichefv2'
-import Positions from './pages/Positions'
+// import Positions from './pages/Positions'
 import Transactions from './pages/Transactions'
 
 function Routes(): JSX.Element {
@@ -72,10 +72,11 @@ function Routes(): JSX.Element {
             <WalletRoute exact strict path="/bento/kashi/lend/:pairAddress" component={LendPair} />
             <WalletRoute exact strict path="/bento/kashi/borrow/:pairAddress" component={BorrowPair} /> */}
 
-            {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
+            {/* {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
                 <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
-            )}
-            {(chainId === ChainId.BSC_TESTNET || chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && <Route exact strict path="/yield" component={Yield} />}
+            )} */}
+            {(chainId === ChainId.BSC_TESTNET)
+                && <Route exact strict path="/yield" component={Yield} />}
             {/* {chainId === ChainId.MAINNET && (
                 <Route exact strict path="/yield/debug/:address" component={MasterChefV1Debug} />
             )} */}
@@ -151,6 +152,7 @@ export default Routes
 
 // A wrapper for <Route> that redirects to the Connect Wallet
 // screen if you're not yet authenticated.
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const PublicRoute = ({ component: Component, children, ...rest }: any) => {
     const { account } = useActiveWeb3React()
     const location = useLocation<any>()
@@ -178,6 +180,7 @@ export const PublicRoute = ({ component: Component, children, ...rest }: any) =>
 
 // A wrapper for <Route> that redirects to the Connect Wallet
 // screen if you're not yet authenticated.
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const WalletRoute = ({ component: Component, children, ...rest }: any) => {
     const { account } = useActiveWeb3React()
     return (

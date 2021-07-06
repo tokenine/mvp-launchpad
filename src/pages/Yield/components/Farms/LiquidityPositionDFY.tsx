@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { formattedNum, formattedPercent } from '../../../../utils'
-import { DoubleLogo, Paper } from '../../components'
+import { DoubleLogoDFY, Paper, TokenLogoDFY } from '../../components'
 import { MasterChefV1DetailsDFY, MiniChefv2DFY, MasterChefv2DFY } from '../Details'
 import { useActiveWeb3React } from '../../../../hooks/useActiveWeb3React'
-import { ChainId } from 'dfy-sdk'
-import AsyncTokenIcon from '../../../../kashi/components/AsyncTokenIcon'
+// import { ChainId } from 'dfy-sdk'
+// import AsyncTokenIcon from '../../../../kashi/components/AsyncTokenIcon'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const LiquidityPositionDFY = ({ farm }: any) => {
     const [expand, setExpand] = useState<boolean>(false)
     const { chainId } = useActiveWeb3React()
@@ -19,10 +20,11 @@ const LiquidityPositionDFY = ({ farm }: any) => {
                         onClick={() => setExpand(!expand)}
                     >
                         <div className="text-sm text-white sm:text-base font-semibold">
-                            {farm && farm.token0.symbol + '-' + farm.token1.symbol}
+                            {farm && farm.token0 && farm.token1 && farm.token0.symbol + '-' + farm.token1.symbol}
+                            {farm && farm.token0 && !farm.token1 && farm.token0.symbol}
                         </div>
                         <div className="hidden md:block text-sm sm:text-base ml-4 text-gray-200 text-right">
-                            DFY
+                            {farm.tokenReward.symbol}
                         </div>
                         <div className="text-gray-200 text-sm sm:text-base text-right">
                             {formattedNum(farm.tvl, true)}
@@ -36,7 +38,7 @@ const LiquidityPositionDFY = ({ farm }: any) => {
                         onClick={() => setExpand(!expand)}
                     >
                         <div className="col-span-1 flex items-center">
-                            {chainId === ChainId.MATIC ? (
+                            {/* {chainId === ChainId.MATIC ? (
                                 <div className="md:col-span-3 flex flex-col space-y-2">
                                     <div className="mr-4 flex flex-row space-x-2 items-center">
                                         <div>
@@ -56,15 +58,22 @@ const LiquidityPositionDFY = ({ farm }: any) => {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="mr-4">
-                                    <DoubleLogo
-                                        a0={farm.token0.address}
-                                        a1={farm.token0.address}
-                                        size={40}
-                                        margin={true}
+                            )} */}
+                            
+                            <div className="mr-4">
+                                { farm && farm.poolType === 'LP' && <DoubleLogoDFY
+                                    srcToken0={farm.token0.imageUrl}
+                                    srcToken1={farm.token1.imageUrl}
+                                    size={40}
+                                    margin={true}
+                                />}
+                                { farm && farm.poolType === 'SST' && 
+                                    <TokenLogoDFY
+                                    src={farm.token0.imageUrl}
+                                    size="40px"
                                     />
-                                </div>
-                            )}
+                                }
+                            </div>
                         </div>
                         <div className="md:col-span-1 hidden md:flex flex-row space-x-2 justify-end items-center ml-4">
                             <div>
@@ -125,8 +134,10 @@ const LiquidityPositionDFY = ({ farm }: any) => {
                             pairAddress={farm.pairAddress}
                             pairSymbol={farm.symbol}
                             token0Address={farm.token0.address}
-                            token1Address={farm.token1.address}
-                            type={'LP'}
+                            token1Address={farm.token1 ? farm.token1.address : undefined}
+                            type={farm.poolType}
+                            tokenRewardSymbol={farm.tokenReward.symbol}
+                            assetSymbol={farm.token0.symbol}
                         />
                     )}
                     {expand && farm.type === 'masterchefv2' && (
@@ -135,8 +146,9 @@ const LiquidityPositionDFY = ({ farm }: any) => {
                             pairAddress={farm.pairAddress}
                             pairSymbol={farm.symbol}
                             token0Address={farm.token0.address}
-                            token1Address={farm.token1.address}
-                            type={'LP'}
+                            token1Address={farm.token1 ? farm.token1.address : undefined}
+                            type={farm.poolType}
+                            assetSymbol={farm.token0.symbol}
                         />
                     )}
                     {expand && farm.type === 'minichefv2' && (
@@ -145,8 +157,9 @@ const LiquidityPositionDFY = ({ farm }: any) => {
                             pairAddress={farm.pairAddress}
                             pairSymbol={farm.symbol}
                             token0Address={farm.token0.address}
-                            token1Address={farm.token1.address}
-                            type={'LP'}
+                            token1Address={farm.token1 ? farm.token1.address : undefined}
+                            type={farm.poolType}
+                            assetSymbol={farm.token0.symbol}
                         />
                     )}
                 </Paper>
