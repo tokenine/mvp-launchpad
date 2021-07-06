@@ -1,8 +1,8 @@
 import { Card, CardHeader, Search } from './components'
-import { ChevronDown, ChevronUp } from 'react-feather'
+// import { ChevronDown, ChevronUp } from 'react-feather'
 import { Header, KashiLending, LiquidityPositionDFY } from './components/Farms'
 import React, { useEffect, useState } from 'react'
-import { formattedNum, formattedPercent } from '../../utils'
+// import { formattedNum, formattedPercent } from '../../utils'
 import { useFuse, useSortableData } from 'hooks'
 import { useMasterChefContract, useMiniChefV2Contract } from '../../hooks/useContract'
 
@@ -18,7 +18,7 @@ import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
 import useMasterChefFarms from './hooks/masterchefv1/useFarmsDFY'
 // import useMasterChefV2Farms from './hooks/masterchefv2/useFarms'
-import useMiniChefFarms from './hooks/minichef/useFarms'
+// import useMiniChefFarms from './hooks/minichef/useFarms'
 import useStakedPending from './hooks/portfolio/useStakedPending'
 
 export const FixedHeightRow = styled(RowBetween)`
@@ -27,8 +27,8 @@ export const FixedHeightRow = styled(RowBetween)`
 
 export default function Yield(): JSX.Element {
     const { i18n } = useLingui()
-    const [section, setSection] = useState<'portfolio' | 'all' | 'kmp' | 'slp' | 'mcv2'>('all')
-    const { account, chainId } = useActiveWeb3React()
+    const [section, setSection] = useState<'portfolio' | 'all' | 'LP' | 'SST'>('all')
+    const { account } = useActiveWeb3React()
 
     // Get Farms
     const masterchefv1 = useMasterChefFarms()
@@ -90,7 +90,7 @@ export default function Yield(): JSX.Element {
     // Sorting Setup
     const { items, requestSort, sortConfig } = useSortableData(flattenSearchResults)
 
-    console.log('term:', term)
+    // console.log('term:', term)
 
     return (
         <>
@@ -136,13 +136,6 @@ export default function Yield(): JSX.Element {
                                                 })
                                             ) : (
                                                 <>
-                                                    {/* {term ? (
-                                                      <div className="w-full py-6 text-center text-white">No Results.</div>  
-                                                    ) : (
-                                                        <div className="w-full py-6 text-center text-white">
-                                                            <Dots>Fetching Portfolio</Dots>
-                                                        </div>
-                                                    )} */}
                                                     <div className="w-full py-6 text-center text-white">No Results.</div>
                                                 </>
                                             )}
@@ -163,13 +156,46 @@ export default function Yield(): JSX.Element {
                                         })
                                     ) : (
                                         <>
-                                            {/* {term ? (
-                                                <div className="w-full py-6 text-center">No Results.</div>
-                                            ) : (
-                                                <div className="w-full py-6 text-center text-white">
-                                                    <Dots>Fetching Farms</Dots>
-                                                </div>
-                                            )} */}
+                                            <div className="w-full py-6 text-center text-white">No Results.</div>
+                                        </>
+                                    )}
+                                </div>
+                            </>
+                        )}
+                        {section && section === 'LP' && (
+                            <>
+                                <Header sortConfig={sortConfig} requestSort={requestSort} />
+                                <div className="flex-col space-y-2">
+                                    {items && items.length > 0 ? (
+                                        items.map((farm: any, i: number) => {
+                                            if (farm.poolType === 'LP') {
+                                                return <LiquidityPositionDFY key={farm.address + '_' + i} farm={farm} />
+                                            } else {
+                                                return null
+                                            }
+                                        })
+                                    ) : (
+                                        <>
+                                            <div className="w-full py-6 text-center text-white">No Results.</div>
+                                        </>
+                                    )}
+                                </div>
+                            </>
+                        )}
+                        {section && section === 'SST' && (
+                            <>
+                                <Header sortConfig={sortConfig} requestSort={requestSort} />
+                                <div className="flex-col space-y-2">
+                                    {items && items.length > 0 ? (
+                                        items.map((farm: any, i: number) => {
+                                            if (farm.poolType === 'SST') {
+                                                return <LiquidityPositionDFY key={farm.address + '_' + i} farm={farm} />
+                                            } else {
+                                                return null
+                                            }
+                                        })
+                                    ) : (
+                                        <>
                                             <div className="w-full py-6 text-center text-white">No Results.</div>
                                         </>
                                     )}

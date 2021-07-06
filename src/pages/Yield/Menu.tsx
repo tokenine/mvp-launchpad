@@ -1,6 +1,7 @@
 import React from 'react'
-import Badge from '../../components/Badge'
+// import Badge from '../../components/Badge'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Menu = ({ section, setSection }: any) => {
     return (
         <div className="overflow-x-auto">
@@ -23,6 +24,24 @@ const Menu = ({ section, setSection }: any) => {
                 >
                     All Yield Farms
                 </div>
+                <div
+                    className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                        'LP' && 'border-gradient-menu'}`}
+                    onClick={() => {
+                        return setSection('LP')
+                    }}
+                >
+                    Liquidity Yield Farms
+                </div>
+                <div
+                    className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                        'SST' && 'border-gradient-menu'}`}
+                    onClick={() => {
+                        return setSection('SST')
+                    }}
+                >
+                    Single Token Yield Farms
+                </div>
                 {/* <div
                     className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex items-center px-4 py-6 border border-transparent ${section ===
                         'kmp' && 'border-gradient-menu'}`}
@@ -31,15 +50,6 @@ const Menu = ({ section, setSection }: any) => {
                     }}
                 >
                     Lending Yield Farms
-                </div> */}
-                {/* <div
-                    className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex items-center px-4 py-6 border border-transparent ${section ===
-                        'slp' && 'border-gradient-menu'}`}
-                    onClick={() => {
-                        return setSection('slp')
-                    }}
-                >
-                    Liquidity Yield Farms
                 </div> */}
                 {/* <div
                     className={`cursor-pointer navbar-bg-green-thick-to-thin rounded flex justify-between items-center px-4 py-6 border border-transparent ${section ===
