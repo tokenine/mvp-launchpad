@@ -112,10 +112,6 @@ function LaunchPadPage({
             if (addressB) {
                 setLauchpadToken(addressB[0])
             }
-            const luanchpadRemain = await tokenineSwap?.functions.bBalance()
-            if (luanchpadRemain) {
-                setLaunchPadRemain(luanchpadRemain[0].toFixed(decimals))
-            }
             const rate = await tokenineSwap?.functions.rate()
             if (rate) {
                 setTokenRate(rate[0])
@@ -123,6 +119,16 @@ function LaunchPadPage({
         }
         getSwapDetial()
     }, [tokenineSwap, tokenBalance, decimals, address, history, chainId])
+
+    useEffect(() => {
+        const fetchLaunchTokenRemain = async () => {
+            const luanchpadRemain = await tokenineSwap?.functions.bBalance()
+            if (luanchpadRemain) {
+                setLaunchPadRemain(luanchpadRemain[0].toFixed(decimals))
+            }
+        }
+        fetchLaunchTokenRemain()
+    }, [decimals, launchCurrencyAmount, tokenineSwap])
 
     return (
         <>
