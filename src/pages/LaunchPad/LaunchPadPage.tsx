@@ -58,7 +58,7 @@ function LaunchPadPage({
     const [forBuyingTokenName, forBuyingTokenSymbol, forBuyingTokenDecimals] = useLaunchToken(forBuyingTokenAddress, account)
     const forBuyingCurrencyAmount = useCurrencyBalance(account ?? undefined, forBuyingTokenAddress !== '' ? new Token(chainId ?? 0, forBuyingTokenAddress, forBuyingTokenDecimals, forBuyingTokenSymbol, forBuyingTokenName) : undefined)
     
-    const [busdBalance, setBusdBalance] = useState('')
+    const [startTokenBalance, setStartTokenBalance] = useState('')
     const [tokenRate, setTokenRate] = useState(BigNumber.from(0))
     const [isCommiting, setIsCommiting] = useState(false)
     const [tokenBalance, setTokenBalanec] = useState(BigNumber.from(0))
@@ -73,8 +73,21 @@ function LaunchPadPage({
     const [approvalState, approve] = useApproveCallback(forBuyingCurrencyAmount, tokenineSwap ? tokenineSwap.address : '')
     const addTransaction = useTransactionAdder()
 
+    const startTokenToDestinationTokenCalculate = (val: string) => {
+        const forBuyingToken = val.toBigNumber(decimals)
+        if (forBuyingToken.lte('100000000000000000')) {
+            setWarningMsg('Amount must be greater then 0.1')
+        } else {
+            setWarningMsg('')
+        }
+        setTokenBalanec(forBuyingToken.mul(tokenRate))
+        setStartTokenBalance(val)
+    }
+
     const onMax = () => {
-        setBusdBalance(forBuyingCurrencyAmount ? forBuyingCurrencyAmount.toExact() : '')
+        startTokenToDestinationTokenCalculate(
+            forBuyingCurrencyAmount ? forBuyingCurrencyAmount.toExact() : ''
+        )
     }
 
     const decimals = forBuyingTokenDecimals ? forBuyingTokenDecimals : 18
@@ -181,16 +194,9 @@ function LaunchPadPage({
                                             <NumericalInput
                                                 disabled={isCommiting}
                                                 className="token-amount-input text-right"
-                                                value={busdBalance}
+                                                value={startTokenBalance}
                                                 onUserInput={val => {
-                                                    const bbusd = val.toBigNumber(decimals)
-                                                    if (bbusd.lte('100000000000000000')) {
-                                                        setWarningMsg('Amount must be greater then 0.1')
-                                                    } else {
-                                                        setWarningMsg('')
-                                                    }
-                                                    setTokenBalanec(bbusd.mul(tokenRate))
-                                                    setBusdBalance(val)
+                                                    startTokenToDestinationTokenCalculate(val)
                                                 }}
                                             />
                                             <span className="ml-2">{forBuyingTokenSymbol}</span>
@@ -212,7 +218,7 @@ function LaunchPadPage({
                                                 onUserInput={val => {
                                                     const launchToken = val.toBigNumber(decimals)
                                                     const converted = launchToken.div(tokenRate)
-                                                    setBusdBalance(converted.toFixed(decimals))
+                                                    setStartTokenBalance(converted.toFixed(decimals))
                                                     setTokenBalanec(launchToken)
                                                 }}
                                             />
@@ -230,15 +236,15 @@ function LaunchPadPage({
                                         { ApprovalState.APPROVED === approvalState && (
                                             <Button
                                                 color="gradient3"
-                                                disabled={isCommiting || warningMsg !== '' || busdBalance === ''}
+                                                disabled={isCommiting || warningMsg !== '' || startTokenBalance === ''}
                                                 onClick={async () => {
                                                     try {
                                                         setIsCommiting(true)
-                                                        const response = await tokenineSwap?.functions.swap(busdBalance.toBigNumber(decimals))
+                                                        const response = await tokenineSwap?.functions.swap(startTokenBalance.toBigNumber(decimals))
                                                         addTransaction(response, {
                                                             summary: 'Launch commited!'
                                                         })
-                                                        setBusdBalance('')
+                                                        setStartTokenBalance('')
                                                         setTokenBalanec(BigNumber.from(0))
                                                         setIsCommiting(false)
                                                     } catch (err) {
