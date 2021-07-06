@@ -14,7 +14,7 @@ export default function LiquidityPrice({
 }): JSX.Element {
     const { chainId } = useActiveWeb3React()
     return (
-        <div className="rounded-b-md md:bg-dark-800 p-1" style={{ marginTop: '-20px' }}>
+        <div className="rounded-b-md md:bg-dark-800" style={{ marginTop: '-20px', padding: '1px' }}>
             <AutoRow
                 justify={'space-between'}
                 style={{ padding: '0 1rem' }}
