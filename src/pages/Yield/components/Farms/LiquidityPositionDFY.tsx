@@ -34,7 +34,7 @@ const LiquidityPositionDFY = ({ farm }: any) => {
             const callDecimals = await pairLPToken?.functions.decimals()
             const decimals = callDecimals[0]
 
-            // reward (APY)
+            // reward (APR)
             const AVERAGE_BLOCK_TIME = 5 //bsc average block time for calculate
             const blockPerHour = 3600 / AVERAGE_BLOCK_TIME
 
@@ -49,11 +49,11 @@ const LiquidityPositionDFY = ({ farm }: any) => {
             // reward = reward per block * (allocPoint / totalAllocPoint)
             const rewardPerBlock = totalRewardPerBlock.mul(allocPoint.div(totalAllocPointAmount))
 
-            const roiPerHour = rewardPerBlock.mul(blockPerHour) // aph
-            const roiPerDay = roiPerHour.mul(24) // apd
+            const roiPerHour = rewardPerBlock.mul(blockPerHour)
+            const roiPerDay = roiPerHour.mul(24)
             setRoiPerDay(roiPerDay.toNumber())
-            const roiPerMonth = roiPerDay.mul(30) // apm
-            const roiPerYear = roiPerMonth.mul(12) // apy
+            const roiPerMonth = roiPerDay.mul(30)
+            const roiPerYear = roiPerMonth.mul(12)
             setShowRoiPerYear(roiPerYear.div(totalRewardPerBlock).mul(100).toNumber())
 
             // calculate TVL

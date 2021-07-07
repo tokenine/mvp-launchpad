@@ -34,7 +34,7 @@ const Header = ({ sortConfig, requestSort }: any) => {
                 </div>
                 <div className="hover:text-secondary cursor-pointer" onClick={() => requestSort('roiPerYear')}>
                     <div className="flex items-center justify-end">
-                        <div>{i18n._(t`APY (incl. Fees)`)}</div>
+                        <div>{i18n._(t`APR`)}</div>
                         {sortConfig &&
                             sortConfig.key === 'roiPerYear' &&
                             ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
