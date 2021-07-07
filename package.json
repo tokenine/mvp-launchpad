@@ -177,6 +177,8 @@
     "license": "GPL-3.0-or-later",
     "dependencies": {
         "@lufycz/sushi-data": "^2.0.0-canary-21",
+        "@types/big.js": "^6.1.1",
+        "big.js": "^6.1.1",
         "dfy-sdk": "^1.0.2",
         "react-icons": "^4.2.0"
     }

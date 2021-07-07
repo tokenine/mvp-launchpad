@@ -189,6 +189,10 @@ export function useMasterChefContract(withSignerIfPossible?: boolean): Contract 
     return useContract(address, MASTERCHEF_ABI, withSignerIfPossible)
 }
 
+export function useMasterChefContractManual(address: string, withSignerIfPossible?: boolean): Contract | null {
+    return useContract(address, MASTERCHEF_ABI, withSignerIfPossible)
+}
+
 export function useMasterChefV2Contract(withSignerIfPossible?: boolean): Contract | null {
     const { chainId } = useActiveWeb3React()
     let address: string | undefined

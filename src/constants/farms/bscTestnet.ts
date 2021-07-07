@@ -3,7 +3,7 @@ const farms: { [key: string]: any } = {
   '0': {
     type: 'masterchefv1',
     pid: 0,
-    masterchefAddress: '',
+    masterchefAddress: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
     pairAddress: '0xEFBd7858cd7a6932592573616F51dEdC487B55DD', // lp address
     symbol: 'TKA-TKB',
     poolType: 'LP',
@@ -28,7 +28,7 @@ const farms: { [key: string]: any } = {
   '1': {
     type: 'masterchefv1',
     pid: 1,
-    masterchefAddress: '',
+    masterchefAddress: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
     pairAddress: '0x83c4cb8bea9e049a0d8df5f5ffc02563801e9e46', // lp address
     symbol: 'TKB',
     poolType: 'SST', // single stake token (SST)
@@ -48,7 +48,7 @@ const farms: { [key: string]: any } = {
   '2': {
     type: 'masterchefv1',
     pid: 2,
-    masterchefAddress: '',
+    masterchefAddress: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
     pairAddress: '0x83c4cb8bea9e049a0d8df5f5ffc02563801e9e46', // lp address
     symbol: 'TKB',
     poolType: 'SST', // single stake token (SST)
