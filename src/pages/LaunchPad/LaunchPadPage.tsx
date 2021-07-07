@@ -21,6 +21,7 @@ import useCopyClipboard from '../../hooks/useCopyClipboard'
 import { Token } from 'dfy-sdk'
 import { RouteComponentProps, useHistory } from 'react-router-dom'
 import { launchTokenListByChainId, LaunchTokenList } from '../../constants/launch-token-list'
+import Loader from 'components/Loader'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -159,31 +160,35 @@ function LaunchPadPage({
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
-                                <div className="flex mb-10 ">
-                                    <div className="pr-5 text-white text-center border-r border-white">
-                                        <p className="text-h1 font-bold">{luachPadTokenSymbol}</p>
-                                        <p>{luachPadTokenName}</p>
+                                {luachPadTokenName && luachPadTokenSymbol && launchpadTokenAddress ? <div>
+                                    <div className="flex mb-10 ">
+                                        <div className="pr-5 text-white text-center border-r border-white">
+                                            <p className="text-h1 font-bold">{luachPadTokenSymbol}</p>
+                                            <p>{luachPadTokenName}</p>
+                                        </div>
+                                        <div className="text-white ml-5">
+                                            <p>Address:</p>
+                                            { launchpadTokenAddress && launchpadTokenAddress !== '' ? shortenAddress(launchpadTokenAddress).toLocaleUpperCase() : '' }
+                                            <Button
+                                                className="ml-3 active:outline-none"
+                                                onClick={() => {
+                                                    staticCopy(launchpadTokenAddress)
+                                                }}
+                                            >
+                                                <AiOutlineCopy className="inline" /> 
+                                            </Button>    
+                                            <span className="ml-5">{isCopied && <span>Copied!</span>}</span>
+                                        </div>
                                     </div>
-                                    <div className="text-white ml-5">
-                                        <p>Address:</p>
-                                        { launchpadTokenAddress && launchpadTokenAddress !== '' ? shortenAddress(launchpadTokenAddress).toLocaleUpperCase() : '' }
-                                        <Button
-                                            className="ml-3 active:outline-none"
-                                            onClick={() => {
-                                                staticCopy(launchpadTokenAddress)
-                                            }}
-                                        >
-                                            <AiOutlineCopy className="inline" /> 
-                                        </Button>    
-                                        <span className="ml-5">{isCopied && <span>Copied!</span>}</span>
-                                    </div>
-                                </div>
-                                <Card className="border border-white mb-10">
-                                    <p className="text-white">Remain:</p> 
-                                    <p className="text-center text-white text-h2">
-                                       { launchPadRemain } {luachPadTokenSymbol}
-                                    </p>
-                                </Card>
+                                    <Card className="border border-white mb-10">
+                                        <p className="text-white">Remain:</p> 
+                                        <p className="text-center text-white text-h2">
+                                        { launchPadRemain } {luachPadTokenSymbol}
+                                        </p>
+                                    </Card> 
+                                </div> : <div className="w-2 mx-auto mb-10">
+                                    <Loader stroke="white" />
+                                </div>}
                                 {account ? (
                                     <div>
                                         <div className="text-white text-right text-caption2">
@@ -230,6 +235,9 @@ function LaunchPadPage({
                                             />
                                             <span className="ml-2">{luachPadTokenSymbol}</span>
                                         </div>
+                                        { ApprovalState.UNKNOWN === approvalState && <div className="w-2 mx-auto">
+                                            <Loader stroke="white" />
+                                        </div>}
                                         { (ApprovalState.NOT_APPROVED === approvalState || ApprovalState.PENDING === approvalState) && (
                                             <Button
                                                 disabled={ApprovalState.PENDING === approvalState}
