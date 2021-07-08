@@ -43,19 +43,22 @@ import Yield from './pages/Yield'
 // import Positions from './pages/Positions'
 import Transactions from './pages/Transactions'
 
+const LaunchPadAllowChaidId: ChainId[] = [
+    ChainId.BSC_TESTNET
+]
+
 function Routes(): JSX.Element {
     const { chainId } = useActiveWeb3React()
     return (
         <Switch>
             <PublicRoute exact path="/connect" component={Connect} />
             {/* BentoApps */}
-
-            {(chainId === ChainId.BSC_TESTNET) && (
-                <Route exact strict path="/launchpad" component={LaunchPad} />
-            )}
-            {(chainId === ChainId.BSC_TESTNET) && (
-                <Route strict path="/launchpad/:address" component={LaunchPadPage} />
-            )}
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route exact strict path="/launchpad" component={LaunchPad} />
+            }
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route strict path="/launchpad/:address" component={LaunchPadPage} />
+            }
             {/* <Route exact strict path="/bento" component={Bento} /> */}
             {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
 

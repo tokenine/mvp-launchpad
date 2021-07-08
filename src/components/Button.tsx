@@ -15,6 +15,7 @@ const FILLED = {
     gradient: 'w-full text-white bg-gradient-to-r from-green to-blue',
     gradient2: 'w-full text-white bg-gradient-to-r from-blue to-green',
     gradient3: 'w-full text-white bg-gradient-to-r from-green-thin to-green-thick',
+    blueTextWhite: 'bg-blue bg-opacity-80 w-full rounded text-base text-white hover:bg-opacity-100',
 }
 
 const OUTLINED = {
@@ -24,6 +25,7 @@ const OUTLINED = {
     gradient: 'bg-gradient-to-r from-red to-pink',
     gradient2: 'bg-gradient-to-r from-blue to-green',
     gradient3: 'bg-gradient-to-r from-red to-pink',
+    blueTextWhite: 'bg-blue bg-opacity-20 outline-blue rounded text-xs text-blue hover:bg-opacity-40',
 }
 
 const VARIANT = {
@@ -31,7 +33,7 @@ const VARIANT = {
     filled: FILLED
 }
 
-export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'default' | 'gradient2' | 'gradient3'
+export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'default' | 'gradient2' | 'gradient3' | 'blueTextWhite'
 
 export type ButtonSize = 'small' | 'large' | 'default'
 

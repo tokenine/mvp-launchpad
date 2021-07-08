@@ -15,7 +15,10 @@ import { BigNumber } from 'ethers'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import styled from 'styled-components'
 import { useLaunchToken } from './useLaunchToken'
+import { useTokenContract } from 'hooks/useContract'
 import { AiOutlineArrowDown, AiOutlineCopy } from 'react-icons/ai'
+import { BsGraphUp } from 'react-icons/bs'
+import { FaCoins } from 'react-icons/fa'
 import { shortenAddress } from '../../utils'
 import useCopyClipboard from '../../hooks/useCopyClipboard'
 import { Token } from 'dfy-sdk'
@@ -44,6 +47,7 @@ function LaunchPadPage({
 
     const { account, chainId } = useActiveWeb3React()
     const [isCopied, staticCopy] = useCopyClipboard()
+    const [isMerchant, setIsMerchant] = useState(false)
 
     const [launchDetail, setLaunchDetail] = useState<LaunchTokenList>()
     
@@ -60,6 +64,7 @@ function LaunchPadPage({
     const [warningMsg, setWarningMsg] = useState('')
 
     const [launchPadRemain, setLaunchPadRemain] = useState('')
+    const [launchPadIncomeBalance, setLaunchPadIncomeBalance] = useState('')
 
     const [launchpadTokenAddress, setLauchpadToken] = useState('')
     const [luachPadTokenName, luachPadTokenSymbol, luachPadDecimals] = useLaunchToken(launchpadTokenAddress, account)
@@ -84,6 +89,14 @@ function LaunchPadPage({
             forBuyingCurrencyAmount ? forBuyingCurrencyAmount.toExact() : ''
         )
     }
+
+    const [tokenMerchantBalance, setTokenMerchantBalance] = useState('')
+
+    const onMaxMerchant = () => {
+        setTokenMerchantBalance(launchCurrencyAmount ? launchCurrencyAmount.toExact() : '')
+    }
+
+    const merchantLaunchpadTokenContract = useTokenContract(launchpadTokenAddress, true)
 
     const decimals = forBuyingTokenDecimals ? forBuyingTokenDecimals : 18
 
@@ -121,9 +134,17 @@ function LaunchPadPage({
             if (luanchpadRemain) {
                 setLaunchPadRemain(luanchpadRemain[0].toFixed(decimals))
             }
+            const launchPadIncomeBalance = await tokenineSwap?.functions.aBalance()
+            if (launchPadIncomeBalance) {
+                setLaunchPadIncomeBalance(launchPadIncomeBalance[0].toFixed(decimals))
+            }
+            const payTo = await tokenineSwap?.functions.payTo()
+            if (payTo) {
+                setIsMerchant(payTo[0] === account)
+            }
         }
         fetchLaunchTokenRemain()
-    }, [decimals, launchCurrencyAmount, tokenineSwap])
+    }, [account, decimals, launchCurrencyAmount, tokenineSwap])
 
     return (
         <>
@@ -175,7 +196,7 @@ function LaunchPadPage({
                                         </div>
                                     </div>
                                     <Card className="border border-white mb-10">
-                                        <p className="text-white">Remain:</p> 
+                                        <p className="text-white mb-3">Remain:</p> 
                                         <p className="text-center text-white text-h2">
                                         { launchPadRemain } {luachPadTokenSymbol}
                                         </p>
@@ -234,7 +255,7 @@ function LaunchPadPage({
                                             <Button
                                                 disabled={ApprovalState.PENDING === approvalState}
                                                 onClick={approve}
-                                                className="w-full border-gradient py-2 font-bold text-center text-high-emphesis"
+                                                className="w-full border-gradient py-2 font-bold text-center text-high-emphesis disabled:cursor-not-allowed"
                                             >
                                                 { ApprovalState.PENDING === approvalState ? i18n._(t`Approving`) : i18n._(t`Approve`)}
                                             </Button>
@@ -269,11 +290,102 @@ function LaunchPadPage({
                                 )}
                             </div>
                         </Card>
-                        {/* <Card className="flex items-center justify-center col-span-2 md:col-span-1 bg-green-thick hover:bg-super-light-green cursor-pointer shadow-pink-glow hover:shadow-pink-glow-hovered transition-colors">
-                            <img src={ComingSoon} alt="Coming Soon" className="block m-auto w-full h-auto" />
-                        </Card> */}
                     </div>
                 </div>
+
+                {isMerchant && <div>
+                    <div className="font-bold text-center text-4xl text-white mt-20">
+                        {i18n._(t`Merchant`)}
+                    </div>                 
+                    <div className="container mx-auto sm:px-6 max-w-5xl mt-10 rounded border border-white">
+                        <div className="grid gap-1 grid-flow-auto grid-cols-2">
+                            <Card className="col-span-2 md:col-span-1">
+                                <Card className="border border-white mb-10 w-full">
+                                    <p className="text-white mb-3">
+                                        <FaCoins className="inline-block mr-2" />
+                                        Remain ({luachPadTokenName}):
+                                    </p> 
+                                    <p className="text-center text-white text-h2">
+                                    { launchPadRemain } {luachPadTokenSymbol}
+                                    </p>
+                                    <div className="text-right mt-3">
+                                        <Button
+                                            disabled={launchPadRemain === '0'}
+                                            onClick={async () => {
+                                                const response = await tokenineSwap?.functions.ownerReclaimB()
+                                                addTransaction(response, {
+                                                    summary: 'Claimed!'
+                                                })
+                                            }}
+                                            size="small"
+                                            className={`bg-transparent disabled:cursor-not-allowed ${launchPadRemain !== '0' ? 'hover:bg-primary hover:text-white': ''} border border-gray-300 rounded-full text-gray-300 text-xs font-medium whitespace-nowrap`}
+                                        >
+                                            {i18n._(t`Claim back`)}
+                                        </Button>
+                                    </div>
+                                </Card>
+                                <p className="text-white">Deposite {luachPadTokenName} ({luachPadTokenSymbol})</p>
+                                <div className="text-white text-right text-caption2 mt-4">
+                                    Balance: {launchCurrencyAmount ? launchCurrencyAmount.toSignificant(6) : 0} {luachPadTokenSymbol}
+                                </div>
+                                <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-10">
+                                    <Button
+                                        onClick={onMaxMerchant}
+                                        size="small"
+                                        className="bg-transparent hover:bg-primary hover:text-white border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
+                                    >
+                                        {i18n._(t`Max`)}
+                                    </Button>
+                                    <NumericalInput
+                                        className="token-amount-input text-right"
+                                        value={tokenMerchantBalance}
+                                        onUserInput={val => {
+                                            setTokenMerchantBalance(val)
+                                        }}
+                                    />
+                                    <span className="ml-2">{luachPadTokenSymbol}</span>
+                                </div>
+                                <Button
+                                    disabled={tokenMerchantBalance === ''}
+                                    color="blueTextWhite"
+                                    onClick={async () => {
+                                        const response = await merchantLaunchpadTokenContract?.functions.transfer(address, tokenMerchantBalance.toBigNumber(decimals))
+                                        addTransaction(response, {
+                                            summary: 'Deposite'
+                                        })
+                                        setTokenMerchantBalance('')
+                                    }
+                                    }
+                                    className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
+                                >
+                                    {i18n._(t`Deposite`)}
+                                </Button>
+                            </Card>
+                            <Card className="col-span-2 md:col-span-1">
+                                <Card className="border border-white mb-10 w-full">
+                                    <p className="text-white mb-3"><BsGraphUp className="inline-block mr-1" /> Income ({forBuyingTokenName}) :</p> 
+                                    <p className="text-center text-white text-h2">
+                                    { launchPadIncomeBalance } {forBuyingTokenSymbol}
+                                    </p>
+                                </Card>
+                                <Button
+                                    color="gradient3"
+                                    disabled={launchPadIncomeBalance === '0'}
+                                    onClick={async () => {
+                                        const response = await tokenineSwap?.functions.ownerReclaimA()
+                                        addTransaction(response, {
+                                            summary: 'Claimed!'
+                                        })
+                                    }
+                                    }
+                                    className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
+                                >
+                                    {i18n._(t`Claim ${forBuyingTokenName}`)}
+                                </Button>
+                            </Card>
+                        </div>
+                    </div>
+                </div>}
             </BackgroundMain>
         </>
     )
