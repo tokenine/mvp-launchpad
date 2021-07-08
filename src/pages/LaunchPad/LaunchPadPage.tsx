@@ -31,12 +31,6 @@ const BackgroundMain = styled.div`
     overflow-y: scroll;
 `
 
-const ArrowCenter = styled.div`
-    position: absolute;
-    left: 50%;
-    transform: translateY(-50%);
-`
-
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function LaunchPadPage({
     match: {
@@ -213,12 +207,10 @@ function LaunchPadPage({
                                             <span className="ml-2">{forBuyingTokenSymbol}</span>
                                         </div>
                                         <p className={`${ warningMsg === '' ? 'invisible' : 'visible' } text-red text-sm`}>Warning: {warningMsg}</p>
-                                        <div className="text-white w-full text-center relative mt-8 h-2">
-                                            <ArrowCenter>
-                                                <AiOutlineArrowDown size="24" />
-                                            </ArrowCenter>
+                                        <div className="text-white w-full text-center relative mt-2">
+                                            <AiOutlineArrowDown className="mx-auto" size="24" />
                                         </div>
-                                        <div className="text-white text-right text-caption2 mt-8">
+                                        <div className="text-white text-right text-caption2 mt-4">
                                             Balance: {launchCurrencyAmount ? launchCurrencyAmount.toSignificant(6) : 0} {luachPadTokenSymbol}
                                         </div>
                                         <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-10">
