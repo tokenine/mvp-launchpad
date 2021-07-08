@@ -255,7 +255,7 @@ function LaunchPadPage({
                                             <Button
                                                 disabled={ApprovalState.PENDING === approvalState}
                                                 onClick={approve}
-                                                className="w-full border-gradient py-2 font-bold text-center text-high-emphesis"
+                                                className="w-full border-gradient py-2 font-bold text-center text-high-emphesis disabled:cursor-not-allowed"
                                             >
                                                 { ApprovalState.PENDING === approvalState ? i18n._(t`Approving`) : i18n._(t`Approve`)}
                                             </Button>
@@ -310,6 +310,7 @@ function LaunchPadPage({
                                     </p>
                                     <div className="text-right mt-3">
                                         <Button
+                                            disabled={launchPadRemain === '0'}
                                             onClick={async () => {
                                                 const response = await tokenineSwap?.functions.ownerReclaimB()
                                                 addTransaction(response, {
@@ -317,7 +318,7 @@ function LaunchPadPage({
                                                 })
                                             }}
                                             size="small"
-                                            className="bg-transparent hover:bg-primary hover:text-white border border-gray-300 rounded-full text-gray-300 text-xs font-medium whitespace-nowrap"
+                                            className={`bg-transparent disabled:cursor-not-allowed ${launchPadRemain !== '0' ? 'hover:bg-primary hover:text-white': ''} border border-gray-300 rounded-full text-gray-300 text-xs font-medium whitespace-nowrap`}
                                         >
                                             {i18n._(t`Claim back`)}
                                         </Button>
@@ -336,7 +337,6 @@ function LaunchPadPage({
                                         {i18n._(t`Max`)}
                                     </Button>
                                     <NumericalInput
-                                        disabled={isCommiting}
                                         className="token-amount-input text-right"
                                         value={tokenMerchantBalance}
                                         onUserInput={val => {
@@ -370,6 +370,7 @@ function LaunchPadPage({
                                 </Card>
                                 <Button
                                     color="gradient3"
+                                    disabled={launchPadIncomeBalance === '0'}
                                     onClick={async () => {
                                         const response = await tokenineSwap?.functions.ownerReclaimA()
                                         addTransaction(response, {
