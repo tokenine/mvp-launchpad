@@ -1,4 +1,3 @@
-import BUSD from '../../assets/images/launchpad-token/busd_logo_black_flushleft-300x138.png'
 import { Card } from 'kashi/components'
 import { Helmet } from 'react-helmet'
 import React, { useEffect, useMemo } from 'react'
