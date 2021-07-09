@@ -44,7 +44,11 @@ import Yield from './pages/Yield'
 import Transactions from './pages/Transactions'
 
 const LaunchPadAllowChaidId: ChainId[] = [
-    ChainId.BSC_TESTNET
+    ChainId.BSC_TESTNET,
+    ChainId.BKC,
+    ChainId.BSC,
+    ChainId.XCHAIN,
+    ChainId.MATIC
 ]
 
 function Routes(): JSX.Element {
@@ -78,17 +82,18 @@ function Routes(): JSX.Element {
             {/* {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
                 <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
             )} */}
-            {(chainId === ChainId.BSC_TESTNET)
-                && <Route exact strict path="/yield" component={Yield} />}
+            {/* {(chainId === ChainId.BSC_TESTNET)
+                && <Route exact strict path="/yield" component={Yield} />
+            } */}
             {/* {chainId === ChainId.MAINNET && (
                 <Route exact strict path="/yield/debug/:address" component={MasterChefV1Debug} />
             )} */}
             {/* {chainId === ChainId.MAINNET && <Route exact strict path="/vesting" component={Vesting} />} */}
 
             {/* Migrate */}
-            {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
+            {/* {(chainId === ChainId.BKC || chainId === ChainId.BSC || chainId === ChainId.MATIC) && (
                 <Route exact strict path="/migrate" component={Migrate} />
-            )}
+            )} */}
 
             {/* SushiBar Staking */}
             {/* {chainId === ChainId.MAINNET && <Route exact strict path="/sushibar" component={SushiBar} />} */}
@@ -102,7 +107,7 @@ function Routes(): JSX.Element {
             {/* {chainId === ChainId.MAINNET && <Route exact strict path="/saave" component={Saave} />} */}
 
             {/* Pages */}
-            <Route exact strict path="/tradingview" component={Trade} />
+            {/* <Route exact strict path="/tradingview" component={Trade} />
             <Route exact strict path="/trade" component={Swap} />
             <Route exact strict path="/swap" component={Swap} />
             <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
@@ -118,7 +123,7 @@ function Routes(): JSX.Element {
             <Route exact path="/create/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
             <Route exact path="/create/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
             <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
-            <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+            <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} /> */}
 
             {/* Redirects for app routes */}
             <Route
