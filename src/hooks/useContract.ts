@@ -63,6 +63,7 @@ import { getContract } from '../utils'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useMemo } from 'react'
 import TOKENINE_SWAP_JSON from '../constants/abis/tokenine-swap.json'
+import TOKENINE_STAKE_JSON from '../constants/abis/tokenine-stake.json'
 
 import { MINI_CHEF_V2_ADDRESS, MASTER_CHEF_V2_ADDRESS, MASTER_CHEF_V1_ADDRESS } from 'constants/farms'
 
@@ -83,6 +84,10 @@ export function useContract(address: string | undefined, ABI: any, withSignerIfP
 
 export function useTokenineSwapContract(address: string): Contract | null {
     return useContract(address, TOKENINE_SWAP_JSON, true)
+}
+
+export function useTokenineStakeContract(address: string): Contract | null {
+    return useContract(address, TOKENINE_STAKE_JSON, true)
 }
 
 export function useV1FactoryContract(): Contract | null {

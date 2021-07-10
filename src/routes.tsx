@@ -17,6 +17,8 @@ import Connect from './kashi/pages/Connect'
 import LaunchPad from './pages/LaunchPad'
 import LaunchPadPage from './pages/LaunchPad/LaunchPadPage'
 import Donate from './pages/Donate'
+import Stake from './pages/Stake'
+import StakePage from './pages/Stake/StakePage'
 // import BentoBalances from './pages/LaunchPad/Balances'
 // import Migrate from './pages/Migrate'
 // import Pool from './pages/Pool'
@@ -55,7 +57,6 @@ function Routes(): JSX.Element {
     return (
         <Switch>
             <PublicRoute exact path="/connect" component={Connect} />
-            {/* BentoApps */}
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route exact strict path="/launchpad" component={LaunchPad} />
             }
@@ -64,6 +65,12 @@ function Routes(): JSX.Element {
             }
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route exact strict path="/donate" component={Donate} />
+            }
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route exact strict path="/stake" component={Stake} />
+            }
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route strict path="/stake/:address" component={StakePage} />
             }
             {/* <Route exact strict path="/bento" component={Bento} /> */}
             {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
