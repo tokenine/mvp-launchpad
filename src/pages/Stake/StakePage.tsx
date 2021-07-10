@@ -11,7 +11,6 @@ import { Input as NumericalInput } from 'components/NumericalInput'
 import Button from 'components/Button'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import { useTokenineStakeContract } from '../../hooks/useContract'
-import { BigNumber } from 'ethers'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import styled from 'styled-components'
 import { useTokenDetail } from './useTokenDetail'
@@ -46,7 +45,7 @@ function StakePage({
     const { i18n } = useLingui()
 
     const { account, chainId } = useActiveWeb3React()
-    const [isCopied, staticCopy] = useCopyClipboard()
+    const [isLoadingEndDate, setIsLoadingEndDate] = useState(true)
 
     const [stakeDetail, setStakeDetail] = useState<StakeTokenList>()
     const [endDate, setEndDate] = useState(new Date())
@@ -96,9 +95,15 @@ function StakePage({
         }
         setStakeDetail(checkStakeDetail)
         const getMVPStakeDetail = async () => {
-            const endDateContract = await stakeContract?.functions.endDate()
-            if (endDateContract) {
-                setEndDate(new Date(endDateContract[0].toNumber() * 1000))
+            try {
+                const endDateContract = await stakeContract?.functions.endDate()
+                if (endDateContract) {
+                    setEndDate(new Date(endDateContract[0].toNumber() * 1000))
+                    setIsLoadingEndDate(false)
+                }
+            } catch (err) {
+                console.error(err)
+                setIsLoadingEndDate(false)
             }
         }
         getMVPStakeDetail()
@@ -144,7 +149,7 @@ function StakePage({
                     </div>
                 </div>
 
-                <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-white">
+                <div className="container mx-auto sm:px-6 max-w-5xl rounded border border-white">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
                         <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-white">
                             {stakeDetail && stakeDetail.imageTokenUrl && <div className="text-center mb-10">
@@ -182,10 +187,10 @@ function StakePage({
                                         <div className="text-white text-right text-caption2">
                                             Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
                                         </div>
-                                        { new Date().getTime() >= endDate.getTime() ? <div>
+                                        { endDate.getTime() <= new Date().getTime() && !isLoadingEndDate  ? <div>
                                             <Button
                                                 color="gradient3"
-                                                disabled={isCommiting}
+                                                disabled={isCommiting || !stakeTokenCurrencyAmount || stakeTokenCurrencyAmount?.toExact() === '0'}
                                                 onClick={async () => {
                                                     try {
                                                         setIsCommiting(true)
@@ -238,7 +243,7 @@ function StakePage({
                                             { ApprovalState.APPROVED === approvalState && (
                                                 <Button
                                                     color="gradient3"
-                                                    disabled={isCommiting}
+                                                    disabled={isCommiting || stakeByTokenBalance === ''}
                                                     onClick={async () => {
                                                         try {
                                                             setIsCommiting(true)
