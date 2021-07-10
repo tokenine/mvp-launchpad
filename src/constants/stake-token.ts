@@ -22,7 +22,7 @@ export interface StakeTokenList {
     symbol: string
   }
 }
-
+// 0xF2059c93Bb02c43237099a4006548b47B55cDc1f
 const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
   '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce': {
     contractAddress: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce',
@@ -37,6 +37,28 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     },
     stakeToken: {
       address: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce',
+      name: 'MVPS1 Stake',
+      symbol: 'ST-MVPS1'
+    },
+    rewardPointToken: {
+      address: '0x85f79fCE8a5890F76a684DD99818ac980de23Ed8',
+      name: 'MVP special 1',
+      symbol: 'MVPS1'
+    }
+  },
+  '0xF2059c93Bb02c43237099a4006548b47B55cDc1f': {
+    contractAddress: '0xF2059c93Bb02c43237099a4006548b47B55cDc1f',
+    title: 'TokenA (New)',
+    imageTokenUrl: '/images/tokens/busd-square.jpg',
+    proposalContent: '<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p>',
+    available: true,
+    stakeByToken: {
+      address: '0xEcafC0F1E5448868A08d89fa99e1d2a0694aEe23',
+      name: 'TokenA',
+      symbol: 'TKA'
+    },
+    stakeToken: {
+      address: '0xF2059c93Bb02c43237099a4006548b47B55cDc1f',
       name: 'MVPS1 Stake',
       symbol: 'ST-MVPS1'
     },

@@ -17,6 +17,7 @@ import Connect from './kashi/pages/Connect'
 import LaunchPad from './pages/LaunchPad'
 import LaunchPadPage from './pages/LaunchPad/LaunchPadPage'
 import Donate from './pages/Donate'
+import DonatePage from './pages/Donate/DonatePage'
 import Stake from './pages/Stake'
 import StakePage from './pages/Stake/StakePage'
 // import BentoBalances from './pages/LaunchPad/Balances'
@@ -64,13 +65,16 @@ function Routes(): JSX.Element {
                 && <Route strict path="/launchpad/:address" component={LaunchPadPage} />
             }
             {chainId && LaunchPadAllowChaidId.includes(chainId)
-                && <Route exact strict path="/donate" component={Donate} />
-            }
-            {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route exact strict path="/stake" component={Stake} />
             }
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/stake/:address" component={StakePage} />
+            }
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route exact strict path="/donate" component={Donate} />
+            }
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route strict path="/donate/:address" component={DonatePage} />
             }
             {/* <Route exact strict path="/bento" component={Bento} /> */}
             {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}
