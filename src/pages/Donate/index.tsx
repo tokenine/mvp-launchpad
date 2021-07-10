@@ -5,8 +5,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { StakeTokenList } from '../../constants/stake-token'
-import { donateTokenListByChainId } from '../../constants/donate-token'
+import { donateTokenListByChainId, DonateTokenList } from '../../constants/donate-token'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { BiDonateHeart } from 'react-icons/bi'
  
@@ -23,13 +22,13 @@ function Stake(): JSX.Element {
 
     const { chainId } = useActiveWeb3React()
 
-    const [items, setItems] = useState<StakeTokenList[]>([])
+    const [items, setItems] = useState<DonateTokenList[]>([])
 
     useEffect(() => {
         try {
             console.log(chainId)
             if (chainId) {
-                setItems(Object.values(donateTokenListByChainId[chainId] as StakeTokenList))
+                setItems(Object.values(donateTokenListByChainId[chainId] as DonateTokenList))
             }
         } catch (err) {
 

@@ -23,10 +23,36 @@ import { shortenAddress } from '../../utils'
 import useCopyClipboard from '../../hooks/useCopyClipboard'
 import { Token } from 'dfy-sdk'
 import { RouteComponentProps, useHistory } from 'react-router-dom'
-import { StakeTokenList } from '../../constants/stake-token'
-import { donateTokenListByChainId } from '../../constants/donate-token'
+import { donateTokenListByChainId, DonateTokenList } from '../../constants/donate-token'
 import Loader from 'components/Loader'
 import { BiDonateHeart } from 'react-icons/bi'
+import Confetti from 'react-confetti'
+
+const Modal = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(105, 209, 113, 0.5);
+`
+
+const ModalBody = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    --webkit-transform: translate(-50%, -50%);
+    padding: 25px;
+    min-width: 400px;
+    backdrop-filter: blur(9px) saturate(180%);
+    -webkit-backdrop-filter: blur(9px) saturate(180%);
+    background-color: rgba(17, 40, 22, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    
+`
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -49,7 +75,9 @@ function DonatePage({
 
     const { account, chainId } = useActiveWeb3React()
 
-    const [donateDetail, setDonateDetail] = useState<StakeTokenList>()
+    const [showConfetti, setShowConfetti] = useState(false)
+
+    const [donateDetail, setDonateDetail] = useState<DonateTokenList>()
     
     const [donateTokenBalance, setDonateTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
@@ -93,9 +121,28 @@ function DonatePage({
                 <title>Donate | DFY</title>
             </Helmet>
             <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
+                {showConfetti && <Modal>
+                    <ModalBody className="text-white">
+                        <h1 className="text-center font-bold text-h1 mb-5">{donateDetail?.thankWord?.title}</h1>
+                        <p className="text-center">
+                            {donateDetail?.thankWord?.content}
+                        </p>
+                    </ModalBody>
+                </Modal>}
+                <Confetti
+                    recycle={false}
+                    numberOfPieces={showConfetti ? 500 : 0}
+                    tweenDuration={8000}
+                    className="w-screen h-screen z-50"
+                    onConfettiComplete={confetti => {
+                        if (confetti) {
+                            setShowConfetti(false)
+                            confetti.reset()
+                        }
+                    }}
+                ></Confetti>
 
                 <div className="relative flex flex-col items-center">
-                    {/* <img alt="" src={BentoBoxLogo} className="object-scale-down w-40 md:w-60 h-auto" /> */}
 
                 <div className="container mx-auto max-w-3xl">
                     <div className="font-bold text-center text-4xl text-white my-20">
@@ -178,6 +225,7 @@ function DonatePage({
                                                             addTransaction(response, {
                                                                 summary: 'Thank you for donation'
                                                             })
+                                                            setShowConfetti(true)
                                                             setDonateTokenBalance('')
                                                             setIsCommiting(false)
                                                         } catch (err) {
