@@ -49,41 +49,41 @@ function DonatePage({
 
     const { account, chainId } = useActiveWeb3React()
 
-    const [stakeDetail, setStakeDetail] = useState<StakeTokenList>()
+    const [donateDetail, setDonateDetail] = useState<StakeTokenList>()
     
-    const [stakeByTokenBalance, setStakeByTokenBalance] = useState('')
+    const [donateTokenBalance, setDonateTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
 
-    const [stakeByTokenName, stakeByTokenSymbol, stakeByTokenDecimals] = useTokenDetail(stakeDetail?.stakeByToken?.address, account)
-    const stakeByTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.stakeByToken ? new Token(chainId ?? 0, stakeDetail?.stakeByToken?.address, stakeByTokenDecimals, stakeByTokenSymbol, stakeByTokenName) : undefined)
+    const [stakeByTokenName, stakeByTokenSymbol, stakeByTokenDecimals] = useTokenDetail(donateDetail?.stakeByToken?.address, account)
+    const stakeByTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, donateDetail?.stakeByToken ? new Token(chainId ?? 0, donateDetail?.stakeByToken?.address, stakeByTokenDecimals, stakeByTokenSymbol, stakeByTokenName) : undefined)
 
     const decimals = stakeByTokenDecimals
 
-    const [stakeTokenName, stakeTokenSymbol, stakeTokenDecimals] = useTokenDetail(stakeDetail?.stakeToken?.address, account)
-    const stakeTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.stakeToken ? new Token(chainId ?? 0, stakeDetail?.stakeToken?.address, stakeTokenDecimals, stakeTokenSymbol, stakeTokenName) : undefined)
+    const [stakeTokenName, stakeTokenSymbol, stakeTokenDecimals] = useTokenDetail(donateDetail?.stakeToken?.address, account)
+    const stakeTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, donateDetail?.stakeToken ? new Token(chainId ?? 0, donateDetail?.stakeToken?.address, stakeTokenDecimals, stakeTokenSymbol, stakeTokenName) : undefined)
 
-    const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, stakeDetail?.stakeToken ? stakeDetail?.stakeToken.address : '')
+    const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, donateDetail?.stakeToken ? donateDetail?.stakeToken.address : '')
     const addTransaction = useTransactionAdder()
 
-    const stakeContract = useTokenineStakeContract(stakeDetail?.contractAddress ?? '')
+    const stakeContract = useTokenineStakeContract(donateDetail?.contractAddress ?? '')
 
     const onMax = () => {
-        setStakeByTokenBalance(
+        setDonateTokenBalance(
             stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount.toExact() : ''
         )
     }
 
     useEffect(() => {
         if (!chainId) return
-        const checkStakeDetail = donateTokenListByChainId[chainId][address]
+        const checkDonateDetail = donateTokenListByChainId[chainId][address]
         if (!address || (address && address === '')
-            || !checkStakeDetail
-            || (checkStakeDetail && !checkStakeDetail.available))
+            || !checkDonateDetail
+            || (checkDonateDetail && !checkDonateDetail.available))
         {
-            history.push('/stake')
+            history.push('/donate')
             return
         }
-        setStakeDetail(checkStakeDetail)
+        setDonateDetail(checkDonateDetail)
     }, [address, history, chainId])
 
     return (
@@ -107,11 +107,11 @@ function DonatePage({
                 <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-white">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
                         <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-white">
-                            {stakeDetail && stakeDetail.imageTokenUrl && <div className="text-center mb-10">
-                                <img alt="launchpad" src={stakeDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
+                            {donateDetail && donateDetail.imageTokenUrl && <div className="text-center mb-10">
+                                <img alt="launchpad" src={donateDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
                             </div>}
                             <p className="text-h3 mb-5">Proposal Details</p>
-                            <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContent : ''}} />
+                            <div dangerouslySetInnerHTML={{__html: donateDetail ? donateDetail.proposalContent : ''}} />
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
@@ -148,9 +148,9 @@ function DonatePage({
                                                 <NumericalInput
                                                     disabled={isCommiting}
                                                     className="token-amount-input text-right"
-                                                    value={stakeByTokenBalance}
+                                                    value={donateTokenBalance}
                                                     onUserInput={val => {
-                                                        setStakeByTokenBalance(val)
+                                                        setDonateTokenBalance(val)
                                                     }}
                                                 />
                                                 <span className="ml-2">{stakeByTokenSymbol}</span>
@@ -170,15 +170,15 @@ function DonatePage({
                                             { ApprovalState.APPROVED === approvalState && (
                                                 <Button
                                                     color="gradient3"
-                                                    disabled={isCommiting}
+                                                    disabled={isCommiting || donateTokenBalance === '0' || donateTokenBalance === ''}
                                                     onClick={async () => {
                                                         try {
                                                             setIsCommiting(true)
-                                                            const response = await stakeContract?.functions.enter(stakeByTokenBalance.toBigNumber(decimals))
+                                                            const response = await stakeContract?.functions.enter(donateTokenBalance.toBigNumber(decimals))
                                                             addTransaction(response, {
                                                                 summary: 'Thank you for donation'
                                                             })
-                                                            setStakeByTokenBalance('')
+                                                            setDonateTokenBalance('')
                                                             setIsCommiting(false)
                                                         } catch (err) {
                                                             console.error(err)
