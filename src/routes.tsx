@@ -8,47 +8,46 @@ import Connect from './kashi/pages/Connect'
 // import LendMarkets from './kashi/pages/Markets/Lending'
 // import BorrowPair from './kashi/pages/Pair/Borrow'
 // import LendPair from './kashi/pages/Pair/Lend'
-import AddLiquidity from './pages/AddLiquidity'
-import {
-    RedirectDuplicateTokenIds,
-    RedirectOldAddLiquidityPathStructure,
-    RedirectToAddLiquidity
-} from './pages/AddLiquidity/redirects'
+// import AddLiquidity from './pages/AddLiquidity'
+// import {
+//     RedirectDuplicateTokenIds,
+//     RedirectOldAddLiquidityPathStructure,
+//     RedirectToAddLiquidity
+// } from './pages/AddLiquidity/redirects'
 import LaunchPad from './pages/LaunchPad'
 import LaunchPadPage from './pages/LaunchPad/LaunchPadPage'
+import Donate from './pages/Donate'
 // import BentoBalances from './pages/LaunchPad/Balances'
-import Migrate from './pages/Migrate'
-import Pool from './pages/Pool'
-import PoolFinder from './pages/PoolFinder'
-import RemoveLiquidity from './pages/RemoveLiquidity'
-import { RedirectOldRemoveLiquidityPathStructure } from './pages/RemoveLiquidity/redirects'
+// import Migrate from './pages/Migrate'
+// import Pool from './pages/Pool'
+// import PoolFinder from './pages/PoolFinder'
+// import RemoveLiquidity from './pages/RemoveLiquidity'
+// import { RedirectOldRemoveLiquidityPathStructure } from './pages/RemoveLiquidity/redirects'
 // import Saave from './pages/Saave'
 // import SushiBar from './pages/SushiBar'
 // import SushiBarTransactions from './pages/SushiBar/SushiBarTransactions'
 // import SushiBarTips from './pages/SushiBar/Tips'
-import Trade from './pages/Trade'
-import Swap from './pages/Swap'
+// import Trade from './pages/Trade'
+// import Swap from './pages/Swap'
 import {
     RedirectHashRoutes,
     // OpenClaimAddressModalAndRedirectToSwap,
     RedirectPathToSwapOnly,
-    RedirectToSwap
+    // RedirectToSwap
 } from './pages/Swap/redirects'
 // import Tools from './pages/Tools'
 // import Vesting from './pages/Vesting'
-import Yield from './pages/Yield'
+// import Yield from './pages/Yield'
 //import MasterChefV1 from './pages/Yield/masterchefv1'
 //import MasterChefV1Debug from './pages/Yield/masterchefv1/debug'
 //import MiniChefV2 from './pages/Yield/minichefv2'
 // import Positions from './pages/Positions'
-import Transactions from './pages/Transactions'
+// import Transactions from './pages/Transactions'
 
 const LaunchPadAllowChaidId: ChainId[] = [
     ChainId.BSC_TESTNET,
     ChainId.BKC,
-    ChainId.BSC,
-    ChainId.XCHAIN,
-    ChainId.MATIC
+    ChainId.BSC
 ]
 
 function Routes(): JSX.Element {
@@ -62,6 +61,9 @@ function Routes(): JSX.Element {
             }
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/launchpad/:address" component={LaunchPadPage} />
+            }
+            {chainId && LaunchPadAllowChaidId.includes(chainId)
+                && <Route exact strict path="/donate" component={Donate} />
             }
             {/* <Route exact strict path="/bento" component={Bento} /> */}
             {/* <WalletRoute exact strict path="/bento/balances" component={BentoBalances} /> */}

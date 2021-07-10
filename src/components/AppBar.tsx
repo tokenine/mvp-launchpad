@@ -88,14 +88,36 @@ function AppBar(): JSX.Element {
                                                 [
                                                     ChainId.BSC_TESTNET,
                                                     ChainId.BKC,
-                                                    ChainId.XCHAIN,
-                                                    ChainId.MATIC,
                                                     ChainId.BSC
                                                 ].includes(
                                                     chainId
                                                 ) && (
                                                     <NavLink id={`bento-nav-link`} to={'/launchpad'}>
-                                                        {i18n._(t`Launchpad`)} {/* bentobox */}
+                                                        {i18n._(t`Launchpad`)}
+                                                    </NavLink>
+                                                )}
+                                            {chainId &&
+                                                [
+                                                    ChainId.BSC_TESTNET,
+                                                    ChainId.BKC,
+                                                    ChainId.BSC
+                                                ].includes(
+                                                    chainId
+                                                ) && (
+                                                    <NavLink id={`bento-nav-link`} to={'/stake'}>
+                                                        {i18n._(t`Stake`)}
+                                                    </NavLink>
+                                                )}
+                                            {chainId &&
+                                                [
+                                                    ChainId.BSC_TESTNET,
+                                                    ChainId.BKC,
+                                                    ChainId.BSC
+                                                ].includes(
+                                                    chainId
+                                                ) && (
+                                                    <NavLink id={`bento-nav-link`} to={'/donate'}>
+                                                        {i18n._(t`Donate`)}
                                                     </NavLink>
                                                 )}
                                             {/* {chainId === ChainId.MAINNET && (
