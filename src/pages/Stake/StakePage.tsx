@@ -28,6 +28,10 @@ const BackgroundMain = styled.div`
     overflow-y: scroll;
 `
 
+const numberWithCommas = (x: string) => {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+}
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function StakePage({
     match: {
@@ -89,7 +93,8 @@ function StakePage({
                 }
                 const totalSupplyStakedFetch = await stakeContract?.functions.totalSupply()
                 if (totalSupplyStakedFetch) {
-                    setTotalStakedBalance(totalSupplyStakedFetch[0].toFixed(18))
+                    const justSificantNumber = totalSupplyStakedFetch[0].toFixed(decimals).split('.')[0]
+                    setTotalStakedBalance(numberWithCommas(justSificantNumber))
                 }
             } catch (err) {
                 console.error(err)
