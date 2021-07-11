@@ -72,6 +72,8 @@ function StakePage({
     const [stakeTokenName, stakeTokenSymbol, stakeTokenDecimals] = useTokenDetail(stakeDetail?.stakeToken?.address, account)
     const stakeTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.stakeToken ? new Token(chainId ?? 0, stakeDetail?.stakeToken?.address, stakeTokenDecimals, stakeTokenSymbol, stakeTokenName) : undefined)
 
+    const [totalStakedBalance, setTotalStakedBalance] = useState('0')
+
     const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, stakeDetail?.stakeToken ? stakeDetail?.stakeToken.address : '')
     const addTransaction = useTransactionAdder()
 
@@ -101,13 +103,17 @@ function StakePage({
                     setEndDate(new Date(endDateContract[0].toNumber() * 1000))
                     setIsLoadingEndDate(false)
                 }
+                const totalSupplyStakedFetch = await stakeContract?.functions.totalSupply()
+                if (totalSupplyStakedFetch) {
+                    setTotalStakedBalance(totalSupplyStakedFetch[0].toFixed(decimals))
+                }
             } catch (err) {
                 console.error(err)
                 setIsLoadingEndDate(false)
             }
         }
         getMVPStakeDetail()
-    }, [address, history, chainId, stakeContract])
+    }, [address, history, chainId, stakeContract, decimals])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -174,9 +180,15 @@ function StakePage({
                                         </div>
                                     </div>
                                     <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Staked:</p> 
+                                        <p className="text-white mb-3">Total Stakig:</p> 
                                         <p className="text-center text-white text-h2">
-                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeTokenSymbol}
+                                        { totalStakedBalance } {stakeByTokenSymbol}
+                                        </p>
+                                    </Card>
+                                    <Card className="border border-white mb-10">
+                                        <p className="text-white mb-3">Your Staking:</p> 
+                                        <p className="text-center text-white text-h2">
+                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeByTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">

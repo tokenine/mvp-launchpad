@@ -85,6 +85,8 @@ function DonatePage({
     const [donateTokenBalance, setDonateTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
 
+    const [totalStakedBalance, setTotalStakedBalance] = useState('0')
+    
     const [endDate, setEndDate] = useState(new Date())
     const [countDown, setCountDown] = useState<{
         days: number
@@ -105,6 +107,9 @@ function DonatePage({
 
     const [stakeTokenName, stakeTokenSymbol, stakeTokenDecimals] = useTokenDetail(donateDetail?.stakeToken?.address, account)
     const stakeTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, donateDetail?.stakeToken ? new Token(chainId ?? 0, donateDetail?.stakeToken?.address, stakeTokenDecimals, stakeTokenSymbol, stakeTokenName) : undefined)
+
+    const [donationTokenName, donationTokenSymbol, donationTokenDecimals] = useTokenDetail(donateDetail?.rewardPointToken?.address, account)
+    const donationTotalCurrencyAmount = useCurrencyBalance(donateDetail?.acceptDonateWallet ?? undefined, donateDetail?.rewardPointToken ? new Token(chainId ?? 0, donateDetail?.rewardPointToken?.address, donationTokenDecimals, donationTokenSymbol, donationTokenName) : undefined)
 
     const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, donateDetail?.stakeToken ? donateDetail?.stakeToken.address : '')
     const addTransaction = useTransactionAdder()
@@ -135,13 +140,17 @@ function DonatePage({
                     setEndDate(new Date(endDateContract[0].toNumber() * 1000))
                     setIsLoadingEndDate(false)
                 }
+                const totalSupplyStakedFetch = await stakeContract?.functions.totalSupply()
+                if (totalSupplyStakedFetch) {
+                    setTotalStakedBalance(totalSupplyStakedFetch[0].toFixed(decimals))
+                }
             } catch (err) {
                 console.error(err)
                 setIsLoadingEndDate(false)
             }
         }
         getMVPStakeDetail()
-    }, [address, history, chainId, stakeContract?.functions])
+    }, [address, history, chainId, stakeContract?.functions, decimals])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -234,9 +243,21 @@ function DonatePage({
                                         </div>
                                     </div>
                                     <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Staked:</p> 
+                                        <p className="text-white mb-3">Total Staking:</p> 
                                         <p className="text-center text-white text-h2">
-                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeTokenSymbol}
+                                        { totalStakedBalance } {stakeByTokenSymbol}
+                                        </p>
+                                    </Card>
+                                    <Card className="border border-white mb-10">
+                                        <p className="text-white mb-3">Total donation:</p> 
+                                        <p className="text-center text-white text-h2">
+                                        { donationTotalCurrencyAmount ? donationTotalCurrencyAmount.toSignificant(6) : 0 } {donationTokenSymbol}
+                                        </p>
+                                    </Card> 
+                                    <Card className="border border-white mb-10">
+                                        <p className="text-white mb-3">Your Staking:</p> 
+                                        <p className="text-center text-white text-h2">
+                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeByTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">

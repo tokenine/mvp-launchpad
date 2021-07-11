@@ -5,7 +5,8 @@ export interface DonateTokenList extends StakeTokenList {
   thankWord?: {
     title?: string
     content: string
-  }
+  },
+  acceptDonateWallet?: string
 }
 
 const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
@@ -33,7 +34,8 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
     thankWord: {
       title: 'Thank You',
       content: 'ขอบคุณที่ร่วมกันบริจาค {{token}} จำนวน {{amount}} เหรียญ ขอให้ท่านประสบความสำเร็จในสิ่งที่หวังและสุขภาพแข็งแรง ทางเราจะนำไปช่วยเหลือบุคลากรทางการแพทย์และอาสาสมัครให้เกิดประโยชน์สูงสุด'
-    }
+    },
+    acceptDonateWallet: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce'
   },
   'comingsoon': {
     contractAddress: 'comingsoon',
@@ -71,7 +73,8 @@ const BKC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
     thankWord: {
       title: 'Thank You',
       content: 'ขอบคุณที่ร่วมกันบริจาค {{token}} จำนวน {{amount}} เหรียญ ขอให้ท่านประสบความสำเร็จในสิ่งที่หวังและสุขภาพแข็งแรง ทางเราจะนำไปช่วยเหลือบุคลากรทางการแพทย์และอาสาสมัครให้เกิดประโยชน์สูงสุด'
-    }
+    },
+    acceptDonateWallet: '0xcD64a1fb76085F6184C1A8592f44DcF713EAD517'
   },
 }
 
