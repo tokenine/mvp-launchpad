@@ -56,7 +56,7 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
     [ChainId.MATIC]: 'Polygon (Matic)',
     [ChainId.MATIC_TESTNET]: 'Matic Testnet',
     [ChainId.XDAI]: 'xDai',
-    [ChainId.BKC]: 'BKC',
+    [ChainId.BKC]: 'Bitkub Chain',
     [ChainId.BSC]: 'BSC',
     [ChainId.BSC_TESTNET]: 'BSC Testnet',
     [ChainId.MOONBASE]: 'Moonbase',
