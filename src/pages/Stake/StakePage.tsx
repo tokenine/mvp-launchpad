@@ -76,7 +76,7 @@ function StakePage({
             || !checkStakeDetail
             || (checkStakeDetail && !checkStakeDetail.available))
         {
-            history.push('/stake')
+            history.push('/pool')
             return
         }
         setStakeDetail(checkStakeDetail)
