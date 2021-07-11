@@ -89,7 +89,7 @@ function StakePage({
                 }
                 const totalSupplyStakedFetch = await stakeContract?.functions.totalSupply()
                 if (totalSupplyStakedFetch) {
-                    setTotalStakedBalance(totalSupplyStakedFetch[0].toFixed(decimals))
+                    setTotalStakedBalance(totalSupplyStakedFetch[0].toFixed(18))
                 }
             } catch (err) {
                 console.error(err)

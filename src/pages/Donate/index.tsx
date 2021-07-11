@@ -53,11 +53,11 @@ function Stake(): JSX.Element {
                     </div>
                 </div>
 
-                <div className="container mx-auto max-w-5xl">
-                    <div className="gap-4 col-span-3 flex flex-row justify-center">
+                <div className="container mx-auto">
+                    <div className="flex flex-row gap-4 justify-center">
                         {items.length > 0 && items.map(item => (
                             <Link
-                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} w-1/3`}
+                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full`}
                                 key={item.contractAddress}
                                 to={item.available ? `/donate/${item.contractAddress}` : '/donate'}
                             >

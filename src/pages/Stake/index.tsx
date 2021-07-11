@@ -52,15 +52,15 @@ function Stake(): JSX.Element {
                     </div>
                 </div>
 
-                <div className="container mx-auto max-w-5xl">
-                    <div className="gap-4 flex flex-row justify-center">
+                <div className="container mx-auto">
+                    <div className="flex flex-row gap-4 justify-center">
                         {items.length > 0 && items.map(item => (
                             <Link
-                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} w-1/3`}
+                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full`}
                                 key={item.contractAddress}
                                 to={item.available ? `/pool/${item.contractAddress}` : '/pool'}
                             >
-                                <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-black rounded border border-black">
+                                <Card className="flex items-center justify-center text-center text-black rounded border border-black">
                                     <div className="my-3">
                                         <div className="my-5">
                                             <img alt="social giving" src={item.imageTokenUrl} className="inline-block h-auto w-full rounded-full ring-2 ring-white" />
