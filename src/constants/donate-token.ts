@@ -44,9 +44,36 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   },
 }
 
-const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {}
+const BSC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {}
 
-const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {}
+const BKC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
+  '0xf8F5123D019d0a150227b04384D189f2c82Ad9De': {
+    contractAddress: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
+    title: 'MVP STAKE',
+    imageTokenUrl: '/images/tokens/mvp-square.jpg',
+    proposalContent: '<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p>',
+    available: true,
+    stakeByToken: {
+      address: '0xDD7847deD760a8e7FB882B4A9B0e990323415ed9',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
+      name: 'Stake MD',
+      symbol: 'ST-MDD'
+    },
+    rewardPointToken: {
+      address: '0x9c882a7004D4bB7E5fa77856625225EA29619323',
+      name: 'Token MD',
+      symbol: 'MD'
+    },
+    thankWord: {
+      title: 'Thank You',
+      content: 'ขอบคุณที่ร่วมกันบริจาค {{token}} จำนวน {{amount}} เหรียญ ขอให้ท่านประสบความสำเร็จในสิ่งที่หวังและสุขภาพแข็งแรง ทางเราจะนำไปช่วยเหลือบุคลากรทางการแพทย์และอาสาสมัครให้เกิดประโยชน์สูงสุด'
+    }
+  },
+}
 
 // use for list token each chain ID
 export const donateTokenListByChainId: { [key: string]: any } = {

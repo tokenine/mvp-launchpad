@@ -164,6 +164,14 @@ function DonatePage({
         }
     }, [endDate])
 
+    const calculateDonateAmount = async (_amount: BigNumber) => {
+        const amount = await stakeContract?.functions.calculateRewardPoint(_amount)
+        if (amount) {
+            return amount[0]
+        }
+        return BigNumber.from(0)
+    }
+
     return (
         <>
             {' '}
@@ -300,12 +308,14 @@ function DonatePage({
                                                     onClick={async () => {
                                                         try {
                                                             setIsCommiting(true)
-                                                            const response = await stakeContract?.functions.enter(donateTokenBalance.toBigNumber(decimals))
+                                                            const donateBlanceBigNum = donateTokenBalance.toBigNumber(decimals)
+                                                            const response = await stakeContract?.functions.enter(donateBlanceBigNum)
                                                             addTransaction(response, {
-                                                                summary: 'Thank you for donation'
+                                                                summary: 'Thank you for donation and staking'
                                                             })
+                                                            const donateAmount = await calculateDonateAmount(donateBlanceBigNum)
+                                                            setDonatedBalance(donateAmount.toFixed(decimals))
                                                             setShowConfetti(true)
-                                                            setDonatedBalance(donateTokenBalance)
                                                             setDonateTokenBalance('')
                                                             setIsCommiting(false)
                                                         } catch (err) {
@@ -315,7 +325,7 @@ function DonatePage({
                                                     }}
                                                     className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
                                                 >
-                                                    {i18n._(t`DONATE`)}
+                                                    {i18n._(t`STAKE & DONATE`)}
                                                 </Button>
                                             ) }
                                         </div>}
