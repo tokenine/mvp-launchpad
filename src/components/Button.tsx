@@ -14,7 +14,7 @@ const FILLED = {
     pink: 'bg-pink bg-opacity-80 w-full rounded text-base text-high-emphesis hover:bg-opacity-100',
     gradient: 'w-full text-white bg-gradient-to-r from-green to-blue',
     gradient2: 'w-full text-white bg-gradient-to-r from-blue to-green',
-    gradient3: 'w-full text-white bg-gradient-to-r from-green-thin to-green-thick',
+    gradient3: 'w-full text-white bg-gradient-to-r from-light-green to-super-light-green',
     blueTextWhite: 'bg-blue bg-opacity-80 w-full rounded text-base text-white hover:bg-opacity-100',
 }
 
@@ -24,7 +24,7 @@ const OUTLINED = {
     pink: 'bg-pink bg-opacity-20 outline-pink rounded text-xs text-pink hover:bg-opacity-40',
     gradient: 'bg-gradient-to-r from-red to-pink',
     gradient2: 'bg-gradient-to-r from-blue to-green',
-    gradient3: 'bg-gradient-to-r from-red to-pink',
+    gradient3: 'bg-gradient-to-r from-light-green to-super-light-green',
     blueTextWhite: 'bg-blue bg-opacity-20 outline-blue rounded text-xs text-blue hover:bg-opacity-40',
 }
 

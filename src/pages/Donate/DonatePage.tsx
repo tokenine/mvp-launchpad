@@ -35,7 +35,7 @@ const Modal = styled.div`
     z-index: 40;
     min-width: 100vw;
     min-height: 100vh;
-    background-color: rgba(105, 209, 113, 0.5);
+    background-color: rgba(209, 105, 174, 0.3);
 `
 
 const ModalBody = styled.div`
@@ -48,7 +48,7 @@ const ModalBody = styled.div`
     min-width: 400px;
     backdrop-filter: blur(9px) saturate(180%);
     -webkit-backdrop-filter: blur(9px) saturate(180%);
-    background-color: rgba(17, 40, 22, 0.75);
+    background-color: rgba(40, 17, 36, 0.75);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
     
@@ -189,7 +189,7 @@ function DonatePage({
             </Helmet>
             <BackgroundMain className="w-screen">
                 {showConfetti && <Modal>
-                    <ModalBody className="text-black">
+                    <ModalBody className="text-white">
                         {donateDetail?.thankWord?.title && <h1 className="text-center font-bold text-h1 mb-5">{donateDetail?.thankWord?.title}</h1>}
                         <p className="text-center">
                             {donateDetail?.thankWord?.content.replace('{{token}}', stakeByTokenSymbol).replace('{{amount}}', donatedBalance)}

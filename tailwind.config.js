@@ -79,8 +79,8 @@ module.exports = {
             primary: '#BFBFBF',
             secondary: '#707070',
             'low-emphesis': '#575757',
-            'light-green': '#39b54a',
-            'super-light-green': '#31d648',
+            'light-green': '#ff6e8b',
+            'super-light-green': '#ffb5c4',
 
             'green-header-yield': '#5dd152',
             'green-bg-yield': '#2c8039'
@@ -186,7 +186,7 @@ module.exports = {
                 'low-emphesis': '#6cb877',
                 primary: '#dedede',
                 secondary: '#ffffff',
-                'high-emphesis': '#39b54a',
+                'high-emphesis': '#f47c94',
                 'active-white': '#ffffff'
             },
             backgroundColor: {
