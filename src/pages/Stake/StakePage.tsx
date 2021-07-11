@@ -120,10 +120,10 @@ function StakePage({
                 <div className="container mx-auto sm:px-6 max-w-5xl rounded border border-black">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
                         <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-black">
-                            {stakeDetail && stakeDetail.imageTokenUrl && <div className="text-center mb-10">
-                                <img alt="launchpad" src={stakeDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
+                            {stakeDetail && stakeDetail.detailImage && <div className="text-center mb-10">
+                            <img alt="Self quarantine" src={stakeDetail.detailImage} className="inline-block w-1/2" />
                             </div>}
-                            <p className="text-h3 mb-5">Proposal Details</p>
+                            <p className="text-h3 mb-5">Self quarantine</p>
                             <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContent : ''}} />
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">
