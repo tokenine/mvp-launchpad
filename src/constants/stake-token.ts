@@ -80,11 +80,11 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
 const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {}
 
 const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
-  '0xf8F5123D019d0a150227b04384D189f2c82Ad9De': {
-    contractAddress: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
+  '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f': {
+    contractAddress: '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f',
     title: 'MVP STAKE',
     imageTokenUrl: '/images/tokens/mvp-square.jpg',
-    proposalContent: '<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p>',
+    proposalContent: '<p class="mb-3"></p><b> Self quarantine </b> ร่วมเป็นส่วนหนึ่งในการช่วยเหลือบุคลากรทางการแพทย์ อาสาสมัคร และตอบแทนตัวเองที่ช่วยกักตัวระหว่างช่วง Lockdown (12-26 กรกฎาคม 2564) ทีมงานขอเชิญชวนนำ MVP Coin ฝาก (Stake) 14 วัน เพื่อรับเหรียญ MD (MVP Donation) ตามรายละเอียดดังนี้ <br> • ผู้ฝากเหรียญจะได้รับ MD ในอัตรา 7% ของ MVP Coin ที่นำมาฝากครบ 14 วัน หรืออัตราคิดลด 0.5% จนเสร็จสิ้นกิจกรรม <br>  สามารถนำเหรียญ MD มาแลกเซ็ตอาหารต่างๆ ตามรายละเอียด พร้อมจัดส่งถึงบ้าน <br> เมื่อครบกำหนด (26 กรกฎาคม 2564) ผู้ถือเหรียญสามารถ Unstake เหรียญ MVP Coin คืนได้ "เต็มจำนวน" ส่วน MD สามารถใช้งาน ถึงวันที่ 31 กรกฎาคม 2564 หลังจากนั้นเหรียญจะหมดอายุ และถูก Burn ทั้งหมดออกจากระบบในวันที่ 1 สิงหาคม 2564',
     available: true,
     stakeByToken: {
       address: '0xDD7847deD760a8e7FB882B4A9B0e990323415ed9',
@@ -92,9 +92,9 @@ const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
       symbol: 'MVP'
     },
     stakeToken: {
-      address: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
+      address: '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f',
       name: 'Stake MD',
-      symbol: 'ST-MDD'
+      symbol: 'ST-MD'
     },
     rewardPointToken: {
       address: '0x9c882a7004D4bB7E5fa77856625225EA29619323',

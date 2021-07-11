@@ -84,7 +84,7 @@ function AppBar(): JSX.Element {
                                                         {i18n._(t`Lend`)}
                                                     </NavLink>
                                                 )} */}
-                                            {chainId &&
+                                            {/* chainId &&
                                                 [
                                                     ChainId.BSC_TESTNET,
                                                     ChainId.BKC,
@@ -96,7 +96,7 @@ function AppBar(): JSX.Element {
                                                     <NavLink id={`bento-nav-link`} to={'/launchpad'}>
                                                         {i18n._(t`Launchpad`)}
                                                     </NavLink>
-                                                )}
+                                                )*/}
                                             {chainId &&
                                                 [
                                                     ChainId.BSC_TESTNET,
@@ -289,10 +289,10 @@ function AppBar(): JSX.Element {
                                                                     type: 'ERC20',
                                                                     options: {
                                                                         address: address,
-                                                                        symbol: 'MVP',
+                                                                        symbol: 'MD',
                                                                         decimals: 18,
                                                                         image:
-                                                                            'https://raw.githubusercontent.com/dfy-asia/default-token-list/main/src/images/mvp.png'
+                                                                            'https://raw.githubusercontent.com/dfy-asia/default-token-list/main/src/images/md.png'
                                                                     }
                                                                 }
 

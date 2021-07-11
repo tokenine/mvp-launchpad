@@ -59,12 +59,12 @@ function Routes(): JSX.Element {
     return (
         <Switch>
             <PublicRoute exact path="/connect" component={Connect} />
-            {chainId && LaunchPadAllowChaidId.includes(chainId)
+            {/* chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route exact strict path="/launchpad" component={LaunchPad} />
-            }
-            {chainId && LaunchPadAllowChaidId.includes(chainId)
+            */}
+            {/* chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/launchpad/:address" component={LaunchPadPage} />
-            }
+            */}
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route exact strict path="/stake" component={Stake} />
             }
