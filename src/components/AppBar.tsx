@@ -216,33 +216,25 @@ function AppBar(): JSX.Element {
                                             library &&
                                             library.provider.isMetaMask && (
                                                 <>
-                                                    <QuestionHelper text={i18n._(t`Add Sushi to your Metamask wallet`)}>
+                                                    <QuestionHelper text={i18n._(t`Add MVP to your Metamask wallet`)}>
                                                         <div
                                                             className="hidden sm:inline-block rounded-md bg-dark-900 hover:bg-dark-800 cursor-pointer"
                                                             onClick={() => {
                                                                 let address: string | undefined
                                                                 switch (chainId) {
-                                                                    case ChainId.MAINNET:
+                                                                    case ChainId.BKC:
                                                                         address =
-                                                                            '0x6B3595068778DD592e39A122f4f5a5cF09C90fE2'
-                                                                        break
-                                                                    case ChainId.BSC:
-                                                                        address =
-                                                                            '0x947950BcC74888a40Ffa2593C5798F11Fc9124C4'
-                                                                        break
-                                                                    case ChainId.MATIC:
-                                                                        address =
-                                                                            '0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a'
+                                                                            '0xDD7847deD760a8e7FB882B4A9B0e990323415ed9'
                                                                         break
                                                                 }
                                                                 const params: any = {
                                                                     type: 'ERC20',
                                                                     options: {
                                                                         address: address,
-                                                                        symbol: 'SUSHI',
+                                                                        symbol: 'MVP',
                                                                         decimals: 18,
                                                                         image:
-                                                                            'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png'
+                                                                            'https://raw.githubusercontent.com/dfy-asia/default-token-list/main/src/images/mvp.png'
                                                                     }
                                                                 }
 
@@ -259,7 +251,7 @@ function AppBar(): JSX.Element {
                                                                         .then(success => {
                                                                             if (success) {
                                                                                 console.log(
-                                                                                    'Successfully added SUSHI to MetaMask'
+                                                                                    'Successfully added MVP to MetaMask'
                                                                                 )
                                                                             } else {
                                                                                 throw new Error('Something went wrong.')
@@ -270,7 +262,65 @@ function AppBar(): JSX.Element {
                                                             }}
                                                         >
                                                             <img
-                                                                src={`${process.env.PUBLIC_URL}/images/tokens/sushi-square.jpg`}
+                                                                src={`${process.env.PUBLIC_URL}/images/tokens/mvp-square.jpg`}
+                                                                alt="Switch Network"
+                                                                style={{
+                                                                    minWidth: 36,
+                                                                    minHeight: 36,
+                                                                    maxWidth: 36,
+                                                                    maxHeight: 36
+                                                                }}
+                                                                className="rounded-md object-contain"
+                                                            />
+                                                        </div>
+                                                    </QuestionHelper>
+                                                    <QuestionHelper text={i18n._(t`Add MD to your Metamask wallet`)}>
+                                                        <div
+                                                            className="hidden sm:inline-block rounded-md bg-dark-900 hover:bg-dark-800 cursor-pointer"
+                                                            onClick={() => {
+                                                                let address: string | undefined
+                                                                switch (chainId) {
+                                                                    case ChainId.BKC:
+                                                                        address =
+                                                                            '0x9c882a7004D4bB7E5fa77856625225EA29619323'
+                                                                        break
+                                                                }
+                                                                const params: any = {
+                                                                    type: 'ERC20',
+                                                                    options: {
+                                                                        address: address,
+                                                                        symbol: 'MVP',
+                                                                        decimals: 18,
+                                                                        image:
+                                                                            'https://raw.githubusercontent.com/dfy-asia/default-token-list/main/src/images/mvp.png'
+                                                                    }
+                                                                }
+
+                                                                if (
+                                                                    library &&
+                                                                    library.provider.isMetaMask &&
+                                                                    library.provider.request
+                                                                ) {
+                                                                    library.provider
+                                                                        .request({
+                                                                            method: 'wallet_watchAsset',
+                                                                            params
+                                                                        })
+                                                                        .then(success => {
+                                                                            if (success) {
+                                                                                console.log(
+                                                                                    'Successfully added MVP to MetaMask'
+                                                                                )
+                                                                            } else {
+                                                                                throw new Error('Something went wrong.')
+                                                                            }
+                                                                        })
+                                                                        .catch(console.error)
+                                                                }
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src={`${process.env.PUBLIC_URL}/images/tokens/md-square.jpg`}
                                                                 alt="Switch Network"
                                                                 style={{
                                                                     minWidth: 36,
