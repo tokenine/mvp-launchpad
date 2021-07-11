@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { launchTokenListByChainId, LaunchTokenList } from '../../constants/launch-token-list'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { ChainId } from 'dfy-sdk'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -25,12 +26,13 @@ function LaunchPad(): JSX.Element {
 
     useEffect(() => {
         try {
-            console.log(chainId)
-            if (chainId) {
-                setItems(Object.values(launchTokenListByChainId[chainId] as LaunchTokenList))
+            if (chainId && chainId !== 1) {
+                setItems(Object.values(launchTokenListByChainId[chainId] as LaunchTokenList[]))
+            } else {
+                setItems(Object.values(launchTokenListByChainId[ChainId.BKC] as LaunchTokenList[]))
             }
         } catch (err) {
-
+            console.error(err)
         }
     }, [chainId])
 

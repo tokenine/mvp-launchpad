@@ -123,6 +123,9 @@ function AppBar(): JSX.Element {
                                                         {i18n._(t`Stake & Donate`)}
                                                     </NavLink>
                                                 )} */}
+                                                <NavLink id={`bento-nav-link`} to={'/launchpad'}>
+                                                    {i18n._(t`Launchpad`)}
+                                                </NavLink>
                                                 <NavLink id={`bento-nav-link`} to={'/stake'}>
                                                     {i18n._(t`Stake`)}
                                                 </NavLink>
