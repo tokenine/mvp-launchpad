@@ -113,7 +113,7 @@ function StakePage({
             }
         }
         getMVPStakeDetail()
-    }, [address, history, chainId, stakeContract, decimals])
+    }, [address, history, chainId, stakeContract, decimals, stakeTokenCurrencyAmount])
 
     useEffect(() => {
         const interval = setInterval(() => {

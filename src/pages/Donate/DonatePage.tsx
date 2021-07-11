@@ -150,7 +150,7 @@ function DonatePage({
             }
         }
         getMVPStakeDetail()
-    }, [address, history, chainId, stakeContract?.functions, decimals])
+    }, [address, history, chainId, stakeContract?.functions, decimals, stakeTokenCurrencyAmount])
 
     useEffect(() => {
         const interval = setInterval(() => {
