@@ -15,18 +15,13 @@ import { BigNumber } from 'ethers'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import styled from 'styled-components'
 import { useTokenDetail } from './useTokenDetail'
-import { useTokenContract } from 'hooks/useContract'
-import { AiOutlineArrowDown, AiOutlineCopy } from 'react-icons/ai'
-import { BsGraphUp } from 'react-icons/bs'
-import { FaCoins } from 'react-icons/fa'
-import { shortenAddress } from '../../utils'
-import useCopyClipboard from '../../hooks/useCopyClipboard'
 import { Token } from 'dfy-sdk'
 import { RouteComponentProps, useHistory } from 'react-router-dom'
 import { donateTokenListByChainId, DonateTokenList } from '../../constants/donate-token'
 import Loader from 'components/Loader'
 import { BiDonateHeart } from 'react-icons/bi'
 import Confetti from 'react-confetti'
+import Countdown from 'react-countdown'
 
 const Modal = styled.div`
     position: absolute;
@@ -88,17 +83,6 @@ function DonatePage({
     const [totalStakedBalance, setTotalStakedBalance] = useState('0')
     
     const [endDate, setEndDate] = useState(new Date())
-    const [countDown, setCountDown] = useState<{
-        days: number
-        hours: number
-        minutes: number
-        seconds: number
-    }>({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
-    })
 
     const [stakeByTokenName, stakeByTokenSymbol, stakeByTokenDecimals] = useTokenDetail(donateDetail?.stakeByToken?.address, account)
     const stakeByTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, donateDetail?.stakeByToken ? new Token(chainId ?? 0, donateDetail?.stakeByToken?.address, stakeByTokenDecimals, stakeByTokenSymbol, stakeByTokenName) : undefined)
@@ -151,27 +135,6 @@ function DonatePage({
         }
         getMVPStakeDetail()
     }, [address, history, chainId, stakeContract?.functions, decimals, stakeTokenCurrencyAmount])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const distance = endDate.getTime() - new Date().getTime()
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-                setCountDown({
-                    days,
-                    hours,
-                    minutes,
-                    seconds
-                })
-            }
-        }, 1000)
-        return () => {
-            clearInterval(interval)
-        }
-    }, [endDate])
 
     const calculateDonateAmount = async (_amount: BigNumber) => {
         const amount = await stakeContract?.functions.calculateRewardPoint(_amount)
@@ -238,7 +201,12 @@ function DonatePage({
                                         <div className="text-black ml-5">
                                             <div>Time Remain:</div>
                                             <div>
-                                                {countDown.days}d {countDown.hours}h {countDown.minutes}m {countDown.seconds}s
+                                                <Countdown
+                                                    date={endDate}
+                                                    renderer={({ days, hours, minutes, seconds}) => (
+                                                        <span>{days}d {hours}h {minutes}m {seconds}s</span>
+                                                    )}
+                                                />
                                             </div>
                                         </div>
                                     </div>
