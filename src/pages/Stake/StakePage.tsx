@@ -103,7 +103,7 @@ function StakePage({
         <>
             {' '}
             <Helmet>
-                <title>Stake | DFY</title>
+                <title>Pool | DFY</title>
             </Helmet>
             <BackgroundMain className="w-screen">
 
@@ -112,7 +112,7 @@ function StakePage({
 
                     <div className="container mx-auto max-w-3xl">
                         <div className="font-bold text-center text-4xl text-black my-20">
-                            {i18n._(t`Stake`)}
+                            {i18n._(t`Pool`)}
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@ function StakePage({
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
                         <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-black">
                             {stakeDetail && stakeDetail.imageTokenUrl && <div className="text-center mb-10">
-                                <img alt="launchpad" src={stakeDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-black" />
+                                <img alt="launchpad" src={stakeDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
                             </div>}
                             <p className="text-h3 mb-5">Proposal Details</p>
                             <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContent : ''}} />

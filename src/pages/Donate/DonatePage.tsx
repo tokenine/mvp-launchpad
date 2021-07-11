@@ -148,7 +148,7 @@ function DonatePage({
         <>
             {' '}
             <Helmet>
-                <title>Stake &amp; Donate | DFY</title>
+                <title>Pool for donation | DFY</title>
             </Helmet>
             <BackgroundMain className="w-screen">
                 {showConfetti && <Modal>
@@ -176,7 +176,7 @@ function DonatePage({
 
                 <div className="container mx-auto max-w-3xl">
                     <div className="font-bold text-center text-4xl text-black my-20">
-                            <BiDonateHeart className="inline-block" /> {i18n._(t`Stake & Donate`)}
+                            <BiDonateHeart className="inline-block" /> {i18n._(t`Pool for donation`)}
                         </div>
                     </div>
                 </div>
@@ -184,10 +184,10 @@ function DonatePage({
                 <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-black">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
                         <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-black">
-                            {donateDetail && donateDetail.imageTokenUrl && <div className="text-center mb-10">
-                                <img alt="launchpad" src={donateDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-black" />
+                            {donateDetail && donateDetail.detailImage && <div className="text-center mb-10">
+                                <img alt="Social Giving" src={donateDetail.detailImage} className="inline-block w-1/2" />
                             </div>}
-                            <p className="text-h3 mb-5">Proposal Details</p>
+                            <p className="text-h3 mb-5">Social Giving</p>
                             <div dangerouslySetInnerHTML={{__html: donateDetail ? donateDetail.proposalContent : ''}} />
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">

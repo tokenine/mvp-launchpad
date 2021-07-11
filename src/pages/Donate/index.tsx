@@ -41,32 +41,32 @@ function Stake(): JSX.Element {
         <>
             {' '}
             <Helmet>
-                <title>Stake &amp; Donate | DFY</title>
+                <title>Pool for donation | DFY</title>
             </Helmet>
             <BackgroundMain className="w-screen">
 
                 <div className="relative flex flex-col items-center">
                     <div className="container mx-auto max-w-3xl">
                         <div className="font-bold text-center text-4xl text-black my-20">
-                            <BiDonateHeart className="inline-block" /> {i18n._(t`Stake & Donate`)}
+                            <BiDonateHeart className="inline-block" /> {i18n._(t`Pool for donation`)}
                         </div>
                     </div>
                 </div>
 
-                <div className="container mx-auto sm:px-6 max-w-5xl">
-                    <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-3">
+                <div className="container mx-auto max-w-5xl">
+                    <div className="gap-4 col-span-3 flex flex-row justify-center">
                         {items.length > 0 && items.map(item => (
                             <Link
-                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'}`}
+                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} w-1/3`}
                                 key={item.contractAddress}
                                 to={item.available ? `/donate/${item.contractAddress}` : '/donate'}
                             >
-                                <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-black rounded border border-black">
+                                <Card className="flex items-center justify-center text-center text-black rounded border border-black">
                                     <div className="my-3">
-                                        <div className="my-5">
-                                            <img alt="launchpad" src={item.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-black" />
+                                        <div className="my-3">
+                                            <img alt="social giving" src={item.imageTokenUrl} className="inline-block w-full h-auto rounded-full ring-2 ring-white" />
                                         </div>
-                                        <p className="text-h3">{item.title}</p>
+                                        <p className="text-h3" dangerouslySetInnerHTML={{__html: item.title}}></p>
                                     </div>
                                 </Card>
                             </Link>
