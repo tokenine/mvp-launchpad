@@ -187,9 +187,9 @@ function DonatePage({
             <Helmet>
                 <title>Stake &amp; Donate | DFY</title>
             </Helmet>
-            <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
+            <BackgroundMain className="w-screen">
                 {showConfetti && <Modal>
-                    <ModalBody className="text-white">
+                    <ModalBody className="text-black">
                         {donateDetail?.thankWord?.title && <h1 className="text-center font-bold text-h1 mb-5">{donateDetail?.thankWord?.title}</h1>}
                         <p className="text-center">
                             {donateDetail?.thankWord?.content.replace('{{token}}', stakeByTokenSymbol).replace('{{amount}}', donatedBalance)}
@@ -212,17 +212,17 @@ function DonatePage({
                 <div className="relative flex flex-col items-center">
 
                 <div className="container mx-auto max-w-3xl">
-                    <div className="font-bold text-center text-4xl text-white my-20">
+                    <div className="font-bold text-center text-4xl text-black my-20">
                             <BiDonateHeart className="inline-block" /> {i18n._(t`Stake & Donate`)}
                         </div>
                     </div>
                 </div>
 
-                <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-white">
+                <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-black">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-white">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-black">
                             {donateDetail && donateDetail.imageTokenUrl && <div className="text-center mb-10">
-                                <img alt="launchpad" src={donateDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
+                                <img alt="launchpad" src={donateDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-black" />
                             </div>}
                             <p className="text-h3 mb-5">Proposal Details</p>
                             <div dangerouslySetInnerHTML={{__html: donateDetail ? donateDetail.proposalContent : ''}} />
@@ -231,41 +231,41 @@ function DonatePage({
                             <div className="relative w-full">
                                 {stakeByTokenName && stakeByTokenSymbol && stakeByTokenDecimals ? <div>
                                     <div className="flex mb-10 ">
-                                        <div className="pr-5 text-white text-center border-r border-white">
+                                        <div className="pr-5 text-black text-center border-r border-black">
                                             <p className="text-h1 font-bold">{stakeByTokenSymbol}</p>
                                             <p>{stakeByTokenName}</p>
                                         </div>
-                                        <div className="text-white ml-5">
+                                        <div className="text-black ml-5">
                                             <div>Time Remain:</div>
                                             <div>
                                                 {countDown.days}d {countDown.hours}h {countDown.minutes}m {countDown.seconds}s
                                             </div>
                                         </div>
                                     </div>
-                                    <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Total Staking:</p> 
-                                        <p className="text-center text-white text-h2">
+                                    <Card className="border border-black mb-10">
+                                        <p className="text-black mb-3">Total Staking:</p> 
+                                        <p className="text-center text-black text-h2">
                                         { totalStakedBalance } {stakeByTokenSymbol}
                                         </p>
                                     </Card>
-                                    <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Total donation:</p> 
-                                        <p className="text-center text-white text-h2">
+                                    <Card className="border border-black mb-10">
+                                        <p className="text-black mb-3">Total donation:</p> 
+                                        <p className="text-center text-black text-h2">
                                         { donationTotalCurrencyAmount ? donationTotalCurrencyAmount.toSignificant(6) : 0 } {donationTokenSymbol}
                                         </p>
                                     </Card> 
-                                    <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Your Staking:</p> 
-                                        <p className="text-center text-white text-h2">
+                                    <Card className="border border-black mb-10">
+                                        <p className="text-black mb-3">Your Staking:</p> 
+                                        <p className="text-center text-black text-h2">
                                         { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeByTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">
-                                    <Loader stroke="white" />
+                                    <Loader stroke="black" />
                                 </div>}
                                 {account ? (
                                     <div>
-                                        <div className="text-white text-right text-caption2">
+                                        <div className="text-black text-right text-caption2">
                                             Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
                                         </div>
                                         <div>
@@ -287,16 +287,16 @@ function DonatePage({
                                                         setIsCommiting(false)
                                                     }
                                                 }}
-                                                className="w-full border border-white py-2 mb-5 font-bold text-center text-white disabled:cursor-not-allowed"
+                                                className="w-full border border-black py-2 mb-5 font-bold text-center text-black disabled:cursor-not-allowed"
                                             >
                                                 {i18n._(t`CLAIM BACK`)}
                                             </Button>
                                         </div> : <div>
-                                            <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-5">
+                                            <div className="flex items-center rounded border border-black bg-white space-x-3 p-3 w-full mb-5">
                                                 <Button
                                                     onClick={onMax}
                                                     size="small"
-                                                    className="bg-transparent hover:bg-primary hover:text-white border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
+                                                    className="bg-transparent hover:bg-primary hover:text-black border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
                                                 >
                                                     {i18n._(t`Max`)}
                                                 </Button>
@@ -311,7 +311,7 @@ function DonatePage({
                                                 <span className="ml-2">{stakeByTokenSymbol}</span>
                                             </div>
                                             { ApprovalState.UNKNOWN === approvalState && <div className="w-2 mx-auto">
-                                                <Loader stroke="white" />
+                                                <Loader stroke="black" />
                                             </div>}
                                             { (ApprovalState.NOT_APPROVED === approvalState || ApprovalState.PENDING === approvalState) && (
                                                 <Button
@@ -344,7 +344,7 @@ function DonatePage({
                                                             setIsCommiting(false)
                                                         }
                                                     }}
-                                                    className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
+                                                    className="w-full border border-black py-2 font-bold text-center text-black disabled:cursor-not-allowed"
                                                 >
                                                     {i18n._(t`STAKE & DONATE`)}
                                                 </Button>

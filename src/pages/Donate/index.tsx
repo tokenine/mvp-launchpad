@@ -43,11 +43,11 @@ function Stake(): JSX.Element {
             <Helmet>
                 <title>Stake &amp; Donate | DFY</title>
             </Helmet>
-            <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
+            <BackgroundMain className="w-screen">
 
                 <div className="relative flex flex-col items-center">
                     <div className="container mx-auto max-w-3xl">
-                        <div className="font-bold text-center text-4xl text-white my-20">
+                        <div className="font-bold text-center text-4xl text-black my-20">
                             <BiDonateHeart className="inline-block" /> {i18n._(t`Stake & Donate`)}
                         </div>
                     </div>
@@ -61,10 +61,10 @@ function Stake(): JSX.Element {
                                 key={item.contractAddress}
                                 to={item.available ? `/donate/${item.contractAddress}` : '/donate'}
                             >
-                                <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-white rounded border border-white">
+                                <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-black rounded border border-black">
                                     <div className="my-3">
                                         <div className="my-5">
-                                            <img alt="launchpad" src={item.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
+                                            <img alt="launchpad" src={item.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-black" />
                                         </div>
                                         <p className="text-h3">{item.title}</p>
                                     </div>
@@ -72,7 +72,7 @@ function Stake(): JSX.Element {
                             </Link>
                         ))}
                     </div>
-                    {items.length === 0 && <div className="text-center text-white">
+                    {items.length === 0 && <div className="text-center text-black">
                         Coming soon
                     </div>}
                 </div>

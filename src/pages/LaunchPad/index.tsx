@@ -42,11 +42,11 @@ function LaunchPad(): JSX.Element {
             <Helmet>
                 <title>Launchpad | DFY</title>
             </Helmet>
-            <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
+            <BackgroundMain className="w-screen">
 
                 <div className="relative flex flex-col items-center">
                     <div className="container mx-auto max-w-3xl">
-                        <div className="font-bold text-center text-4xl text-white my-20">
+                        <div className="font-bold text-center text-4xl text-black my-20">
                             {i18n._(t`Launchpad`)}
                         </div>
                     </div>
@@ -71,7 +71,7 @@ function LaunchPad(): JSX.Element {
                             </Link>
                         ))}
                     </div>
-                    {items.length === 0 && <div className="text-center text-white">
+                    {items.length === 0 && <div className="text-center text-black">
                         Coming soon
                     </div>}
                 </div>

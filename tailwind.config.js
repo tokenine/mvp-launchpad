@@ -259,7 +259,7 @@ module.exports = {
                     backgroundSize: '100% 1px'
                 },
                 '.navbar-bg-green-thick-to-thin': {
-                    background: 'linear-gradient(45deg, #0A4, #6B4)'
+                    background: 'linear-gradient(45deg, #f47c94, #f47c94)'
                 }
             })
         }),
