@@ -3,6 +3,10 @@ import '@fontsource/dm-sans/index.css'
 import 'react-tabs/style/react-tabs.css'
 import './bootstrap'
 
+import './font/maledpan-bold.woff'
+import './font/maledpan.woff'
+import './index.css'
+
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core'
 import { KashiProvider } from 'kashi'
 import React, { StrictMode } from 'react'

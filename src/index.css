@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "MaledpanRegular";
+  src: local("MaledpanRegular"),
+    url("./font/maledpan.woff") format("woff");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "MaledpanBold";
+  src: local("MaledpanBold"),
+    url("./font/maledpan-bold.woff") format("woff");
+  font-weight: bold;
+}
+
+body {
+  font-family: 'MaledpanRegular', 'DM Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}

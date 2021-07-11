@@ -177,10 +177,11 @@ html {
 }
 
 input, textarea {
-    font-family: "DM Sans", sans-serif;
+    font-family: "MaledpanRegular", "DM Sans", sans-serif;
     font-display: fallback;
   }
 
 body {
   min-height: 100vh;
+}
 `
