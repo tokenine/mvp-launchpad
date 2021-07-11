@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { stakeTokenListByChainId, StakeTokenList } from '../../constants/stake-token'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
+import { ChainId } from 'dfy-sdk'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -25,12 +26,13 @@ function Stake(): JSX.Element {
 
     useEffect(() => {
         try {
-            console.log(chainId)
-            if (chainId) {
+            if (chainId && chainId !== 1) {
                 setItems(Object.values(stakeTokenListByChainId[chainId] as StakeTokenList))
+            } else {
+                setItems(Object.values(stakeTokenListByChainId[ChainId.BKC] as StakeTokenList))
             }
         } catch (err) {
-
+            console.error(err)
         }
     }, [chainId])
 

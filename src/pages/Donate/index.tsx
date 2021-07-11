@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { donateTokenListByChainId, DonateTokenList } from '../../constants/donate-token'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { BiDonateHeart } from 'react-icons/bi'
+import { ChainId } from 'dfy-sdk'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -21,17 +22,18 @@ function Stake(): JSX.Element {
     const { i18n } = useLingui()
 
     const { chainId } = useActiveWeb3React()
-
+    
     const [items, setItems] = useState<DonateTokenList[]>([])
 
     useEffect(() => {
         try {
-            console.log(chainId)
-            if (chainId) {
-                setItems(Object.values(donateTokenListByChainId[chainId] as DonateTokenList))
+            if (chainId && chainId !== 1) {
+                setItems(Object.values(donateTokenListByChainId[chainId] as DonateTokenList[]))
+            } else {
+                setItems(Object.values(donateTokenListByChainId[ChainId.BKC] as DonateTokenList[]))
             }
         } catch (err) {
-
+            console.error(err)
         }
     }, [chainId])
 

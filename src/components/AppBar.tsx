@@ -97,7 +97,7 @@ function AppBar(): JSX.Element {
                                                         {i18n._(t`Launchpad`)}
                                                     </NavLink>
                                                 )*/}
-                                            {chainId &&
+                                            {/* {chainId &&
                                                 [
                                                     ChainId.BSC_TESTNET,
                                                     ChainId.BKC,
@@ -122,7 +122,13 @@ function AppBar(): JSX.Element {
                                                     <NavLink id={`bento-nav-link`} to={'/donate'}>
                                                         {i18n._(t`Stake & Donate`)}
                                                     </NavLink>
-                                                )}
+                                                )} */}
+                                                <NavLink id={`bento-nav-link`} to={'/stake'}>
+                                                    {i18n._(t`Stake`)}
+                                                </NavLink>
+                                                <NavLink id={`bento-nav-link`} to={'/donate'}>
+                                                    {i18n._(t`Stake & Donate`)}
+                                                </NavLink>
                                             {/* {chainId === ChainId.MAINNET && (
                                                 <NavLink id={`vesting-nav-link`} to={'/vesting'}>
                                                     {i18n._(t`Vesting`)}
@@ -433,45 +439,12 @@ function AppBar(): JSX.Element {
                                             {i18n._(t`Kashi Lending`)}
                                         </NavLink>
                                     )} */}
-                                {chainId &&
-                                    [
-                                        ChainId.BSC_TESTNET,
-                                        ChainId.BKC,
-                                        ChainId.BSC,
-                                        ChainId.XCHAIN
-                                    ].includes(
-                                        chainId
-                                    ) && (
-                                        <NavLink id={`bento-nav-link`} to={'/launchpad'}>
-                                            {i18n._(t`Launchpad`)}
-                                        </NavLink>
-                                    )}
-                                {chainId &&
-                                    [
-                                        ChainId.BSC_TESTNET,
-                                        ChainId.BKC,
-                                        ChainId.BSC,
-                                        ChainId.XCHAIN
-                                    ].includes(
-                                        chainId
-                                    ) && (
-                                        <NavLink id={`bento-nav-link`} to={'/stake'}>
-                                            {i18n._(t`Stake`)}
-                                        </NavLink>
-                                    )}
-                                {chainId &&
-                                    [
-                                        ChainId.BSC_TESTNET,
-                                        ChainId.BKC,
-                                        ChainId.BSC,
-                                        ChainId.XCHAIN
-                                    ].includes(
-                                        chainId
-                                    ) && (
-                                        <NavLink id={`bento-nav-link`} to={'/donate'}>
-                                            {i18n._(t`Donate`)}
-                                        </NavLink>
-                                    )}
+                                <NavLink id={`bento-nav-link`} to={'/stake'}>
+                                    {i18n._(t`Stake`)}
+                                </NavLink>
+                                <NavLink id={`bento-nav-link`} to={'/donate'}>
+                                    {i18n._(t`Stake & Donate`)}
+                                </NavLink>
                                 {/* {chainId === ChainId.MAINNET && (
                                     <NavLink id={`stake-nav-link`} to={'/sushibar'}>
                                         {i18n._(t`SushiBar`)}

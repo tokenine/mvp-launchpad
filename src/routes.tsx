@@ -65,14 +65,11 @@ function Routes(): JSX.Element {
             {/* chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/launchpad/:address" component={LaunchPadPage} />
             */}
-            {chainId && LaunchPadAllowChaidId.includes(chainId)
-                && <Route exact strict path="/stake" component={Stake} />
-            }
+            <Route exact strict path="/stake" component={Stake} />
+            <Route exact strict path="/donate" component={Donate} />
+
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/stake/:address" component={StakePage} />
-            }
-            {chainId && LaunchPadAllowChaidId.includes(chainId)
-                && <Route exact strict path="/donate" component={Donate} />
             }
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/donate/:address" component={DonatePage} />
