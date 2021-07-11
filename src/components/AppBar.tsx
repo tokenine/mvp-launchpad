@@ -120,7 +120,7 @@ function AppBar(): JSX.Element {
                                                     chainId
                                                 ) && (
                                                     <NavLink id={`bento-nav-link`} to={'/donate'}>
-                                                        {i18n._(t`Donate`)}
+                                                        {i18n._(t`Stake & Donate`)}
                                                     </NavLink>
                                                 )}
                                             {/* {chainId === ChainId.MAINNET && (

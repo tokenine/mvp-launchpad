@@ -176,7 +176,7 @@ function DonatePage({
         <>
             {' '}
             <Helmet>
-                <title>Donate | DFY</title>
+                <title>Stake &amp; Donate | DFY</title>
             </Helmet>
             <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
                 {showConfetti && <Modal>
@@ -204,7 +204,7 @@ function DonatePage({
 
                 <div className="container mx-auto max-w-3xl">
                     <div className="font-bold text-center text-4xl text-white my-20">
-                            <BiDonateHeart className="inline-block" /> {i18n._(t`Donate`)}
+                            <BiDonateHeart className="inline-block" /> {i18n._(t`Stake & Donate`)}
                         </div>
                     </div>
                 </div>
