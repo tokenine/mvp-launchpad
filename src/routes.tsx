@@ -50,7 +50,8 @@ import {
 const LaunchPadAllowChaidId: ChainId[] = [
     ChainId.BSC_TESTNET,
     ChainId.BKC,
-    ChainId.BSC
+    ChainId.BSC,
+    ChainId.XCHAIN
 ]
 
 function Routes(): JSX.Element {
