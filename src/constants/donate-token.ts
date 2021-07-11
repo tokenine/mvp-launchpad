@@ -3,7 +3,7 @@ import { StakeTokenList } from './stake-token'
 
 export interface DonateTokenList extends StakeTokenList {
   thankWord?: {
-    title: string
+    title?: string
     content: string
   }
 }
@@ -32,7 +32,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
     },
     thankWord: {
       title: 'Thank You',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.'
+      content: 'ขอบคุณที่ร่วมกันบริจาค {{token}} จำนวน {{amount}} เหรียญ ขอให้ท่านประสบความสำเร็จในสิ่งที่หวังและสุขภาพแข็งแรง ทางเราจะนำไปช่วยเหลือบุคลากรทางการแพทย์และอาสาสมัครให้เกิดประโยชน์สูงสุด'
     }
   },
   'comingsoon': {

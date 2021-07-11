@@ -79,6 +79,8 @@ function DonatePage({
 
     const [donateDetail, setDonateDetail] = useState<DonateTokenList>()
     
+    const [donatedBalance, setDonatedBalance] = useState('0')
+    
     const [donateTokenBalance, setDonateTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
 
@@ -123,9 +125,9 @@ function DonatePage({
             <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
                 {showConfetti && <Modal>
                     <ModalBody className="text-white">
-                        <h1 className="text-center font-bold text-h1 mb-5">{donateDetail?.thankWord?.title}</h1>
+                        {donateDetail?.thankWord?.title && <h1 className="text-center font-bold text-h1 mb-5">{donateDetail?.thankWord?.title}</h1>}
                         <p className="text-center">
-                            {donateDetail?.thankWord?.content}
+                            {donateDetail?.thankWord?.content.replace('{{token}}', stakeByTokenSymbol).replace('{{amount}}', donatedBalance)}
                         </p>
                     </ModalBody>
                 </Modal>}
@@ -226,6 +228,7 @@ function DonatePage({
                                                                 summary: 'Thank you for donation'
                                                             })
                                                             setShowConfetti(true)
+                                                            setDonatedBalance(donateTokenBalance)
                                                             setDonateTokenBalance('')
                                                             setIsCommiting(false)
                                                         } catch (err) {
