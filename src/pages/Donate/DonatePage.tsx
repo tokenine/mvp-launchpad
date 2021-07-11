@@ -80,9 +80,23 @@ function DonatePage({
     const [donateDetail, setDonateDetail] = useState<DonateTokenList>()
     
     const [donatedBalance, setDonatedBalance] = useState('0')
-    
+    const [isLoadingEndDate, setIsLoadingEndDate] = useState(true)
+
     const [donateTokenBalance, setDonateTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
+
+    const [endDate, setEndDate] = useState(new Date())
+    const [countDown, setCountDown] = useState<{
+        days: number
+        hours: number
+        minutes: number
+        seconds: number
+    }>({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    })
 
     const [stakeByTokenName, stakeByTokenSymbol, stakeByTokenDecimals] = useTokenDetail(donateDetail?.stakeByToken?.address, account)
     const stakeByTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, donateDetail?.stakeByToken ? new Token(chainId ?? 0, donateDetail?.stakeByToken?.address, stakeByTokenDecimals, stakeByTokenSymbol, stakeByTokenName) : undefined)
@@ -114,7 +128,41 @@ function DonatePage({
             return
         }
         setDonateDetail(checkDonateDetail)
-    }, [address, history, chainId])
+        const getMVPStakeDetail = async () => {
+            try {
+                const endDateContract = await stakeContract?.functions.endDate()
+                if (endDateContract) {
+                    setEndDate(new Date(endDateContract[0].toNumber() * 1000))
+                    setIsLoadingEndDate(false)
+                }
+            } catch (err) {
+                console.error(err)
+                setIsLoadingEndDate(false)
+            }
+        }
+        getMVPStakeDetail()
+    }, [address, history, chainId, stakeContract?.functions])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const distance = endDate.getTime() - new Date().getTime()
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+                setCountDown({
+                    days,
+                    hours,
+                    minutes,
+                    seconds
+                })
+            }
+        }, 1000)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [endDate])
 
     return (
         <>
@@ -170,11 +218,17 @@ function DonatePage({
                                             <p className="text-h1 font-bold">{stakeByTokenSymbol}</p>
                                             <p>{stakeByTokenName}</p>
                                         </div>
+                                        <div className="text-white ml-5">
+                                            <div>Time Remain:</div>
+                                            <div>
+                                                {countDown.days}d {countDown.hours}h {countDown.minutes}m {countDown.seconds}s
+                                            </div>
+                                        </div>
                                     </div>
                                     <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Total Donate Amount:</p> 
+                                        <p className="text-white mb-3">Staked:</p> 
                                         <p className="text-center text-white text-h2">
-                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeByTokenSymbol}
+                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">
@@ -186,6 +240,29 @@ function DonatePage({
                                             Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
                                         </div>
                                         <div>
+                                            
+                                            { endDate.getTime() <= new Date().getTime() && !isLoadingEndDate  ? <div>
+                                            <Button
+                                                color="gradient3"
+                                                disabled={isCommiting || !stakeTokenCurrencyAmount || stakeTokenCurrencyAmount?.toExact() === '0'}
+                                                onClick={async () => {
+                                                    try {
+                                                        setIsCommiting(true)
+                                                        const response = await stakeContract?.functions.leave(stakeTokenCurrencyAmount?.toExact().toBigNumber(decimals))
+                                                        addTransaction(response, {
+                                                            summary: 'Stake commited!'
+                                                        })
+                                                        setIsCommiting(false)
+                                                    } catch (err) {
+                                                        console.error(err)
+                                                        setIsCommiting(false)
+                                                    }
+                                                }}
+                                                className="w-full border border-white py-2 mb-5 font-bold text-center text-white disabled:cursor-not-allowed"
+                                            >
+                                                {i18n._(t`CLAIM BACK`)}
+                                            </Button>
+                                        </div> : <div>
                                             <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-5">
                                                 <Button
                                                     onClick={onMax}
@@ -241,6 +318,7 @@ function DonatePage({
                                                     {i18n._(t`DONATE`)}
                                                 </Button>
                                             ) }
+                                        </div>}
                                         </div>
                                     </div>
                                 ) : (
