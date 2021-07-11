@@ -160,7 +160,7 @@ function StakePage({
                                     <Card className="border border-black mb-10">
                                         <p className="text-black mb-3">Your Staking:</p> 
                                         <p className="text-center text-black text-h2">
-                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeByTokenSymbol}
+                                        { stakeTokenCurrencyAmount ? numberWithCommas(stakeTokenCurrencyAmount.toSignificant(6)) : 0 } {stakeByTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">

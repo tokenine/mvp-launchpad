@@ -224,13 +224,13 @@ function DonatePage({
                                     <Card className="border border-black mb-10">
                                         <p className="text-black mb-3">Total donation:</p> 
                                         <p className="text-center text-black text-h2">
-                                        { donationTotalCurrencyAmount ? donationTotalCurrencyAmount.toSignificant(6) : 0 } {donationTokenSymbol}
+                                        { donationTotalCurrencyAmount ? numberWithCommas(donationTotalCurrencyAmount.toSignificant(6)) : 0 } {donationTokenSymbol}
                                         </p>
                                     </Card> 
                                     <Card className="border border-black mb-10">
                                         <p className="text-black mb-3">Your Staking:</p> 
                                         <p className="text-center text-black text-h2">
-                                        { stakeTokenCurrencyAmount ? stakeTokenCurrencyAmount.toSignificant(6) : 0 } {stakeByTokenSymbol}
+                                        { stakeTokenCurrencyAmount ? numberWithCommas(stakeTokenCurrencyAmount.toSignificant(6)) : 0 } {stakeByTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">
