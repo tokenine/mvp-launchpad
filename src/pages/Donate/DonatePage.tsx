@@ -58,7 +58,7 @@ const BackgroundMain = styled.div`
 `
 
 const numberWithCommas = (x: string) => {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    return x.toString().replace(/(\.\d+)|(?=(?:\d{3})+\b)(?!\b)/g, function(m, $1) { return $1 || ',' })
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
