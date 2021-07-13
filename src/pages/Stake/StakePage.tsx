@@ -60,6 +60,9 @@ function StakePage({
     const [stakeTokenName, stakeTokenSymbol, stakeTokenDecimals] = useTokenDetail(stakeDetail?.stakeToken?.address, account)
     const stakeTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.stakeToken ? new Token(chainId ?? 0, stakeDetail?.stakeToken?.address, stakeTokenDecimals, stakeTokenSymbol, stakeTokenName) : undefined)
 
+    const [rewardTokenName, rewardTokenSymbol, rewardTokenDecimals] = useTokenDetail(stakeDetail?.rewardPointToken?.address, account)
+    const rewardTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.rewardPointToken ? new Token(chainId ?? 0, stakeDetail?.rewardPointToken?.address, rewardTokenDecimals, rewardTokenSymbol, rewardTokenName) : undefined)
+
     const [totalStakedBalance, setTotalStakedBalance] = useState('0')
 
     const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, stakeDetail?.stakeToken ? stakeDetail?.stakeToken.address : '')
@@ -161,6 +164,12 @@ function StakePage({
                                         <p className="text-black mb-3">Your Staking:</p> 
                                         <p className="text-center text-black text-h2">
                                         { stakeTokenCurrencyAmount ? numberWithCommas(stakeTokenCurrencyAmount.toSignificant(6)) : 0 } {stakeByTokenSymbol}
+                                        </p>
+                                    </Card>
+                                    <Card className="border border-black mb-10">
+                                        <p className="text-black mb-3">Your {rewardTokenSymbol} Token:</p> 
+                                        <p className="text-center text-black text-h2">
+                                        { rewardTokenCurrencyAmount ? numberWithCommas(rewardTokenCurrencyAmount.toSignificant(6)) : 0 } {rewardTokenSymbol}
                                         </p>
                                     </Card> 
                                 </div> : <div className="w-2 mx-auto mb-10">
