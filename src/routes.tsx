@@ -20,6 +20,7 @@ import Donate from './pages/Donate'
 import DonatePage from './pages/Donate/DonatePage'
 import Stake from './pages/Stake'
 import StakePage from './pages/Stake/StakePage'
+import DonateMD from './pages/DonateMD'
 // import BentoBalances from './pages/LaunchPad/Balances'
 // import Migrate from './pages/Migrate'
 // import Pool from './pages/Pool'
@@ -54,6 +55,7 @@ const LaunchPadAllowChaidId: ChainId[] = [
     ChainId.XCHAIN
 ]
 
+
 function Routes(): JSX.Element {
     const { chainId } = useActiveWeb3React()
     return (
@@ -68,6 +70,10 @@ function Routes(): JSX.Element {
             <Route strict path="/launchpad" component={LaunchPad} />
             <Route exact strict path="/pool" component={Stake} />
             <Route exact strict path="/donate" component={Donate} />
+
+            {chainId && [ChainId.BKC].includes(chainId)
+                && <Route exact strict path="/donate-md" component={DonateMD} />
+            }
 
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/pool/:address" component={StakePage} />

@@ -132,6 +132,11 @@ function AppBar(): JSX.Element {
                                                 <NavLink id={`bento-nav-link`} to={'/donate'}>
                                                     {i18n._(t`Pool for donation`)}
                                                 </NavLink>
+                                                {chainId && [ChainId.BKC].includes(chainId)
+                                                    && <NavLink id={`bento-nav-link`} to={'/donate-md'}>
+                                                    {i18n._(t`Donate MD`)}
+                                                    </NavLink>
+                                                }
                                             {/* {chainId === ChainId.MAINNET && (
                                                 <NavLink id={`vesting-nav-link`} to={'/vesting'}>
                                                     {i18n._(t`Vesting`)}
@@ -451,6 +456,11 @@ function AppBar(): JSX.Element {
                                 <NavLink id={`bento-nav-link`} to={'/donate'}>
                                     {i18n._(t`Pool for donation`)}
                                 </NavLink>
+                                {chainId && [ChainId.BKC].includes(chainId)
+                                    && <NavLink id={`bento-nav-link`} to={'/donate-md'}>
+                                    {i18n._(t`Donate MD`)}
+                                    </NavLink>
+                                }
                                 {/* {chainId === ChainId.MAINNET && (
                                     <NavLink id={`stake-nav-link`} to={'/sushibar'}>
                                         {i18n._(t`SushiBar`)}
