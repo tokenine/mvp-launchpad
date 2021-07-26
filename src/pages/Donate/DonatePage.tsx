@@ -252,7 +252,7 @@ function DonatePage({
                                                         setIsCommiting(true)
                                                         const response = await stakeContract?.functions.leave(stakeTokenCurrencyAmount?.toExact().toBigNumber(decimals))
                                                         addTransaction(response, {
-                                                            summary: 'Stake commited!'
+                                                            summary: 'Claim committed!'
                                                         })
                                                         setIsCommiting(false)
                                                     } catch (err) {
