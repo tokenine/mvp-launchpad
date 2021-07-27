@@ -193,7 +193,7 @@ function DonatePage({
                             {donateDetail && donateDetail.detailImage && <div className="text-center mb-10">
                                 <img alt="Social Giving" src={donateDetail.detailImage} className="inline-block w-1/2" />
                             </div>}
-                            <p className="text-h3 mb-5">Social Giving</p>
+                            <p className="text-h3 mb-5">Social Giving {donateDetail?.label}</p>
                             <div dangerouslySetInnerHTML={{__html: donateDetail ? donateDetail.proposalContent : ''}} />
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">

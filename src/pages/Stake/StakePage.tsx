@@ -132,7 +132,7 @@ function StakePage({
                             {stakeDetail && stakeDetail.detailImage && <div className="text-center mb-10">
                             <img alt="Self quarantine" src={stakeDetail.detailImage} className="inline-block w-1/2" />
                             </div>}
-                            <p className="text-h3 mb-5">Self quarantine</p>
+                            <p className="text-h3 mb-5">Self quarantine {stakeDetail?.label}</p>
                             <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContent : ''}} />
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">
