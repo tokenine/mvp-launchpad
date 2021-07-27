@@ -84,9 +84,9 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
 }
 
 const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
-  '0x8A822F87fe259190C9aaF5a06ec458fDeaD5A5Bd': {
+  '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB': {
     startTime: new Date('1/1/2021'),
-    contractAddress: '0x8A822F87fe259190C9aaF5a06ec458fDeaD5A5Bd',
+    contractAddress: '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB',
     title: 'SELF-QUARANTINE #2<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
     detailImage: '/images/MVP-to-MD.png',
@@ -94,12 +94,12 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     available: true,
     label: '#2',
     stakeByToken: {
-      address: '0xdd7847ded760a8e7fb882b4a9b0e990323415ed9',
+      address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
       name: 'MVP COIN',
       symbol: 'MVP'
     },
     stakeToken: {
-      address: '0x8A822F87fe259190C9aaF5a06ec458fDeaD5A5Bd',
+      address: '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB',
       name: 'Stake MD',
       symbol: 'ST-MD'
     },

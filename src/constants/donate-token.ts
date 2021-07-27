@@ -49,9 +49,9 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
 }
 
 const BSC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
-  '0xf8F5123D019d0a150227b04384D189f2c82Ad9De': {
+  '0xcEa0A66Dd14D80723930749c00393493F176EAac': {
     startTime: new Date('1/1/2021'),
-    contractAddress: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
+    contractAddress: '0xcEa0A66Dd14D80723930749c00393493F176EAac',
     title: 'SOCIAL GIVING #2<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
     detailImage: '/images/MVP-to-MD.png',
@@ -59,12 +59,12 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
     available: true,
     label: '#2',
     stakeByToken: {
-      address: '0xdd7847ded760a8e7fb882b4a9b0e990323415ed9',
+      address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
       name: 'MVP COIN',
       symbol: 'MVP'
     },
     stakeToken: {
-      address: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
+      address: '0xcEa0A66Dd14D80723930749c00393493F176EAac',
       name: 'Stake MDD',
       symbol: 'ST-MDD'
     },
