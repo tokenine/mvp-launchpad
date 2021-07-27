@@ -115,7 +115,8 @@ function DonatePage({
         const checkDonateDetail = donateTokenListByChainId[chainId][address]
         if (!address || (address && address === '')
             || !checkDonateDetail
-            || (checkDonateDetail && !checkDonateDetail.available))
+            || (checkDonateDetail && !checkDonateDetail.available)
+            || new Date().getTime() < checkDonateDetail.startTime.getTime())
         {
             history.push('/donate')
             return

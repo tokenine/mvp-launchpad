@@ -11,6 +11,7 @@ export interface DonateTokenList extends StakeTokenList {
 
 const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce': {
+    startTime: new Date('1/1/2021'),
     contractAddress: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce',
     title: 'Stake TokenA',
     imageTokenUrl: '/images/tokens/busd-square.jpg',
@@ -38,6 +39,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
     acceptDonateWallet: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce'
   },
   'comingsoon': {
+    startTime: new Date('1/1/2021'),
     contractAddress: 'comingsoon',
     title: '(Private)',
     imageTokenUrl: '/images/tokens/usdc-square.jpg',
@@ -50,6 +52,7 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {}
 
 const BKC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   '0xf8F5123D019d0a150227b04384D189f2c82Ad9De': {
+    startTime: new Date('1/1/2021'),
     contractAddress: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
     title: 'SOCIAL GIVING<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',

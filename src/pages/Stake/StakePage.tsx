@@ -81,7 +81,8 @@ function StakePage({
         const checkStakeDetail = stakeTokenListByChainId[chainId][address]
         if (!address || (address && address === '')
             || !checkStakeDetail
-            || (checkStakeDetail && !checkStakeDetail.available))
+            || (checkStakeDetail && !checkStakeDetail.available)
+            || new Date().getTime() < checkStakeDetail.startTime.getTime())
         {
             history.push('/pool')
             return

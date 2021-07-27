@@ -1,6 +1,7 @@
 import { ChainId } from 'dfy-sdk'
 
 export interface StakeTokenList {
+  startTime: Date
   contractAddress: string
   title: string
   detailImage?: string,
@@ -26,6 +27,7 @@ export interface StakeTokenList {
 // 0xF2059c93Bb02c43237099a4006548b47B55cDc1f
 const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
   '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce': {
+    startTime: new Date('1/1/2021'),
     contractAddress: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce',
     title: 'MVP Social Giving',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -48,6 +50,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     }
   },
   '0xF2059c93Bb02c43237099a4006548b47B55cDc1f': {
+    startTime: new Date('1/1/2021'),
     contractAddress: '0xF2059c93Bb02c43237099a4006548b47B55cDc1f',
     title: 'TokenA (New)',
     imageTokenUrl: '/images/tokens/busd-square.jpg',
@@ -70,6 +73,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     }
   },
   'comingsoon': {
+    startTime: new Date('1/1/2021'),
     contractAddress: 'comingsoon',
     title: '(Private)',
     imageTokenUrl: '/images/tokens/usdc-square.jpg',
@@ -82,6 +86,7 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {}
 
 const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
   '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f': {
+    startTime: new Date('1/1/2021'),
     contractAddress: '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f',
     title: 'SELF-QUARANTINE<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',

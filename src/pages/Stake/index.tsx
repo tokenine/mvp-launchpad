@@ -55,7 +55,7 @@ function Stake(): JSX.Element {
                 <div className="container mx-auto">
                     <div className="flex flex-row gap-4 justify-center">
                         {items.length > 0 && items.map(item => (
-                            <Link
+                            new Date().getTime() >= item.startTime.getTime() && <Link
                                 className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full`}
                                 key={item.contractAddress}
                                 to={item.available ? `/pool/${item.contractAddress}` : '/pool'}
