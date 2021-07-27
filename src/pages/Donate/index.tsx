@@ -17,6 +17,21 @@ const BackgroundMain = styled.div`
     height: 100vh;
     overflow-y: scroll;
 `
+const LabelDiv = styled.div`
+    position: absolute;
+    text-align: center;
+    padding-top: 5px;
+    top: -10px;
+    right: -10px;
+    background-color: #f47c94;
+    color: white;
+    font-size: 18pt;
+    border-radius: 100%;
+    border: 1px solid black;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+`
 
 function Stake(): JSX.Element {
     const { i18n } = useLingui()
@@ -54,14 +69,15 @@ function Stake(): JSX.Element {
                 </div>
 
                 <div className="container mx-auto">
-                    <div className="flex flex-row gap-4 justify-center">
+                    <div className="flex flex-wrap gap-5 justify-center items-stretch px-5 md:px-0">
                         {items.length > 0 && items.map(item => (
                             new Date().getTime() >= item.startTime.getTime() && <Link
-                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full`}
+                                className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full relative rounded border border-black`}
                                 key={item.contractAddress}
                                 to={item.available ? `/donate/${item.contractAddress}` : '/donate'}
                             >
-                                <Card className="flex items-center justify-center text-center text-black rounded border border-black">
+                                {item.label && <LabelDiv>{item.label}</LabelDiv>}
+                                <Card className="flex items-center justify-center text-center text-black">
                                     <div className="my-3">
                                         <div className="my-3">
                                             <img alt="social giving" src={item.imageTokenUrl} className="inline-block w-full h-auto rounded-full ring-2 ring-white" />

@@ -8,6 +8,7 @@ export interface StakeTokenList {
   imageTokenUrl: string
   proposalContent: string
   available: boolean
+  label?: string
   stakeByToken?: {
     address: string
     name: string
@@ -85,6 +86,31 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
 const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {}
 
 const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
+  '0x266A8eF144Ae716fA91B70211a62d334E3eF75E8': {
+    startTime: new Date('1/1/2021'),
+    contractAddress: '0x266A8eF144Ae716fA91B70211a62d334E3eF75E8',
+    title: 'SELF-QUARANTINE #2<br>แลกเหรียญ MD',
+    imageTokenUrl: '/images/tokens/stake-for-society.png',
+    detailImage: '/images/MVP-to-MD.png',
+    proposalContent: '<p class="mt-3">ขยายเวลาโครงการ MVP Social Giving #2 (siren)ขยายโครงการMVP Social Giving I Stake For Society #2 ครั้งใหม่จะเริ่ม 1-14 สิงหาคม 2564  ระยะเวลาใช้งาน MD 1- 20 สิงหาคม 2564 (20 วัน) โดยผู้ถือเหรียญ  MVP Coin ฝาก (Stake) 14 วัน เพื่อรับเหรียญ MD (MVP Donation) ได้ตั้งแต่วันที่ 1 สิงหาคม 2564 ตั้งแต่เวลา 10.00 น. เป็นต้นไป สามารถนำเหรียญ MD แลกอาหารและสินค้าอุปโภคต่าง ๆได้จนถึงวันที่ 20 สิงหาคม 2564 เมื่อครบกำหนดเหรียญจะถูก Burn ออกจากระบบ <br/> รายละเอียด <br/>ผู้ฝากเหรียญจะได้รับ MD ในอัตรา 7% ของ MVP Coin ที่นำมาฝากครบ 14 วัน หรืออัตราคิดลด 0.5% จนเสร็จสิ้นกิจกรรม <br/><br/>มี 2 Pool ให้เลือกคือ  <br/>• Social-Donation  : มอบอาหารและเครื่องดื่มตามเมนูที่กำหนด โดยใช้มูลค่าตาม MD ทั้งหมดที่มีในช่วงเวลานั้น ให้กับบุคลากรทางการแพทย์ และอาสาสมัคร ฯลฯ (ดูรายละเอียดหน่วยงานได้ตามประกาศ)  <br/>• Self-Quarantine  : สามารถนำเหรียญ MD มาแลกเซ็ตอาหาร สินค้าอุปโภค และเครื่องใช้ไฟฟ้าต่าง ๆ พร้อมจัดส่งถึงบ้าน <br/><br/> เนื่องด้วยสถานการณ์ COVID-19 ยังคงรุนแรงอยุ่ต่อเนื่อง โดยทีมบริหารจะเริ่มโครงการใหม่อีกครั้ง เพื่อสนับสนุนเจ้าหน้าที่อาสาสมัครและบุคลากรทางการแพทย์ และเพื่อให้ทุกคนอยู่บ้านอย่างปลอดภัย <br/><br/> หมายเหตุ: เหรียญ MD ที่ใช้แลกในโครงการทั้ง 2 ครั้ง เป็นเหรียญเดียวกัน แต่ไม่สามารถใช้ร่วมกันได้ เนื่องจากมีระยะเวลาของโครงการแตกต่างกัน (siren) MVP Social Giving I Stake For Society ระหว่างวันที่ 14-25 กรกฎาคม 2564 ผู้ที่นำเหรียญ MVP เข้ามา Stake ไว้ในโครงการ สามารถเริ่ม Unstake เหรียญ MVP Coin คืนได้ตั้งแต่วันที่ 26 กรกฎาคม 2564 เวลา 21.30 น. เป็นต้นไป  โดยเหรียญ MD ยังคงสามารถแลกสั่งอาหารและสินค้าอุปโภคบริโภคได้ถึงวันที่ 31 กรกฎาคม 2564  เมื่อครบกำหนดเหรียญจะถูก Burn ทั้งหมดออกจากระบบ</p>',
+    available: true,
+    label: '#2',
+    stakeByToken: {
+      address: '0xDD7847deD760a8e7FB882B4A9B0e990323415ed9',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0x266A8eF144Ae716fA91B70211a62d334E3eF75E8',
+      name: 'Stake MD',
+      symbol: 'ST-MD'
+    },
+    rewardPointToken: {
+      address: '0x9c882a7004D4bB7E5fa77856625225EA29619323',
+      name: 'Token MD',
+      symbol: 'MD'
+    },
+  },
   '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f': {
     startTime: new Date('1/1/2021'),
     contractAddress: '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f',
