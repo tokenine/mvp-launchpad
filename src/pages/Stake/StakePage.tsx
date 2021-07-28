@@ -78,11 +78,10 @@ function StakePage({
 
     useEffect(() => {
         if (!chainId) return
-        const checkStakeDetail = stakeTokenListByChainId[chainId][address]
+        const checkStakeDetail = stakeTokenListByChainId[chainId][address] as StakeTokenList
         if (!address || (address && address === '')
             || !checkStakeDetail
-            || (checkStakeDetail && !checkStakeDetail.available)
-            || new Date().getTime() < checkStakeDetail.startTime.getTime())
+            || (checkStakeDetail && !checkStakeDetail.available))
         {
             history.push('/pool')
             return

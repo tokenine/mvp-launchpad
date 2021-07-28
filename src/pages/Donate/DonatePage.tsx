@@ -112,11 +112,10 @@ function DonatePage({
 
     useEffect(() => {
         if (!chainId) return
-        const checkDonateDetail = donateTokenListByChainId[chainId][address]
+        const checkDonateDetail = donateTokenListByChainId[chainId][address] as DonateTokenList
         if (!address || (address && address === '')
             || !checkDonateDetail
-            || (checkDonateDetail && !checkDonateDetail.available)
-            || new Date().getTime() < checkDonateDetail.startTime.getTime())
+            || (checkDonateDetail && !checkDonateDetail.available))
         {
             history.push('/donate')
             return

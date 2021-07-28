@@ -87,8 +87,8 @@ function Stake(): JSX.Element {
         try {
             if (!chainId) return
             const items = Object.values(donateTokenListByChainId[chainId] as DonateTokenList[])
-            setActiveItems(items.filter(item => today.getTime() >= item.startTime.getTime() && today.getTime() <= item.endTime.getTime()))
-            setinactiveItems(items.filter(item => today.getTime() > item.endTime.getTime()))
+            setActiveItems(items.filter(item => item.showOnActiveTab))
+            setinactiveItems(items.filter(item => !item.showOnActiveTab))
         } catch (err) {
             console.error(err)
         }

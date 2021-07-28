@@ -1,8 +1,7 @@
 import { ChainId } from 'dfy-sdk'
 
 export interface StakeTokenList {
-  startTime: Date
-  endTime: Date
+  showOnActiveTab: boolean
   contractAddress: string
   title: string
   detailImage?: string,
@@ -27,10 +26,9 @@ export interface StakeTokenList {
   }
 }
 // 0xF2059c93Bb02c43237099a4006548b47B55cDc1f
-const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
+const BSC_TESTNET_STAKE_LIST: { [key: string]: StakeTokenList } = {
   '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce': {
-    startTime: new Date('1/1/2021'),
-    endTime: new Date('1/1/2021'),
+    showOnActiveTab: true,
     contractAddress: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce',
     title: 'MVP Social Giving',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -53,8 +51,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     }
   },
   '0xF2059c93Bb02c43237099a4006548b47B55cDc1f': {
-    startTime: new Date('1/1/2021'),
-    endTime: new Date('1/1/2021'),
+    showOnActiveTab: true,
     contractAddress: '0xF2059c93Bb02c43237099a4006548b47B55cDc1f',
     title: 'TokenA (New)',
     imageTokenUrl: '/images/tokens/busd-square.jpg',
@@ -77,8 +74,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     }
   },
   'comingsoon': {
-    startTime: new Date('1/1/2021'),
-    endTime: new Date('1/1/2021'),
+    showOnActiveTab: true,
     contractAddress: 'comingsoon',
     title: '(Private)',
     imageTokenUrl: '/images/tokens/usdc-square.jpg',
@@ -87,10 +83,9 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
   },
 }
 
-const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
+const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
   '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB': {
-    startTime: new Date('July 31, 2021 23:59:59'),
-    endTime: new Date(2021, 8, 20),
+    showOnActiveTab: true,
     contractAddress: '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB',
     title: 'SELF-QUARANTINE #2<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -116,10 +111,9 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
   }
 }
 
-const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
+const BKC_STAKE_LIST: { [key: string]: StakeTokenList } = {
   '0x266A8eF144Ae716fA91B70211a62d334E3eF75E8': {
-    startTime: new Date('July 31, 2021 23:59:59'),
-    endTime: new Date(2021, 8, 20),
+    showOnActiveTab: true,
     contractAddress: '0x266A8eF144Ae716fA91B70211a62d334E3eF75E8',
     title: 'SELF-QUARANTINE #2<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -144,8 +138,7 @@ const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
     },
   },
   '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f': {
-    startTime: new Date('1/1/2021'),
-    endTime: new Date('July 31, 2021 23:59:59'),
+    showOnActiveTab: true,
     contractAddress: '0xE2a5304fD47c06d6DB04F5B21790A8d5FC08eb4f',
     title: 'SELF-QUARANTINE<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -172,7 +165,7 @@ const BKC_LAUNCH_TOKEN_LIST: { [key: string]: StakeTokenList } = {
 
 // use for list token each chain ID
 export const stakeTokenListByChainId: { [key: string]: any } = {
-  [ChainId.BSC_TESTNET]: BSC_TESTNET_LAUNCH_TOKEN_LIST,
-  [ChainId.BSC]: BSC_LAUNCH_TOKEN_LIST,
-  [ChainId.BKC]: BKC_LAUNCH_TOKEN_LIST
+  [ChainId.BSC_TESTNET]: BSC_TESTNET_STAKE_LIST,
+  [ChainId.BSC]: BSC_STAKE_LIST,
+  [ChainId.BKC]: BKC_STAKE_LIST
 }
