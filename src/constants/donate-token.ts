@@ -12,6 +12,7 @@ export interface DonateTokenList extends StakeTokenList {
 const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce': {
     startTime: new Date('1/1/2021'),
+    endTime: new Date('1/1/2021'),
     contractAddress: '0xfB4895beE86cd82a1fFdDBe7D5Fca524eFa550ce',
     title: 'Stake TokenA',
     imageTokenUrl: '/images/tokens/busd-square.jpg',
@@ -40,6 +41,7 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   },
   'comingsoon': {
     startTime: new Date('1/1/2021'),
+    endTime: new Date('1/1/2021'),
     contractAddress: 'comingsoon',
     title: '(Private)',
     imageTokenUrl: '/images/tokens/usdc-square.jpg',
@@ -50,7 +52,8 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
 
 const BSC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   '0xcEa0A66Dd14D80723930749c00393493F176EAac': {
-    startTime: new Date('1/1/2021'),
+    startTime: new Date('July 31, 2021 23:59:59'),
+    endTime: new Date(2021, 8, 20),
     contractAddress: '0xcEa0A66Dd14D80723930749c00393493F176EAac',
     title: 'SOCIAL GIVING #2<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -83,7 +86,8 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
 
 const BKC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   '0x24Ec911502FdD776345EF265bB2FC88C73791761': {
-    startTime: new Date('1/1/2021'),
+    startTime: new Date('July 31, 2021 23:59:59'),
+    endTime: new Date(2021, 8, 20),
     contractAddress: '0x24Ec911502FdD776345EF265bB2FC88C73791761',
     title: 'SOCIAL GIVING #2<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -114,6 +118,7 @@ const BKC_LAUNCH_TOKEN_LIST: { [key: string]: DonateTokenList } = {
   },
   '0xf8F5123D019d0a150227b04384D189f2c82Ad9De': {
     startTime: new Date('1/1/2021'),
+    endTime: new Date('July 31, 2021 23:59:59'),
     contractAddress: '0xf8F5123D019d0a150227b04384D189f2c82Ad9De',
     title: 'SOCIAL GIVING<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
