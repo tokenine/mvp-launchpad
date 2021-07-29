@@ -99,7 +99,7 @@ function DonatePage({
     const [donationTokenName, donationTokenSymbol, donationTokenDecimals] = useTokenDetail(donateDetail?.rewardPointToken?.address, account)
     const donationTotalCurrencyAmount = useCurrencyBalance(donateDetail?.acceptDonateWallet ?? undefined, donateDetail?.rewardPointToken ? new Token(chainId ?? 0, donateDetail?.rewardPointToken?.address, donationTokenDecimals, donationTokenSymbol, donationTokenName) : undefined)
 
-    const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, donateDetail?.stakeToken ? donateDetail?.stakeToken.address : '')
+    const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, donateDetail?.contractAddress ?? '')
     const addTransaction = useTransactionAdder()
 
     const stakeContract = useTokenineStakeContract(donateDetail?.contractAddress ?? '')
@@ -203,7 +203,7 @@ function DonatePage({
                                             <p className="text-h1 font-bold">{stakeByTokenSymbol}</p>
                                             <p>{stakeByTokenName}</p>
                                         </div>
-                                        <div className="text-black ml-5">
+                                        {donateDetail?.showOnActiveTab && <div className="text-black ml-5">
                                             <div>Time Remain:</div>
                                             <div>
                                                 <Countdown
@@ -213,7 +213,7 @@ function DonatePage({
                                                     )}
                                                 />
                                             </div>
-                                        </div>
+                                        </div>}
                                     </div>
                                     <Card className="border border-black mb-10">
                                         <p className="text-black mb-3">Total Staking:</p> 
@@ -298,7 +298,7 @@ function DonatePage({
                                             { ApprovalState.APPROVED === approvalState && (
                                                 <Button
                                                     color="gradient3"
-                                                    disabled={isCommiting || donateTokenBalance === '0' || donateTokenBalance === ''}
+                                                    disabled={isCommiting || donateTokenBalance === '0' || donateTokenBalance === '' || !donateDetail?.showOnActiveTab}
                                                     onClick={async () => {
                                                         try {
                                                             setIsCommiting(true)

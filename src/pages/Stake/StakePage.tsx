@@ -65,7 +65,7 @@ function StakePage({
 
     const [totalStakedBalance, setTotalStakedBalance] = useState('0')
 
-    const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, stakeDetail?.stakeToken ? stakeDetail?.stakeToken.address : '')
+    const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, stakeDetail?.contractAddress ?? '')
     const addTransaction = useTransactionAdder()
 
     const stakeContract = useTokenineStakeContract(stakeDetail?.contractAddress ?? '')
@@ -142,7 +142,7 @@ function StakePage({
                                             <p className="text-h1 font-bold">{stakeByTokenSymbol}</p>
                                             <p>{stakeByTokenName}</p>
                                         </div>
-                                        <div className="text-black ml-5">
+                                        {stakeDetail?.showOnActiveTab && <div className="text-black ml-5">
                                             <div>Time Remain:</div>
                                             <div>
                                                 <Countdown
@@ -152,7 +152,7 @@ function StakePage({
                                                     )}
                                                 />
                                             </div>
-                                        </div>
+                                        </div>}
                                     </div>
                                     <Card className="border border-black mb-10">
                                         <p className="text-black mb-3">Total Stakig:</p> 
@@ -236,7 +236,7 @@ function StakePage({
                                             { ApprovalState.APPROVED === approvalState && (
                                                 <Button
                                                     color="gradient3"
-                                                    disabled={isCommiting || stakeByTokenBalance === ''}
+                                                    disabled={isCommiting || stakeByTokenBalance === '' || !stakeDetail?.showOnActiveTab}
                                                     onClick={async () => {
                                                         try {
                                                             setIsCommiting(true)

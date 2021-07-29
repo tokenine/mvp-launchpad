@@ -50,7 +50,7 @@ const BSC_TESTNET_STAKE_DONATE_LIST: { [key: string]: DonateTokenList } = {
 
 const BSC_STAKE_DONATE_LIST: { [key: string]: DonateTokenList } = {
   '0xcEa0A66Dd14D80723930749c00393493F176EAac': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     contractAddress: '0xcEa0A66Dd14D80723930749c00393493F176EAac',
     title: 'SOCIAL GIVING #2<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -83,7 +83,7 @@ const BSC_STAKE_DONATE_LIST: { [key: string]: DonateTokenList } = {
 
 const BKC_STAKE_DONATE_LIST: { [key: string]: DonateTokenList } = {
   '0x24Ec911502FdD776345EF265bB2FC88C73791761': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     contractAddress: '0x24Ec911502FdD776345EF265bB2FC88C73791761',
     title: 'SOCIAL GIVING #2<br>บริจาคเพื่อบุคลากรทางการแพทย์',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
