@@ -189,7 +189,7 @@ function StakePage({
                                                         setIsCommiting(true)
                                                         const response = await stakeContract?.functions.leave(stakeTokenCurrencyAmount?.toExact().toBigNumber(decimals))
                                                         addTransaction(response, {
-                                                            summary: 'Claim commited!'
+                                                            summary: 'Claim committed!'
                                                         })
                                                         setStakeByTokenBalance('')
                                                         setIsCommiting(false)
@@ -242,7 +242,7 @@ function StakePage({
                                                             setIsCommiting(true)
                                                             const response = await stakeContract?.functions.enter(stakeByTokenBalance.toBigNumber(decimals))
                                                             addTransaction(response, {
-                                                                summary: 'Stake commited!'
+                                                                summary: 'Stake committed!'
                                                             })
                                                             setStakeByTokenBalance('')
                                                             setIsCommiting(false)
