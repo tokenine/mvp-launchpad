@@ -8,7 +8,7 @@ import './font/maledpan.woff'
 import './index.css'
 
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core'
-import { KashiProvider } from 'kashi'
+// import { KashiProvider } from 'kashi'
 import React, { StrictMode } from 'react'
 import { isMobile } from 'react-device-detect'
 import ReactDOM from 'react-dom'
@@ -77,11 +77,11 @@ ReactDOM.render(
                         <LanguageProvider>
                             <ThemeProvider>
                                 <ThemedGlobalStyle />
-                                <KashiProvider>
+                                {/* <KashiProvider> */}
                                     <Router>
                                         <App />
                                     </Router>
-                                </KashiProvider>
+                                {/* </KashiProvider> */}
                             </ThemeProvider>
                         </LanguageProvider>
                     </Provider>
