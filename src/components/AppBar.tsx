@@ -235,6 +235,10 @@ function AppBar(): JSX.Element {
                                                                         address =
                                                                             '0xDD7847deD760a8e7FB882B4A9B0e990323415ed9'
                                                                         break
+                                                                    case ChainId.BSC:
+                                                                        address =
+                                                                            '0x3379A0BdF5A5CB566127C421782686BA0f80490a'
+                                                                        break
                                                                 }
                                                                 const params: any = {
                                                                     type: 'ERC20',
@@ -292,6 +296,10 @@ function AppBar(): JSX.Element {
                                                                     case ChainId.BKC:
                                                                         address =
                                                                             '0x9c882a7004D4bB7E5fa77856625225EA29619323'
+                                                                        break
+                                                                    case ChainId.BSC:
+                                                                        address =
+                                                                            '0x7E78a9b7c688c5b8152dF3f50f6F32E983f28ac8'
                                                                         break
                                                                 }
                                                                 const params: any = {
