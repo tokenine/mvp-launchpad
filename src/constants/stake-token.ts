@@ -112,12 +112,12 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
   },
   '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115': {
     showOnActiveTab: false,
-    extraHeader: 'Proposal Details',
+    extraHeader: 'MVP WE ARE HODL',
     contractAddress: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
     title: 'Stake MVP for BTC',
     imageTokenUrl: '/images/tokens/mt-token.png',
     detailImage: '/images/tokens/mt-token.png',
-    proposalContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non suscipit neque. Fusce in urna eget orci pretium tristique vitae vel dolor. Sed id ante quis justo feugiat placerat. Mauris blandit orci et turpis ultricies vulputate.',
+    proposalContent: '<p class="mt-3"><p style="text-indent: 25px">โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p><p style="text-indent: 25px" class="mb-3">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p><div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div><ul class="list-disc list-inside"><li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT ได้ตั้งแต่วันที่ 15 สิงหาคม 2564 เวลา 12.00 น. - วันที่ 16 สิงหาคม 2564 เวลา 12.00 น.</li><li>นำ MT มาเคลมเพื่อรับ BTC ได้ตั้งแต่วันที่ 19 สิงหาคม 2564 เวลา 12.00 น. - วันที่ 22 สิงหาคม 2564 เวลา 12.00 น.</li><li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 23 สิงหาคม 2564</li><li>สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 15 กันยายน 2564 เวลา 0.01 น. เป็นต้นไป</li></ul><p class="mt-5">หมายเหตุ : โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</p></p>',
     available: true,
     stakeByToken: {
       address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
