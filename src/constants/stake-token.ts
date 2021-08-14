@@ -9,6 +9,7 @@ export interface StakeTokenList {
   proposalContent: string
   available: boolean
   label?: string
+  extraHeader?: string
   stakeByToken?: {
     address: string
     name: string
@@ -108,7 +109,32 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
       name: 'Token MD',
       symbol: 'MD'
     },
-  }
+  },
+  // '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115': {
+  //   showOnActiveTab: false,
+  //   extraHeader: 'Proposal Details',
+  //   contractAddress: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
+  //   title: 'Stake MVP for BTC',
+  //   imageTokenUrl: '/images/tokens/mt-token.png',
+  //   detailImage: '/images/tokens/mt-token.png',
+  //   proposalContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non suscipit neque. Fusce in urna eget orci pretium tristique vitae vel dolor. Sed id ante quis justo feugiat placerat. Mauris blandit orci et turpis ultricies vulputate.',
+  //   available: true,
+  //   stakeByToken: {
+  //     address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
+  //     name: 'MVP COIN',
+  //     symbol: 'MVP'
+  //   },
+  //   stakeToken: {
+  //     address: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
+  //     name: 'Stake MVPBTC ',
+  //     symbol: 'ST-MVPB'
+  //   },
+  //   rewardPointToken: {
+  //     address: '0xf9800ba96038aacea81734d2ff40b7bc8358545d',
+  //     name: 'MVP TEST',
+  //     symbol: 'MT'
+  //   },
+  // }
 }
 
 const BKC_STAKE_LIST: { [key: string]: StakeTokenList } = {
