@@ -86,7 +86,7 @@ const BSC_TESTNET_STAKE_LIST: { [key: string]: StakeTokenList } = {
 
 const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
   '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     contractAddress: '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB',
     title: 'SELF-QUARANTINE #2<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -111,7 +111,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
     },
   },
   '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115': {
-    showOnActiveTab: false,
+    showOnActiveTab: true,
     extraHeader: 'MVP WE ARE HODL',
     contractAddress: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
     title: 'Stake MVP for BTC',
