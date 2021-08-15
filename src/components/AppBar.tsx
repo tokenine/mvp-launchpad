@@ -349,6 +349,64 @@ function AppBar(): JSX.Element {
                                                             />
                                                         </div>
                                                     </QuestionHelper>
+                                                    { chainId === ChainId.BSC && <QuestionHelper text={i18n._(t`Add MT to your Metamask wallet`)}>
+                                                        <div
+                                                            className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
+                                                            onClick={() => {
+                                                                let address: string | undefined
+                                                                switch (chainId) {
+                                                                    case ChainId.BSC:
+                                                                        address =
+                                                                            '0xF9800Ba96038AaCeA81734d2Ff40b7bC8358545D'
+                                                                        break
+                                                                }
+                                                                const params: any = {
+                                                                    type: 'ERC20',
+                                                                    options: {
+                                                                        address: address,
+                                                                        symbol: 'MT',
+                                                                        decimals: 18,
+                                                                        image:
+                                                                            'https://mvp.dfy.asia/images/tokens/mt-token.png'
+                                                                    }
+                                                                }
+
+                                                                if (
+                                                                    library &&
+                                                                    library.provider.isMetaMask &&
+                                                                    library.provider.request
+                                                                ) {
+                                                                    library.provider
+                                                                        .request({
+                                                                            method: 'wallet_watchAsset',
+                                                                            params
+                                                                        })
+                                                                        .then(success => {
+                                                                            if (success) {
+                                                                                console.log(
+                                                                                    'Successfully added MT to MetaMask'
+                                                                                )
+                                                                            } else {
+                                                                                throw new Error('Something went wrong.')
+                                                                            }
+                                                                        })
+                                                                        .catch(console.error)
+                                                                }
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src={`${process.env.PUBLIC_URL}/images/tokens/mt-token.png`}
+                                                                alt="Switch Network"
+                                                                style={{
+                                                                    minWidth: 36,
+                                                                    minHeight: 36,
+                                                                    maxWidth: 36,
+                                                                    maxHeight: 36
+                                                                }}
+                                                                className="rounded-md object-contain"
+                                                            />
+                                                        </div>
+                                                    </QuestionHelper>}
                                                 </>
                                             )}
                                         {/* {chainId && chainId === ChainId.MATIC && (
