@@ -19,6 +19,7 @@ import { RouteComponentProps, useHistory } from 'react-router-dom'
 import { stakeTokenListByChainId, StakeTokenList } from '../../constants/stake-token'
 import Loader from 'components/Loader'
 import Countdown from 'react-countdown'
+import { isAddress } from 'utils'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -48,6 +49,9 @@ function StakePage({
 
     const [stakeDetail, setStakeDetail] = useState<StakeTokenList>()
     const [endDate, setEndDate] = useState(new Date())
+    const [claimDate, setClaimDate] = useState(new Date())
+
+    const isHasClaimDate = stakeDetail?.isHasClaimDate
     
     const [stakeByTokenBalance, setStakeByTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
@@ -57,24 +61,29 @@ function StakePage({
 
     const decimals = stakeByTokenDecimals
 
+    const rewardPointTokenAddress = isAddress(stakeDetail?.rewardPointToken?.address)
+
     const [stakeTokenName, stakeTokenSymbol, stakeTokenDecimals] = useTokenDetail(stakeDetail?.stakeToken?.address, account)
     const stakeTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.stakeToken ? new Token(chainId ?? 0, stakeDetail?.stakeToken?.address, stakeTokenDecimals, stakeTokenSymbol, stakeTokenName) : undefined)
 
-    const [rewardTokenName, rewardTokenSymbol, rewardTokenDecimals] = useTokenDetail(stakeDetail?.rewardPointToken?.address, account)
-    const rewardTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.rewardPointToken ? new Token(chainId ?? 0, stakeDetail?.rewardPointToken?.address, rewardTokenDecimals, rewardTokenSymbol, rewardTokenName) : undefined)
+    const [rewardTokenName, rewardTokenSymbol, rewardTokenDecimals] = useTokenDetail(rewardPointTokenAddress ? rewardPointTokenAddress : '', account)
+    const rewardTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.rewardPointToken ? new Token(chainId ?? 0, rewardPointTokenAddress ? rewardPointTokenAddress : '', rewardTokenDecimals, rewardTokenSymbol, rewardTokenName) : undefined)
 
     const [totalStakedBalance, setTotalStakedBalance] = useState('0')
 
     const [approvalState, approve] = useApproveCallback(stakeByTokenCurrencyAmount, stakeDetail?.contractAddress ?? '')
     const addTransaction = useTransactionAdder()
 
-    const stakeContract = useTokenineStakeContract(stakeDetail?.contractAddress ?? '')
+    const addressCheckSum = isAddress(stakeDetail?.contractAddress)
+    const stakeContract = useTokenineStakeContract(addressCheckSum ? addressCheckSum : '')
 
     const onMax = () => {
         setStakeByTokenBalance(
             stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount.toExact() : ''
         )
     }
+
+    const currentTime = new Date().getTime()
 
     useEffect(() => {
         if (!chainId) return
@@ -89,15 +98,21 @@ function StakePage({
         setStakeDetail(checkStakeDetail)
         const getMVPStakeDetail = async () => {
             try {
-                const endDateContract = await stakeContract?.functions.endDate()
+                const endDateContract = await stakeContract?.endDate()
                 if (endDateContract) {
-                    setEndDate(new Date(endDateContract[0].toNumber() * 1000))
+                    setEndDate(new Date(endDateContract.toNumber() * 1000))
                     setIsLoadingEndDate(false)
                 }
-                const totalSupplyStakedFetch = await stakeContract?.functions.totalSupply()
+                const totalSupplyStakedFetch = await stakeContract?.totalSupply()
                 if (totalSupplyStakedFetch) {
-                    const justSificantNumber = totalSupplyStakedFetch[0].toFixed(decimals).split('.')[0]
+                    const justSificantNumber = totalSupplyStakedFetch.toFixed(decimals).split('.')[0]
                     setTotalStakedBalance(numberWithCommas(justSificantNumber))
+                }
+                if (isHasClaimDate) {
+                    const claimDateContract = await stakeContract?.claimDate()
+                    if (claimDateContract) {
+                        setClaimDate(new Date(claimDateContract.toNumber() * 1000))
+                    }
                 }
             } catch (err) {
                 console.error(err)
@@ -105,7 +120,7 @@ function StakePage({
             }
         }
         getMVPStakeDetail()
-    }, [address, history, chainId, stakeContract, decimals, stakeTokenCurrencyAmount])
+    }, [address, history, chainId, stakeContract, decimals, stakeTokenCurrencyAmount, isHasClaimDate])
 
     return (
         <>
@@ -116,7 +131,6 @@ function StakePage({
             <BackgroundMain className="w-screen">
 
                 <div className="relative flex flex-col items-center">
-                    {/* <img alt="" src={BentoBoxLogo} className="object-scale-down w-40 md:w-60 h-auto" /> */}
 
                     <div className="container mx-auto max-w-3xl">
                         <div className="font-bold text-center text-4xl text-black my-20">
@@ -177,11 +191,11 @@ function StakePage({
                                 </div>}
                                 {account ? (
                                     <div>
-                                        <div className="text-black text-right text-caption2">
+                                        { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && claimDate.getTime() <= currentTime)) && <div className="text-black text-right text-caption2">
                                             Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
-                                        </div>
-                                        { endDate.getTime() <= new Date().getTime() && !isLoadingEndDate  ? <div>
-                                            <Button
+                                        </div> }
+                                        { endDate.getTime() <= currentTime && !isLoadingEndDate  ? <div>
+                                            { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && claimDate.getTime() <= currentTime)) && <Button
                                                 color="gradient3"
                                                 disabled={isCommiting || !stakeTokenCurrencyAmount || stakeTokenCurrencyAmount?.toExact() === '0'}
                                                 onClick={async () => {
@@ -201,7 +215,7 @@ function StakePage({
                                                 className="w-full border border-black py-2 mb-5 font-bold text-center text-black disabled:cursor-not-allowed"
                                             >
                                                 {i18n._(t`CLAIM BACK`)}
-                                            </Button>
+                                            </Button>}
                                         </div> : <div>
                                             <div className="flex items-center rounded border border-black bg-white space-x-3 p-3 w-full mb-5">
                                                 <Button
