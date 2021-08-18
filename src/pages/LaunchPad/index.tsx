@@ -63,7 +63,7 @@ function LaunchPad(): JSX.Element {
                                 <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-black rounded border border-black">
                                     <div className="my-3">
                                         <div className="my-5">
-                                            <img alt="launchpad" src={item.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
+                                            <img alt="launchpad" src={item.imageTokenUrl} className="inline-block h-22 w-22 rounded-full ring-2 ring-white" />
                                         </div>
                                         <p className="text-h3">{item.title}</p>
                                     </div>
