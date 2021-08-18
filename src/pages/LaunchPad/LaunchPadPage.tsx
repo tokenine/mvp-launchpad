@@ -80,7 +80,7 @@ function LaunchPadPage({
         } else {
             setWarningMsg('')
         }
-        setTokenBalanec(forBuyingToken.mul(tokenRate))
+        setTokenBalanec(launchDetail?.divider ? forBuyingToken.mul(tokenRate).div(launchDetail?.divider) : forBuyingToken.mul(tokenRate))
         setStartTokenBalance(val)
     }
 
@@ -245,7 +245,7 @@ function LaunchPadPage({
                                                 value={tokenBalance.toFixed(decimals)}
                                                 onUserInput={val => {
                                                     const launchToken = val.toBigNumber(decimals)
-                                                    const converted = launchToken.div(tokenRate)
+                                                    const converted = launchDetail?.divider ? launchToken.div(tokenRate).mul(launchDetail?.divider) : launchToken.div(tokenRate)
                                                     setStartTokenBalance(converted.toFixed(decimals))
                                                     setTokenBalanec(launchToken)
                                                 }}
