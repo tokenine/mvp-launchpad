@@ -112,17 +112,17 @@ function LaunchPadPage({
         }
         setLaunchDetail(checkLaunchDetail)
         const getSwapDetial = async () => {
-            const addressA = await tokenineSwap?.functions.tokenA()
+            const addressA = await tokenineSwap?.tokenA()
             if (addressA) {
-                setForBuyingTokenAddress(addressA[0])
+                setForBuyingTokenAddress(addressA)
             }
-            const addressB = await tokenineSwap?.functions.tokenB()
+            const addressB = await tokenineSwap?.tokenB()
             if (addressB) {
-                setLauchpadToken(addressB[0])
+                setLauchpadToken(addressB)
             }
-            const rate = await tokenineSwap?.functions.rate()
+            const rate = await tokenineSwap?.rate()
             if (rate) {
-                setTokenRate(rate[0])
+                setTokenRate(rate)
             }
         }
         getSwapDetial()
@@ -130,17 +130,21 @@ function LaunchPadPage({
 
     useEffect(() => {
         const fetchLaunchTokenRemain = async () => {
-            const luanchpadRemain = await tokenineSwap?.functions.bBalance()
-            if (luanchpadRemain) {
-                setLaunchPadRemain(luanchpadRemain[0].toFixed(decimals))
-            }
-            const launchPadIncomeBalance = await tokenineSwap?.functions.aBalance()
-            if (launchPadIncomeBalance) {
-                setLaunchPadIncomeBalance(launchPadIncomeBalance[0].toFixed(decimals))
-            }
-            const payTo = await tokenineSwap?.functions.payTo()
-            if (payTo) {
-                setIsMerchant(payTo[0] === account)
+            try {
+                const luanchpadRemain = await tokenineSwap?.bBalance()
+                if (luanchpadRemain) {
+                    setLaunchPadRemain(luanchpadRemain.toFixed(decimals))
+                }
+                const launchPadIncomeBalance = await tokenineSwap?.aBalance()
+                if (launchPadIncomeBalance) {
+                    setLaunchPadIncomeBalance(launchPadIncomeBalance.toFixed(decimals))
+                }
+                const isMerchantValue = await tokenineSwap?.isMerchant(account)
+                if (isMerchantValue) {
+                    setIsMerchant(isMerchantValue)
+                }
+            } catch (err) {
+                console.error(err)
             }
         }
         fetchLaunchTokenRemain()
@@ -152,21 +156,21 @@ function LaunchPadPage({
             <Helmet>
                 <title>Launchpad | DFY</title>
             </Helmet>
-            <BackgroundMain className="navbar-bg-green-thick-to-thin w-screen">
+            <BackgroundMain className="w-screen">
 
                 <div className="relative flex flex-col items-center">
                     {/* <img alt="" src={BentoBoxLogo} className="object-scale-down w-40 md:w-60 h-auto" /> */}
 
                     <div className="container mx-auto max-w-3xl">
-                        <div className="font-bold text-center text-4xl text-white my-20">
+                        <div className="font-bold text-center text-4xl text-black my-20">
                             {i18n._(t`Launchpad`)}
                         </div>
                     </div>
                 </div>
 
-                <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-white">
+                <div className="container mx-auto sm:px-6 max-w-5xl  rounded border border-black">
                     <div className="grid gap-4 sm:gap-12 grid-flow-auto grid-cols-2">
-                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-white">
+                        <Card className="flex items-center justify-center col-span-2 md:col-span-1 text-black">
                             {launchDetail && launchDetail.imageTokenUrl && <div className="text-center mb-10">
                                 <img alt="launchpad" src={launchDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
                             </div>}
@@ -177,11 +181,11 @@ function LaunchPadPage({
                             <div className="relative w-full">
                                 {luachPadTokenName && luachPadTokenSymbol && launchpadTokenAddress ? <div>
                                     <div className="flex mb-10 ">
-                                        <div className="pr-5 text-white text-center border-r border-white">
+                                        <div className="pr-5 text-black text-center border-r border-black">
                                             <p className="text-h1 font-bold">{luachPadTokenSymbol}</p>
                                             <p>{luachPadTokenName}</p>
                                         </div>
-                                        <div className="text-white ml-5">
+                                        <div className="text-black ml-5">
                                             <p>Address:</p>
                                             { launchpadTokenAddress && launchpadTokenAddress !== '' ? shortenAddress(launchpadTokenAddress).toLocaleUpperCase() : '' }
                                             <Button
@@ -195,9 +199,9 @@ function LaunchPadPage({
                                             <span className="ml-5">{isCopied && <span>Copied!</span>}</span>
                                         </div>
                                     </div>
-                                    <Card className="border border-white mb-10">
-                                        <p className="text-white mb-3">Remain:</p> 
-                                        <p className="text-center text-white text-h2">
+                                    <Card className="border border-black mb-10">
+                                        <p className="text-black mb-3">Remain:</p> 
+                                        <p className="text-center text-black text-h2">
                                         { launchPadRemain } {luachPadTokenSymbol}
                                         </p>
                                     </Card> 
@@ -206,14 +210,14 @@ function LaunchPadPage({
                                 </div>}
                                 {account ? (
                                     <div>
-                                        <div className="text-white text-right text-caption2">
+                                        <div className="text-black text-right text-caption2">
                                             Balance: {forBuyingCurrencyAmount ? forBuyingCurrencyAmount?.toSignificant(6) : 0} {forBuyingTokenSymbol}
                                         </div>
-                                        <div className="flex items-center rounded bg-white space-x-3 p-3 w-full">
+                                        <div className="flex items-center rounded bg-white border border-black space-x-3 p-3 w-full">
                                             <Button
                                                 onClick={onMax}
                                                 size="small"
-                                                className="bg-transparent hover:bg-primary hover:text-white border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
+                                                className="bg-transparent hover:bg-primary hover:text-black border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
                                             >
                                                 {i18n._(t`Max`)}
                                             </Button>
@@ -228,13 +232,13 @@ function LaunchPadPage({
                                             <span className="ml-2">{forBuyingTokenSymbol}</span>
                                         </div>
                                         <p className={`${ warningMsg === '' ? 'invisible' : 'visible' } text-red text-sm`}>Warning: {warningMsg}</p>
-                                        <div className="text-white w-full text-center relative mt-2">
+                                        <div className="text-black w-full text-center relative mt-2">
                                             <AiOutlineArrowDown className="mx-auto" size="24" />
                                         </div>
-                                        <div className="text-white text-right text-caption2 mt-4">
+                                        <div className="text-black text-right text-caption2 mt-4">
                                             Balance: {launchCurrencyAmount ? launchCurrencyAmount.toSignificant(6) : 0} {luachPadTokenSymbol}
                                         </div>
-                                        <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-10">
+                                        <div className="flex items-center rounded bg-white border border-black space-x-3 p-3 w-full mb-10">
                                             <NumericalInput
                                                 disabled={isCommiting}
                                                 className="token-amount-input text-right"
@@ -279,7 +283,7 @@ function LaunchPadPage({
                                                         setIsCommiting(false)
                                                     }
                                                 }}
-                                                className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
+                                                className="w-full border border-black py-2 font-bold text-center text-black disabled:cursor-not-allowed"
                                             >
                                                 {i18n._(t`COMMIT`)}
                                             </Button>
@@ -294,18 +298,18 @@ function LaunchPadPage({
                 </div>
 
                 {isMerchant && <div>
-                    <div className="font-bold text-center text-4xl text-white mt-20">
+                    <div className="font-bold text-center text-4xl text-black mt-20">
                         {i18n._(t`Merchant`)}
                     </div>                 
-                    <div className="container mx-auto sm:px-6 max-w-5xl mt-10 rounded border border-white">
+                    <div className="container mx-auto sm:px-6 max-w-5xl mt-10 rounded border border-black">
                         <div className="grid gap-1 grid-flow-auto grid-cols-2">
                             <Card className="col-span-2 md:col-span-1">
-                                <Card className="border border-white mb-10 w-full">
-                                    <p className="text-white mb-3">
+                                <Card className="border border-black mb-10 w-full">
+                                    <p className="text-black mb-3">
                                         <FaCoins className="inline-block mr-2" />
                                         Remain ({luachPadTokenName}):
                                     </p> 
-                                    <p className="text-center text-white text-h2">
+                                    <p className="text-center text-black text-h2">
                                     { launchPadRemain } {luachPadTokenSymbol}
                                     </p>
                                     <div className="text-right mt-3">
@@ -318,21 +322,21 @@ function LaunchPadPage({
                                                 })
                                             }}
                                             size="small"
-                                            className={`bg-transparent disabled:cursor-not-allowed ${launchPadRemain !== '0' ? 'hover:bg-primary hover:text-white': ''} border border-gray-300 rounded-full text-gray-300 text-xs font-medium whitespace-nowrap`}
+                                            className={`bg-transparent disabled:cursor-not-allowed ${launchPadRemain !== '0' ? 'hover:bg-primary hover:text-black': ''} border border-gray-300 rounded-full text-gray-300 text-xs font-medium whitespace-nowrap`}
                                         >
                                             {i18n._(t`Claim back`)}
                                         </Button>
                                     </div>
                                 </Card>
-                                <p className="text-white">Deposite {luachPadTokenName} ({luachPadTokenSymbol})</p>
-                                <div className="text-white text-right text-caption2 mt-4">
+                                <p className="text-black">Deposite {luachPadTokenName} ({luachPadTokenSymbol})</p>
+                                <div className="text-black text-right text-caption2 mt-4">
                                     Balance: {launchCurrencyAmount ? launchCurrencyAmount.toSignificant(6) : 0} {luachPadTokenSymbol}
                                 </div>
                                 <div className="flex items-center rounded bg-white space-x-3 p-3 w-full mb-10">
                                     <Button
                                         onClick={onMaxMerchant}
                                         size="small"
-                                        className="bg-transparent hover:bg-primary hover:text-white border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
+                                        className="bg-transparent hover:bg-primary hover:text-black border border-high-emphesis rounded-full text-gray-500 text-xs font-medium whitespace-nowrap"
                                     >
                                         {i18n._(t`Max`)}
                                     </Button>
@@ -356,15 +360,15 @@ function LaunchPadPage({
                                         setTokenMerchantBalance('')
                                     }
                                     }
-                                    className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
+                                    className="w-full border border-black py-2 font-bold text-center text-black disabled:cursor-not-allowed"
                                 >
                                     {i18n._(t`Deposite`)}
                                 </Button>
                             </Card>
                             <Card className="col-span-2 md:col-span-1">
-                                <Card className="border border-white mb-10 w-full">
-                                    <p className="text-white mb-3"><BsGraphUp className="inline-block mr-1" /> Income ({forBuyingTokenName}) :</p> 
-                                    <p className="text-center text-white text-h2">
+                                <Card className="border border-black mb-10 w-full">
+                                    <p className="text-black mb-3"><BsGraphUp className="inline-block mr-1" /> Income ({forBuyingTokenName}) :</p> 
+                                    <p className="text-center text-black text-h2">
                                     { launchPadIncomeBalance } {forBuyingTokenSymbol}
                                     </p>
                                 </Card>
@@ -378,7 +382,7 @@ function LaunchPadPage({
                                         })
                                     }
                                     }
-                                    className="w-full border border-white py-2 font-bold text-center text-white disabled:cursor-not-allowed"
+                                    className="w-full border border-black py-2 font-bold text-center text-black disabled:cursor-not-allowed"
                                 >
                                     {i18n._(t`Claim ${forBuyingTokenName}`)}
                                 </Button>

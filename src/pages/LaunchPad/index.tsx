@@ -60,7 +60,7 @@ function LaunchPad(): JSX.Element {
                                 key={item.contractAddress}
                                 to={item.available ? `/launchpad/${item.contractAddress}` : '/launchpad'}
                             >
-                                <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-white rounded border border-white">
+                                <Card className="flex items-center justify-center text-center col-span-2 md:col-span-1 text-black rounded border border-black">
                                     <div className="my-3">
                                         <div className="my-5">
                                             <img alt="launchpad" src={item.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
