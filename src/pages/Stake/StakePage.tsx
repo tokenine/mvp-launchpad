@@ -33,6 +33,8 @@ const numberWithCommas = (x: string) => {
     return x.toString().replace(/(\.\d+)|(?=(?:\d{3})+\b)(?!\b)/g, function(m, $1) { return $1 || ',' })
 }
 
+const now = new Date()
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function StakePage({
     match: {
@@ -48,10 +50,12 @@ function StakePage({
     const [isLoadingEndDate, setIsLoadingEndDate] = useState(true)
 
     const [stakeDetail, setStakeDetail] = useState<StakeTokenList>()
-    const [endDate, setEndDate] = useState(new Date())
-    const [claimDate, setClaimDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(now)
+    const [claimDate, setClaimDate] = useState(now)
+    const [startDate, setStartDate] = useState(now)
 
     const isHasClaimDate = stakeDetail?.isHasClaimDate
+    const isHasStartDate = stakeDetail?.isHasStartDate
     
     const [stakeByTokenBalance, setStakeByTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
@@ -114,13 +118,19 @@ function StakePage({
                         setClaimDate(new Date(claimDateContract.toNumber() * 1000))
                     }
                 }
+                if (isHasStartDate) {
+                    const startDateContract = await stakeContract?.startDate()
+                    if (startDateContract) {
+                        setStartDate(new Date(startDateContract.toNumber() * 1000))
+                    }
+                }
             } catch (err) {
                 console.error(err)
                 setIsLoadingEndDate(false)
             }
         }
         getMVPStakeDetail()
-    }, [address, history, chainId, stakeContract, decimals, stakeTokenCurrencyAmount, isHasClaimDate])
+    }, [address, history, chainId, stakeContract, decimals, stakeTokenCurrencyAmount, isHasClaimDate, isHasStartDate])
 
     return (
         <>
@@ -195,7 +205,7 @@ function StakePage({
                                             Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
                                         </div> }
                                         { endDate.getTime() <= currentTime && !isLoadingEndDate  ? <div>
-                                            { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && claimDate.getTime() <= currentTime)) && <Button
+                                            { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && currentTime >= claimDate.getTime())) && <Button
                                                 color="gradient3"
                                                 disabled={isCommiting || !stakeTokenCurrencyAmount || stakeTokenCurrencyAmount?.toExact() === '0'}
                                                 onClick={async () => {
@@ -235,41 +245,43 @@ function StakePage({
                                                 />
                                                 <span className="ml-2">{stakeByTokenSymbol}</span>
                                             </div>
-                                            { ApprovalState.UNKNOWN === approvalState && <div className="w-2 mx-auto">
-                                                <Loader stroke="black" />
+                                            { (!stakeDetail?.isHasStartDate || (stakeDetail?.isHasStartDate && currentTime >= startDate.getTime())) && <div>
+                                                { ApprovalState.UNKNOWN === approvalState && <div className="w-2 mx-auto">
+                                                    <Loader stroke="black" />
+                                                </div>}
+                                                { (ApprovalState.NOT_APPROVED === approvalState || ApprovalState.PENDING === approvalState) && (
+                                                    <Button
+                                                        disabled={ApprovalState.PENDING === approvalState}
+                                                        onClick={approve}
+                                                        className="w-full border-gradient py-2 font-bold text-center text-high-emphesis disabled:cursor-not-allowed"
+                                                    >
+                                                        { ApprovalState.PENDING === approvalState ? i18n._(t`Approving`) : i18n._(t`Approve`)}
+                                                    </Button>
+                                                ) }
+                                                { ApprovalState.APPROVED === approvalState && (
+                                                    <Button
+                                                        color="gradient3"
+                                                        disabled={isCommiting || stakeByTokenBalance === '' || !stakeDetail?.showOnActiveTab}
+                                                        onClick={async () => {
+                                                            try {
+                                                                setIsCommiting(true)
+                                                                const response = await stakeContract?.functions.enter(stakeByTokenBalance.toBigNumber(decimals))
+                                                                addTransaction(response, {
+                                                                    summary: 'Stake committed!'
+                                                                })
+                                                                setStakeByTokenBalance('')
+                                                                setIsCommiting(false)
+                                                            } catch (err) {
+                                                                console.error(err)
+                                                                setIsCommiting(false)
+                                                            }
+                                                        }}
+                                                        className="w-full border border-black py-2 font-bold text-center text-black disabled:cursor-not-allowed"
+                                                    >
+                                                        {i18n._(t`STAKE`)}
+                                                    </Button>
+                                                ) }
                                             </div>}
-                                            { (ApprovalState.NOT_APPROVED === approvalState || ApprovalState.PENDING === approvalState) && (
-                                                <Button
-                                                    disabled={ApprovalState.PENDING === approvalState}
-                                                    onClick={approve}
-                                                    className="w-full border-gradient py-2 font-bold text-center text-high-emphesis disabled:cursor-not-allowed"
-                                                >
-                                                    { ApprovalState.PENDING === approvalState ? i18n._(t`Approving`) : i18n._(t`Approve`)}
-                                                </Button>
-                                            ) }
-                                            { ApprovalState.APPROVED === approvalState && (
-                                                <Button
-                                                    color="gradient3"
-                                                    disabled={isCommiting || stakeByTokenBalance === '' || !stakeDetail?.showOnActiveTab}
-                                                    onClick={async () => {
-                                                        try {
-                                                            setIsCommiting(true)
-                                                            const response = await stakeContract?.functions.enter(stakeByTokenBalance.toBigNumber(decimals))
-                                                            addTransaction(response, {
-                                                                summary: 'Stake committed!'
-                                                            })
-                                                            setStakeByTokenBalance('')
-                                                            setIsCommiting(false)
-                                                        } catch (err) {
-                                                            console.error(err)
-                                                            setIsCommiting(false)
-                                                        }
-                                                    }}
-                                                    className="w-full border border-black py-2 font-bold text-center text-black disabled:cursor-not-allowed"
-                                                >
-                                                    {i18n._(t`STAKE`)}
-                                                </Button>
-                                            ) }
                                         </div>}
                                     </div>
                                 ) : (

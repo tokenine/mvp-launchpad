@@ -11,6 +11,7 @@ export interface StakeTokenList {
   label?: string
   extraHeader?: string
   isHasClaimDate?: boolean
+  isHasStartDate?:boolean
   stakeByToken?: {
     address: string
     name: string
@@ -96,6 +97,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
     proposalContent: '<p class="mt-3"><p style="text-indent: 25px">โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p><p class="my-5 text-center">*** ใครมี MT ได้รับ BTC ทุกคน ***</p><p style="text-indent: 25px" class="mb-3">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p><div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div><ul class="list-disc list-inside"><li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT ได้ตั้งแต่วันที่ 29 สิงหาคม 2564 เวลา 12.00 น. - วันที่ 31 สิงหาคม 2564 เวลา 12.00 น.</li><li>นำ MT มาเคลมเพื่อรับ BTC ได้ตั้งแต่วันที่ 6 กรกฎาคม 2564 เวลา 00.00 น. - วันที่ 10 กรกฎาคม 2564 เวลา 00.00น.</li><li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 11 กรกฎาคม 2564</li><li>สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 14 ตุลาคม 2564 เวลา 00.01 น. เป็นต้นไป</li></ul><p class="mt-5">หมายเหตุ : โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</p></p>',
     available: true,
     isHasClaimDate: true,
+    isHasStartDate: true,
     label: '#2',
     stakeByToken: {
       address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
@@ -103,7 +105,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
       symbol: 'MVP'
     },
     stakeToken: {
-      address: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
+      address: '0x30aD01DAc5761658AFCD26242ffaf25b004426d8',
       name: 'Stake MVPBTC ',
       symbol: 'ST-MVPB'
     },
