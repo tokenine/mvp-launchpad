@@ -86,6 +86,33 @@ const BSC_TESTNET_STAKE_LIST: { [key: string]: StakeTokenList } = {
 }
 
 const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
+  '0xcDb330cB1F8cE8B8e9663ACC8771f8DEf139C865': {
+    showOnActiveTab: true,
+    extraHeader: 'MVP WE ARE HODL 2',
+    contractAddress: '0xcDb330cB1F8cE8B8e9663ACC8771f8DEf139C865',
+    title: 'Stake MVP for BTC 2',
+    imageTokenUrl: '/images/tokens/mt-token.png',
+    detailImage: '/images/tokens/mt-token.png',
+    proposalContent: '<p class="mt-3"><p style="text-indent: 25px">โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p><p class="my-5 text-center">*** ใครมี MT ได้รับ BTC ทุกคน ***</p><p style="text-indent: 25px" class="mb-3">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p><div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div><ul class="list-disc list-inside"><li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT ได้ตั้งแต่วันที่ 29 สิงหาคม 2564 เวลา 00.00 น. - วันที่ 31 สิงหาคม 2564 เวลา 00.00 น.</li><li>นำ MT มาเคลมเพื่อรับ BTC ได้ตั้งแต่วันที่ 6 กรกฎาคม 2564 เวลา 00.00 น. - วันที่ 10 กรกฎาคม 2564 เวลา 00.00น.</li><li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 11 กรกฎาคม 2564</li><li>สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 14 ตุลาคม 2564 เวลา 00.01 น. เป็นต้นไป</li></ul><p class="mt-5">หมายเหตุ : โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</p></p>',
+    available: true,
+    isHasClaimDate: true,
+    label: '#2',
+    stakeByToken: {
+      address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
+      name: 'Stake MVPBTC ',
+      symbol: 'ST-MVPB'
+    },
+    rewardPointToken: {
+      address: '0xf9800ba96038aacea81734d2ff40b7bc8358545d',
+      name: 'MVP TEST',
+      symbol: 'MT'
+    },
+  },
   '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115': {
     showOnActiveTab: true,
     extraHeader: 'MVP WE ARE HODL',
@@ -113,7 +140,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
     },
   },
   '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     contractAddress: '0xd072c9fEE63159Bb0Eb750AD974B2827a3364BFB',
     title: 'SELF-QUARANTINE #2<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
