@@ -201,9 +201,6 @@ function StakePage({
                                 </div>}
                                 {account ? (
                                     <div>
-                                        { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && claimDate <= currentTime)) && <div className="text-black text-right text-caption2">
-                                            Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
-                                        </div> }
                                         { endDate <= currentTime && !isLoadingEndDate  ? <div>
                                             { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && currentTime >= claimDate)) && <Button
                                                 color="gradient3"
@@ -227,6 +224,9 @@ function StakePage({
                                                 {i18n._(t`CLAIM BACK`)}
                                             </Button>}
                                         </div> : <div>
+                                            <div className="text-black text-right text-caption2">
+                                                Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
+                                            </div>
                                             <div className="flex items-center rounded border border-black bg-white space-x-3 p-3 w-full mb-5">
                                                 <Button
                                                     onClick={onMax}
