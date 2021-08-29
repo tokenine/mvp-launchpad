@@ -50,9 +50,9 @@ function StakePage({
     const [isLoadingEndDate, setIsLoadingEndDate] = useState(true)
 
     const [stakeDetail, setStakeDetail] = useState<StakeTokenList>()
-    const [endDate, setEndDate] = useState(now)
-    const [claimDate, setClaimDate] = useState(now)
-    const [startDate, setStartDate] = useState(now)
+    const [endDate, setEndDate] = useState(0)
+    const [claimDate, setClaimDate] = useState(0)
+    const [startDate, setStartDate] = useState(0)
 
     const isHasClaimDate = stakeDetail?.isHasClaimDate
     const isHasStartDate = stakeDetail?.isHasStartDate
@@ -104,7 +104,7 @@ function StakePage({
             try {
                 const endDateContract = await stakeContract?.endDate()
                 if (endDateContract) {
-                    setEndDate(new Date(endDateContract.toNumber() * 1000))
+                    setEndDate(new Date(endDateContract.toNumber() * 1000).getTime())
                     setIsLoadingEndDate(false)
                 }
                 const totalSupplyStakedFetch = await stakeContract?.totalSupply()
@@ -115,13 +115,13 @@ function StakePage({
                 if (isHasClaimDate) {
                     const claimDateContract = await stakeContract?.claimDate()
                     if (claimDateContract) {
-                        setClaimDate(new Date(claimDateContract.toNumber() * 1000))
+                        setClaimDate(new Date(claimDateContract.toNumber() * 1000).getTime())
                     }
                 }
                 if (isHasStartDate) {
                     const startDateContract = await stakeContract?.startDate()
                     if (startDateContract) {
-                        setStartDate(new Date(startDateContract.toNumber() * 1000))
+                        setStartDate(new Date(startDateContract.toNumber() * 1000).getTime())
                     }
                 }
             } catch (err) {
@@ -201,11 +201,11 @@ function StakePage({
                                 </div>}
                                 {account ? (
                                     <div>
-                                        { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && claimDate.getTime() <= currentTime)) && <div className="text-black text-right text-caption2">
+                                        { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && claimDate <= currentTime)) && <div className="text-black text-right text-caption2">
                                             Balance: {stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount?.toSignificant(6) : 0} {stakeByTokenSymbol}
                                         </div> }
-                                        { endDate.getTime() <= currentTime && !isLoadingEndDate  ? <div>
-                                            { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && currentTime >= claimDate.getTime())) && <Button
+                                        { endDate <= currentTime && !isLoadingEndDate  ? <div>
+                                            { (!stakeDetail?.isHasClaimDate || (stakeDetail?.isHasClaimDate && currentTime >= claimDate)) && <Button
                                                 color="gradient3"
                                                 disabled={isCommiting || !stakeTokenCurrencyAmount || stakeTokenCurrencyAmount?.toExact() === '0'}
                                                 onClick={async () => {
@@ -245,7 +245,7 @@ function StakePage({
                                                 />
                                                 <span className="ml-2">{stakeByTokenSymbol}</span>
                                             </div>
-                                            { (!stakeDetail?.isHasStartDate || (stakeDetail?.isHasStartDate && currentTime >= startDate.getTime())) && <div>
+                                            { (!stakeDetail?.isHasStartDate || (stakeDetail?.isHasStartDate && currentTime >= startDate)) && <div>
                                                 { ApprovalState.UNKNOWN === approvalState && <div className="w-2 mx-auto">
                                                     <Loader stroke="black" />
                                                 </div>}
