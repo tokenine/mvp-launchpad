@@ -81,6 +81,8 @@ function StakePage({
     const addressCheckSum = isAddress(stakeDetail?.contractAddress)
     const stakeContract = useTokenineStakeContract(addressCheckSum ? addressCheckSum : '')
 
+    const donationTotalCurrencyAmount = useCurrencyBalance(stakeDetail?.showTotalDonate, stakeDetail?.rewardPointToken ? new Token(chainId ?? 0, rewardPointTokenAddress ? rewardPointTokenAddress : '', rewardTokenDecimals, rewardTokenSymbol, rewardTokenName) : undefined)
+
     const onMax = () => {
         setStakeByTokenBalance(
             stakeByTokenCurrencyAmount ? stakeByTokenCurrencyAmount.toExact() : ''
@@ -184,6 +186,12 @@ function StakePage({
                                         { totalStakedBalance } {stakeByTokenSymbol}
                                         </p>
                                     </Card>
+                                    {stakeDetail?.showTotalDonate && <Card className="border border-black mb-10">
+                                        <p className="text-black mb-3">Total donation:</p> 
+                                        <p className="text-center text-black text-h2">
+                                        { donationTotalCurrencyAmount ? numberWithCommas(donationTotalCurrencyAmount.toSignificant(6)) : 0 } {rewardTokenSymbol}
+                                        </p>
+                                    </Card>}
                                     <Card className="border border-black mb-10">
                                         <p className="text-black mb-3">Your Staking:</p> 
                                         <p className="text-center text-black text-h2">
