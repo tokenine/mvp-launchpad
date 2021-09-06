@@ -36,12 +36,20 @@ const BSC_TESTNET_LAUNCH_TOKEN_LIST: { [key: string]: LaunchTokenList } = {
 }
 
 const BSC_LAUNCH_TOKEN_LIST: { [key: string]: LaunchTokenList } = {
+  // '0xEE63a82277d81208C3B5E47BB63161851318ABd3': {
+  //   contractAddress: '0xEE63a82277d81208C3B5E47BB63161851318ABd3',
+  //   title: 'Swap MT เป็น BTC #2 (บนเครื่อข่าย BSC)',
+  //   imageTokenUrl: '/images/tokens/mt-token.png',
+  //   proposalContent: '<p class="mt-3"><p class="text-lg mb-2 font-bold">Swap MT เป็น BTC (บนเครื่อข่าย BSC)</p><p style="text-indent: 25px">#MT2 โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p><p class="my-5 text-center">* ใครมี MT ได้รับ BTC ทุกคน *</p><p style="text-indent: 25px" class="mb-3">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p><div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div><ul class="list-disc list-inside"><li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT2 ได้ตั้งแต่วันที่ 29 สิงหาคม 2564 เวลา 12.00 น. - วันที่ 31 สิงหาคม 2564 เวลา 12.00 น.</li><li>นำ MT2 มาเคลมเพื่อรับ BTCB ได้ตั้งแต่วันที่ 6 กันยายน 2564 เวลา 0.00 น. - วันที่ 10 กันยายน 2564 เวลา 23.59 น. กรณีไม่กดเคลมเหรียญ BTCB ภายในเวลาที่กำหนด เหรียญจะถูกนำคืนเข้าบริษัท</li><li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 11 กันยายน 2564 เวลา 0.00 น.</li><li>สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 14 ตุลาคม 2564 (โดยเหรียญจะถูกล็อคไว้ 45 วัน ภายใน Vault)</li></ul><p class="mt-5">หมายเหตุ : โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</p><p class="mt-8"><div class="text-lg mb-1 font-bold">วิธีการเพิ่ม MT Token ลงใน MetaMask</div><div style="text-indent: 25px">เปิดแอพฯ MetaMask แล้วเลือก Network เป็น Binance Smart Chain จากนั้นคลิก Add Token ใส่ Token Address:</div> <div class="text-center my-3">0xf9800ba96038aacea81734d2ff40b7bc8358545d</div> (สามารถก๊อปปี้ไปวางได้) หาก Token Address ถูกต้องค่าต่างๆ ในช่อง Token Symbol และ Token of precision จะปรากฏโดยอัตโนมัติ ให้คลิก Add Token เป็นอันเสร็จเรียบร้อย</div></p></p>',
+  //   available: true,
+  //   divider: BigNumber.from(10).pow(18)
+  // },
   '0xEE63a82277d81208C3B5E47BB63161851318ABd3': {
     contractAddress: '0xEE63a82277d81208C3B5E47BB63161851318ABd3',
-    title: 'Swap MT เป็น BTC (บนเครื่อข่าย BSC)',
+    title: 'Swap MT เป็น BTC #2 (Coming soon)',
     imageTokenUrl: '/images/tokens/mt-token.png',
     proposalContent: '<p class="mt-3"><p class="text-lg mb-2 font-bold">Swap MT เป็น BTC (บนเครื่อข่าย BSC)</p><p style="text-indent: 25px">โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p><p class="my-5 text-center">*** ใครมี MT ได้รับ BTC ทุกคน ***</p><p style="text-indent: 25px" class="mb-3">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p><div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div><ul class="list-disc list-inside"><li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT ได้ตั้งแต่วันที่ 15 สิงหาคม 2564 เวลา 12.00 น. - วันที่ 16 สิงหาคม 2564 เวลา 12.00 น.</li><li>นำ MT มาเคลมเพื่อรับ BTC ได้ตั้งแต่วันที่ 19 สิงหาคม 2564 เวลา 12.00 น. - วันที่ 22 สิงหาคม 2564 เวลา 12.00 น.</li><li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 23 สิงหาคม 2564</li><li>สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 15 กันยายน 2564 เวลา 0.01 น. เป็นต้นไป</li></ul><p class="mt-5">หมายเหตุ : โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</p></p>',
-    available: true,
+    available: false,
     divider: BigNumber.from(10).pow(18)
   },
 }
