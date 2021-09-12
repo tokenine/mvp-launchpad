@@ -64,6 +64,7 @@ import { useActiveWeb3React } from './useActiveWeb3React'
 import { useMemo } from 'react'
 import TOKENINE_SWAP_JSON from '../constants/abis/tokenine-swap.json'
 import TOKENINE_STAKE_JSON from '../constants/abis/tokenine-stake.json'
+import Auction from 'constants/abis/auction.json'
 
 import { MINI_CHEF_V2_ADDRESS, MASTER_CHEF_V2_ADDRESS, MASTER_CHEF_V1_ADDRESS } from 'constants/farms'
 
@@ -119,6 +120,11 @@ export function useArgentWalletDetectorContract(): Contract | null {
         ARGENT_WALLET_DETECTOR_ABI,
         false
     )
+}
+
+//MEV AUCTION
+export function useAuctionContract(address: string): Contract | null {
+    return useContract(address, Auction, true)
 }
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
