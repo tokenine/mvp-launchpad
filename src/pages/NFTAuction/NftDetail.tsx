@@ -19,7 +19,6 @@ const BackgroundMain = styled.div`
     margin-bottom: -80px;
     padding-bottom: 80px;
     height: 100vh;
-    overflow-y: scroll;
 `
 const CardImage = styled.img`
     object-fit: contain;
