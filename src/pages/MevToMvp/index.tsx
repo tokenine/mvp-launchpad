@@ -38,9 +38,9 @@ const SwitchDiv = styled.div`
 `
 
 const MevToMvp = ({
-  match: {
-      params: { address }
-  }
+    match: {
+        params: { address }
+    }
 }: RouteComponentProps<{ address: string }>): JSX.Element => {
     const { i18n } = useLingui()
     const [active, setActive] = useState(true)
@@ -50,10 +50,10 @@ const MevToMvp = ({
     const useMevTokenContact = useToken(address)
     const useMvpTokenContact = useToken('0x3379A0BdF5A5CB566127C421782686BA0f80490a')
 
-    const [tokenAmount, setTokenAmount] = useState('')
+    const [tokenAmount, setTokenAmount] = useState('0')
     const [tokenSymbol, setTokenSymbol] = useState('')
 
-    const [currentBalance, setCurrentBalance] = useState(0)
+    const [currentBalance, setCurrentBalance] = useState('0')
     const [currencyAmount, setCurrencyAmount] = useState<TokenAmount>()
     const [approvalState, approve] = useApproveCallback(currencyAmount, account ?? '')
 
@@ -72,32 +72,28 @@ const MevToMvp = ({
                     const priceAmount = JSBI.BigInt(await useMevTokenContact?.totalSupply())
                     const tokenAmount = new Token(
                         chainId,
-                        '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
-                        decimals ?? 18,
-                        symbol,
-                        tokenName
-                    )
-
-                    setCurrentBalance(balance.toFixed(decimals))
-                    setTokenSymbol(symbol)
-                    setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
-                } else if (useMvpTokenContact && chainId && active) {
-                  const decimals = await useMvpTokenContact?.decimals()
-                    const tokenName = await useMvpTokenContact?.name()
-                    const symbol = await useMvpTokenContact?.symbol()
-                    const balance = await useMvpTokenContact?.balanceOf(account)
-                    const priceAmount = JSBI.BigInt(await useMvpTokenContact?.totalSupply())
-                    const tokenAmount = new Token(
-                        chainId,
                         address,
                         decimals ?? 18,
                         symbol,
                         tokenName
                     )
-
+                    console.log(tokenName)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
+
+                } else if (useMvpTokenContact && chainId && active) {
+                    const decimals = await useMvpTokenContact?.decimals()
+                    const tokenName = await useMvpTokenContact?.name()
+                    const symbol = await useMvpTokenContact?.symbol()
+                    const balance = await useMvpTokenContact?.balanceOf(account)
+                    const priceAmount = JSBI.BigInt(await useMvpTokenContact?.totalSupply())
+                    const tokenAmount = new Token(chainId, '0x3379A0BdF5A5CB566127C421782686BA0f80490a', decimals ?? 18, symbol, tokenName)
+                    console.log(tokenName)
+                    setCurrentBalance(balance.toFixed(decimals))
+                    setTokenSymbol(symbol)
+                    setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
+                    
                 }
             } catch (err) {
                 console.error(err)
@@ -111,9 +107,8 @@ const MevToMvp = ({
     }
 
     const MvpToMev = async () => {
-        const amount = Web3.utils.toWei(tokenAmount)
-
         try {
+            const amount = Web3.utils.toWei(tokenAmount)
             await useMevTokenContact?.mint(Web3.utils.toWei(amount))
         } catch (err) {
             console.error(err)
@@ -121,9 +116,8 @@ const MevToMvp = ({
     }
 
     const MevToMvp = async () => {
-        const amount = Web3.utils.toWei(tokenAmount)
-
         try {
+            const amount = Web3.utils.toWei(tokenAmount)
             await useMevTokenContact?.redeem(Web3.utils.toWei(amount))
         } catch (err) {
             console.error(err)
