@@ -11,6 +11,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { JSBI, Token, TokenAmount } from 'dfy-sdk'
 import { RouteComponentProps } from 'react-router-dom'
 import { useMVPToMEV } from 'constants/mvptomev'
+import { useTransactionAdder } from 'state/transactions/hooks'
 
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -60,7 +61,8 @@ const MevToMvp = ({
     const [symbolMEV, setSymbolMEV] = useState()
     const [symbolMVP, setSymbolMVP] = useState()
 
-    const [currentBalance, setCurrentBalance] = useState('0')
+    const addTransaction = useTransactionAdder()
+    const [currentBalance, setCurrentBalance] = useState(0)
     const [currencyAmount, setCurrencyAmount] = useState<TokenAmount>()
     const [approvalState, approve] = useApproveCallback(currencyAmount, spender)
 
@@ -126,7 +128,12 @@ const MevToMvp = ({
     const MvpToMev = async () => {
         try {
             const amount = Web3.utils.toWei(tokenAmount)
-            await useMevTokenContact?.mint(Web3.utils.toWei(amount))
+            console.log(tokenAmount);
+            
+            const respone = await useMevTokenContact?.mint(Web3.utils.toWei(amount))
+            addTransaction(respone, {
+                summary: 'MVP To MEV'
+            })
         } catch (err) {
             console.error(err)
         }
@@ -135,7 +142,10 @@ const MevToMvp = ({
     const MevToMvp = async () => {
         try {
             const amount = Web3.utils.toWei(tokenAmount)
-            await useMevTokenContact?.redeem(Web3.utils.toWei(amount))
+            const respone = await useMevTokenContact?.redeem(Web3.utils.toWei(amount))
+            addTransaction(respone, {
+                summary: 'MEV To MVP'
+            })
         } catch (err) {
             console.error(err)
         }
