@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import NumericalInput from 'components/NumericalInput'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
-import { useToken } from 'hooks/useContract'
+import { useMEVToMVP, useMVPMEV } from 'hooks/useContract'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
@@ -50,8 +50,8 @@ const MevToMvp = ({
     const Web3 = require('web3')
 
     const mvpmevtoken = useMVPToMEV(chainId)
-    const useMevTokenContact = useToken(mvpmevtoken?.mev)
-    const useMvpTokenContact = useToken(mvpmevtoken?.mvp)
+    const useMevTokenContact = useMEVToMVP(mvpmevtoken?.mev)
+    const useMvpTokenContact = useMVPMEV(mvpmevtoken?.mvp)
     const [spender, setSpender] = useState('')
 
     const [tokenAmount, setTokenAmount] = useState('')
