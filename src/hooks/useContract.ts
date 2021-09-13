@@ -135,7 +135,7 @@ export function useMEVToMVP(address: string): Contract | null {
 }
 
 export function useMVPMEV(address: string): Contract | null {
-    return useContract(address, MEVTOMVP, true)
+    return useContract(address, MVPTOMEV, true)
 }
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
