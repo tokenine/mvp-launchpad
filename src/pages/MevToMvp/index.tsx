@@ -96,7 +96,7 @@ const MevToMvp = ({
                     const balance = await useMevTokenContact?.balanceOf(account)
                     const priceAmount = JSBI.BigInt(balance)
                     const tokenAmount = new Token(chainId, mvpmevtoken.mev, decimals ?? 18, symbol, tokenName)
-                    setSpender(mvpmevtoken.mvp)
+                    setSpender(account ?? '')
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
