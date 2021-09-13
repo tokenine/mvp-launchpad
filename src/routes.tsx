@@ -40,6 +40,7 @@ import {
 } from './pages/Swap/redirects'
 import NFTAuction from 'pages/NFTAuction'
 import NftDetail from 'pages/NFTAuction/NftDetail'
+import MevToMvp from 'pages/MevToMvp'
 // import Tools from './pages/Tools'
 // import Vesting from './pages/Vesting'
 // import Yield from './pages/Yield'
@@ -71,6 +72,8 @@ function Routes(): JSX.Element {
             <Route exact strict path="/mev-auction" component={NFTAuction} />
             <Route exact strict path="/mev-auction/:address" component={NftDetail} />
 
+            <Route exact strict path="/mev-mvp-swap" component={MevToMvp} />
+            
             {chainId && LaunchPadAllowChaidId.includes(chainId)
                 && <Route strict path="/pool/:address" component={StakePage} />
             }

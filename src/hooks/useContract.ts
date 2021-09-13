@@ -129,7 +129,7 @@ export function useAuctionContract(address: string): Contract | null {
 }
 
 //MEV swap
-export function useMEV(address: string): Contract | null {
+export function useToken(address: string): Contract | null {
     return useContract(address, MEV, true)
 }
 
