@@ -119,12 +119,12 @@ function NFTAuction(): JSX.Element {
                 setTokenSymbol(symbol)
                 setTokenDecimal(deciaml)
                 for (let id = 0; id < item.toNumber(); id++) {
-                    try {
+                    const bidlist = await itemcontract?.getBidsList(id)
+                    console.log(bidlist.length)
+                    if (await itemcontract?.getBidsList(id).length === 0){
                         topBid = await itemcontract?.getTopBid(id)
-                    } catch (err) {
-                        console.log(err)
-                        topBid = []
                     }
+                    console.log(topBid)
                     const item = await itemcontract?.artItems(id)
                     const tokenURI = item.tokenURI
                     const startPrice = item.startPrice
