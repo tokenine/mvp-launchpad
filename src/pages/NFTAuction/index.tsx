@@ -98,6 +98,14 @@ function NFTAuction(): JSX.Element {
     const [activeItems, setactiveItems] = useState<NFTContent[]>([])
     const [inactiveItems, setinactiveItems] = useState<NFTContent[]>([])
 
+    const time = (timeinput: number) => {
+        if (timeinput < 10) {
+            return '0' + timeinput.toString()
+        } else {
+            return timeinput.toString()
+        }
+    }
+
     useEffect(() => {
         const fetchContract = async () => {
             try {
@@ -106,11 +114,17 @@ function NFTAuction(): JSX.Element {
                 const item = await itemcontract?.currentArtId()
                 const deciaml = await tokencontract?.decimals()
                 const symbol = await tokencontract?.symbol()
+                let topBid = []
                 let timeActive = true
                 setTokenSymbol(symbol)
                 setTokenDecimal(deciaml)
                 for (let id = 0; id < item.toNumber(); id++) {
-                    const topBid = await itemcontract?.getTopBid(id)
+                    try {
+                        topBid = await itemcontract?.getTopBid(id)
+                    } catch (err) {
+                        console.log(err)
+                        topBid = []
+                    }
                     const item = await itemcontract?.artItems(id)
                     const tokenURI = item.tokenURI
                     const startPrice = item.startPrice
@@ -129,8 +143,19 @@ function NFTAuction(): JSX.Element {
                     const hhour = date.getHours()
                     const minutee = date.getMinutes()
                     const secondd = date.getSeconds()
-                    const timeend = dayy + '/' + monthh + '/' + yearr + ' ' + hhour + ':' + minutee + ':' + secondd
-                    if (timeActive === true) {
+                    const timeend =
+                        time(dayy) +
+                        '/' +
+                        time(monthh) +
+                        '/' +
+                        time(yearr) +
+                        ' ' +
+                        time(hhour) +
+                        ':' +
+                        time(minutee) +
+                        ':' +
+                        time(secondd)
+                    if (timeActive === true && topBid !== []) {
                         listactiveNftItems.push({
                             id: id,
                             tokenURI: tokenURI,
@@ -141,7 +166,7 @@ function NFTAuction(): JSX.Element {
                             timeactive: timeActive,
                             currenttopbid: topBid[1]
                         })
-                    } else {
+                    } else if (timeActive === false && topBid !== []) {
                         listinactiveNftItems.push({
                             id: id,
                             tokenURI: tokenURI,
@@ -151,6 +176,26 @@ function NFTAuction(): JSX.Element {
                             active: active,
                             timeactive: timeActive,
                             currenttopbid: topBid[1]
+                        })
+                    } else if (timeActive === true && topBid === []) {
+                        listactiveNftItems.push({
+                            id: id,
+                            tokenURI: tokenURI,
+                            startPrice: startPrice,
+                            buyPrice: buyPrice,
+                            endTime: timeend,
+                            active: active,
+                            timeactive: timeActive
+                        })
+                    } else if (timeActive === false && topBid === []) {
+                        listinactiveNftItems.push({
+                            id: id,
+                            tokenURI: tokenURI,
+                            startPrice: startPrice,
+                            buyPrice: buyPrice,
+                            endTime: timeend,
+                            active: active,
+                            timeactive: timeActive
                         })
                     }
                 }
@@ -181,18 +226,18 @@ function NFTAuction(): JSX.Element {
                             className="inline-block max-h-48 max-w-48 rounded-full ring-2 ring-black"
                         />
                     </div>
-                    <div className=" text-black font-bold text-xl">
-                        Current Top Bids: {item.currenttopbid?.toFixed(tokenDecimal)} {tokenSymbol}
-                    </div>
-                    <div className="text-black">
+                    {item.currenttopbid && (
+                        <div className=" text-black font-bold text-xl">
+                            Current Top Bids: {item.currenttopbid?.toFixed(tokenDecimal)} {tokenSymbol}
+                        </div>
+                    )}
+                    <div className="text-black font-bold">
                         Start Bid Price: {item.startPrice.toFixed(tokenDecimal)} {tokenSymbol}
                     </div>
                     {/* <div className="text-white">
                         Buy Price: {item.buyPrice.toFixed(tokenDecimal)} {tokenSymbol}
                     </div> */}
-                        <div className="text-sm text-center">
-                           EndTime in: {item.endTime}
-                        </div>
+                    <div className="text-sm text-center">EndTime in: {item.endTime}</div>
                 </div>
             </Card>
         </Link>
@@ -214,18 +259,18 @@ function NFTAuction(): JSX.Element {
                             className="inline-block max-h-48 max-w-48 rounded-full ring-2 ring-black"
                         />
                     </div>
-                    <div className=" text-black font-bold text-xl">
-                        Top Bids: {item.currenttopbid?.toFixed(tokenDecimal)} {tokenSymbol}
-                    </div>
+                    {item.currenttopbid && (
+                        <div className=" text-black font-bold text-xl">
+                            Current Top Bids: {item.currenttopbid?.toFixed(tokenDecimal)} {tokenSymbol}
+                        </div>
+                    )}
                     <div className="text-black">
                         Start Bid Price: {item.startPrice.toFixed(tokenDecimal)} {tokenSymbol}
                     </div>
                     {/* <div className="text-white">
                         Buy Price: {item.buyPrice.toFixed(tokenDecimal)} {tokenSymbol}
                     </div> */}
-                    <div className="text-xl font-bold">
-                        Auction End
-                    </div>
+                    <div className="text-xl font-bold">Auction End</div>
                 </div>
             </Card>
         </Link>
