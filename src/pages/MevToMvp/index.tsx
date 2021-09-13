@@ -10,6 +10,7 @@ import { Button } from 'components'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { JSBI, Token, TokenAmount } from 'dfy-sdk'
 import { RouteComponentProps } from 'react-router-dom'
+import { useMVPToMEV } from 'constants/mvptomev'
 
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -47,21 +48,43 @@ const MevToMvp = ({
     const { account, chainId } = useActiveWeb3React()
     const Web3 = require('web3')
 
-    const useMevTokenContact = useToken(address)
-    const useMvpTokenContact = useToken('0x3379A0BdF5A5CB566127C421782686BA0f80490a')
+    const mvpmevtoken = useMVPToMEV(chainId)
+    const useMevTokenContact = useToken(mvpmevtoken?.mev)
+    const useMvpTokenContact = useToken(mvpmevtoken?.mvp)
+    const [spender, setSpender] = useState('')
 
     const [tokenAmount, setTokenAmount] = useState('0')
     const [tokenSymbol, setTokenSymbol] = useState('')
+    const [balanceMVP, setBalanceMVP] = useState(0)
+    const [balanceMEV, setBalanceMEV] = useState(0)
+    const [symbolMEV, setSymbolMEV] = useState()
+    const [symbolMVP, setSymbolMVP] = useState()
 
     const [currentBalance, setCurrentBalance] = useState('0')
     const [currencyAmount, setCurrencyAmount] = useState<TokenAmount>()
-    const [approvalState, approve] = useApproveCallback(currencyAmount, account ?? '')
+    const [approvalState, approve] = useApproveCallback(currencyAmount, spender)
 
     const onActiveToggle = () => {
         setActive(!active)
     }
 
     useEffect(() => {
+        const fetchBalanceToken = async () => {
+            try {
+                const decimals = await useMevTokenContact?.decimals()
+                const balanceMEV = await useMevTokenContact?.balanceOf(account)
+                const symbolMEV = await useMevTokenContact?.symbol()
+                const balanceMVP = await useMvpTokenContact?.balanceOf(account)
+                const symbolMVP = await useMvpTokenContact?.symbol()
+                setBalanceMVP(balanceMVP.toFixed(decimals))
+                setSymbolMVP(symbolMVP)
+                setBalanceMEV(balanceMEV.toFixed(decimals))
+                setSymbolMEV(symbolMEV)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchBalanceToken()
         const fetchTokenDetail = async () => {
             try {
                 if (useMevTokenContact && chainId && !active) {
@@ -69,15 +92,9 @@ const MevToMvp = ({
                     const tokenName = await useMevTokenContact?.name()
                     const symbol = await useMevTokenContact?.symbol()
                     const balance = await useMevTokenContact?.balanceOf(account)
-                    const priceAmount = JSBI.BigInt(await useMevTokenContact?.totalSupply())
-                    const tokenAmount = new Token(
-                        chainId,
-                        address,
-                        decimals ?? 18,
-                        symbol,
-                        tokenName
-                    )
-                    console.log(tokenName)
+                    const priceAmount = JSBI.BigInt(balance)
+                    const tokenAmount = new Token(chainId, mvpmevtoken.mev, decimals ?? 18, symbol, tokenName)
+                    setSpender(mvpmevtoken.mvp)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
@@ -87,9 +104,9 @@ const MevToMvp = ({
                     const tokenName = await useMvpTokenContact?.name()
                     const symbol = await useMvpTokenContact?.symbol()
                     const balance = await useMvpTokenContact?.balanceOf(account)
-                    const priceAmount = JSBI.BigInt(await useMvpTokenContact?.totalSupply())
-                    const tokenAmount = new Token(chainId, '0x3379A0BdF5A5CB566127C421782686BA0f80490a', decimals ?? 18, symbol, tokenName)
-                    console.log(tokenName)
+                    const priceAmount = JSBI.BigInt(balance)
+                    const tokenAmount = new Token(chainId, mvpmevtoken.mvp, decimals ?? 18, symbol, tokenName)
+                    setSpender(mvpmevtoken.mev)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
@@ -100,7 +117,7 @@ const MevToMvp = ({
             }
         }
         fetchTokenDetail()
-    }, [account, chainId, useMevTokenContact, active, useMvpTokenContact, address])
+    }, [account, chainId, useMevTokenContact, active, useMvpTokenContact, address, mvpmevtoken])
 
     const onMax = () => {
         setTokenAmount(currentBalance.toString())
@@ -147,7 +164,14 @@ const MevToMvp = ({
                                 </div>
                             </SwitchDiv>
                         </div>
-
+                        <div className="flex justify-between">
+                            <p>
+                                Balance: {balanceMVP} {symbolMVP}
+                            </p>
+                            <p>
+                                Balance: {balanceMEV} {symbolMEV}
+                            </p>
+                        </div>
                         <div className="mb-5">
                             <div className="flex items-center rounded bg-white border border-black space-x-3 p-3 w-full">
                                 <Button
