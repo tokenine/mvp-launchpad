@@ -17,6 +17,7 @@ import QuestionHelper from './QuestionHelper'
 import { t } from '@lingui/macro'
 import LanguageSwitch from './LanguageSwitch'
 import { useLingui } from '@lingui/react'
+import mevTokenicon from '../assets/images/mev-circle.png'
 
 function AppBar(): JSX.Element {
     const { i18n } = useLingui()
@@ -457,6 +458,65 @@ function AppBar(): JSX.Element {
                                                         >
                                                             <img
                                                                 src="https://bscscan.com/token/images/btcb_32.png"
+                                                                alt="Switch Network"
+                                                                style={{
+                                                                    minWidth: 36,
+                                                                    minHeight: 36,
+                                                                    maxWidth: 36,
+                                                                    maxHeight: 36,
+                                                                    padding: 5
+                                                                }}
+                                                                className="rounded-md object-contain"
+                                                            />
+                                                        </div>
+                                                    </QuestionHelper>}
+                                                    { chainId === ChainId.BSC && <QuestionHelper text={i18n._(t`Add MEV to your Metamask wallet`)}>
+                                                        <div
+                                                            className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
+                                                            onClick={() => {
+                                                                let address: string | undefined
+                                                                switch (chainId) {
+                                                                    case ChainId.BSC:
+                                                                        address =
+                                                                            '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff'
+                                                                        break
+                                                                }
+                                                                const params: any = {
+                                                                    type: 'ERC20',
+                                                                    options: {
+                                                                        address: address,
+                                                                        symbol: 'MEV',
+                                                                        decimals: 18,
+                                                                        image:
+                                                                        mevTokenicon
+                                                                    }
+                                                                }
+
+                                                                if (
+                                                                    library &&
+                                                                    library.provider.isMetaMask &&
+                                                                    library.provider.request
+                                                                ) {
+                                                                    library.provider
+                                                                        .request({
+                                                                            method: 'wallet_watchAsset',
+                                                                            params
+                                                                        })
+                                                                        .then(success => {
+                                                                            if (success) {
+                                                                                console.log(
+                                                                                    'Successfully added MEV to MetaMask'
+                                                                                )
+                                                                            } else {
+                                                                                throw new Error('Something went wrong.')
+                                                                            }
+                                                                        })
+                                                                        .catch(console.error)
+                                                                }
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src={mevTokenicon}
                                                                 alt="Switch Network"
                                                                 style={{
                                                                     minWidth: 36,
