@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { Button } from 'components'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { JSBI, Token, TokenAmount } from 'dfy-sdk'
+import { RouteComponentProps } from 'react-router-dom'
 
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -36,16 +37,20 @@ const SwitchDiv = styled.div`
     }
 `
 
-export default function MevToMvp() {
+const MevToMvp = ({
+  match: {
+      params: { address }
+  }
+}: RouteComponentProps<{ address: string }>): JSX.Element => {
     const { i18n } = useLingui()
     const [active, setActive] = useState(true)
     const { account, chainId } = useActiveWeb3React()
     const Web3 = require('web3')
 
-    const useTokenContact = useToken('0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff')
+    const useMevTokenContact = useToken(address)
+    const useMvpTokenContact = useToken('0x3379A0BdF5A5CB566127C421782686BA0f80490a')
 
     const [tokenAmount, setTokenAmount] = useState('')
-    const [tokenName, setTokenName] = useState('')
     const [tokenSymbol, setTokenSymbol] = useState('')
 
     const [currentBalance, setCurrentBalance] = useState(0)
@@ -54,27 +59,43 @@ export default function MevToMvp() {
 
     const onActiveToggle = () => {
         setActive(!active)
-    }    
+    }
 
     useEffect(() => {
         const fetchTokenDetail = async () => {
             try {
-                if (chainId) {
-                    const decimals = await useTokenContact?.decimals()
-                    const tokenName = await useTokenContact?.name()
-                    const symbol = await useTokenContact?.symbol()
-                    const balance = await useTokenContact?.balanceOf(account)
-                    const priceAmount = JSBI.BigInt(await useTokenContact?.totalSupply())
+                if (useMevTokenContact && chainId && !active) {
+                    const decimals = await useMevTokenContact?.decimals()
+                    const tokenName = await useMevTokenContact?.name()
+                    const symbol = await useMevTokenContact?.symbol()
+                    const balance = await useMevTokenContact?.balanceOf(account)
+                    const priceAmount = JSBI.BigInt(await useMevTokenContact?.totalSupply())
                     const tokenAmount = new Token(
                         chainId,
-                        '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff',
+                        '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
                         decimals ?? 18,
                         symbol,
                         tokenName
                     )
 
                     setCurrentBalance(balance.toFixed(decimals))
-                    setTokenName(tokenName)
+                    setTokenSymbol(symbol)
+                    setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
+                } else if (useMvpTokenContact && chainId && active) {
+                  const decimals = await useMvpTokenContact?.decimals()
+                    const tokenName = await useMvpTokenContact?.name()
+                    const symbol = await useMvpTokenContact?.symbol()
+                    const balance = await useMvpTokenContact?.balanceOf(account)
+                    const priceAmount = JSBI.BigInt(await useMvpTokenContact?.totalSupply())
+                    const tokenAmount = new Token(
+                        chainId,
+                        address,
+                        decimals ?? 18,
+                        symbol,
+                        tokenName
+                    )
+
+                    setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
                 }
@@ -83,33 +104,31 @@ export default function MevToMvp() {
             }
         }
         fetchTokenDetail()
-    }, [account, chainId, useTokenContact])
+    }, [account, chainId, useMevTokenContact, active, useMvpTokenContact, address])
 
     const onMax = () => {
         setTokenAmount(currentBalance.toString())
     }
 
     const MvpToMev = async () => {
-      const amount = Web3.utils.toWei(tokenAmount)
+        const amount = Web3.utils.toWei(tokenAmount)
 
         try {
-            await useTokenContact?.mint(Web3.utils.toWei(amount))
-            
+            await useMevTokenContact?.mint(Web3.utils.toWei(amount))
         } catch (err) {
             console.error(err)
         }
     }
 
-    const MevToMvp= async () => {
-      const amount = Web3.utils.toWei(tokenAmount)
+    const MevToMvp = async () => {
+        const amount = Web3.utils.toWei(tokenAmount)
 
-      try {
-          await useTokenContact?.redeem(Web3.utils.toWei(amount))
-          
-      } catch (err) {
-          console.error(err)
-      }
-  }
+        try {
+            await useMevTokenContact?.redeem(Web3.utils.toWei(amount))
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <>
@@ -164,11 +183,20 @@ export default function MevToMvp() {
                                 {ApprovalState.PENDING === approvalState ? 'Approving...' : 'Approve'}
                             </Button>
                         )}
-                        {ApprovalState.APPROVED === approvalState && active && <Button color="gradient3" onClick={MvpToMev}>Swap</Button>}
-                        {ApprovalState.APPROVED === approvalState && !active && <Button color="gradient3" onClick={MevToMvp}>Swap</Button>}
+                        {ApprovalState.APPROVED === approvalState && active && (
+                            <Button color="gradient3" onClick={MvpToMev}>
+                                Swap
+                            </Button>
+                        )}
+                        {ApprovalState.APPROVED === approvalState && !active && (
+                            <Button color="gradient3" onClick={MevToMvp}>
+                                Swap
+                            </Button>
+                        )}
                     </div>
                 </div>
             </BackgroundMain>
         </>
     )
 }
+export default MevToMvp
