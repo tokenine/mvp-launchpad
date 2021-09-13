@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import NumericalInput from 'components/NumericalInput'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
-import { useToken } from 'hooks/useContract'
+import { useMEVToMVP, useMVPMEV } from 'hooks/useContract'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
@@ -50,8 +50,8 @@ const MevToMvp = ({
     const Web3 = require('web3')
 
     const mvpmevtoken = useMVPToMEV(chainId)
-    const useMevTokenContact = useToken(mvpmevtoken?.mev)
-    const useMvpTokenContact = useToken(mvpmevtoken?.mvp)
+    const useMevTokenContact = useMEVToMVP(mvpmevtoken?.mev)
+    const useMvpTokenContact = useMVPMEV(mvpmevtoken?.mvp)
     const [spender, setSpender] = useState('')
 
     const [tokenAmount, setTokenAmount] = useState('0')
@@ -95,8 +95,8 @@ const MevToMvp = ({
                     const symbol = await useMevTokenContact?.symbol()
                     const balance = await useMevTokenContact?.balanceOf(account)
                     const priceAmount = JSBI.BigInt(balance)
-                    const tokenAmount = new Token(chainId, mvpmevtoken.mvp, decimals ?? 18, symbol, tokenName)
-                    setSpender(mvpmevtoken.mev)
+                    const tokenAmount = new Token(chainId, mvpmevtoken.mev, decimals ?? 18, symbol, tokenName)
+                    setSpender(mvpmevtoken.mvp)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
@@ -107,8 +107,8 @@ const MevToMvp = ({
                     const symbol = await useMvpTokenContact?.symbol()
                     const balance = await useMvpTokenContact?.balanceOf(account)
                     const priceAmount = JSBI.BigInt(balance)
-                    const tokenAmount = new Token(chainId, mvpmevtoken.mev, decimals ?? 18, symbol, tokenName)
-                    setSpender(mvpmevtoken.mvp)
+                    const tokenAmount = new Token(chainId, mvpmevtoken.mvp, decimals ?? 18, symbol, tokenName)
+                    setSpender(mvpmevtoken.mev)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
@@ -127,7 +127,7 @@ const MevToMvp = ({
 
     const MvpToMev = async () => {
         try {
-            const amount = Web3.utils.toWei(tokenAmount)            
+            const amount = Web3.utils.toWei(tokenAmount)
             const respone = await useMevTokenContact?.mint(amount)
             addTransaction(respone, {
                 summary: 'MVP To MEV'

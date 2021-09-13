@@ -65,7 +65,8 @@ import { useMemo } from 'react'
 import TOKENINE_SWAP_JSON from '../constants/abis/tokenine-swap.json'
 import TOKENINE_STAKE_JSON from '../constants/abis/tokenine-stake.json'
 import Auction from 'constants/abis/auction.json'
-import MEV from 'constants/abis/mev.json'
+import MEVTOMVP from 'constants/abis/mev-to-mvp.json'
+import MVPTOMEV from 'constants/abis/mvp-to-mev.json'
 
 import { MINI_CHEF_V2_ADDRESS, MASTER_CHEF_V2_ADDRESS, MASTER_CHEF_V1_ADDRESS } from 'constants/farms'
 
@@ -129,8 +130,12 @@ export function useAuctionContract(address: string): Contract | null {
 }
 
 //MEV swap
-export function useToken(address: string): Contract | null {
-    return useContract(address, MEV, true)
+export function useMEVToMVP(address: string): Contract | null {
+    return useContract(address, MEVTOMVP, true)
+}
+
+export function useMVPMEV(address: string): Contract | null {
+    return useContract(address, MEVTOMVP, true)
 }
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
