@@ -50,10 +50,26 @@ const SwitchDiv = styled.div`
     }
 `
 
-const Item = (item: StakeTokenList) => <Link
+const ItemStake = (item: StakeTokenList) => <Link
         className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full relative rounded border border-black`}
         key={item.contractAddress}
         to={item.available ? `/pool/${item.contractAddress}` : '/pool'}
+        >
+        {item.label && <LabelDiv>{item.label}</LabelDiv>}
+        <Card className="flex items-center justify-center text-center text-black">
+            <div className="my-3">
+                <div className="my-5">
+                    <img alt="social giving" src={item.imageTokenUrl} className="inline-block h-auto w-full rounded-full ring-2 ring-white" />
+                </div>
+                <p className="text-h3" dangerouslySetInnerHTML={{__html: item.title}}></p>
+            </div>
+        </Card>
+    </Link>
+
+const ItemChangeCoin = (item: StakeTokenList) => <Link
+        className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full relative rounded border border-black`}
+        key={item.contractAddress}
+        to={item.available ? `/mvp-to-mve` : '/mvp-to-mve'} // Change to mvp to mve route
         >
         {item.label && <LabelDiv>{item.label}</LabelDiv>}
         <Card className="flex items-center justify-center text-center text-black">
@@ -126,8 +142,8 @@ function Stake(): JSX.Element {
                         </SwitchDiv>
                     </div>
                     <div className="flex flex-row gap-5 justify-center items-stretch px-5 md:px-0">
-                        {active && activeItems.map((item) => Item(item))}
-                        {!active && inactiveItems.map((item) => Item(item))}
+                        {active && activeItems.map((item) => item.changeToken ? (ItemChangeCoin(item)): ItemStake(item))}
+                        {!active && inactiveItems.map((item) => item.changeToken ? (ItemChangeCoin(item)): ItemStake(item))}
                     </div>
                     {((active && activeItems.length === 0 && inactiveItems.length > 0) || (!active && inactiveItems.length === 0 && activeItems.length > 0)) && <div className="text-center text-black">
                         No content.

@@ -1,6 +1,7 @@
 import { ChainId } from 'dfy-sdk'
 
 export interface StakeTokenList {
+  changeToken?: boolean
   showOnActiveTab: boolean
   contractAddress: string
   title: string
@@ -192,6 +193,15 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
       name: 'Token MD',
       symbol: 'MD'
     },
+  },
+  '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff': {
+    changeToken: true,
+    showOnActiveTab: true,
+    contractAddress: '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff',
+    title: 'MVP to MVE',
+    imageTokenUrl: '/images/tokens/mve-circle.png',
+    proposalContent: '<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p>',
+    available: true,
   }
 }
 
