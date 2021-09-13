@@ -14,6 +14,7 @@ import { JSBI, Token, TokenAmount, ChainId } from 'dfy-sdk'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useNFTAuction } from 'constants/nft-auction'
 import { shortenAddress } from 'utils'
+import { useTransactionAdder } from 'state/transactions/hooks'
 
 const BackgroundMain = styled.div`
     margin-bottom: -80px;
@@ -55,6 +56,7 @@ const NftDetail = ({
     const [imgURL, setImgURL] = useState('')
     const { account } = useWeb3React()
     const Web3 = require('web3')
+    const addTransaction = useTransactionAdder()
 
     const [warningText, setWarningText] = useState('')
     const [warning, setWarning] = useState(false)
@@ -172,7 +174,10 @@ const NftDetail = ({
         const bid = Web3.utils.toWei(yourbid)
 
         try {
-            await itemcontract?.bid(address, bid)
+            const response = await itemcontract?.bid(address, bid)
+            addTransaction(response, {
+                summary: 'Bidded'
+            })
         } catch (err) {
             console.error(err)
         }
@@ -217,7 +222,10 @@ const NftDetail = ({
 
     const claimReward = async () => {
         try {
-            await itemcontract?.claim(address)
+            const response = await itemcontract?.claim(address)
+            addTransaction(response, {
+                summary: 'Claim Reward'
+            })
         } catch (err) {
             console.error(err)
         }
