@@ -131,7 +131,7 @@ const NftDetail = ({
     useEffect(() => {
         const topBid = async () => {
             try {
-                const topBid = (await itemcontract?.getTopBid(address)) ?? 0
+                const topBid = (await itemcontract?.getTopBid(address))
                 const topBidAddress = topBid.bidder
                 const topBidPrice = topBid.price
                 setTopBidAddress(
@@ -168,7 +168,7 @@ const NftDetail = ({
             }
         }
         getBidsList()
-    }, [address, itemcontract, tokenContract])
+    }, [topBid])
 
     const Bidding = async () => {
         const bid = Web3.utils.toWei(yourbid)
