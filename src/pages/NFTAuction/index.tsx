@@ -120,8 +120,7 @@ function NFTAuction(): JSX.Element {
                 setTokenDecimal(deciaml)
                 for (let id = 0; id < item.toNumber(); id++) {
                     const bidlist = await itemcontract?.getBidsList(id)
-                    console.log(bidlist.length)
-                    if (await itemcontract?.getBidsList(id).length === 0){
+                    if (bidlist.length !== 0){
                         topBid = await itemcontract?.getTopBid(id)
                     }
                     console.log(topBid)
@@ -155,7 +154,7 @@ function NFTAuction(): JSX.Element {
                         time(minutee) +
                         ':' +
                         time(secondd)
-                    if (timeActive === true && topBid !== []) {
+                    if (timeActive === true) {
                         listactiveNftItems.push({
                             id: id,
                             tokenURI: tokenURI,
@@ -166,7 +165,7 @@ function NFTAuction(): JSX.Element {
                             timeactive: timeActive,
                             currenttopbid: topBid[1]
                         })
-                    } else if (timeActive === false && topBid !== []) {
+                    } else if (timeActive === false) {
                         listinactiveNftItems.push({
                             id: id,
                             tokenURI: tokenURI,
@@ -176,26 +175,6 @@ function NFTAuction(): JSX.Element {
                             active: active,
                             timeactive: timeActive,
                             currenttopbid: topBid[1]
-                        })
-                    } else if (timeActive === true && topBid === []) {
-                        listactiveNftItems.push({
-                            id: id,
-                            tokenURI: tokenURI,
-                            startPrice: startPrice,
-                            buyPrice: buyPrice,
-                            endTime: timeend,
-                            active: active,
-                            timeactive: timeActive
-                        })
-                    } else if (timeActive === false && topBid === []) {
-                        listinactiveNftItems.push({
-                            id: id,
-                            tokenURI: tokenURI,
-                            startPrice: startPrice,
-                            buyPrice: buyPrice,
-                            endTime: timeend,
-                            active: active,
-                            timeactive: timeActive
                         })
                     }
                 }

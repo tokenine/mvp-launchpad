@@ -75,6 +75,14 @@ const NftDetail = ({
     const [currencyAmount, setCurrencyAmount] = useState<TokenAmount>()
     const [approvalState, approve] = useApproveCallback(currencyAmount, auctioncontract?.auction)
 
+    const time = (timeinput: number) => {
+        if (timeinput < 10) {
+            return '0' + timeinput.toString()
+        } else {
+            return timeinput.toString()
+        }
+    }
+
     useEffect(() => {
         const getEndTime = async () => {
             const item = await itemcontract?.artItems(address)
@@ -87,7 +95,18 @@ const NftDetail = ({
             const hhour = date.getHours()
             const minutee = date.getMinutes()
             const secondd = date.getSeconds()
-            const timeend = dayy + '/' + monthh + '/' + yearr + ' ' + hhour + ':' + minutee + ':' + secondd
+            const timeend =
+                time(dayy) +
+                '/' +
+                time(monthh) +
+                '/' +
+                time(yearr) +
+                ' ' +
+                time(hhour) +
+                ':' +
+                time(minutee) +
+                ':' +
+                time(secondd)
             setEndTimeDate(timeend)
             if (date.getTime() < Date.now()) {
                 setAuctionState(false)
@@ -131,15 +150,17 @@ const NftDetail = ({
     useEffect(() => {
         const topBid = async () => {
             try {
-                const topBid = (await itemcontract?.getTopBid(address)) ?? 0
-                const topBidAddress = topBid.bidder
-                const topBidPrice = topBid.price
-                setTopBidAddress(
-                    topBidAddress.substring(0, 8) +
-                        '...' +
-                        topBidAddress?.substring(topBidAddress.length - 8, topBidAddress.length)
-                )
-                setTopBid(Web3.utils.fromWei(topBidPrice.toString()))
+                if (historyBid.length !== 0) {
+                    const topBid = await itemcontract?.getTopBid(address)
+                    const topBidAddress = topBid.bidder
+                    const topBidPrice = topBid.price
+                    setTopBidAddress(
+                        topBidAddress.substring(0, 8) +
+                            '...' +
+                            topBidAddress?.substring(topBidAddress.length - 8, topBidAddress.length)
+                    )
+                    setTopBid(Web3.utils.fromWei(topBidPrice.toString()))
+                }
                 const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
                 setBidPercentIncrement(Web3.utils.fromWei(bidPercentIncrement.toString()))
             } catch (err) {
@@ -168,7 +189,7 @@ const NftDetail = ({
             }
         }
         getBidsList()
-    }, [address, itemcontract, tokenContract])
+    }, [address, itemcontract, tokenContract, topBid])
 
     const Bidding = async () => {
         const bid = Web3.utils.toWei(yourbid)
@@ -184,39 +205,40 @@ const NftDetail = ({
     }
 
     const CheckAllowBid = async (yourbid: string) => {
-        console.log('CheckAllowBid')
         // const bigyourbid = yourbid.toBigNumber(decimal)
         try {
-            const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
-            const topBid = await itemcontract?.getTopBid(address)
-            const topBidPrice = topBid.price
-            const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-            const result = topBidPrice.add(twentypercent)
-            // const bidIncretment = ((100 + Number(bidPercentIncrement)) / 100) * Number(topBid)
-            console.log('bidIncretment', result.toFixed(decimal))
-            console.log('bid', yourbid)
+            if (historyBid.length !== 0) {
+                const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
+                const topBid = await itemcontract?.getTopBid(address)
+                const topBidPrice = topBid.price
+                const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
+                const result = topBidPrice.add(twentypercent)
+                // const bidIncretment = ((100 + Number(bidPercentIncrement)) / 100) * Number(topBid)
+                console.log('bidIncretment', result.toFixed(decimal))
+                console.log('bid', yourbid)
 
-            if (Number(yourbid) >= result.toFixed(decimal)) {
-                setWarningText('Your bid is Allow')
-                setWarning(false)
+                if (Number(yourbid) >= result.toFixed(decimal)) {
+                    setWarningText('Your bid is Allow')
+                    setWarning(false)
+                } else {
+                    const percent = bidPercentIncrement.toFixed(decimal)
+                    const pricein = result.toFixed(decimal)
+                    const warring = 'Bid Incerment is ' + percent + '% , Plese incret your bid up to ' + pricein
+                    setWarningText(warring)
+                    setWarning(true)
+                }
             } else {
-                const percent = bidPercentIncrement.toFixed(decimal)
-                const pricein = result.toFixed(decimal)
-                const warring = 'Bid Incerment is ' + percent + '% , Plese incret your bid up to ' + pricein
-                setWarningText(warring)
-                setWarning(true)
+                if (Number(yourbid) >= Number(startPrice)) {
+                    setWarningText('Your bid is Allow')
+                    setWarning(false)
+                } else {
+                    const warring = 'Plese incret your bid up to ' + startPrice
+                    setWarningText(warring)
+                    setWarning(true)
+                }
             }
         } catch (err) {
-            console.log('!TopBid')
-
-            if (Number(yourbid) >= Number(startPrice)) {
-                setWarningText('Your bid is Allow')
-                setWarning(false)
-            } else {
-                const warring = 'Plese incret your bid up to ' + startPrice
-                setWarningText(warring)
-                setWarning(true)
-            }
+            console.error(err)
         }
     }
 
@@ -234,15 +256,20 @@ const NftDetail = ({
     const calculatetwentypercent = async () => {
         try {
             const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
-            const topBid = await itemcontract?.getTopBid(address)
-            const topBidPrice = topBid.price
-            const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-            const result = topBidPrice.add(twentypercent)
-            if (topBid) {
-                setYourBid(result.toFixed(decimal))
-                CheckAllowBid(result.toFixed(decimal))
+            if (historyBid.length !== 0){
+                const topBid = await itemcontract?.getTopBid(address)
+                const topBidPrice = topBid.price
+                const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
+                const result = topBidPrice.add(twentypercent)
+                if (topBid) {
+                    setYourBid(result.toFixed(decimal))
+                    CheckAllowBid(result.toFixed(decimal))
+                } else {
+                    CheckAllowBid(yourbid)
+                }
             } else {
-                CheckAllowBid(yourbid)
+                setYourBid(startPrice)
+                CheckAllowBid(startPrice)
             }
         } catch (err) {
             console.error(err)
@@ -324,13 +351,20 @@ const NftDetail = ({
                                         </div>
 
                                         <div className="flex items-center rounded bg-white border border-black space-x-3 p-3 w-full">
-                                            <Button
+                                            {historyBid.length !== 0 && <Button
                                                 onClick={calculatetwentypercent}
                                                 size={'small'}
                                                 className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
                                             >
                                                 {bidPercentIncrement}%
-                                            </Button>
+                                            </Button>}
+                                            {historyBid.length === 0 && <Button
+                                                onClick={calculatetwentypercent}
+                                                size={'small'}
+                                                className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
+                                            >
+                                                Start Price
+                                            </Button>}
                                             <NumericalInput
                                                 className="token-amount-input text-right text-black"
                                                 value={yourbid}
@@ -350,7 +384,7 @@ const NftDetail = ({
                                 {(ApprovalState.NOT_APPROVED === approvalState ||
                                     (ApprovalState.PENDING === approvalState && auctionState)) && (
                                     <Button
-                                        disabled={ApprovalState.PENDING === approvalState}
+                                        disabled={ApprovalState.PENDING === approvalState || warningText === '' || warning}
                                         onClick={approve}
                                         color="gradient3"
                                         className="text-center"
@@ -359,7 +393,7 @@ const NftDetail = ({
                                     </Button>
                                 )}
                                 {ApprovalState.APPROVED === approvalState && auctionState && (
-                                    <Button color="gradient3" onClick={Bidding} disabled={warning}>
+                                    <Button color="gradient3" onClick={Bidding} disabled={warning || warningText === ''}>
                                         Place a Bid
                                     </Button>
                                 )}
