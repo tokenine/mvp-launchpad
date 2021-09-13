@@ -69,7 +69,7 @@ const ItemStake = (item: StakeTokenList) => <Link
 const ItemChangeCoin = (item: StakeTokenList) => <Link
         className={`${item.available ? 'cursor-pointer' : 'cursor-default'} sm:w-1/3 xs:w-full relative rounded border border-black`}
         key={item.contractAddress}
-        to={item.available ? `/mvp-to-mve` : '/mvp-to-mve'} // Change to mvp to mve route
+        to={item.available ? `/mvp-to-mev/${item.contractAddress}` : '/pool'} // Change to mvp to mev route
         >
         {item.label && <LabelDiv>{item.label}</LabelDiv>}
         <Card className="flex items-center justify-center text-center text-black">
