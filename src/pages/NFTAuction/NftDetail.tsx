@@ -45,7 +45,7 @@ const NftDetail = ({
     }
 }: RouteComponentProps<{ address: string }>): JSX.Element => {
     const [startPrice, setStartPrice] = useState('0.00000')
-    const [topBidAdress, setTopBidAddress] = useState('')
+    const [topBidAdress, setTopBidAddress] = useState('Your are first bid')
     const [topBid, setTopBid] = useState('0')
     const [bidPercentIncrement, setBidPercentIncrement] = useState(0)
     const [yourbid, setYourBid] = useState('0')
@@ -124,22 +124,26 @@ const NftDetail = ({
             }
         }
         fetchTokenDetail()
-    }, [auctioncontract, chainId, tokenContract])
+    }, [account, auctioncontract, chainId, tokenContract])
 
     useEffect(() => {
         const topBid = async () => {
-            const topBid = await itemcontract?.getTopBid(address)
-            const topBidAddress = topBid.bidder
-            const topBidPrice = topBid.price
-            setTopBidAddress(
-                topBidAddress.substring(0, 8) +
-                    '...' +
-                    topBidAddress?.substring(topBidAddress.length - 8, topBidAddress.length)
-            )
-            setTopBid(Web3.utils.fromWei(topBidPrice.toString()))
-
-            const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
-            setBidPercentIncrement(Web3.utils.fromWei(bidPercentIncrement.toString()))
+            try {
+                const topBid = (await itemcontract?.getTopBid(address)) ?? 0
+                const topBidAddress = topBid.bidder
+                const topBidPrice = topBid.price
+                setTopBidAddress(
+                    topBidAddress.substring(0, 8) +
+                        '...' +
+                        topBidAddress?.substring(topBidAddress.length - 8, topBidAddress.length)
+                )
+                setTopBid(Web3.utils.fromWei(topBidPrice.toString()))
+                const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
+                setBidPercentIncrement(Web3.utils.fromWei(bidPercentIncrement.toString()))
+            } catch (err) {
+                console.error(err)
+                setTopBid(startPrice)
+            }
         }
 
         topBid()
@@ -147,13 +151,18 @@ const NftDetail = ({
 
     useEffect(() => {
         const getBidsList = async () => {
-            const listitem = await itemcontract?.getBidsList(address)
-            const decimal = await tokenContract?.decimals()
-            setHistoryBid([])
-            for (let i = 0; i < listitem.length; i++) {
-                const address = listitem[i][0]
-                const price = listitem[i][1]
-                setHistoryBid(oldArray => [...oldArray, { address: address, price: price.toFixed(decimal) }])
+            try {
+                const listitem = await itemcontract?.getBidsList(address)
+                const decimal = await tokenContract?.decimals()
+                setHistoryBid([])
+                for (let i = 0; i < listitem.length; i++) {
+                    const address = listitem[i][0]
+                    const price = listitem[i][1]
+                    setHistoryBid(oldArray => [...oldArray, { address: address, price: price.toFixed(decimal) }])
+                }
+            } catch (err) {
+                console.error(err)
+                setHistoryBid([])
             }
         }
         getBidsList()
@@ -170,24 +179,39 @@ const NftDetail = ({
     }
 
     const CheckAllowBid = async (yourbid: string) => {
-        const bigyourbid = yourbid.toBigNumber(decimal)
-        const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
-        const topBid = await itemcontract?.getTopBid(address)
-        const topBidPrice = topBid.price
-        const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-        const result = topBidPrice.add(twentypercent)
-        // const bidIncretment = ((100 + Number(bidPercentIncrement)) / 100) * Number(topBid)
-        console.log('bidIncretment', result.toFixed(decimal))
-        console.log('bid', yourbid)
-        if (Number(yourbid) >= result.toFixed(decimal)) {
-            setWarningText('Your bid is Allow')
-            setWarning(false)
-        } else {
-            const percent = bidPercentIncrement.toFixed(decimal)
-            const pricein = result.toFixed(decimal)
-            const warring = 'Bid Incerment is ' + percent + '% , Plese incret your bid up to ' + pricein
-            setWarningText(warring)
-            setWarning(true)
+        console.log('CheckAllowBid')
+        // const bigyourbid = yourbid.toBigNumber(decimal)
+        try {
+            const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
+            const topBid = await itemcontract?.getTopBid(address)
+            const topBidPrice = topBid.price
+            const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
+            const result = topBidPrice.add(twentypercent)
+            // const bidIncretment = ((100 + Number(bidPercentIncrement)) / 100) * Number(topBid)
+            console.log('bidIncretment', result.toFixed(decimal))
+            console.log('bid', yourbid)
+
+            if (Number(yourbid) >= result.toFixed(decimal)) {
+                setWarningText('Your bid is Allow')
+                setWarning(false)
+            } else {
+                const percent = bidPercentIncrement.toFixed(decimal)
+                const pricein = result.toFixed(decimal)
+                const warring = 'Bid Incerment is ' + percent + '% , Plese incret your bid up to ' + pricein
+                setWarningText(warring)
+                setWarning(true)
+            }
+        } catch (err) {
+            console.log('!TopBid')
+
+            if (Number(yourbid) >= Number(startPrice)) {
+                setWarningText('Your bid is Allow')
+                setWarning(false)
+            } else {
+                const warring = 'Plese incret your bid up to ' + startPrice
+                setWarningText(warring)
+                setWarning(true)
+            }
         }
     }
 
@@ -200,14 +224,22 @@ const NftDetail = ({
     }
 
     const calculatetwentypercent = async () => {
-        const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
-        const topBid = await itemcontract?.getTopBid(address)
-        const topBidPrice = topBid.price
-        const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-        const result = topBidPrice.add(twentypercent)
-        setYourBid(result.toFixed(decimal))
-        CheckAllowBid(result.toFixed(decimal))
-        
+        try {
+            const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
+            const topBid = await itemcontract?.getTopBid(address)
+            const topBidPrice = topBid.price
+            const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
+            const result = topBidPrice.add(twentypercent)
+            if (topBid) {
+                setYourBid(result.toFixed(decimal))
+                CheckAllowBid(result.toFixed(decimal))
+            } else {
+                CheckAllowBid(yourbid)
+            }
+        } catch (err) {
+            console.error(err)
+            CheckAllowBid(yourbid)
+        }
     }
 
     return (
