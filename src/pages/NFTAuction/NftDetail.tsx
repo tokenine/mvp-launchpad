@@ -149,7 +149,6 @@ const NftDetail = ({
         const getBidsList = async () => {
             const listitem = await itemcontract?.getBidsList(address)
             const decimal = await tokenContract?.decimals()
-            console.log(listitem.length)
             setHistoryBid([])
             for (let i = 0; i < listitem.length; i++) {
                 const address = listitem[i][0]
