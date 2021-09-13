@@ -270,7 +270,7 @@ const NftDetail = ({
                                     <div className="mt-8">
                                         <p className="text-3xl text-center text-red-500 mb-4">Auction End</p>
                                         {account === topBidAdress && active && (
-                                            <Button color="blue" onClick={claimReward}>
+                                            <Button color="gradient3" onClick={claimReward}>
                                                 Claim Reward
                                             </Button>
                                         )}
