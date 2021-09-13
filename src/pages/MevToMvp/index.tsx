@@ -127,9 +127,7 @@ const MevToMvp = ({
 
     const MvpToMev = async () => {
         try {
-            const amount = Web3.utils.toWei(tokenAmount)
-            console.log(tokenAmount);
-            
+            const amount = Web3.utils.toWei(tokenAmount)            
             const respone = await useMevTokenContact?.mint(amount)
             addTransaction(respone, {
                 summary: 'MVP To MEV'
