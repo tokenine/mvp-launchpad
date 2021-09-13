@@ -95,8 +95,8 @@ const MevToMvp = ({
                     const symbol = await useMevTokenContact?.symbol()
                     const balance = await useMevTokenContact?.balanceOf(account)
                     const priceAmount = JSBI.BigInt(balance)
-                    const tokenAmount = new Token(chainId, mvpmevtoken.mvp, decimals ?? 18, symbol, tokenName)
-                    setSpender(mvpmevtoken.mev)
+                    const tokenAmount = new Token(chainId, mvpmevtoken.mev, decimals ?? 18, symbol, tokenName)
+                    setSpender(mvpmevtoken.mvp)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
@@ -106,8 +106,8 @@ const MevToMvp = ({
                     const symbol = await useMvpTokenContact?.symbol()
                     const balance = await useMvpTokenContact?.balanceOf(account)
                     const priceAmount = JSBI.BigInt(balance)
-                    const tokenAmount = new Token(chainId, mvpmevtoken.mev, decimals ?? 18, symbol, tokenName)
-                    setSpender(mvpmevtoken.mvp)
+                    const tokenAmount = new Token(chainId, mvpmevtoken.mvp, decimals ?? 18, symbol, tokenName)
+                    setSpender(mvpmevtoken.mev)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
@@ -126,7 +126,7 @@ const MevToMvp = ({
     const MvpToMev = async () => {
         try {
             const amount = Web3.utils.toWei(tokenAmount)
-            const respone = await useMevTokenContact?.mint(Web3.utils.toWei(amount))
+            const respone = await useMevTokenContact?.mint(amount)
             addTransaction(respone, {
                 summary: 'MVP To MEV'
             })
@@ -138,7 +138,7 @@ const MevToMvp = ({
     const MevToMvp = async () => {
         try {
             const amount = Web3.utils.toWei(tokenAmount)
-            const respone = await useMevTokenContact?.redeem(Web3.utils.toWei(amount))
+            const respone = await useMevTokenContact?.redeem(amount)
             addTransaction(respone, {
                 summary: 'MEV To MVP'
             })
