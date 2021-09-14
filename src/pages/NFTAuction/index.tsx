@@ -189,11 +189,9 @@ function NFTAuction(): JSX.Element {
 
     const ItemActive = (item: NFTContent) => (
         <Link
-            className={`${
-                item.timeactive ? 'cursor-pointer' : 'cursor-default'
-            } sm:w-1/2 md:w-full xs:w-full relative rounded border border-black`}
+            className={`sm:w-1/2 md:w-full xs:w-full relative rounded border border-black`}
             key={item.id}
-            to={item.timeactive ? `/mev-project/${item.id}` : '/mev-project'}
+            to={`/mev-project/${item.id}`}
         >
             {/* {item.label && <LabelDiv>{item.label}</LabelDiv>} */}
             <Card className="flex items-center justify-center text-center text-black">
@@ -202,7 +200,7 @@ function NFTAuction(): JSX.Element {
                         <img
                             alt="social giving"
                             src={item.tokenURI}
-                            className="inline-block max-h-48 max-w-48 rounded-full ring-2 ring-black"
+                            className="inline-block h-14 w-14 sm:h-36 sm:w-36 rounded-full ring-2 ring-black"
                         />
                     </div>
                     {item.currenttopbid && (
@@ -226,7 +224,7 @@ function NFTAuction(): JSX.Element {
         <Link
             className={`sm:w-1/2 md:w-full xs:w-full relative rounded border border-black`}
             key={item.id}
-            to={item.timeactive ? `/mev-project/${item.id}` : '/mev-project'}
+            to={`/mev-project/${item.id}`}
         >
             {/* {item.label && <LabelDiv>{item.label}</LabelDiv>} */}
             <Card className="flex items-center justify-center text-center text-black">
@@ -278,7 +276,7 @@ function NFTAuction(): JSX.Element {
                             </div>
                         </SwitchDiv>
                     </div>
-                    <div className="flex flex-row gap-5 justify-center items-stretch px-5 md:px-0">
+                    <div className="flex flex-col sm:flex-row gap-5 justify-center items-stretch px-5 md:px-0">
                         {active && activeItems.map(item => ItemActive(item))}
                         {!active && inactiveItems.map(item => ItemEnd(item))}
                     </div>
