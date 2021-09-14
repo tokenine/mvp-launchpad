@@ -71,6 +71,9 @@ function Routes(): JSX.Element {
 
             <Route exact strict path="/mev-auction" component={NFTAuction} />
             <Route exact strict path="/mev-auction/:address" component={NftDetail} />
+            
+            <Route exact strict path="/mev-project" component={NFTAuction} />
+            <Route exact strict path="/mev-project/:address" component={NftDetail} />
 
             <Route exact strict path="/mvp-to-mev/:address" component={MEVToMVP} />
 
