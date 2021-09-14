@@ -189,11 +189,9 @@ function NFTAuction(): JSX.Element {
 
     const ItemActive = (item: NFTContent) => (
         <Link
-            className={`${
-                item.timeactive ? 'cursor-pointer' : 'cursor-default'
-            } sm:w-1/2 md:w-full xs:w-full relative rounded border border-black`}
+            className={`sm:w-1/2 md:w-full xs:w-full relative rounded border border-black`}
             key={item.id}
-            to={item.timeactive ? `/mev-project/${item.id}` : '/mev-project'}
+            to={`/mev-project/${item.id}`}
         >
             {/* {item.label && <LabelDiv>{item.label}</LabelDiv>} */}
             <Card className="flex items-center justify-center text-center text-black">
@@ -226,7 +224,7 @@ function NFTAuction(): JSX.Element {
         <Link
             className={`sm:w-1/2 md:w-full xs:w-full relative rounded border border-black`}
             key={item.id}
-            to={item.timeactive ? `/mev-project/${item.id}` : '/mev-project'}
+            to={`/mev-project/${item.id}`}
         >
             {/* {item.label && <LabelDiv>{item.label}</LabelDiv>} */}
             <Card className="flex items-center justify-center text-center text-black">
