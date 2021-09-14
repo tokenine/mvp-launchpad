@@ -162,7 +162,7 @@ const MevToMvp = ({
                             {i18n._(t`Swap MEV to MVP`)}
                         </div>
                     </div>
-                    <div className="border-black border rounded-md p-6 w-2/5">
+                    <div className="border-black border rounded-md p-6 w-full md:w-2/5">
                         <div className="text-center mb-14">
                             <SwitchDiv>
                                 <div className={active ? 'active' : ''} onClick={onActiveToggle}>
