@@ -241,9 +241,6 @@ const NftDetail = ({
             console.error(err)
         }
     }
-    console.log(warning);
-    console.log(warningText);
-    
 
     const claimReward = async () => {
         try {

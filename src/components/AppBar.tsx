@@ -124,18 +124,18 @@ function AppBar(): JSX.Element {
                                                         {i18n._(t`Stake & Donate`)}
                                                     </NavLink>
                                                 )} */}
-                                                <NavLink id={`bento-nav-link`} to={'/launchpad'}>
-                                                    {i18n._(t`Launchpad`)}
-                                                </NavLink>
-                                                <NavLink id={`bento-nav-link`} to={'/pool'}>
-                                                    {i18n._(t`Pool`)}
-                                                </NavLink>
-                                                <NavLink id={`bento-nav-link`} to={'/donate'}>
-                                                    {i18n._(t`Pool for donation`)}
-                                                </NavLink>
-                                                <NavLink id={`bento-nav-link`} to={'/mev-auction'}>
-                                                    {i18n._(t`MEV Auction`)}
-                                                </NavLink>
+                                            <NavLink id={`bento-nav-link`} to={'/launchpad'}>
+                                                {i18n._(t`Launchpad`)}
+                                            </NavLink>
+                                            <NavLink id={`bento-nav-link`} to={'/pool'}>
+                                                {i18n._(t`Pool`)}
+                                            </NavLink>
+                                            <NavLink id={`bento-nav-link`} to={'/donate'}>
+                                                {i18n._(t`Pool for donation`)}
+                                            </NavLink>
+                                            <NavLink id={`bento-nav-link`} to={'/mev-auction'}>
+                                                {i18n._(t`MEV Auction`)}
+                                            </NavLink>
                                             {/* {chainId === ChainId.MAINNET && (
                                                 <NavLink id={`vesting-nav-link`} to={'/vesting'}>
                                                     {i18n._(t`Vesting`)}
@@ -353,182 +353,199 @@ function AppBar(): JSX.Element {
                                                             />
                                                         </div>
                                                     </QuestionHelper>
-                                                    { chainId === ChainId.BSC && <QuestionHelper text={i18n._(t`Add MT to your Metamask wallet`)}>
-                                                        <div
-                                                            className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
-                                                            onClick={() => {
-                                                                let address: string | undefined
-                                                                switch (chainId) {
-                                                                    case ChainId.BSC:
-                                                                        address =
-                                                                            '0xF9800Ba96038AaCeA81734d2Ff40b7bC8358545D'
-                                                                        break
-                                                                }
-                                                                const params: any = {
-                                                                    type: 'ERC20',
-                                                                    options: {
-                                                                        address: address,
-                                                                        symbol: 'MT',
-                                                                        decimals: 18,
-                                                                        image:
-                                                                            'https://mvp.dfy.asia/images/tokens/mt-token.png'
-                                                                    }
-                                                                }
-
-                                                                if (
-                                                                    library &&
-                                                                    library.provider.isMetaMask &&
-                                                                    library.provider.request
-                                                                ) {
-                                                                    library.provider
-                                                                        .request({
-                                                                            method: 'wallet_watchAsset',
-                                                                            params
-                                                                        })
-                                                                        .then(success => {
-                                                                            if (success) {
-                                                                                console.log(
-                                                                                    'Successfully added MT to MetaMask'
-                                                                                )
-                                                                            } else {
-                                                                                throw new Error('Something went wrong.')
-                                                                            }
-                                                                        })
-                                                                        .catch(console.error)
-                                                                }
-                                                            }}
+                                                    {chainId === ChainId.BSC && (
+                                                        <QuestionHelper
+                                                            text={i18n._(t`Add MT to your Metamask wallet`)}
                                                         >
-                                                            <img
-                                                                src={`${process.env.PUBLIC_URL}/images/tokens/mt-token.png`}
-                                                                alt="Switch Network"
-                                                                style={{
-                                                                    minWidth: 36,
-                                                                    minHeight: 36,
-                                                                    maxWidth: 36,
-                                                                    maxHeight: 36
-                                                                }}
-                                                                className="rounded-md object-contain"
-                                                            />
-                                                        </div>
-                                                    </QuestionHelper>}
-                                                    { chainId === ChainId.BSC && <QuestionHelper text={i18n._(t`Add BTCB to your Metamask wallet`)}>
-                                                        <div
-                                                            className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
-                                                            onClick={() => {
-                                                                let address: string | undefined
-                                                                switch (chainId) {
-                                                                    case ChainId.BSC:
-                                                                        address =
-                                                                            '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c'
-                                                                        break
-                                                                }
-                                                                const params: any = {
-                                                                    type: 'ERC20',
-                                                                    options: {
-                                                                        address: address,
-                                                                        symbol: 'BTCB',
-                                                                        decimals: 18,
-                                                                        image:
-                                                                            'https://bscscan.com/token/images/btcb_32.png'
+                                                            <div
+                                                                className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
+                                                                onClick={() => {
+                                                                    let address: string | undefined
+                                                                    switch (chainId) {
+                                                                        case ChainId.BSC:
+                                                                            address =
+                                                                                '0xF9800Ba96038AaCeA81734d2Ff40b7bC8358545D'
+                                                                            break
                                                                     }
-                                                                }
-
-                                                                if (
-                                                                    library &&
-                                                                    library.provider.isMetaMask &&
-                                                                    library.provider.request
-                                                                ) {
-                                                                    library.provider
-                                                                        .request({
-                                                                            method: 'wallet_watchAsset',
-                                                                            params
-                                                                        })
-                                                                        .then(success => {
-                                                                            if (success) {
-                                                                                console.log(
-                                                                                    'Successfully added BTCB to MetaMask'
-                                                                                )
-                                                                            } else {
-                                                                                throw new Error('Something went wrong.')
-                                                                            }
-                                                                        })
-                                                                        .catch(console.error)
-                                                                }
-                                                            }}
-                                                        >
-                                                            <img
-                                                                src="https://bscscan.com/token/images/btcb_32.png"
-                                                                alt="Switch Network"
-                                                                style={{
-                                                                    minWidth: 36,
-                                                                    minHeight: 36,
-                                                                    maxWidth: 36,
-                                                                    maxHeight: 36,
-                                                                    padding: 5
-                                                                }}
-                                                                className="rounded-md object-contain"
-                                                            />
-                                                        </div>
-                                                    </QuestionHelper>}
-                                                    { chainId === ChainId.BSC && <QuestionHelper text={i18n._(t`Add MEV to your Metamask wallet`)}>
-                                                        <div
-                                                            className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
-                                                            onClick={() => {
-                                                                let address: string | undefined
-                                                                switch (chainId) {
-                                                                    case ChainId.BSC:
-                                                                        address =
-                                                                            '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff'
-                                                                        break
-                                                                }
-                                                                const params: any = {
-                                                                    type: 'ERC20',
-                                                                    options: {
-                                                                        address: address,
-                                                                        symbol: 'MEV',
-                                                                        decimals: 18,
-                                                                        image:
-                                                                        mevTokenicon
+                                                                    const params: any = {
+                                                                        type: 'ERC20',
+                                                                        options: {
+                                                                            address: address,
+                                                                            symbol: 'MT',
+                                                                            decimals: 18,
+                                                                            image:
+                                                                                'https://mvp.dfy.asia/images/tokens/mt-token.png'
+                                                                        }
                                                                     }
-                                                                }
 
-                                                                if (
-                                                                    library &&
-                                                                    library.provider.isMetaMask &&
-                                                                    library.provider.request
-                                                                ) {
-                                                                    library.provider
-                                                                        .request({
-                                                                            method: 'wallet_watchAsset',
-                                                                            params
-                                                                        })
-                                                                        .then(success => {
-                                                                            if (success) {
-                                                                                console.log(
-                                                                                    'Successfully added MEV to MetaMask'
-                                                                                )
-                                                                            } else {
-                                                                                throw new Error('Something went wrong.')
-                                                                            }
-                                                                        })
-                                                                        .catch(console.error)
-                                                                }
-                                                            }}
-                                                        >
-                                                            <img
-                                                                src={mevTokenicon}
-                                                                alt="Switch Network"
-                                                                style={{
-                                                                    minWidth: 36,
-                                                                    minHeight: 36,
-                                                                    maxWidth: 36,
-                                                                    maxHeight: 36,
-                                                                    padding: 5
+                                                                    if (
+                                                                        library &&
+                                                                        library.provider.isMetaMask &&
+                                                                        library.provider.request
+                                                                    ) {
+                                                                        library.provider
+                                                                            .request({
+                                                                                method: 'wallet_watchAsset',
+                                                                                params
+                                                                            })
+                                                                            .then(success => {
+                                                                                if (success) {
+                                                                                    console.log(
+                                                                                        'Successfully added MT to MetaMask'
+                                                                                    )
+                                                                                } else {
+                                                                                    throw new Error(
+                                                                                        'Something went wrong.'
+                                                                                    )
+                                                                                }
+                                                                            })
+                                                                            .catch(console.error)
+                                                                    }
                                                                 }}
-                                                                className="rounded-md object-contain"
-                                                            />
-                                                        </div>
-                                                    </QuestionHelper>}
+                                                            >
+                                                                <img
+                                                                    src={`${process.env.PUBLIC_URL}/images/tokens/mt-token.png`}
+                                                                    alt="Switch Network"
+                                                                    style={{
+                                                                        minWidth: 36,
+                                                                        minHeight: 36,
+                                                                        maxWidth: 36,
+                                                                        maxHeight: 36
+                                                                    }}
+                                                                    className="rounded-md object-contain"
+                                                                />
+                                                            </div>
+                                                        </QuestionHelper>
+                                                    )}
+                                                    {chainId === ChainId.BSC && (
+                                                        <QuestionHelper
+                                                            text={i18n._(t`Add BTCB to your Metamask wallet`)}
+                                                        >
+                                                            <div
+                                                                className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
+                                                                onClick={() => {
+                                                                    let address: string | undefined
+                                                                    switch (chainId) {
+                                                                        case ChainId.BSC:
+                                                                            address =
+                                                                                '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c'
+                                                                            break
+                                                                    }
+                                                                    const params: any = {
+                                                                        type: 'ERC20',
+                                                                        options: {
+                                                                            address: address,
+                                                                            symbol: 'BTCB',
+                                                                            decimals: 18,
+                                                                            image:
+                                                                                'https://bscscan.com/token/images/btcb_32.png'
+                                                                        }
+                                                                    }
+
+                                                                    if (
+                                                                        library &&
+                                                                        library.provider.isMetaMask &&
+                                                                        library.provider.request
+                                                                    ) {
+                                                                        library.provider
+                                                                            .request({
+                                                                                method: 'wallet_watchAsset',
+                                                                                params
+                                                                            })
+                                                                            .then(success => {
+                                                                                if (success) {
+                                                                                    console.log(
+                                                                                        'Successfully added BTCB to MetaMask'
+                                                                                    )
+                                                                                } else {
+                                                                                    throw new Error(
+                                                                                        'Something went wrong.'
+                                                                                    )
+                                                                                }
+                                                                            })
+                                                                            .catch(console.error)
+                                                                    }
+                                                                }}
+                                                            >
+                                                                <img
+                                                                    src="https://bscscan.com/token/images/btcb_32.png"
+                                                                    alt="Switch Network"
+                                                                    style={{
+                                                                        minWidth: 36,
+                                                                        minHeight: 36,
+                                                                        maxWidth: 36,
+                                                                        maxHeight: 36,
+                                                                        padding: 5
+                                                                    }}
+                                                                    className="rounded-md object-contain"
+                                                                />
+                                                            </div>
+                                                        </QuestionHelper>
+                                                    )}
+                                                    {chainId === ChainId.BSC && (
+                                                        <QuestionHelper
+                                                            text={i18n._(t`Add MEV to your Metamask wallet`)}
+                                                        >
+                                                            <div
+                                                                className="hidden sm:inline-block rounded-md bg-white cursor-pointer"
+                                                                onClick={() => {
+                                                                    let address: string | undefined
+                                                                    switch (chainId) {
+                                                                        case ChainId.BSC:
+                                                                            address =
+                                                                                '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff'
+                                                                            break
+                                                                    }
+                                                                    const params: any = {
+                                                                        type: 'ERC20',
+                                                                        options: {
+                                                                            address: address,
+                                                                            symbol: 'MEV',
+                                                                            decimals: 18,
+                                                                            image: mevTokenicon
+                                                                        }
+                                                                    }
+
+                                                                    if (
+                                                                        library &&
+                                                                        library.provider.isMetaMask &&
+                                                                        library.provider.request
+                                                                    ) {
+                                                                        library.provider
+                                                                            .request({
+                                                                                method: 'wallet_watchAsset',
+                                                                                params
+                                                                            })
+                                                                            .then(success => {
+                                                                                if (success) {
+                                                                                    console.log(
+                                                                                        'Successfully added MEV to MetaMask'
+                                                                                    )
+                                                                                } else {
+                                                                                    throw new Error(
+                                                                                        'Something went wrong.'
+                                                                                    )
+                                                                                }
+                                                                            })
+                                                                            .catch(console.error)
+                                                                    }
+                                                                }}
+                                                            >
+                                                                <img
+                                                                    src={mevTokenicon}
+                                                                    alt="Switch Network"
+                                                                    style={{
+                                                                        minWidth: 36,
+                                                                        minHeight: 36,
+                                                                        maxWidth: 36,
+                                                                        maxHeight: 36,
+                                                                        padding: 5
+                                                                    }}
+                                                                    className="rounded-md object-contain"
+                                                                />
+                                                            </div>
+                                                        </QuestionHelper>
+                                                    )}
                                                 </>
                                             )}
                                         {/* {chainId && chainId === ChainId.MATIC && (
@@ -564,17 +581,11 @@ function AppBar(): JSX.Element {
                                         </div>
                                         <LanguageSwitch />
 
-                                        {
-                                            chainId && [
-                                                ChainId.GÖRLI,
-                                                ChainId.KOVAN,
-                                                ChainId.RINKEBY,
-                                                ChainId.ROPSTEN
-                                            ].includes(chainId) && (
-                                                <Web3Faucet />
-                                            )
-                                        }
-                                        
+                                        {chainId &&
+                                            [ChainId.GÖRLI, ChainId.KOVAN, ChainId.RINKEBY, ChainId.ROPSTEN].includes(
+                                                chainId
+                                            ) && <Web3Faucet />}
+
                                         <MoreMenu />
                                     </div>
                                 </div>
@@ -638,6 +649,9 @@ function AppBar(): JSX.Element {
                                 </NavLink>
                                 <NavLink id={`bento-nav-link`} to={'/donate'}>
                                     {i18n._(t`Pool for donation`)}
+                                </NavLink>
+                                <NavLink id={`bento-nav-link`} to={'/mev-auction'}>
+                                    {i18n._(t`MEV Auction`)}
                                 </NavLink>
                                 {/* {chainId === ChainId.MAINNET && (
                                     <NavLink id={`stake-nav-link`} to={'/sushibar'}>
