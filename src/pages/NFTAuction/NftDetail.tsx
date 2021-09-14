@@ -214,8 +214,6 @@ const NftDetail = ({
                 const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
                 const result = topBidPrice.add(twentypercent)
                 // const bidIncretment = ((100 + Number(bidPercentIncrement)) / 100) * Number(topBid)
-                console.log('bidIncretment', result.toFixed(decimal))
-                console.log('bid', yourbid)
 
                 if (Number(yourbid) >= result.toFixed(decimal)) {
                     setWarningText('Your bid is Allow')
