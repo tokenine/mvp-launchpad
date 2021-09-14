@@ -2,9 +2,9 @@ import { ChainId } from 'dfy-sdk'
 
 export const NFT_AUCTION : { [key: string]: any } = {
   [ChainId.BSC]: {
-    auction: '0x2D1a4Bc32d24A9e840a77fc6972ad218c1E493B2',
+    auction: '0x90c13F5D503bD8cbe1FD53879414A69C42915e73',
     nft: '0x3cfC6162E5EB147F84Ca574d2D29560e963a5CAA',
-    token: '0x3379a0bdf5a5cb566127c421782686ba0f80490a'
+    token: '0x9b98646315cc7677ce02a3ccf580c80f36aca4ff'
   }
 }
 
