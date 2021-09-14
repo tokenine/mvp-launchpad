@@ -256,7 +256,7 @@ const NftDetail = ({
     const calculatetwentypercent = async () => {
         try {
             const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
-            if (historyBid.length !== 0){
+            if (historyBid.length !== 0) {
                 const topBid = await itemcontract?.getTopBid(address)
                 const topBidPrice = topBid.price
                 const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
@@ -351,20 +351,24 @@ const NftDetail = ({
                                         </div>
 
                                         <div className="flex items-center rounded bg-white border border-black space-x-3 p-3 w-full">
-                                            {historyBid.length !== 0 && <Button
-                                                onClick={calculatetwentypercent}
-                                                size={'small'}
-                                                className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
-                                            >
-                                                {bidPercentIncrement}%
-                                            </Button>}
-                                            {historyBid.length === 0 && <Button
-                                                onClick={calculatetwentypercent}
-                                                size={'small'}
-                                                className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
-                                            >
-                                                Start Price
-                                            </Button>}
+                                            {historyBid.length !== 0 && (
+                                                <Button
+                                                    onClick={calculatetwentypercent}
+                                                    size={'small'}
+                                                    className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
+                                                >
+                                                    {bidPercentIncrement}%
+                                                </Button>
+                                            )}
+                                            {historyBid.length === 0 && (
+                                                <Button
+                                                    onClick={calculatetwentypercent}
+                                                    size={'small'}
+                                                    className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
+                                                >
+                                                    Start Price
+                                                </Button>
+                                            )}
                                             <NumericalInput
                                                 className="token-amount-input text-right text-black"
                                                 value={yourbid}
@@ -384,7 +388,9 @@ const NftDetail = ({
                                 {(ApprovalState.NOT_APPROVED === approvalState ||
                                     (ApprovalState.PENDING === approvalState && auctionState)) && (
                                     <Button
-                                        disabled={ApprovalState.PENDING === approvalState || warningText === '' || warning}
+                                        disabled={
+                                            ApprovalState.PENDING === approvalState || warningText === '' || warning
+                                        }
                                         onClick={approve}
                                         color="gradient3"
                                         className="text-center"
@@ -393,22 +399,30 @@ const NftDetail = ({
                                     </Button>
                                 )}
                                 {ApprovalState.APPROVED === approvalState && auctionState && (
-                                    <Button color="gradient3" onClick={Bidding} disabled={warning || warningText === ''}>
+                                    <Button
+                                        color="gradient3"
+                                        onClick={Bidding}
+                                        disabled={warning || warningText === ''}
+                                    >
                                         Place a Bid
                                     </Button>
                                 )}
                             </div>
                             <div className="mt-8 text-black">
                                 <span className="text-xl ">History Bids</span>
+                                <div className="flex justify-between px-2">
+                                    <p>address:</p>
+                                    <p>Bid: </p>
+                                </div>
                                 <div className="border border-black mt-1 h-40 overflow-y-scroll">
                                     {historyBid
                                         .sort((a, b) => (a.price > b.price ? 1 : -1))
                                         .reverse()
                                         .map((item, index) => (
                                             <div key={index} className="flex justify-between p-2 text-sm">
-                                                <div>address: {shortenAddress(item.address)}</div>
+                                                <div>{shortenAddress(item.address)}</div>
                                                 <div>
-                                                    Bid: {item.price} {tokenSymbol}
+                                                    {item.price} {tokenSymbol}
                                                 </div>
                                             </div>
                                         ))}
