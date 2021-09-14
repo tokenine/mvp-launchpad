@@ -123,7 +123,6 @@ function NFTAuction(): JSX.Element {
                     if (bidlist.length !== 0){
                         topBid = await itemcontract?.getTopBid(id)
                     }
-                    console.log(topBid)
                     const item = await itemcontract?.artItems(id)
                     const tokenURI = item.tokenURI
                     const startPrice = item.startPrice
