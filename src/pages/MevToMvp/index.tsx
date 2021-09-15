@@ -12,6 +12,9 @@ import { JSBI, Token, TokenAmount } from 'dfy-sdk'
 import { RouteComponentProps } from 'react-router-dom'
 import { useMVPToMEV } from 'constants/mvptomev'
 import { useTransactionAdder } from 'state/transactions/hooks'
+import useCopyClipboard from 'hooks/useCopyClipboard'
+import { AiOutlineCopy } from 'react-icons/ai'
+import { shortenAddress } from 'utils'
 
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -47,6 +50,8 @@ const MevToMvp = ({
     const { i18n } = useLingui()
     const [active, setActive] = useState(true)
     const { account, chainId } = useActiveWeb3React()
+    const [isMVPCopied, staticMVPCopy] = useCopyClipboard()
+    const [isMEVCopied, staticMEVCopy] = useCopyClipboard()
     const Web3 = require('web3')
 
     const mvpmevtoken = useMVPToMEV(chainId)
@@ -100,7 +105,6 @@ const MevToMvp = ({
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
-
                 } else if (useMvpTokenContact && chainId && active) {
                     const decimals = await useMvpTokenContact?.decimals()
                     const tokenName = await useMvpTokenContact?.name()
@@ -108,12 +112,11 @@ const MevToMvp = ({
                     const balance = await useMvpTokenContact?.balanceOf(account)
                     const priceAmount = JSBI.BigInt(balance)
                     const tokenAmount = new Token(chainId, mvpmevtoken.mvp, decimals ?? 18, symbol, tokenName)
-                    
+
                     setSpender(mvpmevtoken.mev)
                     setCurrentBalance(balance.toFixed(decimals))
                     setTokenSymbol(symbol)
                     setCurrencyAmount(new TokenAmount(tokenAmount, priceAmount))
-                    
                 }
             } catch (err) {
                 console.error(err)
@@ -162,8 +165,8 @@ const MevToMvp = ({
                             {i18n._(t`Swap MEV to MVP`)}
                         </div>
                     </div>
-                    <div className="border-black border rounded-md p-6 w-full md:w-2/5">
-                        <div className="text-center mb-14">
+                    <div className="border-black border rounded-md p-6 w-full sm:w-11/12 md:w-3/5 lg:w-2/5">
+                        <div className="text-center mb-6">
                             <SwitchDiv>
                                 <div className={active ? 'active' : ''} onClick={onActiveToggle}>
                                     MVP to MEV
@@ -172,6 +175,43 @@ const MevToMvp = ({
                                     MEV to MVP
                                 </div>
                             </SwitchDiv>
+                        </div>
+                        <div className="mb-6">
+                            <div>
+                                <p className="font-bold text-lg">MVP TokenAddress:</p>
+                                <div className="flex">
+                                    <span className="sm:hidden">{shortenAddress(mvpmevtoken?.mvp)}</span>
+                                    <span className="hidden sm:inline">{mvpmevtoken?.mvp}</span>
+                                    <Button
+                                        className="active:outline-none ml-1"
+                                        size="small"
+                                        onClick={() => {
+                                            staticMVPCopy(mvpmevtoken?.mvp)
+                                        }}
+                                    >
+                                        <AiOutlineCopy className="inline" />
+                                    </Button>
+                                    <span className="ml-5">{isMVPCopied && <span>Copied!</span>}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p className="font-bold text-lg">MEV TokenAddress:</p>
+                                <div>
+                                    {' '}
+                                    <span className="sm:hidden">{shortenAddress(mvpmevtoken?.mev)}</span>
+                                    <span className="hidden sm:inline">{mvpmevtoken?.mev}</span>
+                                    <Button
+                                        className="active:outline-none ml-1"
+                                        size="small"
+                                        onClick={() => {
+                                            staticMEVCopy(mvpmevtoken?.mev)
+                                        }}
+                                    >
+                                        <AiOutlineCopy className="inline" />
+                                    </Button>
+                                    <span className="ml-5">{isMEVCopied && <span>Copied!</span>}</span>
+                                </div>
+                            </div>
                         </div>
                         <div className="flex justify-between">
                             <p>
