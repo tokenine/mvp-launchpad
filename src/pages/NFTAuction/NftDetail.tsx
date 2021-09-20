@@ -21,19 +21,6 @@ const BackgroundMain = styled.div`
     padding-bottom: 80px;
     height: 100vh;
 `
-const CardImage = styled.img`
-    object-fit: contain;
-    opacity: 1;
-`
-const ImageWrapper = styled.div`
-    max-height: 743px;
-    max-width: 577px;
-
-    @media only screen and (max-width: 600px) {
-        width: 100%;
-        height: auto;
-    }
-`
 
 interface Item {
     address: string
@@ -46,6 +33,7 @@ const NftDetail = ({
     }
 }: RouteComponentProps<{ address: string }>): JSX.Element => {
     const [startPrice, setStartPrice] = useState('0.00000')
+    const [topBidshortAdress, setTopBidshortAddress] = useState('Your are first bid')
     const [topBidAdress, setTopBidAddress] = useState('Your are first bid')
     const [topBid, setTopBid] = useState('0')
     const [bidPercentIncrement, setBidPercentIncrement] = useState(0)
@@ -154,7 +142,8 @@ const NftDetail = ({
                     const topBid = await itemcontract?.getTopBid(address)
                     const topBidAddress = topBid.bidder
                     const topBidPrice = topBid.price
-                    setTopBidAddress(
+                    setTopBidAddress(topBidAddress)
+                    setTopBidshortAddress(
                         topBidAddress.substring(0, 8) +
                             '...' +
                             topBidAddress?.substring(topBidAddress.length - 8, topBidAddress.length)
@@ -305,7 +294,7 @@ const NftDetail = ({
                                         </div>
                                         <div className="text-black">
                                             <p>Top Bid Address: </p>
-                                            <p className="text-2xl">{topBidAdress}</p>
+                                            <p className="text-2xl">{topBidshortAdress}</p>
                                         </div>
                                         <div className="text-black">
                                             <p>Top Bid: </p>
@@ -319,7 +308,7 @@ const NftDetail = ({
                                     <div className="flex-row">
                                         <div className="text-black">
                                             <p className="text-base">Winner Bid Address: </p>
-                                            <p className="text-3xl">{topBidAdress}</p>
+                                            <p className="text-3xl">{topBidshortAdress}</p>
                                         </div>
                                         <div className="text-black">
                                             <p className="text-base">Winner Bid:</p>
@@ -330,7 +319,7 @@ const NftDetail = ({
                                     </div>
                                 )}
 
-                                {!auctionState && active && (
+                                {!auctionState && (
                                     <div className="mt-8">
                                         <p className="text-3xl text-center text-red-500 mb-4">Auction End</p>
                                         {account === topBidAdress && active && (
@@ -347,7 +336,6 @@ const NftDetail = ({
                                             <p>Your Bid</p>
                                             <p>Balance: {currenBalance}</p>
                                         </div>
-
                                         <div className="flex items-center rounded bg-white border border-black space-x-3 p-3 w-full">
                                             {historyBid.length !== 0 && (
                                                 <Button
