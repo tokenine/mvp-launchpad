@@ -274,7 +274,8 @@ const NftDetail = ({
             CheckAllowBid(yourbid)
         }
     }
-
+    console.log("account",account);
+    console.log("topBidAdress",topBidAdress);
     return (
         <>
             <Helmet>
