@@ -15,6 +15,7 @@ import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useNFTAuction } from 'constants/nft-auction'
 import { shortenAddress } from 'utils'
 import { useTransactionAdder } from 'state/transactions/hooks'
+import { BigNumber } from '@ethersproject/bignumber/lib/bignumber'
 
 const BackgroundMain = styled.div`
     margin-bottom: -80px;
@@ -40,6 +41,7 @@ const NftDetail = ({
     const [yourbid, setYourBid] = useState('0')
     const [endTimeDate, setEndTimeDate] = useState<string>()
     const [auctionState, setAuctionState] = useState<Boolean>(true)
+    const bigthounsand = BigNumber.from('1000000000000000000000')
 
     const [imgURL, setImgURL] = useState('')
     const { account } = useWeb3React()
@@ -200,8 +202,9 @@ const NftDetail = ({
                 const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
                 const topBid = await itemcontract?.getTopBid(address)
                 const topBidPrice = topBid.price
-                const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-                const result = topBidPrice.add(twentypercent)
+                // const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
+                const result = topBidPrice.add(bigthounsand)
+                console.log(result.toFixed(decimal))
                 // const bidIncretment = ((100 + Number(bidPercentIncrement)) / 100) * Number(topBid)
 
                 if (Number(yourbid) >= result.toFixed(decimal)) {
@@ -210,7 +213,7 @@ const NftDetail = ({
                 } else {
                     const percent = bidPercentIncrement.toFixed(decimal)
                     const pricein = result.toFixed(decimal)
-                    const warring = 'Bid Incerment is ' + percent + '% , Please insert your bid up to ' + pricein
+                    const warring = 'Bid Incerment is ' + 1000 + ' , Please insert your bid up to ' + pricein
                     setWarningText(warring)
                     setWarning(true)
                 }
@@ -242,12 +245,12 @@ const NftDetail = ({
 
     const calculatetwentypercent = async () => {
         try {
-            const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
+            // const bidPercentIncrement = await itemcontract?.bidPercentIncrement()
             if (historyBid.length !== 0) {
                 const topBid = await itemcontract?.getTopBid(address)
                 const topBidPrice = topBid.price
-                const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-                const result = topBidPrice.add(twentypercent)
+                // const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
+                const result = topBidPrice.add(bigthounsand)
                 if (topBid) {
                     setYourBid(result.toFixed(decimal))
                     CheckAllowBid(result.toFixed(decimal))
@@ -343,7 +346,7 @@ const NftDetail = ({
                                                     size={'small'}
                                                     className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
                                                 >
-                                                    {bidPercentIncrement}%
+                                                    {1000}
                                                 </Button>
                                             )}
                                             {historyBid.length === 0 && (
