@@ -250,8 +250,12 @@ const NftDetail = ({
                 const topBidPrice = topBid.price
                 const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
                 let result = yourbid.toBigNumber(decimal)
-                result = result.add(bigthoundsand)
                 if (topBid) {
+                    if (yourbid === '0' || yourbid === '') {
+                        result = topBidPrice.add(bigthoundsand)
+                    } else {
+                        result = result.add(bigthoundsand)
+                    }
                     setYourBid(result.toFixed(decimal))
                     CheckAllowBid(result.toFixed(decimal))
                 } else {
