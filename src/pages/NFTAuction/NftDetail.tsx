@@ -409,7 +409,7 @@ const NftDetail = ({
                                 </div>
                                 <div className="border border-black mt-1 h-40 overflow-y-scroll">
                                     {historyBid
-                                        .sort((a, b) => (a.price > b.price ? 1 : -1))
+                                        .sort((a, b) => (parseFloat(a.price) > parseFloat(b.price) ? 1 : -1))
                                         .reverse()
                                         .map((item, index) => (
                                             <div key={index} className="flex justify-between p-2 text-sm">
