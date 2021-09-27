@@ -42,6 +42,7 @@ const NftDetail = ({
     const [endTimeDate, setEndTimeDate] = useState<string>()
     const [auctionState, setAuctionState] = useState<Boolean>(true)
     const bigthoundsand = BigNumber.from('1000000000000000000000')
+    const [accountAdmin, setAccountAdmin] = useState(false)
 
     const [imgURL, setImgURL] = useState('')
     const { account } = useWeb3React()
@@ -115,6 +116,15 @@ const NftDetail = ({
     }, [Web3.utils, address, itemcontract])
 
     useEffect(() => {
+        const checkAdminRole = async () => {
+            try {
+                const adminrole = await itemcontract?.DEFAULT_ADMIN_ROLE()
+                const checkadmin = await itemcontract?.hasRole(adminrole, account)
+                setAccountAdmin(checkadmin)
+            } catch (err) {
+                console.error('AdminRoleCheck: ', err)
+            }
+        }
         const fetchTokenDetail = async () => {
             try {
                 if (tokenContract && chainId) {
@@ -135,7 +145,8 @@ const NftDetail = ({
             }
         }
         fetchTokenDetail()
-    }, [account, auctioncontract, chainId, tokenContract])
+        checkAdminRole()
+    }, [account, auctioncontract, chainId, itemcontract, tokenContract])
 
     useEffect(() => {
         const topBid = async () => {
@@ -235,10 +246,21 @@ const NftDetail = ({
         try {
             const response = await itemcontract?.claim(address)
             addTransaction(response, {
-                summary: 'Claim Reward'
+                summary: 'Claimed Reward'
             })
         } catch (err) {
             console.error(err)
+        }
+    }
+
+    const claimMerchantButton = async () => {
+        try {
+            const response = await itemcontract?.withdrawBidToken()
+            addTransaction(response, {
+                summary: 'Claimed Mechant'
+            })
+        } catch (err) {
+            console.error('ClaimMerchantButton: ',err)
         }
     }
 
@@ -334,6 +356,14 @@ const NftDetail = ({
                                                 Claim Reward
                                             </Button>
                                         )}
+                                    </div>
+                                )}
+
+                                {accountAdmin && !auctionState && (
+                                    <div className="mt-4 mb-4">
+                                        <Button color="gradient3" onClick={claimMerchantButton} disabled={topBid === '0'}>
+                                            Claim Back for Merchant
+                                        </Button>
                                     </div>
                                 )}
 
