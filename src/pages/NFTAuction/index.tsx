@@ -120,6 +120,7 @@ function NFTAuction(): JSX.Element {
                 setTokenDecimal(deciaml)
                 for (let id = 0; id < item.toNumber(); id++) {
                     if (id !== 2) {
+                        //"Remove when ready"
                         topBid = []
                         const bidlist = await itemcontract?.getBidsList(id)
                         if (bidlist.length !== 0) {
