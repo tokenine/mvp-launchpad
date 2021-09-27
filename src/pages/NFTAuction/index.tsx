@@ -121,7 +121,7 @@ function NFTAuction(): JSX.Element {
                 for (let id = 0; id < item.toNumber(); id++) {
                     topBid = []
                     const bidlist = await itemcontract?.getBidsList(id)
-                    if (bidlist.length !== 0){
+                    if (bidlist.length !== 0) {
                         topBid = await itemcontract?.getTopBid(id)
                     }
                     const item = await itemcontract?.artItems(id)

@@ -15,6 +15,7 @@ import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import { useNFTAuction } from 'constants/nft-auction'
 import { shortenAddress } from 'utils'
 import { useTransactionAdder } from 'state/transactions/hooks'
+import { BigNumber } from '@ethersproject/bignumber/lib/bignumber'
 
 const BackgroundMain = styled.div`
     margin-bottom: -80px;
@@ -40,6 +41,7 @@ const NftDetail = ({
     const [yourbid, setYourBid] = useState('0')
     const [endTimeDate, setEndTimeDate] = useState<string>()
     const [auctionState, setAuctionState] = useState<Boolean>(true)
+    const bigthoundsand = BigNumber.from('1000000000000000000000')
 
     const [imgURL, setImgURL] = useState('')
     const { account } = useWeb3React()
@@ -247,8 +249,13 @@ const NftDetail = ({
                 const topBid = await itemcontract?.getTopBid(address)
                 const topBidPrice = topBid.price
                 const twentypercent = topBidPrice.muldiv(bidPercentIncrement.toFixed(decimal), 100)
-                const result = topBidPrice.add(twentypercent)
+                let result = yourbid.toBigNumber(decimal)
                 if (topBid) {
+                    if (yourbid === '0' || yourbid === '') {
+                        result = topBidPrice.add(bigthoundsand)
+                    } else {
+                        result = result.add(bigthoundsand)
+                    }
                     setYourBid(result.toFixed(decimal))
                     CheckAllowBid(result.toFixed(decimal))
                 } else {
@@ -344,7 +351,7 @@ const NftDetail = ({
                                                     size={'small'}
                                                     className="bg-transparent hover:bg-primary hover:text-black border border-gray-500 rounded-full text-gray-500 text-base px-4 py-0 font-medium whitespace-nowrap"
                                                 >
-                                                    {bidPercentIncrement}%
+                                                    +{1000}
                                                 </Button>
                                             )}
                                             {historyBid.length === 0 && (
@@ -403,7 +410,7 @@ const NftDetail = ({
                                 </div>
                                 <div className="border border-black mt-1 h-40 overflow-y-scroll">
                                     {historyBid
-                                        .sort((a, b) => (a.price > b.price ? 1 : -1))
+                                        .sort((a, b) => (parseFloat(a.price) > parseFloat(b.price) ? 1 : -1))
                                         .reverse()
                                         .map((item, index) => (
                                             <div key={index} className="flex justify-between p-2 text-sm">
