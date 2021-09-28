@@ -131,51 +131,54 @@ function NFTAuction(): JSX.Element {
                     const active = item.active
                     const endtime = item.endTime.toString()
                     const date = new Date(endtime * 1000)
-                    if (date.getTime() < Date.now()) {
-                        timeActive = false
-                    } else {
-                        timeActive = true
-                    }
-                    const dayy = date.getDate()
-                    const monthh = date.getMonth() + 1
-                    const yearr = date.getFullYear()
-                    const hhour = date.getHours()
-                    const minutee = date.getMinutes()
-                    const secondd = date.getSeconds()
-                    const timeend =
-                        time(dayy) +
-                        '/' +
-                        time(monthh) +
-                        '/' +
-                        time(yearr) +
-                        ' ' +
-                        time(hhour) +
-                        ':' +
-                        time(minutee) +
-                        ':' +
-                        time(secondd)
-                    if (timeActive === true) {
-                        listactiveNftItems.push({
-                            id: id,
-                            tokenURI: tokenURI,
-                            startPrice: startPrice,
-                            buyPrice: buyPrice,
-                            endTime: timeend,
-                            active: active,
-                            timeactive: timeActive,
-                            currenttopbid: topBid[1]
-                        })
-                    } else if (timeActive === false) {
-                        listinactiveNftItems.push({
-                            id: id,
-                            tokenURI: tokenURI,
-                            startPrice: startPrice,
-                            buyPrice: buyPrice,
-                            endTime: timeend,
-                            active: active,
-                            timeactive: timeActive,
-                            currenttopbid: topBid[1]
-                        })
+                    const starttime = new Date(endtime * 1000 - 60000 * 60 * 3)
+                    if (Date.now() >= starttime.getTime()) {
+                        if (date.getTime() < Date.now()) {
+                            timeActive = false
+                        } else {
+                            timeActive = true
+                        }
+                        const dayy = date.getDate()
+                        const monthh = date.getMonth() + 1
+                        const yearr = date.getFullYear()
+                        const hhour = date.getHours()
+                        const minutee = date.getMinutes()
+                        const secondd = date.getSeconds()
+                        const timeend =
+                            time(dayy) +
+                            '/' +
+                            time(monthh) +
+                            '/' +
+                            time(yearr) +
+                            ' ' +
+                            time(hhour) +
+                            ':' +
+                            time(minutee) +
+                            ':' +
+                            time(secondd)
+                        if (timeActive === true) {
+                            listactiveNftItems.push({
+                                id: id,
+                                tokenURI: tokenURI,
+                                startPrice: startPrice,
+                                buyPrice: buyPrice,
+                                endTime: timeend,
+                                active: active,
+                                timeactive: timeActive,
+                                currenttopbid: topBid[1]
+                            })
+                        } else if (timeActive === false) {
+                            listinactiveNftItems.push({
+                                id: id,
+                                tokenURI: tokenURI,
+                                startPrice: startPrice,
+                                buyPrice: buyPrice,
+                                endTime: timeend,
+                                active: active,
+                                timeactive: timeActive,
+                                currenttopbid: topBid[1]
+                            })
+                        }
                     }
                 }
                 setactiveItems(listactiveNftItems)
