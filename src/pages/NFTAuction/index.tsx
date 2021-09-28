@@ -119,20 +119,20 @@ function NFTAuction(): JSX.Element {
                 setTokenSymbol(symbol)
                 setTokenDecimal(deciaml)
                 for (let id = 0; id < item.toNumber(); id++) {
-                    if (id !== 2) {
-                        //"Remove when ready"
-                        topBid = []
-                        const bidlist = await itemcontract?.getBidsList(id)
-                        if (bidlist.length !== 0) {
-                            topBid = await itemcontract?.getTopBid(id)
-                        }
-                        const item = await itemcontract?.artItems(id)
-                        const tokenURI = item.tokenURI
-                        const startPrice = item.startPrice
-                        const buyPrice = item.buyPrice
-                        const active = item.active
-                        const endtime = item.endTime.toString()
-                        const date = new Date(endtime * 1000)
+                    topBid = []
+                    const bidlist = await itemcontract?.getBidsList(id)
+                    if (bidlist.length !== 0) {
+                        topBid = await itemcontract?.getTopBid(id)
+                    }
+                    const item = await itemcontract?.artItems(id)
+                    const tokenURI = item.tokenURI
+                    const startPrice = item.startPrice
+                    const buyPrice = item.buyPrice
+                    const active = item.active
+                    const endtime = item.endTime.toString()
+                    const date = new Date(endtime * 1000)
+                    const starttime = new Date(endtime * 1000 - 60000 * 60 * 3)
+                    if (Date.now() >= starttime.getTime()) {
                         if (date.getTime() < Date.now()) {
                             timeActive = false
                         } else {
