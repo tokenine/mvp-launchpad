@@ -20,6 +20,8 @@ import { stakeTokenListByChainId, StakeTokenList } from '../../constants/stake-t
 import Loader from 'components/Loader'
 import Countdown from 'react-countdown'
 import { isAddress } from 'utils'
+import Modal from 'components/Modal'
+import { CloseIcon } from '../../theme'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;
@@ -80,6 +82,8 @@ function StakePage({
 
     const addressCheckSum = isAddress(stakeDetail?.contractAddress)
     const stakeContract = useTokenineStakeContract(addressCheckSum ? addressCheckSum : '')
+
+    const [openThankModal, setOpenThankModal] = useState(false)
 
     const donationTotalCurrencyAmount = useCurrencyBalance(stakeDetail?.showTotalDonate, stakeDetail?.rewardPointToken ? new Token(chainId ?? 0, rewardPointTokenAddress ? rewardPointTokenAddress : '', rewardTokenDecimals, rewardTokenSymbol, rewardTokenName) : undefined)
 
@@ -217,6 +221,9 @@ function StakePage({
                                                     try {
                                                         setIsCommiting(true)
                                                         const response = await stakeContract?.functions.leave(stakeTokenCurrencyAmount?.toExact().toBigNumber(decimals))
+                                                        if (stakeDetail?.showThankStake) {
+                                                            setOpenThankModal(true)
+                                                        }
                                                         addTransaction(response, {
                                                             summary: 'Claim committed!'
                                                         })
@@ -300,6 +307,21 @@ function StakePage({
                     </div>
                 </div>
             </BackgroundMain>
+            <Modal
+                isOpen={openThankModal}
+                onDismiss={() => {/**/}}
+            >
+                <div className="text-center">
+                    <CloseIcon
+                        className="float-right"
+                        onClick={() => {
+                            setOpenThankModal(false)
+                        }}
+                    />
+                    <div className="text-bold text-lg mb-5 pt-5">ขอขอบคุณทุกท่านที่ร่วมกิจกรรมบริจาคกับโครงการ MVP Social Giving Stake For Society {stakeDetail?.label}</div>
+                    <div>บริษัทมีความยินดีเป็นอย่างยิ่ง ขอให้ท่านและครอบครัวประสบแต่สิ่งเป็นมงคล สุขภาพร่างกายแข็งแรง และหวังว่าท่านจะร่วมสนับสนุนกิจกรรมของเราในโอกาสถัดไป</div>
+                </div>
+            </Modal>
         </>
     )
 }
