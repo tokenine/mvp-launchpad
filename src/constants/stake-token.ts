@@ -29,6 +29,7 @@ export interface StakeTokenList {
     name: string
     symbol: string
   }
+  showThankStake?: boolean
 }
 // 0xF2059c93Bb02c43237099a4006548b47B55cDc1f
 const BSC_TESTNET_STAKE_LIST: { [key: string]: StakeTokenList } = {
@@ -114,6 +115,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
       name: 'Token MD',
       symbol: 'MD'
     },
+    showThankStake: true
   },
   '0x30aD01DAc5761658AFCD26242ffaf25b004426d8': {
     showOnActiveTab: true,
