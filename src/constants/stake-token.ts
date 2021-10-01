@@ -262,7 +262,7 @@ const BKC_STAKE_LIST: { [key: string]: StakeTokenList } = {
     },
   },
   '0xE4ABd8F271F390f85232d0fc5a3a281Fa843C260': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     contractAddress: '0xE4ABd8F271F390f85232d0fc5a3a281Fa843C260',
     title: 'SELF-QUARANTINE #3<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
