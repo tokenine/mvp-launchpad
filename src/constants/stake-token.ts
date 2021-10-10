@@ -90,34 +90,34 @@ const BSC_TESTNET_STAKE_LIST: { [key: string]: StakeTokenList } = {
 }
 
 const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
-  // '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A': {
-  //   showOnActiveTab: true,
-  //   extraHeader: 'MVP WE ARE HODL 3',
-  //   contractAddress: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
-  //   title: 'Stake MVP for BTC 3',
-  //   imageTokenUrl: '/images/tokens/mt-token.png',
-  //   detailImage: '/images/tokens/mt-token.png',
-  //   proposalContent: '<p style="text-indent: 25px;">#MT3 โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p> <p class="my-5 text-center">* ใครมี MT ได้รับ BTC ทุกคน *</p> <p class="mb-3" style="text-indent: 25px;">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p> <div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div> <ul class="list-disc list-inside"> <li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT3 ได้ตั้งแต่วันที่ 10 ตุลาคม 2564 เวลา 12.00 น. - วันที่ 20 ตุลาคม 2564 เวลา 12.00 น.</li> <li>นำ MT3 มาเคลมเพื่อรับ BTCB ได้ตั้งแต่วันที่ 25 ตุลาคม 2564 เวลา 0.00 น. - วันที่ 31 ตุลาคม 2564 เวลา 23.59 น.<br>**กรณีไม่กดเคลมเหรียญ BTCB ภายในเวลาที่กำหนด เหรียญจะถูกนำคืนเข้าบริษัท</li> <li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 1 พฤศจิกายน 2564 เวลา 0.00 น. สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 20 ธันวาคม 2564 เวลา 00.01 น. (โดยเหรียญจะถูกล็อคไว้ 60 วัน ภายใน Vault)</li> </ul> <p class="mt-5">หมายเหตุ :&nbsp;</p> <ol class="list-decimal list-inside"> <li>โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</li> <li>ให้สิทธิเฉพาะผู้ซื้อเหรียญ MVP ผ่านการซื้อหน้าเวป (<a href="https://mvcaravan.com/mvpcoin/">https://mvcaravan.com/mvpcoin/</a>), DEX หรือ Exchange (Bitmart, P2PB2B) ทั้งระบบ BSC Chain และ Bitkub Chain</li> <li>MT3 ขอสงวนสิทธิผู้ได้เหรียญจาก Airdrop, Marketing, Company Reserve ของบริษัทฯ เข้าร่วมประมูลโครงการดังกล่าว</li> </ol> <p><br></p> <div class="text-lg mb-1 font-bold">วิธีการเพิ่ม MT Token ลงใน MetaMask</div> <div style="text-indent: 25px;">เปิดแอพฯ MetaMask แล้วเลือก Network เป็น Binance Smart Chain จากนั้นคลิก Add Token ใส่ Token Address:</div> <div class="text-center my-3">0xf9800ba96038aacea81734d2ff40b7bc8358545d</div> <p>(สามารถก๊อปปี้ไปวางได้) หาก Token Address ถูกต้องค่าต่างๆ ในช่อง Token Symbol และ Token of precision จะปรากฏโดยอัตโนมัติ ให้คลิก Add Token เป็นอันเสร็จเรียบร้อย</p>',
-  //   available: true,
-  //   isHasClaimDate: true,
-  //   isHasStartDate: true,
-  //   label: '#3',
-  //   stakeByToken: {
-  //     address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
-  //     name: 'MVP COIN',
-  //     symbol: 'MVP'
-  //   },
-  //   stakeToken: {
-  //     address: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
-  //     name: 'Stake MVPBTC ',
-  //     symbol: 'ST-MVPB'
-  //   },
-  //   rewardPointToken: {
-  //     address: '0xf9800ba96038aacea81734d2ff40b7bc8358545d',
-  //     name: 'MVP TEST',
-  //     symbol: 'MT'
-  //   },
-  // },
+  '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A': {
+    showOnActiveTab: true,
+    extraHeader: 'MVP WE ARE HODL 3',
+    contractAddress: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
+    title: 'Stake MVP for BTC 3',
+    imageTokenUrl: '/images/tokens/mt-token.png',
+    detailImage: '/images/tokens/mt-token.png',
+    proposalContent: '<p style="text-indent: 25px;">#MT3 โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p> <p class="my-5 text-center">* ใครมี MT ได้รับ BTC ทุกคน *</p> <p class="mb-3" style="text-indent: 25px;">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p> <div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div> <ul class="list-disc list-inside"> <li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT3 ได้ตั้งแต่วันที่ 10 ตุลาคม 2564 เวลา 12.00 น. - วันที่ 20 ตุลาคม 2564 เวลา 12.00 น.</li> <li>นำ MT3 มาเคลมเพื่อรับ BTCB ได้ตั้งแต่วันที่ 25 ตุลาคม 2564 เวลา 0.00 น. - วันที่ 31 ตุลาคม 2564 เวลา 23.59 น.<br>**กรณีไม่กดเคลมเหรียญ BTCB ภายในเวลาที่กำหนด เหรียญจะถูกนำคืนเข้าบริษัท</li> <li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 1 พฤศจิกายน 2564 เวลา 0.00 น. สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 20 ธันวาคม 2564 เวลา 00.01 น. (โดยเหรียญจะถูกล็อคไว้ 60 วัน ภายใน Vault)</li> </ul> <p class="mt-5">หมายเหตุ :&nbsp;</p> <ol class="list-decimal list-inside"> <li>โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</li> <li>ให้สิทธิเฉพาะผู้ซื้อเหรียญ MVP ผ่านการซื้อหน้าเวป (<a href="https://mvcaravan.com/mvpcoin/">https://mvcaravan.com/mvpcoin/</a>), DEX หรือ Exchange (Bitmart, P2PB2B) ทั้งระบบ BSC Chain และ Bitkub Chain</li> <li>MT3 ขอสงวนสิทธิผู้ได้เหรียญจาก Airdrop, Marketing, Company Reserve ของบริษัทฯ เข้าร่วมประมูลโครงการดังกล่าว</li> </ol> <p><br></p> <div class="text-lg mb-1 font-bold">วิธีการเพิ่ม MT Token ลงใน MetaMask</div> <div style="text-indent: 25px;">เปิดแอพฯ MetaMask แล้วเลือก Network เป็น Binance Smart Chain จากนั้นคลิก Add Token ใส่ Token Address:</div> <div class="text-center my-3">0xf9800ba96038aacea81734d2ff40b7bc8358545d</div> <p>(สามารถก๊อปปี้ไปวางได้) หาก Token Address ถูกต้องค่าต่างๆ ในช่อง Token Symbol และ Token of precision จะปรากฏโดยอัตโนมัติ ให้คลิก Add Token เป็นอันเสร็จเรียบร้อย</p>',
+    available: true,
+    isHasClaimDate: true,
+    isHasStartDate: true,
+    label: '#3',
+    stakeByToken: {
+      address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
+      name: 'Stake MVPBTC ',
+      symbol: 'ST-MVPB'
+    },
+    rewardPointToken: {
+      address: '0xf9800ba96038aacea81734d2ff40b7bc8358545d',
+      name: 'MVP TEST',
+      symbol: 'MT'
+    },
+  },
   '0x3a05D48b541902F4E39519A855D77739dD5bA8cD': {
     showOnActiveTab: true,
     contractAddress: '0x3a05D48b541902F4E39519A855D77739dD5bA8cD',
