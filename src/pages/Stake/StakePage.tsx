@@ -62,6 +62,8 @@ function StakePage({
     const [stakeByTokenBalance, setStakeByTokenBalance] = useState('')
     const [isCommiting, setIsCommiting] = useState(false)
 
+    const [lang, setLangauge] = useState<'EN' | 'TH'>('TH')
+
     const [stakeByTokenName, stakeByTokenSymbol, stakeByTokenDecimals] = useTokenDetail(stakeDetail?.stakeByToken?.address, account)
     const stakeByTokenCurrencyAmount = useCurrencyBalance(account ?? undefined, stakeDetail?.stakeByToken ? new Token(chainId ?? 0, stakeDetail?.stakeByToken?.address, stakeByTokenDecimals, stakeByTokenSymbol, stakeByTokenName) : undefined)
 
@@ -162,7 +164,25 @@ function StakePage({
                             <img alt="Self quarantine" src={stakeDetail.detailImage} className="inline-block w-1/2" />
                             </div>}
                             { stakeDetail?.extraHeader ? <p className="text-h3 mb-5">{stakeDetail?.extraHeader}</p> : <p className="text-h3 mb-5">Self quarantine {stakeDetail?.label}</p> }
-                            <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContent : ''}} />
+                            {stakeDetail?.proposalContentEng && <div
+                                className="text-center mb-4"
+                            >
+                                <button
+                                    className="font-bold"
+                                    onClick={() => {
+                                        setLangauge('TH')
+                                    }}
+                                >TH</button>|<button
+                                    className="font-bold"
+                                    onClick={() => {
+                                        setLangauge('EN')
+                                    }}
+                                >EN</button>
+                            </div>}
+                            {lang === 'EN' && stakeDetail?.proposalContentEng ?
+                                <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContentEng : ''}} /> :
+                                <div dangerouslySetInnerHTML={{__html: stakeDetail ? stakeDetail.proposalContent : ''}} /> 
+                            }
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
