@@ -90,8 +90,63 @@ const BSC_TESTNET_STAKE_LIST: { [key: string]: StakeTokenList } = {
 }
 
 const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
-  '0x028aADb50b311E372350C4A63F0aE61094C535a2': {
+  '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A': {
     showOnActiveTab: true,
+    extraHeader: 'MVP WE ARE HODL 3',
+    contractAddress: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
+    title: 'Stake MVP for BTC 3',
+    imageTokenUrl: '/images/tokens/mt-token.png',
+    detailImage: '/images/tokens/mt-token.png',
+    proposalContent: '<p style="text-indent: 25px;">#MT3 โครงการเอาใจสาย HODL แบบเต็มๆ โดยท่านสามารถนำเหรียญ MVP มาทำการ Stake เพื่อรับเหรียญ MT (MVP Test) ในอัตรา 1 : 1 และสามารถนำเหรียญ MT ไปเคลมในระบบเพื่อรับเหรียญ BTC ในสัดส่วนที่ทางบริษัทกำหนด</p> <p class="my-5 text-center">* ใครมี MT ได้รับ BTC ทุกคน *</p> <p class="mb-3" style="text-indent: 25px;">งานนี้ยิ่ง Stake มากก็มีสิทธิ์ในรับ BTC มากขึ้นไปด้วย แบบนี้สาย HODL ไม่ควรพลาด</p> <div class="text-lg mb-1 font-bold">เงื่อนไขและข้อกำหนด</div> <ul class="list-disc list-inside"> <li>เริ่มนำเหรียญ MVP มา Stake เพื่อรับ MT3 ได้ตั้งแต่วันที่ 10 ตุลาคม 2564 เวลา 12.00 น. - วันที่ 20 ตุลาคม 2564 เวลา 12.00 น.</li> <li>นำ MT3 มาเคลมเพื่อรับ BTCB ได้ตั้งแต่วันที่ 25 ตุลาคม 2564 เวลา 0.00 น. - วันที่ 31 ตุลาคม 2564 เวลา 23.59 น.<br>**กรณีไม่กดเคลมเหรียญ BTCB ภายในเวลาที่กำหนด เหรียญจะถูกนำคืนเข้าบริษัท</li> <li>เหรียญ MT ทั้งหมดจะถูกเบิร์นทิ้ง ในวันที่ 1 พฤศจิกายน 2564 เวลา 0.00 น. สามารถ Unstake เพื่อรับ MVP คืนได้วันที่ 20 ธันวาคม 2564 เวลา 00.01 น. (โดยเหรียญจะถูกล็อคไว้ 60 วัน ภายใน Vault)</li> </ul> <p class="mt-5">หมายเหตุ :&nbsp;</p> <ol class="list-decimal list-inside"> <li>โครงการนี้เฉพาะผู้ถือเหรียญ MVP บนเครือข่าย Binance Smart Chain เท่านั้น</li> <li>ให้สิทธิเฉพาะผู้ซื้อเหรียญ MVP ผ่านการซื้อหน้าเวป (<a href="https://mvcaravan.com/mvpcoin/">https://mvcaravan.com/mvpcoin/</a>), DEX หรือ Exchange (Bitmart, P2PB2B) ทั้งระบบ BSC Chain และ Bitkub Chain</li> <li>MT3 ขอสงวนสิทธิผู้ได้เหรียญจาก Airdrop, Marketing, Company Reserve ของบริษัทฯ เข้าร่วมประมูลโครงการดังกล่าว</li> </ol> <p><br></p> <div class="text-lg mb-1 font-bold">วิธีการเพิ่ม MT Token ลงใน MetaMask</div> <div style="text-indent: 25px;">เปิดแอพฯ MetaMask แล้วเลือก Network เป็น Binance Smart Chain จากนั้นคลิก Add Token ใส่ Token Address:</div> <div class="text-center my-3">0xf9800ba96038aacea81734d2ff40b7bc8358545d</div> <p>(สามารถก๊อปปี้ไปวางได้) หาก Token Address ถูกต้องค่าต่างๆ ในช่อง Token Symbol และ Token of precision จะปรากฏโดยอัตโนมัติ ให้คลิก Add Token เป็นอันเสร็จเรียบร้อย</p>',
+    available: true,
+    isHasClaimDate: true,
+    isHasStartDate: true,
+    label: '#3',
+    stakeByToken: {
+      address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0xABe28Bb22d1Dc2FE1A2455eDBB477f9935Ec869A',
+      name: 'Stake MVPBTC ',
+      symbol: 'ST-MVPB'
+    },
+    rewardPointToken: {
+      address: '0xf9800ba96038aacea81734d2ff40b7bc8358545d',
+      name: 'MVP TEST',
+      symbol: 'MT'
+    },
+  },
+  '0x3a05D48b541902F4E39519A855D77739dD5bA8cD': {
+    showOnActiveTab: true,
+    contractAddress: '0x3a05D48b541902F4E39519A855D77739dD5bA8cD',
+    title: 'SELF-QUARANTINE #4<br>แลกเหรียญ MD',
+    imageTokenUrl: '/images/tokens/stake-for-society.png',
+    detailImage: '/images/MVP-to-MD.png',
+    proposalContent: '<p class="mt-3"><p>MVP Social Giving | Stake For Society #4</p> <p>โครงการ #MD4 ครั้งใหม่จะเริ่ม 1-28 ตุลาคม 2564 ระยะเวลาใช้งาน MD 1-28 ตุลาคม 2564 โดยผู้ถือเหรียญ MVP Coin ฝาก (Stake) 28 วัน เพื่อรับเหรียญ MD (MVP Donation) ได้ตั้งแต่วันที่ 1 ตุลาคม 2564 ตั้งแต่เวลา 00.01 น. เป็นต้นไป&nbsp;</p> <p><br></p> <p><strong>รายละเอียด</strong></p> <p>ผู้ฝากเหรียญจะได้รับ MD ในอัตรา 7% ของ MVP Coin ที่นำมาฝากครบ 28 วัน โดยอัตราคิดลด 0.25% ต่อวัน หรืออัตราลดเฉลี่ยชั่วโมงละ 0.01% โดยประมาณ ตามกลไกของระบบ Block Chain จนเสร็จสิ้นกิจกรรม</p> <p><br></p> <p>และสามารถนำเหรียญ MD แลกอาหารและสินค้าอุปโภคต่าง ๆ ได้ตั้งแต่วันที่ 1 ตุลาคม 2564 ตั้งแต่เวลา 10.00 น. เป็นต้นไป ได้จนถึงวันที่ 28 ตุลาคม 2564 เมื่อครบกำหนดเหรียญจะถูก Burn ออกจากระบบ</p> <p><br></p> <p><strong>ในครั้งนี้มี Pool กิจกรรมให้เลือกเพียง 1 Pool คือ</strong></p> <p>&bull; Self-Quarantine : สามารถนำเหรียญ MD มาแลกเซ็ตอาหาร สินค้าอุปโภค และเครื่องใช้ไฟฟ้าต่าง ๆ พร้อมจัดส่งถึงบ้าน&nbsp;</p> <p>ทุก ๆ 10% ที่ได้รับจากการ Stake จะถูกหักเพื่อนำไปบริจาคมอบอาหารและเครื่องดื่มตามเมนูที่กำหนด โดยใช้มูลค่าตาม MD ทั้งหมดที่มีในช่วงเวลานั้น ให้กับบุคลากรทางการแพทย์ และอาสาสมัคร ฯลฯ (ดูรายละเอียดหน่วยงานได้ตามประกาศ)</p> <p><br></p> <p>เนื่องด้วยสถานการณ์ COVID-19 ยังคงรุนแรงอยุ่ต่อเนื่อง โดยทีมบริหารจะเริ่มโครงการใหม่อีกครั้ง เพื่อสนับสนุนเจ้าหน้าที่อาสาสมัครและบุคลากรทางการแพทย์ และเพื่อให้ทุกคนอยู่บ้านอย่างปลอดภัย</p> <p><br></p> <p>หมายเหตุ: เหรียญ MD ที่ใช้แลกในโครงการทั้ง 4 ครั้ง เป็นเหรียญเดียวกัน แต่ไม่สามารถใช้ร่วมกันได้ เนื่องจากมีระยะเวลาของโครงการแตกต่างกัน ผู้ที่นำเหรียญ MVP เข้ามา Stake ไว้ในโครงการ สามารถเริ่ม Unstake เหรียญ MVP Coin คืนได้ตั้งแต่วันที่ 30 ตุลาคม 2564 เวลา 00.01 &nbsp;น. เป็นต้นไป สามารถแลกสั่งอาหารและสินค้าอุปโภคบริโภคได้ถึงวันที่ 28 ตุลาคม 2564 เมื่อครบกำหนดเหรียญจะถูก Burn ทั้งหมดออกจากระบบ</p></p>',
+    available: true,
+    showTotalDonate: '0xcd64a1fb76085f6184c1a8592f44dcf713ead517',
+    label: '#4',
+    stakeByToken: {
+      address: '0x3379A0BdF5A5CB566127C421782686BA0f80490a',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0x3a05D48b541902F4E39519A855D77739dD5bA8cD',
+      name: 'Stake MD',
+      symbol: 'ST-MD'
+    },
+    rewardPointToken: {
+      address: '0x7E78a9b7c688c5b8152dF3f50f6F32E983f28ac8',
+      name: 'Token MD',
+      symbol: 'MD'
+    },
+    showThankStake: true
+  },
+  '0x028aADb50b311E372350C4A63F0aE61094C535a2': {
+    showOnActiveTab: false,
     contractAddress: '0x028aADb50b311E372350C4A63F0aE61094C535a2',
     title: 'SELF-QUARANTINE #3<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
@@ -208,8 +263,34 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
 }
 
 const BKC_STAKE_LIST: { [key: string]: StakeTokenList } = {
-  '0xE4ABd8F271F390f85232d0fc5a3a281Fa843C260': {
+  '0xD6b34eb785baDe9F7C5F2D19E784Ced6c9d91262': {
     showOnActiveTab: true,
+    contractAddress: '0xD6b34eb785baDe9F7C5F2D19E784Ced6c9d91262',
+    title: 'SELF-QUARANTINE #3<br>แลกเหรียญ MD',
+    imageTokenUrl: '/images/tokens/stake-for-society.png',
+    detailImage: '/images/MVP-to-MD.png',
+    proposalContent: '<p class="mt-3"><p>MVP Social Giving | Stake For Society #4</p> <p>โครงการ #MD4 ครั้งใหม่จะเริ่ม 1-28 ตุลาคม 2564 ระยะเวลาใช้งาน MD 1-28 ตุลาคม 2564 โดยผู้ถือเหรียญ MVP Coin ฝาก (Stake) 28 วัน เพื่อรับเหรียญ MD (MVP Donation) ได้ตั้งแต่วันที่ 1 ตุลาคม 2564 ตั้งแต่เวลา 00.01 น. เป็นต้นไป&nbsp;</p> <p><br></p> <p><strong>รายละเอียด</strong></p> <p>ผู้ฝากเหรียญจะได้รับ MD ในอัตรา 7% ของ MVP Coin ที่นำมาฝากครบ 28 วัน โดยอัตราคิดลด 0.25% ต่อวัน หรืออัตราลดเฉลี่ยชั่วโมงละ 0.01% โดยประมาณ ตามกลไกของระบบ Block Chain จนเสร็จสิ้นกิจกรรม</p> <p><br></p> <p>และสามารถนำเหรียญ MD แลกอาหารและสินค้าอุปโภคต่าง ๆ ได้ตั้งแต่วันที่ 1 ตุลาคม 2564 ตั้งแต่เวลา 10.00 น. เป็นต้นไป ได้จนถึงวันที่ 28 ตุลาคม 2564 เมื่อครบกำหนดเหรียญจะถูก Burn ออกจากระบบ</p> <p><br></p> <p><strong>ในครั้งนี้มี Pool กิจกรรมให้เลือกเพียง 1 Pool คือ</strong></p> <p>&bull; Self-Quarantine : สามารถนำเหรียญ MD มาแลกเซ็ตอาหาร สินค้าอุปโภค และเครื่องใช้ไฟฟ้าต่าง ๆ พร้อมจัดส่งถึงบ้าน&nbsp;</p> <p>ทุก ๆ 10% ที่ได้รับจากการ Stake จะถูกหักเพื่อนำไปบริจาคมอบอาหารและเครื่องดื่มตามเมนูที่กำหนด โดยใช้มูลค่าตาม MD ทั้งหมดที่มีในช่วงเวลานั้น ให้กับบุคลากรทางการแพทย์ และอาสาสมัคร ฯลฯ (ดูรายละเอียดหน่วยงานได้ตามประกาศ)</p> <p><br></p> <p>เนื่องด้วยสถานการณ์ COVID-19 ยังคงรุนแรงอยุ่ต่อเนื่อง โดยทีมบริหารจะเริ่มโครงการใหม่อีกครั้ง เพื่อสนับสนุนเจ้าหน้าที่อาสาสมัครและบุคลากรทางการแพทย์ และเพื่อให้ทุกคนอยู่บ้านอย่างปลอดภัย</p> <p><br></p> <p>หมายเหตุ: เหรียญ MD ที่ใช้แลกในโครงการทั้ง 4 ครั้ง เป็นเหรียญเดียวกัน แต่ไม่สามารถใช้ร่วมกันได้ เนื่องจากมีระยะเวลาของโครงการแตกต่างกัน ผู้ที่นำเหรียญ MVP เข้ามา Stake ไว้ในโครงการ สามารถเริ่ม Unstake เหรียญ MVP Coin คืนได้ตั้งแต่วันที่ 30 ตุลาคม 2564 เวลา 00.01 &nbsp;น. เป็นต้นไป สามารถแลกสั่งอาหารและสินค้าอุปโภคบริโภคได้ถึงวันที่ 28 ตุลาคม 2564 เมื่อครบกำหนดเหรียญจะถูก Burn ทั้งหมดออกจากระบบ</p></p>',
+    available: true,
+    showTotalDonate: '0xcd64a1fb76085f6184c1a8592f44dcf713ead517',
+    label: '#4',
+    stakeByToken: {
+      address: '0xDD7847deD760a8e7FB882B4A9B0e990323415ed9',
+      name: 'MVP COIN',
+      symbol: 'MVP'
+    },
+    stakeToken: {
+      address: '0xD6b34eb785baDe9F7C5F2D19E784Ced6c9d91262',
+      name: 'Stake MDD',
+      symbol: 'ST-MDD'
+    },
+    rewardPointToken: {
+      address: '0x9c882a7004D4bB7E5fa77856625225EA29619323',
+      name: 'Token MD',
+      symbol: 'MD'
+    },
+  },
+  '0xE4ABd8F271F390f85232d0fc5a3a281Fa843C260': {
+    showOnActiveTab: false,
     contractAddress: '0xE4ABd8F271F390f85232d0fc5a3a281Fa843C260',
     title: 'SELF-QUARANTINE #3<br>แลกเหรียญ MD',
     imageTokenUrl: '/images/tokens/stake-for-society.png',
