@@ -45,6 +45,8 @@ function LaunchPadPage({
 
     const { i18n } = useLingui()
 
+    const [lang, setLangauge] = useState<'EN' | 'TH'>('TH')
+
     const { account, chainId } = useActiveWeb3React()
     const [isCopied, staticCopy] = useCopyClipboard()
     const [isMerchant, setIsMerchant] = useState(false)
@@ -175,7 +177,25 @@ function LaunchPadPage({
                                 <img alt="launchpad" src={launchDetail.imageTokenUrl} className="inline-block h-20 w-20 rounded-full ring-2 ring-white" />
                             </div>}
                             <p className="text-h3 mb-5">Proposal Details</p>
-                            <div dangerouslySetInnerHTML={{__html: launchDetail ? launchDetail.proposalContent : ''}} />
+                            {launchDetail?.proposalContentEng && <div
+                                className="text-center mb-4"
+                            >
+                                <button
+                                    className="font-bold"
+                                    onClick={() => {
+                                        setLangauge('TH')
+                                    }}
+                                >TH</button>|<button
+                                    className="font-bold"
+                                    onClick={() => {
+                                        setLangauge('EN')
+                                    }}
+                                >EN</button>
+                            </div>}
+                            {lang === 'EN' && launchDetail?.proposalContentEng ?
+                                <div dangerouslySetInnerHTML={{__html: launchDetail ? launchDetail.proposalContentEng : ''}} /> :
+                                <div dangerouslySetInnerHTML={{__html: launchDetail ? launchDetail.proposalContent : ''}} /> 
+                            }
                         </Card>
                         <Card className="col-span-2 md:col-span-1 w-full shadow-pink-glow hover:shadow-pink-glow-hovered">
                             <div className="relative w-full">
