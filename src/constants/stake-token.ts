@@ -175,7 +175,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
     showThankStake: true
   },
   '0x30aD01DAc5761658AFCD26242ffaf25b004426d8': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     extraHeader: 'MVP WE ARE HODL 2',
     contractAddress: '0x30aD01DAc5761658AFCD26242ffaf25b004426d8',
     title: 'Stake MVP for BTC 2',
@@ -203,7 +203,7 @@ const BSC_STAKE_LIST: { [key: string]: StakeTokenList } = {
     },
   },
   '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115': {
-    showOnActiveTab: true,
+    showOnActiveTab: false,
     extraHeader: 'MVP WE ARE HODL',
     contractAddress: '0x394b5bddDfc2Fa1edb9ff8c818b71D4F7ffF0115',
     title: 'Stake MVP for BTC',
