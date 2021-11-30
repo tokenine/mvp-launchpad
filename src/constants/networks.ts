@@ -2,7 +2,7 @@ import Arbitrum from '../assets/networks/arbitrum-network.jpg'
 import Avalanche from '../assets/networks/avalanche-network.jpg'
 import Bkc from '../assets/networks/bkc-network.jpg'
 import Bsc from '../assets/networks/bsc-network.jpg'
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import Fantom from '../assets/networks/fantom-network.jpg'
 import Goerli from '../assets/networks/goerli-network.jpg'
 import Harmony from '../assets/networks/harmonyone-network.jpg'
@@ -17,6 +17,7 @@ import Rinkeby from '../assets/networks/rinkeby-network.jpg'
 import Ropsten from '../assets/networks/ropsten-network.jpg'
 import xDai from '../assets/networks/xdai-network.jpg'
 import XChain from '../assets/networks/xchain-280.png'
+import MetaChain from '../assets/networks/meta-logo.png'
 
 export const NETWORK_ICON = {
     [ChainId.MAINNET]: Mainnet,
@@ -42,7 +43,8 @@ export const NETWORK_ICON = {
     [ChainId.HARMONY_TESTNET]: Harmony,
     [ChainId.OKEX]: OKEx,
     [ChainId.OKEX_TESTNET]: OKEx,
-    [ChainId.XCHAIN]: XChain
+    [ChainId.XCHAIN]: XChain,
+    [ChainId.META]: MetaChain
 }
 
 export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
@@ -68,5 +70,6 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
     [ChainId.HARMONY_TESTNET]: 'Harmony Testnet',
     [ChainId.OKEX]: 'OKExChain',
     [ChainId.OKEX_TESTNET]: 'OKExChain',
-    [ChainId.XCHAIN]: 'X-Chain'
+    [ChainId.XCHAIN]: 'X-Chain',
+    [ChainId.META]: 'MetaChain'
 }

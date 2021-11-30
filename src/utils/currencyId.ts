@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'dfy-sdk'
+import { Currency, ETHER, Token } from 'metaverse-sdk'
 
 export function currencyId(currency: Currency): string {
     if (currency === ETHER) return 'ETH'

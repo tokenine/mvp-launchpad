@@ -1,4 +1,4 @@
-import { Token } from 'dfy-sdk'
+import { Token } from 'metaverse-sdk'
 import { useMemo } from 'react'
 import { isAddress } from '../../utils'
 

@@ -1,4 +1,4 @@
-import { Token } from 'dfy-sdk'
+import { Token } from 'metaverse-sdk'
 import Card from 'components/Card'
 import Column from 'components/Column'
 import CurrencyLogo from 'components/CurrencyLogo'

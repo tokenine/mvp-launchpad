@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import { BigNumber } from 'ethers'
 
 export interface LaunchTokenList {

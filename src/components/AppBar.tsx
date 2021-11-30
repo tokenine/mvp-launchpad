@@ -1,4 +1,4 @@
-import { ChainId, Currency } from 'dfy-sdk'
+import { ChainId, Currency } from 'metaverse-sdk'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Logo from '../assets/images/logo_white_full.png'
@@ -225,7 +225,7 @@ function AppBar(): JSX.Element {
                                             )} */}
 
                                         {chainId &&
-                                            [ChainId.BKC, ChainId.BSC, ChainId.MATIC].includes(chainId) &&
+                                            [ChainId.BKC, ChainId.BSC, ChainId.META].includes(chainId) &&
                                             library &&
                                             library.provider.isMetaMask && (
                                                 <>
@@ -242,6 +242,10 @@ function AppBar(): JSX.Element {
                                                                     case ChainId.BSC:
                                                                         address =
                                                                             '0x3379A0BdF5A5CB566127C421782686BA0f80490a'
+                                                                        break
+                                                                    case ChainId.META:
+                                                                        address =
+                                                                            '0x9737e3Be617d482cFCF013358e1DEB188aB63E0B'
                                                                         break
                                                                 }
                                                                 const params: any = {
@@ -304,6 +308,10 @@ function AppBar(): JSX.Element {
                                                                     case ChainId.BSC:
                                                                         address =
                                                                             '0x7E78a9b7c688c5b8152dF3f50f6F32E983f28ac8'
+                                                                        break
+                                                                    case ChainId.META:
+                                                                        address =
+                                                                            '0x4F9Bb119FD364479ffff56d616B86a248315BD27'
                                                                         break
                                                                 }
                                                                 const params: any = {

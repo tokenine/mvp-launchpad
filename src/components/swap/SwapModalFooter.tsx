@@ -1,4 +1,4 @@
-import { Trade, TradeType } from 'dfy-sdk'
+import { Trade, TradeType } from 'metaverse-sdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

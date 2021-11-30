@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import MULTICALL_ABI from './abi.json'
 
 const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
@@ -26,7 +26,8 @@ const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
     [ChainId.HARMONY_TESTNET]: '0xbcd3451992B923531615293Cb2b2c38ba8DE9529',
     [ChainId.OKEX]: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
     [ChainId.OKEX_TESTNET]: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
-    [ChainId.XCHAIN]: '0x2d8fd006Cba21570Ceb07dEd920753cC9AaBBBCB'
+    [ChainId.XCHAIN]: '0x2d8fd006Cba21570Ceb07dEd920753cC9AaBBBCB',
+    [ChainId.META]: ''
 }
 
 export { MULTICALL_ABI, MULTICALL_NETWORKS }

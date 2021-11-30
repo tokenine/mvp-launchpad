@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { TokenAmount } from 'dfy-sdk'
+import { TokenAmount } from 'metaverse-sdk'
 import { ButtonPrimary } from 'components/ButtonLegacy'
 import { LightCard } from 'components/CardLegacy'
 import { AutoColumn } from 'components/Column'

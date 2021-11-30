@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 
 const TOKEN_ICONS: { [chainId in ChainId]?: any } = {
     [ChainId.MAINNET]: {

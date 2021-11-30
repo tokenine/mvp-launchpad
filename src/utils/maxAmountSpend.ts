@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from 'dfy-sdk'
+import { CurrencyAmount, ETHER, JSBI } from 'metaverse-sdk'
 import { MIN_ETH } from '../constants'
 
 /**

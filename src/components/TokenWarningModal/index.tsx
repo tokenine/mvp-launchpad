@@ -1,4 +1,4 @@
-import { Token } from 'dfy-sdk'
+import { Token } from 'metaverse-sdk'
 import { ImportToken } from 'components/SearchModal/ImportToken'
 import React, { useCallback } from 'react'
 import Modal from '../Modal'

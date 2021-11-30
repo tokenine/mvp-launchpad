@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent, Token, WETH } from 'dfy-sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from 'metaverse-sdk'
 import { fortmatic, injected, lattice, portis, torus, walletconnect, walletlink } from '../connectors'
 
 import { AbstractConnector } from '@web3-react/abstract-connector'
@@ -101,7 +101,8 @@ const WRAPPED_NATIVE_ONLY: ChainTokenList = {
     [ChainId.OKEX_TESTNET]: [WETH[ChainId.OKEX_TESTNET]],
 
     // add bkc
-    [ChainId.BKC]: [WETH[ChainId.BKC]]
+    [ChainId.BKC]: [WETH[ChainId.BKC]],
+    [ChainId.META]: [WETH[ChainId.META]]
 }
 
 // Default Ethereum chain tokens

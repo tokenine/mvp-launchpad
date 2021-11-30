@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair } from 'dfy-sdk'
+import { ChainId, JSBI, Pair } from 'metaverse-sdk'
 import { transparentize } from 'polished'
 import React, { useContext, useMemo } from 'react'
 import { Link, useHistory } from 'react-router-dom'

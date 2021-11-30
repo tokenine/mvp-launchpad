@@ -179,7 +179,7 @@
         "@lufycz/sushi-data": "^2.0.0-canary-21",
         "@types/big.js": "^6.1.1",
         "big.js": "^6.1.1",
-        "dfy-sdk": "^1.0.2",
+        "metaverse-sdk": "https://github.com/tokenine/metaverse-sdk",
         "react-confetti": "^6.0.1",
         "react-countdown": "^2.3.2",
         "react-icons": "^4.2.0"

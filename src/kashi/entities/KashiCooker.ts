@@ -1,5 +1,5 @@
 import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
-import { ChainId, WETH } from 'dfy-sdk'
+import { ChainId, WETH } from 'metaverse-sdk'
 import { Contract, ethers } from 'ethers'
 import { ZERO, e10, maximum, minimum, toElastic } from 'kashi/functions'
 import { getProviderOrSigner, getSigner } from 'utils'

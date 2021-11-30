@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import React, { useContext } from 'react'
 import { AlertTriangle, ArrowUpCircle } from 'react-feather'
 import { Text } from 'rebass'

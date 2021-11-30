@@ -1,4 +1,4 @@
-import { Pair } from 'dfy-sdk'
+import { Pair } from 'metaverse-sdk'
 import { darken } from 'polished'
 import React from 'react'
 import styled from 'styled-components'

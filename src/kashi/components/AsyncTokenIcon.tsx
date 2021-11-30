@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import Circle from '../../assets/images/blue-loader.svg'
 import { CustomLightSpinner } from '../../theme'
 import { getTokenIconUrl } from '../functions'

@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { launchTokenListByChainId, LaunchTokenList } from '../../constants/launch-token-list'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
  
 const BackgroundMain = styled.div`
     margin-top: -40px;

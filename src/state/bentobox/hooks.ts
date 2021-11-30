@@ -1,4 +1,4 @@
-import { Currency, Token, WETH } from 'dfy-sdk'
+import { Currency, Token, WETH } from 'metaverse-sdk'
 import { ZERO, e10, easyAmount, toAmount } from 'kashi/functions'
 import { useBentoBoxContract, useBoringHelperContract, useContract } from '../../hooks/useContract'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'

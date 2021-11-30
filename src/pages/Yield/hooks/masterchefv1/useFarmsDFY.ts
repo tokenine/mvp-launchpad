@@ -10,7 +10,7 @@ import _ from 'lodash'
 // import sushiData from '@sushiswap/sushi-data'
 
 import { useActiveWeb3React } from '../../../../hooks/useActiveWeb3React'
-// import { ChainId } from 'dfy-sdk'
+// import { ChainId } from 'metaverse-sdk'
 
 import FARMS from '../../../../constants/farms'
 

@@ -2,7 +2,7 @@ import { NETWORK_ICON, NETWORK_LABEL } from '../../constants/networks'
 import { useModalOpen, useNetworkModalToggle } from '../../state/application/hooks'
 
 import { ApplicationModal } from '../../state/application/actions'
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import Modal from '../Modal'
 import ModalHeader from '../ModalHeader'
 import React from 'react'
@@ -144,6 +144,17 @@ const PARAMS: {
         }, 
         rpcUrls: ['https://rpc.xchain.asia'], 
         blockExplorerUrls: ['https://www.exp.xchain.asia']
+    },
+    [ChainId.META]: {
+        chainId: '0x11', 
+        chainName: 'MetaChain', 
+        nativeCurrency: { 
+            name: 'META Coin', 
+            symbol: 'META', 
+            decimals: 18 
+        }, 
+        rpcUrls: ['https://rpc.metachain.asia'], 
+        blockExplorerUrls: ['https://exp.metachain.asia']
     }
 }
 
@@ -166,6 +177,7 @@ export default function NetworkModal(): JSX.Element | null {
                 {[
                     // ChainId.MAINNET,
                     // ChainId.FANTOM,
+                    ChainId.META,
                     ChainId.XCHAIN,
                     ChainId.BKC,
                     ChainId.BSC,
