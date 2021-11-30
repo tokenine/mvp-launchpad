@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 
 export interface SerializableTransactionReceipt {
     to: string

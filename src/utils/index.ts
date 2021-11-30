@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, ETHER, JSBI, Percent, ROUTER_ADDRESS, Token } from 'dfy-sdk'
+import { ChainId, Currency, CurrencyAmount, ETHER, JSBI, Percent, ROUTER_ADDRESS, Token } from 'metaverse-sdk'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 
 import { AddressZero } from '@ethersproject/constants'
@@ -386,6 +386,17 @@ const builders = {
                 return `${prefix}/${type}/${data}`
         }
     },
+    meta: (chainName: string, data: string, type: 'transaction' | 'token' | 'address' | 'block') => {
+        const prefix = `https://exp.metachain.asia`
+        switch (type) {
+            case 'transaction':
+                return `${prefix}/tx/${data}`
+            case 'token':
+                return `${prefix}/tokens/${data}`
+            default:
+                return `${prefix}/${type}/${data}`
+        }
+    }
 }
 
 interface ChainObject {
@@ -491,7 +502,11 @@ const chains: ChainObject = {
     [ChainId.XCHAIN]: {
         chainName: '',
         builder: builders.xchain
-    },    
+    },
+    [ChainId.META]: {
+        chainName: '',
+        builder: builders.meta
+    },  
 }
 
 export function getExplorerLink(

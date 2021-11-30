@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
-import { ChainId, JSBI, Percent, Token, TokenAmount } from 'dfy-sdk'
+import { ChainId, JSBI, Percent, Token, TokenAmount } from 'metaverse-sdk'
 import {
     basisPointsToPercent,
     calculateGasMargin,

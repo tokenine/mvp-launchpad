@@ -1,4 +1,4 @@
-import { ChainId, Currency, ETHER, Token } from 'dfy-sdk'
+import { ChainId, Currency, ETHER, Token } from 'metaverse-sdk'
 import React, { useMemo } from 'react'
 
 import AvalancheLogo from '../../assets/images/avalanche-logo.png'

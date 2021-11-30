@@ -1,4 +1,4 @@
-import { Price } from 'dfy-sdk'
+import { Price } from 'metaverse-sdk'
 import React, { useContext } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

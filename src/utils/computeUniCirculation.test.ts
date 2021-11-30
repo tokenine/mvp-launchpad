@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Token, TokenAmount } from 'dfy-sdk'
+import { ChainId, JSBI, Token, TokenAmount } from 'metaverse-sdk'
 import { BigNumber, ethers } from 'ethers'
 import { computeUniCirculation } from './computeUniCirculation'
 

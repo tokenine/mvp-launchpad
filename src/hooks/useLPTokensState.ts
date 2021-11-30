@@ -1,4 +1,4 @@
-import { ChainId, Token, TokenAmount } from 'dfy-sdk'
+import { ChainId, Token, TokenAmount } from 'metaverse-sdk'
 import { useBoringHelperContract, useDashboardContract, useQuickSwapFactoryContract } from 'hooks/useContract'
 import { useCallback, useEffect, useRef, useState } from 'react'
 

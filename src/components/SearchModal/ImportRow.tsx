@@ -1,4 +1,4 @@
-import { Token } from 'dfy-sdk'
+import { Token } from 'metaverse-sdk'
 import { ButtonPrimary } from 'components/ButtonLegacy'
 import { AutoColumn } from 'components/Column'
 import CurrencyLogo from 'components/CurrencyLogo'

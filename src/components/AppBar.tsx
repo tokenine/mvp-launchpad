@@ -1,4 +1,4 @@
-import { ChainId, Currency } from 'dfy-sdk'
+import { ChainId, Currency } from 'metaverse-sdk'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Logo from '../assets/images/logo_white_full.png'

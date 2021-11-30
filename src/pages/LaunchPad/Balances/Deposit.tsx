@@ -1,4 +1,4 @@
-import { Token, TokenAmount, WETH } from 'dfy-sdk'
+import { Token, TokenAmount, WETH } from 'metaverse-sdk'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
 import { BENTOBOX_ADDRESS } from 'kashi'
 import { Button } from 'components'

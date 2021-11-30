@@ -1,5 +1,5 @@
 import React from 'react'
-import { Currency, Price } from 'dfy-sdk'
+import { Currency, Price } from 'metaverse-sdk'
 import { AutoRow } from '../../components/Row'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 

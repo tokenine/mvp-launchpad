@@ -1,4 +1,4 @@
-import { Token } from 'dfy-sdk'
+import { Token } from 'metaverse-sdk'
 import { TokenList } from '@uniswap/token-lists'
 import { RowBetween } from 'components/Row'
 import React, { useState } from 'react'

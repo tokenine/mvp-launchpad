@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 
 export const NFT_AUCTION : { [key: string]: any } = {
   [ChainId.BSC]: {

@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import { StakeTokenList } from './stake-token'
 
 export interface DonateTokenList extends StakeTokenList {

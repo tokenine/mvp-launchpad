@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { useFuse, useSortableData } from 'hooks'
 import { useMasterChefContract, useMiniChefV2Contract } from '../../hooks/useContract'
 
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import { SimpleDots as Dots } from 'kashi/components'
 import { Helmet } from 'react-helmet'
 import Menu from './Menu'

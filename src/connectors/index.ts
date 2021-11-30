@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import { FortmaticConnector } from './Fortmatic'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { LatticeConnector } from '@web3-react/lattice-connector'
@@ -71,7 +71,8 @@ export const injected = new InjectedConnector({
         1666700000, // harmony testnet
         66, // okex testnet
         65, // okex testnet
-        35 // X-Chain
+        35, // X-Chain
+        17
     ]
 })
 

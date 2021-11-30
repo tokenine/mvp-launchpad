@@ -1,4 +1,4 @@
-import { ChainId } from 'dfy-sdk'
+import { ChainId } from 'metaverse-sdk'
 import React from 'react'
 import { Redirect, Route, RouteComponentProps, useLocation, Switch } from 'react-router-dom'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
@@ -54,7 +54,8 @@ const LaunchPadAllowChaidId: ChainId[] = [
     ChainId.BSC_TESTNET,
     ChainId.BKC,
     ChainId.BSC,
-    ChainId.XCHAIN
+    ChainId.XCHAIN,
+    ChainId.META
 ]
 
 function Routes(): JSX.Element {
