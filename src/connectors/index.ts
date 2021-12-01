@@ -34,7 +34,8 @@ const RPC = {
     [ChainId.HARMONY_TESTNET]: 'https://explorer.pops.one',
     [ChainId.OKEX]: 'https://exchainrpc.okex.org',
     [ChainId.OKEX_TESTNET]: 'https://exchaintestrpc.okex.org',
-    [ChainId.XCHAIN]: 'https://rpc.xchain.asia'
+    [ChainId.XCHAIN]: 'https://rpc.xchain.asia',
+    [ChainId.META]: 'https://rpc.metachain.asia'
 }
 
 export const network = new NetworkConnector({
