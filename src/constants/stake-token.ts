@@ -497,9 +497,9 @@ const BKC_STAKE_LIST: { [key: string]: StakeTokenList } = {
 }
 
 const META_STAKE_LIST: { [key: string]: StakeTokenList } = {
-    '0xDbA74B98dd7B6C690E9fd55df95ffC6Eb249D074': {
+    '0x58e50d0152072111FB3f9b61368CcE1aCEf1d9A4': {
         showOnActiveTab: true,
-        contractAddress: '0xDbA74B98dd7B6C690E9fd55df95ffC6Eb249D074',
+        contractAddress: '0x58e50d0152072111FB3f9b61368CcE1aCEf1d9A4',
         title: 'SELF-QUARANTINE #7<br>แลกเหรียญ MD',
         imageTokenUrl: '/images/tokens/stake-for-society.png',
         detailImage: '/images/MVP-to-MD.png',
@@ -513,7 +513,7 @@ const META_STAKE_LIST: { [key: string]: StakeTokenList } = {
             symbol: 'MVP'
         },
         stakeToken: {
-            address: '0xDbA74B98dd7B6C690E9fd55df95ffC6Eb249D074',
+            address: '0x58e50d0152072111FB3f9b61368CcE1aCEf1d9A4',
             name: 'Stake MD',
             symbol: 'ST-MD'
         },
