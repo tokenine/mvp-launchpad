@@ -66,8 +66,8 @@ const BSC_LAUNCH_TOKEN_LIST: { [key: string]: LaunchTokenList } = {
 }
 
 const MET_LAUNCH_TOKEN_LIST: { [key: string]: LaunchTokenList } = {
-    '0xb8c12a1630cf80c4153d5529c0ad95b58e1fd25d': {
-        contractAddress: '0xb8c12a1630cf80c4153d5529c0ad95b58e1fd25d',
+    '0xe5dC230cDDeD49a37e434179eb170f4688AB6cE6': {
+        contractAddress: '0xe5dC230cDDeD49a37e434179eb170f4688AB6cE6',
         title: 'Swap MT เป็น BTC #4',
         imageTokenUrl: '/images/tokens/mt-token.png',
         proposalContent:
