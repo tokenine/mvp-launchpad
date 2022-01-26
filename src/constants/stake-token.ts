@@ -582,6 +582,16 @@ const META_STAKE_LIST: { [key: string]: StakeTokenList } = {
             symbol: 'MD'
         },
         showThankStake: true
+    },
+    '0x70173C556183F17D4CE9690D44b77F7a1D476929': {
+        changeToken: true,
+        showOnActiveTab: true,
+        contractAddress: '0x70173C556183F17D4CE9690D44b77F7a1D476929',
+        title: 'MVP to MEV',
+        imageTokenUrl: '/images/tokens/mev-circle.png',
+        proposalContent:
+            '<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p><p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ultrices lectus. Sed pharetra tempor cursus. Quisque quis lorem luctus, rutrum justo ut, auctor urna. Pellentesque ut neque sit amet magna dapibus accumsan.</p>',
+        available: true
     }
 }
 

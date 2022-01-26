@@ -11,6 +11,7 @@ import { BigNumber } from '@ethersproject/bignumber/lib/bignumber'
 import { useNFTAuction } from 'constants/nft-auction'
 import Countdown from 'react-countdown'
 import CountdownCard from './components/CountdownCard'
+import { ChainId } from 'metaverse-sdk'
 
 interface NFTContent {
     id: number
@@ -116,10 +117,75 @@ function NFTAuction(): JSX.Element {
                 const symbol = await tokencontract?.symbol()
                 let topBid = []
                 let timeActive = true
+
                 setTokenSymbol(symbol)
                 setTokenDecimal(deciaml)
                 for (let id = 0; id < item.toNumber(); id++) {
-                    if (id !== 2) {
+                    if (chainId === ChainId.BSC) {
+                        if (id !== 2) {
+                            topBid = []
+                            const bidlist = await itemcontract?.getBidsList(id)
+                            if (bidlist.length !== 0) {
+                                topBid = await itemcontract?.getTopBid(id)
+                            }
+                            const item = await itemcontract?.artItems(id)
+                            const tokenURI = item.tokenURI
+                            const startPrice = item.startPrice
+                            const buyPrice = item.buyPrice
+                            const active = item.active
+                            const endtime = item.endTime.toString()
+                            const date = new Date(endtime * 1000)
+                            const starttime = new Date(endtime * 1000 - 60000 * 60 * 3)
+                            if (Date.now() >= starttime.getTime()) {
+                                if (date.getTime() < Date.now()) {
+                                    timeActive = false
+                                } else {
+                                    timeActive = true
+                                }
+                                const dayy = date.getDate()
+                                const monthh = date.getMonth() + 1
+                                const yearr = date.getFullYear()
+                                const hhour = date.getHours()
+                                const minutee = date.getMinutes()
+                                const secondd = date.getSeconds()
+                                const timeend =
+                                    time(dayy) +
+                                    '/' +
+                                    time(monthh) +
+                                    '/' +
+                                    time(yearr) +
+                                    ' ' +
+                                    time(hhour) +
+                                    ':' +
+                                    time(minutee) +
+                                    ':' +
+                                    time(secondd)
+                                if (timeActive === true) {
+                                    listactiveNftItems.push({
+                                        id: id,
+                                        tokenURI: tokenURI,
+                                        startPrice: startPrice,
+                                        buyPrice: buyPrice,
+                                        endTime: timeend,
+                                        active: active,
+                                        timeactive: timeActive,
+                                        currenttopbid: topBid[1]
+                                    })
+                                } else if (timeActive === false) {
+                                    listinactiveNftItems.push({
+                                        id: id,
+                                        tokenURI: tokenURI,
+                                        startPrice: startPrice,
+                                        buyPrice: buyPrice,
+                                        endTime: timeend,
+                                        active: active,
+                                        timeactive: timeActive,
+                                        currenttopbid: topBid[1]
+                                    })
+                                }
+                            }
+                        }
+                    } else {
                         topBid = []
                         const bidlist = await itemcontract?.getBidsList(id)
                         if (bidlist.length !== 0) {
@@ -190,7 +256,7 @@ function NFTAuction(): JSX.Element {
             }
         }
         fetchContract()
-    }, [itemcontract, tokencontract])
+    }, [chainId, itemcontract, tokencontract])
 
     const ItemActive = (item: NFTContent) => (
         <Link

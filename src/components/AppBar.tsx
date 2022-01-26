@@ -494,7 +494,7 @@ function AppBar(): JSX.Element {
                                                             </div>
                                                         </QuestionHelper>
                                                     )}
-                                                    {chainId === ChainId.BSC && (
+                                                    {(chainId === ChainId.BSC || chainId === ChainId.META) && (
                                                         <QuestionHelper
                                                             text={i18n._(t`Add MEV to your Metamask wallet`)}
                                                         >
@@ -506,6 +506,10 @@ function AppBar(): JSX.Element {
                                                                         case ChainId.BSC:
                                                                             address =
                                                                                 '0x9b98646315CC7677CE02a3cCf580c80f36ACA4ff'
+                                                                            break
+                                                                        case ChainId.META:
+                                                                            address =
+                                                                                '0x70173C556183F17D4CE9690D44b77F7a1D476929'
                                                                             break
                                                                     }
                                                                     const params: any = {
